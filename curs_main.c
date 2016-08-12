@@ -3223,6 +3223,18 @@ int mutt_index_menu(void)
       case OP_SIDEBAR_TOGGLE_VIRTUAL:
         mutt_sb_toggle_virtual();
         break;
+
+      case OP_SIDEBAR_START_SEARCH:
+      {
+        BUFFY *b = mutt_sb_start_search();
+        if (b)
+        {
+          strncpy(buf, b->path, sizeof(buf));
+          main_change_folder(menu, OP_SIDEBAR_OPEN, buf, sizeof(buf), &oldcount,
+                             &index_hint, flags);
+        }
+      }
+      break;
 #endif
       default:
         if (menu->menu == MENU_MAIN)

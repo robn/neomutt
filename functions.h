@@ -204,6 +204,7 @@ const struct binding_t OpMain[] = { /* map: index */
   { "sidebar-prev-new",          OP_SIDEBAR_PREV_NEW,               NULL },
   { "sidebar-toggle-virtual",    OP_SIDEBAR_TOGGLE_VIRTUAL,         NULL },
   { "sidebar-toggle-visible",    OP_SIDEBAR_TOGGLE_VISIBLE,         NULL },
+  { "sidebar-start-search",      OP_SIDEBAR_START_SEARCH,           NULL },
 #endif
 #ifdef USE_NOTMUCH
   { "change-vfolder",            OP_MAIN_CHANGE_VFOLDER,            NULL },
@@ -340,6 +341,7 @@ const struct binding_t OpPager[] = { /* map: pager */
   { "sidebar-prev-new",          OP_SIDEBAR_PREV_NEW,             NULL },
   { "sidebar-toggle-virtual",    OP_SIDEBAR_TOGGLE_VIRTUAL,       NULL },
   { "sidebar-toggle-visible",    OP_SIDEBAR_TOGGLE_VISIBLE,       NULL },
+  { "sidebar-start-search",      OP_SIDEBAR_START_SEARCH,         NULL },
 #endif
 #ifdef USE_NOTMUCH
   { "change-vfolder",            OP_MAIN_CHANGE_VFOLDER,          NULL },

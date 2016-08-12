@@ -109,6 +109,7 @@
 #define MUTT_NM_QUERY (1 << 9)  /* Notmuch query mode. */
 #define MUTT_NM_TAG   (1 << 10) /* Notmuch tag +/- mode. */
 #endif
+#define MUTT_MATCHER (1 << 11)
 
 /* flags for _mutt_system() */
 #define MUTT_DETACH_PROCESS 1 /* detach subprocess from group */

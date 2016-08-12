@@ -30,5 +30,6 @@ void mutt_sb_notify_mailbox(BUFFY *b, int created);
 void mutt_sb_set_buffystats(const CONTEXT *ctx);
 void mutt_sb_set_open_buffy(void);
 void mutt_sb_toggle_virtual(void);
+BUFFY *mutt_sb_start_search(void);
 
 #endif /* _MUTT_SIDEBAR_H */
