@@ -828,6 +828,9 @@ char *mutt_substrdup (const char *begin, const char *end)
   size_t len;
   char *p = NULL;
 
+  if (end != NULL && end < begin)
+    return NULL;
+
   if (end)
     len = end - begin;
   else
