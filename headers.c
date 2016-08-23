@@ -50,7 +50,7 @@ void mutt_edit_headers (const char *editor,
   }
 
   mutt_env_to_local (msg->env);
-  mutt_write_rfc822_header (ofp, msg->env, NULL, 1, 0);
+  mutt_write_rfc822_header (ofp, msg->env, NULL, 1, 0, 1);
   fputc ('\n', ofp);	/* tie off the header. */
 
   /* now copy the body of the message. */
