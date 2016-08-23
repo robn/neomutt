@@ -197,7 +197,7 @@ User's personal mapping between MIME types and file extensions.
 System mapping between MIME types and file extensions.
 .IP "@bindir@/mutt_dotlock"
 The privileged dotlocking program.
-.IP "@docdir@/manual.txt"
+.IP "/usr/share/doc/neomutt/manual.txt.gz"
 The Mutt manual.
 .SH BUGS
 .PP
