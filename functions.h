@@ -34,7 +34,7 @@
 
 #ifdef _MAKEDOC
 # include "config.h"
-# include "doc/makedoc-defs.h"
+/* # include "doc/makedoc-defs.h" include only documented options for Debian */
 #endif
 
 // clang-format off
