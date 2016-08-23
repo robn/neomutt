@@ -767,7 +767,7 @@ struct option_t MuttVars[] = {
   ** .pp
   ** This variable specifies which editor is used by mutt.
   ** It defaults to the value of the \fC$$$VISUAL\fP, or \fC$$$EDITOR\fP, environment
-  ** variable, or to the string ``vi'' if neither of those are set.
+  ** variable, or to the string ``/usr/bin/editor'' if neither of those are set.
   ** .pp
   ** The \fC$$editor\fP string may contain a \fI%s\fP escape, which will be replaced by the name
   ** of the file to be edited.  If the \fI%s\fP escape does not appear in \fC$$editor\fP, a
