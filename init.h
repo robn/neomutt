@@ -21,7 +21,7 @@
 
 #ifdef _MAKEDOC
 #include "config.h"
-#include "doc/makedoc_defs.h"
+/* # include "makedoc_defs.h" include only documented options for Debian */
 #else
 #include "mx.h"
 #include "sort.h"
