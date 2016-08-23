@@ -127,9 +127,7 @@ uninstall-local:
 
 check:
 manual.txt: manual.html
-	-LC_ALL=C w3m -dump -O UTF8 manual.html > $@ || \
-	LC_ALL=C lynx -dump -nolist -with_backspaces -display_charset=us-ascii manual.html > $@ || \
-	LC_ALL=C elinks -dump -no-numbering -no-references manual.html | sed -e 's,\\001, ,g' > $@
+	LC_ALL=C w3m -dump -O UTF-8 manual.html > $@
 
 Muttrc: stamp-doc-rc
 
@@ -141,10 +139,10 @@ stamp-doc-rc: $(top_srcdir)/init.h makedoc$(EXEEXT) $(srcdir)/Muttrc.head
 	touch stamp-doc-rc
 
 manual.html: $(srcdir)/html.xsl $(srcdir)/mutt.xsl stamp-doc-xml $(srcdir)/mutt.css
-	-xsltproc --nonet -o $@ $(srcdir)/html.xsl manual.xml
+	xsltproc --nonet -o $@ $(srcdir)/html.xsl manual.xml
 
 stamp-doc-chunked: $(srcdir)/chunk.xsl $(srcdir)/mutt.xsl stamp-doc-xml $(srcdir)/mutt.css
-	-xsltproc --nonet $(srcdir)/chunk.xsl manual.xml
+	xsltproc --nonet $(srcdir)/chunk.xsl manual.xml
 	touch stamp-doc-chunked
 
 $(CHUNKED_DOCFILES): stamp-doc-chunked
