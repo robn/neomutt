@@ -226,6 +226,9 @@ struct option_t MuttVars[] = {
   ** Note: for Japanese users, ``iso-2022-*'' must be put at the head
   ** of the value as shown above if included.
   */
+  { "file_charset",	DT_SYN,  R_NONE, UL "attach_charset", 0 },
+  /*
+  */
   { "attach_format",	DT_STR,  R_NONE, UL &AttachFormat, UL "%u%D%I %t%4n %T%.40d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] " },
   /*
   ** .pp
