@@ -388,7 +388,8 @@ int mutt_write_mime_body(BODY *a, FILE *f);
 int mutt_write_mime_header(BODY *a, FILE *f);
 int mutt_write_one_header(FILE *fp, const char *tag, const char *value,
                           const char *pfx, int wraplen, int flags);
-int mutt_write_rfc822_header(FILE *fp, ENVELOPE *env, BODY *attach, int mode, int privacy);
+int mutt_write_rfc822_header(FILE *fp, ENVELOPE *env, BODY *attach, int mode,
+                             int privacy, int should_write_bcc);
 void mutt_write_references(LIST *r, FILE *f, int trim);
 int mutt_yesorno(const char *msg, int def);
 void mutt_set_header_color(CONTEXT *ctx, HEADER *curhdr);
