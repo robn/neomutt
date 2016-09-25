@@ -32,6 +32,7 @@
 #include "buffy.h"
 #include "copy.h"
 #include "filter.h"
+#include "icommands.h"
 #include "mailbox.h"
 #include "mime.h"
 #include "mutt_crypt.h"
@@ -600,30 +601,54 @@ void mutt_shell_escape(void)
 /* enter a mutt command */
 void mutt_enter_command(void)
 {
-  BUFFER err, token;
+  BUFFER err, ierr, token;
   char buffer[LONG_STRING];
-  int r;
+  int ir, r;
 
   buffer[0] = 0;
+
+  /* if enter is pressed after : with no command, just return */
   if (mutt_get_field(":", buffer, sizeof(buffer), MUTT_COMMAND) != 0 || !buffer[0])
     return;
+
+  /* initialiize error buffers */
   mutt_buffer_init(&err);
+  mutt_buffer_init(&ierr);
+
   err.dsize = STRING;
   err.data = safe_malloc(err.dsize);
-  mutt_buffer_init(&token);
-  r = mutt_parse_rc_line(buffer, &token, &err);
-  FREE(&token.data);
-  if (err.data[0])
-  {
-    /* since errbuf could potentially contain printf() sequences in it,
-       we must call mutt_error() in this fashion so that vsprintf()
-       doesn't expect more arguments that we passed */
-    if (r == 0)
-      mutt_message("%s", err.data);
-    else
-      mutt_error("%s", err.data);
-  }
+  ierr.dsize = STRING;
+  ierr.data = safe_malloc(ierr.dsize);
 
+  mutt_buffer_init(&token);
+
+  /* check if buffer is a valid icommand, else fall back quietly to parse_rc_lines */
+  ir = neomutt_parse_icommand(buffer, &ierr);
+  if (!mutt_strcmp(ierr.data, ICOMMAND_NOT_FOUND))
+  {
+    /* if ICommand was not found, try conventional parse_rc_line */
+    r = mutt_parse_rc_line(buffer, &token, &err);
+    if (err.data[0])
+    {
+      /* since errbuf could potentially contain printf() sequences in it,
+         we must call mutt_error() in this fashion so that vsprintf()
+         doesn't expect more arguments that we passed */
+
+      if (r == 0) /* command succeeded with message */
+        mutt_message("%s", err.data);
+      else /* error executing command */
+        mutt_error("%s", err.data);
+    }
+  }
+  else if (ierr.data[0])
+  {
+    if (ir != 0) /* command succeeded with message */
+      mutt_message("%s", ierr.data);
+    else /* error executing command */
+      mutt_error("%s", ierr.data);
+  }
+  FREE(&token.data);
+  FREE(&ierr.data);
   FREE(&err.data);
 }
 
@@ -848,6 +873,8 @@ int mutt_save_message(HEADER *h, int delete, int decode, int decrypt)
     else
     {
       int rc = 0;
+
+#include "icommands.h"
 
 #ifdef USE_NOTMUCH
       if (Context->magic == MUTT_NOTMUCH)
