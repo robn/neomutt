@@ -791,12 +791,15 @@ static const char *hdr_format_str(char *dest, size_t destlen, size_t col, int co
     case 'g':
       if (!optional)
       {
-        colorlen = add_index_color(dest, destlen, flags, MT_COLOR_INDEX_TAGS);
-        mutt_format_s(dest + colorlen, destlen - colorlen, prefix,
-                      nm_header_get_tags_transformed(hdr));
-        add_index_color(dest + colorlen, destlen - colorlen, flags, MT_COLOR_INDEX);
+        if (option(OPTNOTMUCHSHOWTAGS))
+        {
+          colorlen = add_index_color(dest, destlen, flags, MT_COLOR_INDEX_TAGS);
+          mutt_format_s(dest + colorlen, destlen - colorlen, prefix,
+                        nm_header_get_tags_transformed(hdr));
+          add_index_color(dest + colorlen, destlen - colorlen, flags, MT_COLOR_INDEX);
+        }
       }
-      else if (!nm_header_get_tags_transformed(hdr))
+      else if (!nm_header_get_tags_transformed(hdr) || !option(OPTNOTMUCHSHOWTAGS))
         optional = 0;
       break;
 #endif

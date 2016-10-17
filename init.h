@@ -2068,6 +2068,12 @@ struct option_t MuttVars[] = {
    ** .pp
    ** This variable contains the currently setup notmuch search for window based vfolder.
    */
+  { "nm_show_tags", DT_BOOL, R_TREE | R_BOTH, OPTNOTMUCHSHOWTAGS, 1 },
+  /*
+   ** .pp
+   ** Show tag vaules in format via %g specifier (default). Allow to hide the
+   ** tags if there's large number tags per message. In bindings use 'toggle'.
+   */
 #endif
   { "pager",            DT_PATH, R_NONE, UL &Pager, UL "builtin" },
   /*
