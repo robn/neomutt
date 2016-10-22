@@ -3,7 +3,7 @@
 include $(top_srcdir)/flymake.am
 
 AUTOMAKE_OPTIONS = 1.6 foreign
-EXTRA_PROGRAMS = mutt_dotlock pgpring pgpewrap mutt_md5
+EXTRA_PROGRAMS = mutt_dotlock pgpring pgpewrap mutt_md5 mutt_launch
 
 # Test the .tar file by building everything
 AM_DISTCHECK_CONFIGURE_FLAGS = --enable-compressed --enable-debug \
@@ -104,6 +104,8 @@ pgpring_SOURCES = ascii.c extlib.c lib.c md5.c pgplib.c pgppacket.c \
 	pgppubring.c sha1.c
 pgpring_LDADD = $(LIBOBJS) $(INTLLIBS)
 pgpring_DEPENDENCIES = $(LIBOBJS) $(INTLDEPS)
+
+mutt_launch_SOURCES = mutt_launch.c
 
 mutt_md5_SOURCES = md5.c
 mutt_md5_CFLAGS = -DMD5UTIL
