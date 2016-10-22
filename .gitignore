@@ -55,6 +55,7 @@ missing
 mutt
 mutt_dotlock
 mutt_dotlock.c
+mutt_launch
 mutt_md5
 git_ver.h
 patchlist.c
