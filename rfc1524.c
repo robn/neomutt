@@ -369,11 +369,18 @@ void rfc1524_free_entry(rfc1524_entry **entry)
   FREE (entry);		/* __FREE_CHECKED__ */
 }
 
-/*
+/** Attempt to lookup the given type in the configured mailcap files.
+ *
+ * @param a the message body
+ * @param type the text type in "type/subtype" format
+ * @param rfc1524_entry pointer to an rfc1524_entry to populate with results
+ * @param opt the type of mailcap entry to lookup. One of MUTT_EDIT, MUTT_COMPOSE, MUTT_PRINT, MUTT_AUTOVIEW
+ *
  * rfc1524_mailcap_lookup attempts to find the given type in the
- * list of mailcap files.  On success, this returns the entry information
- * in *entry, and returns 1.  On failure (not found), returns 0.
- * If entry == NULL just return 1 if the given type is found.
+ * list of mailcap files.
+ * @returns
+ * - 1 on success and stores entry information in *entry if it is not NULL.
+ * - 0 if no matching entry is found.
  */
 int rfc1524_mailcap_lookup (BODY *a, char *type, rfc1524_entry *entry, int opt)
 {
