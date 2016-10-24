@@ -58,7 +58,8 @@ int main(int argc, char **argv)
   {
     if ((devnullfd = open("/dev/null", O_WRONLY)) == -1)
     {
-      printf("mutt_launch: error %d opening /dev/null: %s\n", errno, strerror(errno));
+      fprintf(stderr, "mutt_launch: Unable to open /dev/null. Error: %s\n",
+              errno, strerror(errno));
       exit(1);
     }
 
@@ -71,7 +72,7 @@ int main(int argc, char **argv)
 
     if ((execreturn = execvp(execline[0], execline)) == -1)
     {
-      printf("error running exec: %d - %s", errno, strerror(errno));
+      fprintf(stderr, "Unable to execute command Error: %d - %s", errno, strerror(errno));
       exit(1);
     }
   }
