@@ -687,6 +687,13 @@ void mutt_delete_parameter(const char *attribute, PARAMETER **p)
 }
 
 /* returns 1 if Mutt can't display this type of data, 0 otherwise */
+/** Determine whether mutt can display this type of data.
+ * @param m the attachment body to be displayed.
+ *
+ * @returns
+ * - true if mutt can display this data
+ * - false otherwise
+ */
 bool mutt_needs_mailcap(BODY *m)
 {
   switch (m->type)
