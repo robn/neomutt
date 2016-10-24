@@ -1,8 +1,9 @@
 #include <errno.h>
 #include <fcntl.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <sys/resource.h>
 #include <unistd.h>
 
 #define MUTT_LAUNCH_C
@@ -19,14 +20,25 @@ int main(int argc, char **argv)
   int devnullfd;
   pid_t thepid;
   char **execline;
+  struct rlimit fdlimit;
+  int close_result;
+
   if (argc <= 1)
   {
     mutt_launch_usage();
     exit(1);
   }
 
-  for (int fd = 3; fd < 256; fd++)
-    close(fd);
+  /* fdlimit.rlim_cur a value one greater than the maximum file descriptor number that can be opened by this process */
+  getrlimit(RLIMIT_NOFILE, &fdlimit); 
+  for (int fd = 3; fd < fdlimit.rlim_cur; fd++)
+  {
+    if (!close(fd) && errno != EBADF)
+    {
+      fprintf(stderr, "mutt_launch: Unable to close filedescriptor %d. Error: %s\n", fd, strerror(errno));
+      exit(1);
+    }
+  }
 
   execline = calloc(argc +2, sizeof(char*));
   execline[0] = malloc(strlen("/bin/sh"));
