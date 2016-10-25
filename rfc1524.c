@@ -339,11 +339,19 @@ static int rfc1524_mailcap_parse(BODY *a, char *filename, char *type,
   return found;
 }
 
+/** Allocate memory for a new rfc1524 entry
+ *
+ * @returns a pointer to an un-initialized rfc1524_entry
+ */
 rfc1524_entry *rfc1524_new_entry(void)
 {
   return safe_calloc(1, sizeof(rfc1524_entry));
 }
 
+/** Deallocate an rfc1524_entry.
+ *
+ * @param entry the rfc1524_entry to deallocate.
+ */
 void rfc1524_free_entry(rfc1524_entry **entry)
 {
   rfc1524_entry *p = *entry;
@@ -368,7 +376,7 @@ void rfc1524_free_entry(rfc1524_entry **entry)
  * rfc1524_mailcap_lookup attempts to find the given type in the
  * list of mailcap files.
  * @returns
- * - 1 on success and stores entry information in *entry if it is not NULL.
+ * - 1 on success. If *entry is not NULL it poplates it with the mailcap entry.
  * - 0 if no matching entry is found.
  */
 int rfc1524_mailcap_lookup(BODY *a, char *type, rfc1524_entry *entry, int opt)
@@ -436,15 +444,24 @@ static void strnfcpy(char *d, char *s, size_t siz, size_t len)
   strfcpy(d, s, len);
 }
 
-/** Expand filename
+/** Expand a new filename from a template or existing filename.
  *
  * @param nametemplate the filename template
  * @param oldfile
- * @param newfile the string to copy the new filename into.
- * @param nflen the maximum length of the new filename.
+ * @param newfile the string to copy the new filename into
+ * @param nflen the maximum length of the new filename
+ *
+ * If there is no nametemplate, the stripped oldfile name is used as the template for newfile.
+ *
+ * If there is no oldfile, the stripped nametemplate name is used as the template for newfile.
+ *
+ * If both a nametemplate and oldfile are specified, the template is checked for a "%s". If none is found, the
+ * nametemplate is used as the template for newfile.
+ * The first path component of the nametemplate and oldfile are ignored.
  *
  * @returns
- * - 
+ * - 0 if the left and right components of the oldfile and newfile match.
+ * - 1 otherwise.
  */
 int rfc1524_expand_filename(char *nametemplate, char *oldfile, char *newfile, size_t nflen)
 {
