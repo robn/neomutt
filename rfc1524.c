@@ -447,6 +447,16 @@ static void strnfcpy(char *d, char *s, size_t siz, size_t len)
   strfcpy(d, s, len);
 }
 
+/** Expand filename
+ *
+ * @param nametemplate the filename template
+ * @param oldfile
+ * @param newfile the string to copy the new filename into.
+ * @param nflen the maximum length of the new filename.
+ *
+ * @returns
+ * - 
+ */
 int rfc1524_expand_filename (char *nametemplate,
 			     char *oldfile,
 			     char *newfile,
