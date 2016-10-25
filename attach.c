@@ -326,10 +326,10 @@ void mutt_check_lookup_list (BODY *b, char *type, int len)
 
 
 /**
- * mutt_view_attachment - display a message attachment.
+ * Display a message attachment.
  * @param fp:     Source file stream. Can be NULL.
  * @param a:      The message body containing the attachment.
- * @param flag:   Option flag for mutt_view_attachment. One of MUTT_MAILCAP, MUTT_REGULAR, or MUTT_AS_TEXT
+ * @param flag:   Option flag for how the attachment should be viewed. One of MUTT_MAILCAP, MUTT_REGULAR, or MUTT_AS_TEXT
  * @param hdr:    Message header for the current message. Can be NULL.
  * @param idx:    YYY
  * @param idxlen: YYY
