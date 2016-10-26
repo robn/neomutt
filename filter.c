@@ -23,8 +23,26 @@
 #include "filter.h"
 #include "mutt_curses.h"
 
-/* Invokes a command on a pipe and optionally connects its stdin and stdout
+/** Invokes a command on a pipe and optionally connects its stdin and stdout
  * to the specified handles.
+ *
+ * @param cmd the command line to invoke using `sh -c`
+ * @param in a file stream pointing to stdin for the command process, can be NULL
+ * @param out a file stream pointing to stdout for the command process, can be NULL
+ * @param err a file stream pointing to stderr for the command process, can be NULL
+ * @param fdin if `in` is NULL and fdin is not -1 then fdin will be used as stdin for the command process
+ * @param fdout if `out` is NULL and fdout is not -1 then fdout will be used as stdout for the command process
+ * @param fderr if `error` is NULL and fderr is not -1 then fderr will be used as stderr for the command process
+ *
+ * This function provides multiple mechanisms to handle IO sharing for the command process. File streams are prioritized
+ * over file descriptors if present.
+ *
+ * @code{.c}
+ *    mutt_create_filter_fd(commandline, NULL, NULL, NULL, -1, -1, -1);
+ * @endcode
+ *
+ * @returns - the pid of the created process or -1 on any error creating pipes or forking.
+ * Additionally, in, out, and err will point to FILE* streams representing the processes stdin, stdout, and stderr.
  */
 pid_t mutt_create_filter_fd(const char *cmd, FILE **in, FILE **out, FILE **err,
                             int fdin, int fdout, int fderr)
