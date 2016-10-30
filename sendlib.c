@@ -920,8 +920,13 @@ CONTENT *mutt_get_content_info (const char *fname, BODY *b)
   return info;
 }
 
-/* Given a file with path ``s'', see if there is a registered MIME type.
- * returns the major MIME type, and copies the subtype to ``d''.  First look
+/** Look up mime type information
+ *
+ * @param att the attachment body to update with a matching type
+ * @param path the filename path to use to match a mime type
+ *
+ * Given a file at `path`, see if there is a registered MIME type.
+ * Returns the major MIME type, and copies the subtype to ``d''.  First look
  * for ~/.mime.types, then look in a system mime.types if we can find one.
  * The longest match is used so that we can match `ps.gz' when `gz' also
  * exists.
