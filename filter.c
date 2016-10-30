@@ -192,6 +192,12 @@ pid_t mutt_create_filter(const char *s, FILE **in, FILE **out, FILE **err)
   return (mutt_create_filter_fd(s, in, out, err, -1, -1, -1));
 }
 
+/** Wait for the exit of a process and return its status.
+ *
+ * @param pid the process id of the process to wait for
+ *
+ * @returns the exit status of the process identified by pid or -1 in the event of an error.
+ */
 int mutt_wait_filter(pid_t pid)
 {
   int rc;
