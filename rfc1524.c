@@ -281,6 +281,13 @@ static int rfc1524_mailcap_parse (BODY *a,
 	  get_field_text (field + 9, entry ? &entry->convert : NULL,
 			  type, filename, line);
 	}
+	else if (ascii_strncasecmp(field, "x-backgroundopen", 17) == 0)
+	{
+	  if (entry != NULL)
+	  {
+	    entry->backgroundopen = TRUE;
+	  }
+	}
 	else if (ascii_strncasecmp (field, "test", 4) == 0)
 	{
 	  /*
