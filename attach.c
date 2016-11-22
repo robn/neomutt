@@ -514,10 +514,16 @@ int mutt_view_attachment (FILE *fp, BODY *a, int flag, HEADER *hdr,
     }
     else
     {
-      /* interactive command */
-      if (mutt_system (command) ||
-	  (entry->needsterminal && option (OPTWAITKEY)))
-	mutt_any_key_to_continue (NULL);
+      /* open viewer in background (usually an external graphical program) */
+      if (entry->backgroundopen)
+      {
+        mutt_view_in_background (command);
+
+        /* interactive command */
+      } else if (mutt_system (command) ||
+          (entry->needsterminal && option (OPTWAITKEY)))
+
+        mutt_any_key_to_continue (NULL);
     }
   }
   else
@@ -920,6 +926,39 @@ int mutt_decode_save_attachment (FILE *fp, BODY *m, char *path,
   }
 
   return ret;
+}
+
+int mutt_view_in_background(char *command) {
+  pid_t thepid = 0;
+  const char* launchcmd = "mutt_launch";
+  int launchcmdlen = strlen(launchcmd);
+  int commandlen = strlen(command);
+
+  char **commandline = calloc(2, sizeof(char*));
+  commandline[0] = malloc(sizeof(char) * launchcmdlen);
+  strncpy(commandline[0], launchcmd, launchcmdlen);
+
+  commandline[1] = malloc(sizeof(char) * commandlen);
+  strncpy(commandline[1], command, commandlen);
+
+
+  if ((thepid = fork()) == 0)
+  {
+    /* child process */
+
+    execvp (launchcmd, commandline);
+  }
+  else if (thepid == -1)
+  {
+    /* problem forking */
+  }
+  else
+  {
+    /* main mutt process */
+  }
+
+
+  return 0;
 }
 
 /* Ok, the difference between send and receive:
