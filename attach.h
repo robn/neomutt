@@ -41,6 +41,7 @@ int mutt_view_attachment(FILE *fp, BODY *a, int flag, HEADER *hdr,
 int mutt_tag_attach(MUTTMENU *menu, int n, int m);
 int mutt_attach_display_loop(MUTTMENU *menu, int op, FILE *fp, HEADER *hdr, BODY *cur,
                              ATTACHPTR ***idxp, short *idxlen, short *idxmax, int recv);
+int mutt_view_in_background(char *command);
 
 void mutt_save_attachment_list(FILE *fp, int tag, BODY *top, HEADER *hdr, MUTTMENU *menu);
 void mutt_pipe_attachment_list(FILE *fp, int tag, BODY *top, int filter);
