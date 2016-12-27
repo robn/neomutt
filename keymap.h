@@ -74,7 +74,7 @@ enum
 #ifdef MIXMASTER
   MENU_MIX,
 #endif
-
+  MENU_SUMMARY,
 
 
   MENU_MAX

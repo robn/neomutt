@@ -2725,6 +2725,7 @@ search_next:
 	old_PagerIndexLines = PagerIndexLines;
 
 	mutt_enter_command ();
+        pager_menu->redraw = REDRAW_FULL;
 
 	if (option (OPTNEEDRESORT))
 	{
