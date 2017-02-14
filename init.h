@@ -2007,12 +2007,6 @@ struct option_t MuttVars[] = {
    ** notmuch://<absolute path>.
    */
 
-  { "nm_hidden_tags", DT_STR, R_NONE, UL &NotmuchHiddenTags, UL "unread,draft,flagged,passed,replied,attachment,signed,encrypted" },
-  /*
-   ** .pp
-   ** This variable specifies private notmuch tags which should not be printed
-   ** on screen.
-   */
   { "nm_exclude_tags", DT_STR,  R_NONE, UL &NotmuchExcludeTags, 0 },
   /*
    ** .pp
@@ -2071,6 +2065,12 @@ struct option_t MuttVars[] = {
    ** This variable contains the currently setup notmuch search for window based vfolder.
    */
 #endif
+  { "hidden_tags", DT_STR, R_NONE, UL &HiddenTags, UL "unread,draft,flagged,passed,replied,attachment,signed,encrypted" },
+  /*
+   ** .pp
+   ** This variable specifies private notmuch/imap tags which should not be printed
+   ** on screen.
+   */
   { "pager",		DT_PATH, R_NONE, UL &Pager, UL "builtin" },
   /*
   ** .pp
@@ -4430,10 +4430,8 @@ static int parse_unalternates (BUFFER *, BUFFER *, unsigned long, BUFFER *);
 /* Parse -group arguments */
 static int parse_group_context (group_context_t **ctx, BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err);
 
-#ifdef USE_NOTMUCH
 static int parse_tag_transforms (BUFFER *, BUFFER *, unsigned long, BUFFER *);
 static int parse_tag_formats (BUFFER *, BUFFER *, unsigned long, BUFFER *);
-#endif
 
 const struct command_t Commands[] = {
   { "alternates",	parse_alternates,	0 },
@@ -4480,9 +4478,9 @@ const struct command_t Commands[] = {
 #ifdef USE_NOTMUCH
   { "virtual-mailboxes",mutt_parse_virtual_mailboxes, 0 },
   { "unvirtual-mailboxes",mutt_parse_unvirtual_mailboxes, 0 },
+#endif
   { "tag-transforms",	parse_tag_transforms,	0 },
   { "tag-formats",	parse_tag_formats,	0 },
-#endif
   { "mailto_allow",	parse_list,		UL &MailtoAllow },
   { "unmailto_allow",	parse_unlist,		UL &MailtoAllow },
   { "message-hook",	mutt_parse_hook,	MUTT_MESSAGEHOOK },

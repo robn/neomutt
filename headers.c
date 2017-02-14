@@ -296,7 +296,6 @@ int mutt_label_message(HEADER *hdr)
   if (hdr != NULL) {
     changed += label_message(Context, hdr, new);
   } else {
-#define HDR_OF(index) Context->hdrs[Context->v2r[(index)]]
     for (i = 0; i < Context->vcount; ++i) {
       if (HDR_OF(i)->tagged)
         if (label_message(Context, HDR_OF(i), new)) {

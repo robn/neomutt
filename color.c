@@ -38,9 +38,7 @@ COLOR_LINE *ColorIndexList = NULL;
 COLOR_LINE *ColorIndexAuthorList = NULL;
 COLOR_LINE *ColorIndexFlagsList = NULL;
 COLOR_LINE *ColorIndexSubjectList = NULL;
-#ifdef USE_NOTMUCH
 COLOR_LINE *ColorIndexTagList = NULL;
-#endif
 
 /* local to this file */
 static int ColorQuoteSize;
@@ -109,10 +107,8 @@ static const struct mapping_t Fields[] =
   { "index_number",	MT_COLOR_INDEX_NUMBER },
   { "index_size",	MT_COLOR_INDEX_SIZE },
   { "index_subject",	MT_COLOR_INDEX_SUBJECT },
-#ifdef USE_NOTMUCH
   { "index_tag",	MT_COLOR_INDEX_TAG },
   { "index_tags",	MT_COLOR_INDEX_TAGS },
-#endif
   { "prompt",		MT_COLOR_PROMPT },
 #ifdef USE_SIDEBAR
   { "sidebar_divider",	MT_COLOR_DIVIDER },
@@ -517,10 +513,8 @@ static int _mutt_parse_uncolor (BUFFER *buf, BUFFER *s, unsigned long data,
     do_uncolor (buf, s, &ColorIndexFlagsList, &do_cache, parse_uncolor);
   else if (object == MT_COLOR_INDEX_SUBJECT)
     do_uncolor (buf, s, &ColorIndexSubjectList, &do_cache, parse_uncolor);
-#ifdef USE_NOTMUCH
   else if (object == MT_COLOR_INDEX_TAG)
     do_uncolor(buf, s, &ColorIndexTagList, &do_cache, parse_uncolor);
-#endif
 
   if (do_cache && !option (OPTNOCURSES))
   {
@@ -782,9 +776,7 @@ _mutt_parse_color (BUFFER *buf, BUFFER *s, BUFFER *err,
       (object == MT_COLOR_INDEX) ||
       (object == MT_COLOR_INDEX_AUTHOR) ||
       (object == MT_COLOR_INDEX_FLAGS) ||
-#ifdef USE_NOTMUCH
       (object == MT_COLOR_INDEX_TAG) ||
-#endif
       (object == MT_COLOR_INDEX_SUBJECT)) {
     if (!MoreArgs (s))
     {
@@ -877,14 +869,12 @@ _mutt_parse_color (BUFFER *buf, BUFFER *s, BUFFER *err,
 		    fg, bg, attr, err, 1, match);
     mutt_set_menu_redraw_full (MENU_MAIN);
   }
-#ifdef USE_NOTMUCH
   else if (object == MT_COLOR_INDEX_TAG)
   {
     r = add_pattern (&ColorIndexTagList, buf->data, 1,
 		    fg, bg, attr, err, 1, match);
     mutt_set_menu_redraw_full (MENU_MAIN);
   }
-#endif
   else if (object == MT_COLOR_QUOTED)
   {
     if (q_level >= ColorQuoteSize)

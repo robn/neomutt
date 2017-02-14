@@ -319,6 +319,21 @@ const char *mutt_strchrnul(const char *s, char c)
   return s;
 }
 
+
+void mutt_str_append_item(char **str, const char *item, int sep)
+{
+  char *p;
+  size_t sz = strlen(item);
+  size_t ssz = *str ? strlen(*str) : 0;
+
+  safe_realloc(str, ssz + ((ssz && sep) ? 1 : 0) + sz + 1);
+  p = *str + ssz;
+  if (sep && ssz)
+    *p++ = sep;
+  memcpy(p, item, sz + 1);
+}
+
+
 void mutt_unlink (const char *s)
 {
   int fd;

@@ -184,10 +184,10 @@ WHERE const char *GitVer;
 
 WHERE HASH *Groups;
 WHERE HASH *ReverseAlias;
-#ifdef USE_NOTMUCH
+
+WHERE char *HiddenTags;
 WHERE HASH *TagTransforms;
 WHERE HASH *TagFormats;
-#endif
 
 WHERE LIST *AutoViewList INITVAL(0);
 WHERE LIST *AlternativeOrderList INITVAL(0);
@@ -319,7 +319,6 @@ WHERE int NotmuchOpenTimeout;
 WHERE char *NotmuchDefaultUri;
 WHERE char *NotmuchExcludeTags;
 WHERE char *NotmuchUnreadTag;
-WHERE char *NotmuchHiddenTags;
 WHERE char *VirtFolderFormat;
 WHERE int NotmuchDBLimit;
 WHERE char *NotmuchQueryType;

@@ -1806,14 +1806,12 @@ int mutt_index_menu (void)
 	}
 	break;
       }
-
+#endif
       case OP_MAIN_MODIFY_LABELS:
       case OP_MAIN_MODIFY_LABELS_THEN_HIDE:
       {
-	if (Context->magic != MUTT_NOTMUCH) {
-	  mutt_message (_("No virtual folder, aborting."));
-	  break;
-	}
+#ifdef USE_NOTMUCH
+	if (Context->magic == MUTT_NOTMUCH) {
 	CHECK_MSGCOUNT;
         CHECK_VISIBLE;
 	*buf = '\0';
@@ -1880,8 +1878,12 @@ int mutt_index_menu (void)
 	}
 	menu->redraw |= REDRAW_STATUS;
 	break;
+    }
+#endif
+	mutt_message (_("Folder doesn't support tagging, aborting."));
+	break;
       }
-
+#ifdef USE_NOTMUCH
       case OP_MAIN_VFOLDER_FROM_QUERY:
         buf[0] = '\0';
         if (mutt_get_field ("Query: ", buf, sizeof (buf), MUTT_NM_QUERY) != 0 || !buf[0])

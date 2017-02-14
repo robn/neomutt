@@ -26,6 +26,7 @@
 #include "mutt_crypt.h"
 #include "mutt_idna.h"
 #include "mutt_curses.h"
+#include "mutt_tags.h"
 
 #ifdef USE_NOTMUCH
 #include "mutt_notmuch.h"
@@ -436,7 +437,7 @@ mutt_copy_header (FILE *in, HEADER *h, FILE *out, int flags, const char *prefix)
       fputs (buf, out);
       fputc ('\n', out);
     }
-    char *tags = nm_header_get_tags(h);
+    const char *tags = hdr_tags_get(h);
     if (tags && !(option (OPTWEED) && mutt_matches_ignore ("tags")))
     {
       fputs ("Tags: ", out);

@@ -35,6 +35,10 @@
 #include "mutt_notmuch.h"
 #endif
 
+#if defined USE_IMAP || defined USE_NOTMUCH
+#include "mutt_tags.h"
+#endif
+
 #include "mutt_crypt.h"
 
 #include <string.h>
@@ -389,6 +393,8 @@ void mutt_free_header (HEADER **h)
 #ifdef MIXMASTER
   mutt_free_list (&(*h)->chain);
 #endif
+  hdr_tags_free (*h);
+  FREE (&(*h)->tags);
 #if defined(USE_POP) || defined(USE_IMAP) || defined(USE_NNTP) || defined(USE_NOTMUCH)
   if ((*h)->free_cb)
     (*h)->free_cb(*h);

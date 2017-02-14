@@ -671,6 +671,7 @@ hcache_dump(header_cache_t *h, HEADER * header, int *off,
   nh.path = NULL;
   nh.tree = NULL;
   nh.thread = NULL;
+  nh.tags = NULL;
 #ifdef MIXMASTER
   nh.chain = NULL;
 #endif

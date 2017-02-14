@@ -12866,7 +12866,7 @@ virtual-mailboxes "My INBOX" "notmuch://?query=tag:inbox"
               </row>
               <row>
                 <entry>
-                  <literal>nm_hidden_tags</literal>
+                  <literal>hidden_tags</literal>
                 </entry>
                 <entry>string</entry>
                 <entry>
@@ -13134,7 +13134,7 @@ set nm_default_uri = ""
 set nm_exclude_tags = ""
 <emphasis role="comment"># This variable specifies private notmuch tags which should not be printed
 # on screen (index, pager).</emphasis>
-set nm_hidden_tags = "unread,draft,flagged,passed,replied,attachment,signed,encrypted"
+set hidden_tags = "unread,draft,flagged,passed,replied,attachment,signed,encrypted"
 <emphasis role="comment"># This option specifies timeout for Notmuch database. Default is 5 seconds.</emphasis>
 set nm_open_timeout = 5
 <emphasis role="comment"># This variable specifies notmuch query type, supported types: 'threads' and
