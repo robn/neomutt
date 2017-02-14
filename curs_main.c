@@ -1812,86 +1812,89 @@ int mutt_index_menu(void)
         }
         break;
       }
-
+#endif
       case OP_MAIN_MODIFY_LABELS:
       case OP_MAIN_MODIFY_LABELS_THEN_HIDE:
       {
-        if (!Context || (Context->magic != MUTT_NOTMUCH))
+#ifdef USE_NOTMUCH
+        if (Context->magic == MUTT_NOTMUCH)
         {
-          mutt_message(_("No virtual folder, aborting."));
-          break;
-        }
-        CHECK_MSGCOUNT;
-        CHECK_VISIBLE;
-        *buf = '\0';
-        if (mutt_get_field("Add/remove labels: ", buf, sizeof(buf), MUTT_NM_TAG) || !*buf)
-        {
-          mutt_message(_("No label specified, aborting."));
-          break;
-        }
-        if (tag)
-        {
-          char msgbuf[STRING];
-          progress_t progress;
-          int px;
-
-          if (!Context->quiet)
+          CHECK_MSGCOUNT;
+          CHECK_VISIBLE;
+          *buf = '\0';
+          if (mutt_get_field("Add/remove labels: ", buf, sizeof(buf), MUTT_NM_TAG) || !*buf)
           {
-            snprintf(msgbuf, sizeof(msgbuf), _("Update labels..."));
-            mutt_progress_init(&progress, msgbuf, MUTT_PROGRESS_MSG, 1, Context->tagged);
-          }
-          nm_longrun_init(Context, true);
-          for (px = 0, j = 0; j < Context->vcount; j++)
-          {
-            if (Context->hdrs[Context->v2r[j]]->tagged)
-            {
-              if (!Context->quiet)
-                mutt_progress_update(&progress, ++px, -1);
-              nm_modify_message_tags(Context, Context->hdrs[Context->v2r[j]], buf);
-              if (op == OP_MAIN_MODIFY_LABELS_THEN_HIDE)
-              {
-                Context->hdrs[Context->v2r[j]]->quasi_deleted = true;
-                Context->changed = true;
-              }
-            }
-          }
-          nm_longrun_done(Context);
-          menu->redraw = REDRAW_STATUS | REDRAW_INDEX;
-        }
-        else
-        {
-          if (nm_modify_message_tags(Context, CURHDR, buf))
-          {
-            mutt_message(_("Failed to modify labels, aborting."));
+            mutt_message(_("No label specified, aborting."));
             break;
           }
-          if (op == OP_MAIN_MODIFY_LABELS_THEN_HIDE)
+          if (tag)
           {
-            CURHDR->quasi_deleted = true;
-            Context->changed = true;
-          }
-          if (menu->menu == MENU_PAGER)
-          {
-            op = OP_DISPLAY_MESSAGE;
-            continue;
-          }
-          if (option(OPTRESOLVE))
-          {
-            if ((menu->current = ci_next_undeleted(menu->current)) == -1)
+            char msgbuf[STRING];
+            progress_t progress;
+            int px;
+
+            if (!Context->quiet)
             {
-              menu->current = menu->oldcurrent;
-              menu->redraw = REDRAW_CURRENT;
+              snprintf(msgbuf, sizeof(msgbuf), _("Update labels..."));
+              mutt_progress_init(&progress, msgbuf, MUTT_PROGRESS_MSG, 1,
+                                 Context->tagged);
             }
-            else
-              menu->redraw = REDRAW_MOTION_RESYNCH;
+            nm_longrun_init(Context, true);
+            for (px = 0, j = 0; j < Context->vcount; j++)
+            {
+              if (Context->hdrs[Context->v2r[j]]->tagged)
+              {
+                if (!Context->quiet)
+                  mutt_progress_update(&progress, ++px, -1);
+                nm_modify_message_tags(Context, Context->hdrs[Context->v2r[j]], buf);
+                if (op == OP_MAIN_MODIFY_LABELS_THEN_HIDE)
+                {
+                  Context->hdrs[Context->v2r[j]]->quasi_deleted = true;
+                  Context->changed = true;
+                }
+              }
+            }
+            nm_longrun_done(Context);
+            menu->redraw = REDRAW_STATUS | REDRAW_INDEX;
           }
           else
-            menu->redraw = REDRAW_CURRENT;
+          {
+            if (nm_modify_message_tags(Context, CURHDR, buf))
+            {
+              mutt_message(_("Failed to modify labels, aborting."));
+              break;
+            }
+            if (op == OP_MAIN_MODIFY_LABELS_THEN_HIDE)
+            {
+              CURHDR->quasi_deleted = true;
+              Context->changed = true;
+            }
+            if (menu->menu == MENU_PAGER)
+            {
+              op = OP_DISPLAY_MESSAGE;
+              continue;
+            }
+            if (option(OPTRESOLVE))
+            {
+              if ((menu->current = ci_next_undeleted(menu->current)) == -1)
+              {
+                menu->current = menu->oldcurrent;
+                menu->redraw = REDRAW_CURRENT;
+              }
+              else
+                menu->redraw = REDRAW_MOTION_RESYNCH;
+            }
+            else
+              menu->redraw = REDRAW_CURRENT;
+          }
+          menu->redraw |= REDRAW_STATUS;
+          break;
         }
-        menu->redraw |= REDRAW_STATUS;
+#endif
+        mutt_message(_("Folder doesn't support tagging, aborting."));
         break;
       }
-
+#ifdef USE_NOTMUCH
       case OP_MAIN_VFOLDER_FROM_QUERY:
         buf[0] = '\0';
         if (mutt_get_field("Query: ", buf, sizeof(buf), MUTT_NM_QUERY) != 0 || !buf[0])

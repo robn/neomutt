@@ -46,6 +46,9 @@
 #ifdef HAVE_SYS_SYSCALL_H
 #include <sys/syscall.h>
 #endif
+#if defined USE_IMAP || defined USE_NOTMUCH
+#include "mutt_tags.h"
+#endif
 
 static const char *xdg_env_vars[] = {
         [kXDGConfigHome] = "XDG_CONFIG_HOME",
@@ -386,6 +389,8 @@ void mutt_free_header(HEADER **h)
 #ifdef MIXMASTER
   mutt_free_list(&(*h)->chain);
 #endif
+  hdr_tags_free(*h);
+  FREE(&(*h)->tags);
 #if defined(USE_POP) || defined(USE_IMAP) || defined(USE_NNTP) || defined(USE_NOTMUCH)
   if ((*h)->free_cb)
     (*h)->free_cb(*h);

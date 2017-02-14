@@ -31,6 +31,7 @@
 #include "mutt_crypt.h"
 #include "mutt_curses.h"
 #include "mutt_menu.h"
+#include "mutt_tags.h"
 #ifdef USE_IMAP
 #include "imap/imap.h"
 #include "mx.h"
@@ -823,9 +824,7 @@ static const struct pattern_flags
     {'x', MUTT_REFERENCE, 0, eat_regexp},
     {'X', MUTT_MIMEATTACH, 0, eat_range},
     {'y', MUTT_XLABEL, 0, eat_regexp},
-#ifdef USE_NOTMUCH
-    {'Y', MUTT_NOTMUCH_LABEL, 0, eat_regexp},
-#endif
+    {'Y', MUTT_LABEL, 0, eat_regexp},
     {'z', MUTT_SIZE, 0, eat_range},
     {'=', MUTT_DUPLICATED, 0, NULL},
     {'$', MUTT_UNREFERENCED, 0, NULL},
@@ -1599,13 +1598,11 @@ int mutt_pattern_exec(struct pattern_t *pat, pattern_exec_flag flags,
       return (pat->not ^ ((h->security & APPLICATION_PGP) && (h->security & PGPKEY)));
     case MUTT_XLABEL:
       return (pat->not ^ (h->env->x_label && patmatch(pat, h->env->x_label) == 0));
-#ifdef USE_NOTMUCH
-    case MUTT_NOTMUCH_LABEL:
+    case MUTT_DRIVER_LABEL:
     {
-      char *tags = nm_header_get_tags(h);
+      const char *tags = hdr_tags_get(h);
       return (pat->not ^ (tags && patmatch(pat, tags) == 0));
     }
-#endif
     case MUTT_HORMEL:
       return (pat->not ^ (h->env->spam && h->env->spam->data &&
                           patmatch(pat, h->env->spam->data) == 0));

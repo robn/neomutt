@@ -50,6 +50,7 @@
 #include <utime.h>
 #include "mutt.h"
 #include "mutt_notmuch.h"
+#include "mutt_tags.h"
 #include "buffy.h"
 #include "copy.h"
 #include "keymap.h"
@@ -97,21 +98,6 @@ struct uri_tag
 };
 
 /**
- * nm_hdrtag - NotMuch Mail Header Tags
- *
- * Keep a linked list of header tags and their transformed values.
- * Textual tags can be transformed to symbols to save space.
- *
- * @sa nm_hdrdata#tag_list
- */
-struct nm_hdrtag
-{
-  char *tag;
-  char *transformed;
-  struct nm_hdrtag *next;
-};
-
-/**
  * struct nm_hdrdata - NotMuch data attached to an email
  *
  * This stores all the NotMuch data associated with an email.
@@ -121,9 +107,6 @@ struct nm_hdrtag
 struct nm_hdrdata
 {
   char *folder; /**< Location of the email */
-  char *tags;
-  char *tags_transformed;
-  struct nm_hdrtag *tag_list;
   char *oldpath;
   char *virtual_id; /**< Unique NotMuch Id */
   int magic;        /**< Type of mailbox the email is in */
@@ -299,21 +282,6 @@ err:
   return false;
 }
 
-static void free_tag_list(struct nm_hdrtag **tag_list)
-{
-  struct nm_hdrtag *tmp = NULL;
-
-  while ((tmp = *tag_list) != NULL)
-  {
-    *tag_list = tmp->next;
-    FREE(&tmp->tag);
-    FREE(&tmp->transformed);
-    FREE(&tmp);
-  }
-
-  *tag_list = 0;
-}
-
 static void free_hdrdata(struct nm_hdrdata *data)
 {
   if (!data)
@@ -321,9 +289,6 @@ static void free_hdrdata(struct nm_hdrdata *data)
 
   mutt_debug(2, "nm: freeing header %p\n", (void *) data);
   FREE(&data->folder);
-  FREE(&data->tags);
-  FREE(&data->tags_transformed);
-  free_tag_list(&data->tag_list);
   FREE(&data->oldpath);
   FREE(&data->virtual_id);
   FREE(&data);
@@ -826,25 +791,11 @@ err:
   return NULL;
 }
 
-static void append_str_item(char **str, const char *item, int sep)
-{
-  char *p = NULL;
-  size_t sz = strlen(item);
-  size_t ssz = *str ? strlen(*str) : 0;
-
-  safe_realloc(str, ssz + ((ssz && sep) ? 1 : 0) + sz + 1);
-  p = *str + ssz;
-  if (sep && ssz)
-    *p++ = sep;
-  memcpy(p, item, sz + 1);
-}
-
 static int update_header_tags(HEADER *h, notmuch_message_t *msg)
 {
   struct nm_hdrdata *data = h->data;
   notmuch_tags_t *tags = NULL;
-  char *tstr = NULL, *ttstr = NULL;
-  struct nm_hdrtag *tag_list = NULL, *tmp = NULL;
+  char *new_tags = NULL;
 
   mutt_debug(2, "nm: tags update requested (%s)\n", data->virtual_id);
 
@@ -852,61 +803,24 @@ static int update_header_tags(HEADER *h, notmuch_message_t *msg)
        notmuch_tags_move_to_next(tags))
   {
     const char *t = notmuch_tags_get(tags);
-    const char *tt = NULL;
 
     if (!t || !*t)
       continue;
 
-    tt = hash_find(TagTransforms, t);
-    if (!tt)
-      tt = t;
-
-    /* tags list contains all tags */
-    tmp = safe_calloc(1, sizeof(*tmp));
-    tmp->tag = safe_strdup(t);
-    tmp->transformed = safe_strdup(tt);
-    tmp->next = tag_list;
-    tag_list = tmp;
-
-    /* filter out hidden tags */
-    if (NotmuchHiddenTags)
-    {
-      char *p = strstr(NotmuchHiddenTags, t);
-      size_t xsz = p ? strlen(t) : 0;
-
-      if (p && ((p == NotmuchHiddenTags) || (*(p - 1) == ',') || (*(p - 1) == ' ')) &&
-          ((*(p + xsz) == '\0') || (*(p + xsz) == ',') || (*(p + xsz) == ' ')))
-        continue;
-    }
-
-    /* expand the transformed tag string */
-    append_str_item(&ttstr, tt, ' ');
-
-    /* expand the un-transformed tag string */
-    append_str_item(&tstr, t, ' ');
+    mutt_str_append_item(&new_tags, t, 32);
   }
 
-  free_tag_list(&data->tag_list);
-  data->tag_list = tag_list;
-
-  if (data->tags && tstr && (strcmp(data->tags, tstr) == 0))
+  if (hdr_tags_get(h) && new_tags && (strcmp(hdr_tags_get(h), new_tags) == 0))
   {
-    FREE(&tstr);
-    FREE(&ttstr);
+    FREE(&new_tags);
     mutt_debug(2, "nm: tags unchanged\n");
     return 1;
   }
 
-  /* free old version */
-  FREE(&data->tags);
-  FREE(&data->tags_transformed);
-
   /* new version */
-  data->tags = tstr;
-  mutt_debug(2, "nm: new tags: '%s'\n", tstr);
-
-  data->tags_transformed = ttstr;
-  mutt_debug(2, "nm: new tag transforms: '%s'\n", ttstr);
+  hdr_tags_replace(h, new_tags);
+  mutt_debug(2, "nm: new tags: '%s'\n", hdr_tags_get(h));
+  mutt_debug(2, "nm: new tag transforms: '%s'\n", hdr_tags_get_transformed(h));
 
   return 0;
 }
@@ -995,6 +909,7 @@ static int init_header(HEADER *h, const char *path, notmuch_message_t *msg)
 
   h->data = safe_calloc(1, sizeof(struct nm_hdrdata));
   h->free_cb = deinit_header;
+  hdr_tags_init(h);
 
   /*
    * Notmuch ensures that message Id exists (if not notmuch Notmuch will
@@ -1597,7 +1512,7 @@ static int rename_filename(struct nm_ctxdata *data, const char *old,
   {
     notmuch_message_maildir_flags_to_tags(msg);
     update_header_tags(h, msg);
-    update_tags(msg, nm_header_get_tags(h));
+    update_tags(msg, hdr_tags_get(h));
   }
 
   rc = 0;
@@ -1633,32 +1548,6 @@ static unsigned count_query(notmuch_database_t *db, const char *qstr)
 char *nm_header_get_folder(HEADER *h)
 {
   return (h && h->data) ? ((struct nm_hdrdata *) h->data)->folder : NULL;
-}
-
-char *nm_header_get_tags(HEADER *h)
-{
-  return (h && h->data) ? ((struct nm_hdrdata *) h->data)->tags : NULL;
-}
-
-char *nm_header_get_tags_transformed(HEADER *h)
-{
-  return (h && h->data) ? ((struct nm_hdrdata *) h->data)->tags_transformed : NULL;
-}
-
-char *nm_header_get_tag_transformed(char *tag, HEADER *h)
-{
-  struct nm_hdrtag *tmp = NULL;
-
-  if (!h || !h->data)
-    return NULL;
-
-  for (tmp = ((struct nm_hdrdata *) h->data)->tag_list; tmp != NULL; tmp = tmp->next)
-  {
-    if (strcmp(tag, tmp->tag) == 0)
-      return tmp->transformed;
-  }
-
-  return NULL;
 }
 
 void nm_longrun_init(CONTEXT *ctx, int writable)
@@ -1714,8 +1603,8 @@ int nm_read_entire_thread(CONTEXT *ctx, HEADER *h)
   id = notmuch_message_get_thread_id(msg);
   if (!id)
     goto done;
-  append_str_item(&qstr, "thread:", 0);
-  append_str_item(&qstr, id, 0);
+  mutt_str_append_item(&qstr, "thread:", 0);
+  mutt_str_append_item(&qstr, id, 0);
 
   q = notmuch_query_create(db, qstr);
   FREE(&qstr);
@@ -2057,7 +1946,7 @@ int nm_record_message(CONTEXT *ctx, char *path, HEADER *h)
   {
     notmuch_message_maildir_flags_to_tags(msg);
     if (h)
-      update_tags(msg, nm_header_get_tags(h));
+      update_tags(msg, hdr_tags_get(h));
     if (NotmuchRecordTags)
       update_tags(msg, NotmuchRecordTags);
   }

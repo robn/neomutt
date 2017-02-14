@@ -233,9 +233,7 @@ enum
   MUTT_CRYPT_ENCRYPT,
   MUTT_PGP_KEY,
   MUTT_XLABEL,
-#ifdef USE_NOTMUCH
-  MUTT_NOTMUCH_LABEL,
-#endif
+  MUTT_DRIVER_LABEL,
   MUTT_MIMEATTACH,
 #ifdef USE_NNTP
   MUTT_NEWSGROUPS,
@@ -886,6 +884,7 @@ typedef struct header
   int refno; /* message number on server */
 #endif
 
+  void *tags; /* for driver that support server tagging */
 #if defined(USE_POP) || defined(USE_IMAP) || defined(USE_NNTP) || defined(USE_NOTMUCH)
   void *data;                       /* driver-specific data */
   void (*free_cb)(struct header *); /* driver-specific data free function */
@@ -1074,6 +1073,8 @@ typedef struct _context
   void *data; /* driver specific data */
   struct mx_ops *mx_ops;
 } CONTEXT;
+
+#define HDR_OF(index) Context->hdrs[Context->v2r[(index)]]
 
 typedef struct
 {

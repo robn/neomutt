@@ -296,7 +296,6 @@ int mutt_label_message(HEADER *hdr)
   }
   else
   {
-#define HDR_OF(index) Context->hdrs[Context->v2r[(index)]]
     for (i = 0; i < Context->vcount; ++i)
     {
       if (HDR_OF(i)->tagged)
