@@ -25,6 +25,7 @@
 #include <ctype.h>
 
 #include "mutt.h"
+#include "mutt_tags.h"
 #include "imap_private.h"
 #include "mx.h"
 
@@ -147,7 +148,9 @@ static char* msg_parse_flags (IMAP_HEADER* h, char* s)
   }
   s++;
 
-  mutt_free_list (&hd->keywords);
+  FREE (&hd->keywords_system);
+  FREE (&hd->keywords_remote);
+
   hd->deleted = hd->flagged = hd->replied = hd->read = hd->old = false;
 
   /* start parsing */
@@ -182,18 +185,23 @@ static char* msg_parse_flags (IMAP_HEADER* h, char* s)
     }
     else
     {
-      /* store custom flags as well */
       char ctmp;
       char* flag_word = s;
-
-      if (!hd->keywords)
-        hd->keywords = mutt_new_list ();
+      bool is_system_keyword = (ascii_strncasecmp ("\\", s, 1) == 0);
 
       while (*s && !ISSPACE (*s) && *s != ')')
         s++;
+
       ctmp = *s;
       *s = '\0';
-      mutt_add_list (hd->keywords, flag_word);
+
+      /* store other system flags as well (mainly \\Draft) */
+      if (is_system_keyword)
+        mutt_str_append_item(&hd->keywords_system, flag_word, 32);
+      /* store custom flags as well */
+      else
+        mutt_str_append_item(&hd->keywords_remote, flag_word, 32);
+
       *s = ctmp;
     }
     SKIPWS(s);
@@ -352,6 +360,116 @@ static void flush_buffer(char *buf, size_t *len, CONNECTION *conn)
   *len = 0;
 }
 
+/**
+ * imap_keywords_message - Add/Change/Remove keywords from headers
+ * @param[in] h: pointer to a header struct or NULL to modify
+ *               all headers of the Context
+ *
+ * @return int the number of headers changed
+ * @retval -1 in case of error
+ *
+ * This method prompts the user to edit keywords of current header
+ * And update keywords_local with the new keywords list
+ *
+ * It also ensure each keyword are valid IMAP rfc822 atom
+ */
+int imap_keywords_message(HEADER *h, bool quasi_deleted)
+{
+  char buf[LONG_STRING], *new, *checker;
+  int i;
+  int changed;
+
+  if (!Context || Context->magic != MUTT_IMAP)
+    return -1;
+
+  /* Check for \* flags capability */
+  if (!imap_has_flag (((IMAP_DATA *)Context->data)->flags, NULL))
+  {
+      mutt_error (_("IMAP server doesn't support custom keywords"));
+      return -1;
+  }
+
+  *buf = '\0';
+  if (h && hdr_tags_get(h)) {
+    strncpy(buf, hdr_tags_get_with_hidden(h), LONG_STRING);
+  }
+
+  if (mutt_get_field("Keywords: ", buf, sizeof(buf), 0) != 0)
+    return 0;
+
+  /* each keyword must be atom defined by rfc822 as:
+   *
+   * atom           = 1*<any CHAR except specials, SPACE and CTLs>
+   * CHAR           = ( 0.-127. )
+   * specials       = "(" / ")" / "<" / ">" / "@"
+   *                  / "," / ";" / ":" / "\" / <">
+   *                  / "." / "[" / "]"
+   * SPACE          = ( 32. )
+   * CTLS           = ( 0.-31., 127.)
+   *
+   * And must be separated by one space.
+   */
+
+  new = buf;
+  checker = buf;
+  SKIPWS(checker);
+  while (*checker != '\0')
+  {
+    if (*checker < 32 || *checker >= 127 || // We allow space because it's the separator
+        *checker == 40 || // (
+        *checker == 41 || // )
+        *checker == 60 || // <
+        *checker == 62 || // >
+        *checker == 64 || // @
+        *checker == 44 || // ,
+        *checker == 59 || // ;
+        *checker == 58 || // :
+        *checker == 92 || // backslash
+        *checker == 34 || // "
+        *checker == 46 || // .
+        *checker == 91 || // [
+        *checker == 93 )  // ]
+    {
+        mutt_error (_("Invalid IMAP keyworks"));
+        mutt_sleep (2);
+        return 0;
+    }
+
+    /* Skip duplicate space */
+    while (*checker == ' ' && *(checker + 1) == ' ')
+      checker++;
+
+    /* copy char to new and go the next one */
+    *new++ = *checker++;
+  }
+  *new = '\0';
+  new = buf; /* rewind */
+  mutt_remove_trailing_ws(new);
+
+  if (*new == '\0')
+    new = NULL;
+
+  changed = 0;
+  if (h != NULL) {
+    changed += hdr_tags_replace(h, new);
+    if (changed)
+      h->quasi_deleted = quasi_deleted;
+  } else {
+    for (i = 0; i < Context->vcount; ++i)
+    {
+      if (HDR_OF(i)->tagged && hdr_tags_replace(HDR_OF(i), new))
+      {
+	    HDR_OF(i)->quasi_deleted = quasi_deleted;
+        ++changed;
+        mutt_set_flag(Context, HDR_OF(i), MUTT_TAG, 0);
+      }
+    }
+  }
+
+  return changed;
+}
+
+
 /* imap_read_headers:
  * Changed to read many headers instead of just one. It will return the
  * msgno of the last message read. It will return a value other than
@@ -502,6 +620,8 @@ int imap_read_headers (IMAP_DATA* idata, int msgbegin, int msgend)
           ctx->hdrs[idx]->changed = h.data->changed;
           /*  ctx->hdrs[msgno]->received is restored from mutt_hcache_restore */
           ctx->hdrs[idx]->data = (void *) (h.data);
+          hdr_tags_init(ctx->hdrs[idx]);
+          hdr_tags_replace(ctx->hdrs[idx], safe_strdup(h.data->keywords_remote));
 
           ctx->msgcount++;
           ctx->size += ctx->hdrs[idx]->content->length;
@@ -612,6 +732,8 @@ int imap_read_headers (IMAP_DATA* idata, int msgbegin, int msgend)
       ctx->hdrs[idx]->changed = h.data->changed;
       ctx->hdrs[idx]->received = h.received;
       ctx->hdrs[idx]->data = (void *) (h.data);
+      hdr_tags_init(ctx->hdrs[idx]);
+      hdr_tags_replace(ctx->hdrs[idx], safe_strdup(h.data->keywords_remote));
 
       if (maxuid < h.data->uid)
         maxuid = h.data->uid;
@@ -1256,35 +1378,13 @@ int imap_cache_clean (IMAP_DATA* idata)
   return 0;
 }
 
-/* imap_add_keywords: concatenate custom IMAP tags to list, if they
- *   appear in the folder flags list. Why wouldn't they? */
-void imap_add_keywords (char* s, HEADER* h, LIST* mailbox_flags, size_t slen)
-{
-  LIST *keywords = NULL;
-
-  if (!mailbox_flags || !HEADER_DATA(h) || !HEADER_DATA(h)->keywords)
-    return;
-
-  keywords = HEADER_DATA(h)->keywords->next;
-
-  while (keywords)
-  {
-    if (imap_has_flag (mailbox_flags, keywords->data))
-    {
-      safe_strcat (s, slen, keywords->data);
-      safe_strcat (s, slen, " ");
-    }
-    keywords = keywords->next;
-  }
-}
-
 /* imap_free_header_data: free IMAP_HEADER structure */
 void imap_free_header_data (IMAP_HEADER_DATA** data)
 {
   if (*data)
   {
-    /* this should be safe even if the list wasn't used */
-    mutt_free_list (&((*data)->keywords));
+    FREE (&((*data)->keywords_system));
+    FREE (&((*data)->keywords_remote));
     FREE (data); /* __FREE_CHECKED__ */
   }
 }
@@ -1305,6 +1405,9 @@ char* imap_set_flags (IMAP_DATA* idata, HEADER* h, char* s)
   mutt_debug (2, "imap_fetch_message: parsing FLAGS\n");
   if ((s = msg_parse_flags (&newh, s)) == NULL)
     return NULL;
+
+  /* Update tags system */
+  hdr_tags_replace(h, safe_strdup(hd->keywords_remote));
 
   /* YAUH (yet another ugly hack): temporarily set context to
    * read-write even if it's read-only, so *server* updates of
