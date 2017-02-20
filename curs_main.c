@@ -1816,6 +1816,24 @@ int mutt_index_menu(void)
       case OP_MAIN_MODIFY_LABELS:
       case OP_MAIN_MODIFY_LABELS_THEN_HIDE:
       {
+#ifdef USE_IMAP
+        if (Context->magic == MUTT_IMAP)
+        {
+          CHECK_MSGCOUNT;
+          CHECK_VISIBLE;
+          CHECK_READONLY;
+          rc = imap_keywords_message(tag ? NULL : CURHDR, op == OP_MAIN_MODIFY_LABELS_THEN_HIDE);
+          if (rc > 0)
+          {
+            Context->changed = 1;
+            menu->redraw = REDRAW_FULL;
+            mutt_message(_("%d keywords changed."), rc);
+          }
+          else if (rc == 0)
+            mutt_message(_("No keywords changed."));
+          break;
+        }
+#endif
 #ifdef USE_NOTMUCH
         if (Context->magic == MUTT_NOTMUCH)
         {

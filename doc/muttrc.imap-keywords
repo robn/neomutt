@@ -1,0 +1,18 @@
+# Example NeoMutt config file for the imap keywords feature.
+
+# --------------------------------------------------------------------------
+# VARIABLES - shown with their default values
+# --------------------------------------------------------------------------
+
+# --------------------------------------------------------------------------
+# FUNCTIONS - shown with an example mapping
+# --------------------------------------------------------------------------
+
+# This variable specifies private notmuch tags which should not be printed
+# on screen (index, pager).
+set hidden_tags = "unread,draft,flagged,passed,replied,attachment,signed,encrypted"
+
+# Bind 'y' to edit imap keywords
+bind index,pager y modify-labels
+
+# vim: syntax=muttrc

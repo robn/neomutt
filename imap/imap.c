@@ -32,6 +32,7 @@
 #include "buffy.h"
 #include "globals.h"
 #include "mailbox.h"
+#include "mutt_tags.h"
 #include "mx.h"
 #include "sort.h"
 #ifdef USE_HCACHE
@@ -1074,9 +1075,15 @@ int imap_sync_message(IMAP_DATA *idata, HEADER *hdr, BUFFER *cmd, int *err_conti
   imap_set_flag(idata, MUTT_ACL_WRITE, hdr->replied, "\\Answered ", flags, sizeof(flags));
   imap_set_flag(idata, MUTT_ACL_DELETE, hdr->deleted, "\\Deleted ", flags, sizeof(flags));
 
-  /* now make sure we don't lose custom tags */
   if (mutt_bit_isset(idata->ctx->rights, MUTT_ACL_WRITE))
-    imap_add_keywords(flags, hdr, idata->flags, sizeof(flags));
+  {
+    /* restore system keywords */
+    if (HEADER_DATA(hdr)->keywords_system)
+      safe_strcat(flags, sizeof(flags), HEADER_DATA(hdr)->keywords_system);
+    /* set custom keywords */
+    if (hdr_tags_get_with_hidden(hdr))
+      safe_strcat(flags, sizeof(flags), hdr_tags_get_with_hidden(hdr));
+  }
 
   mutt_remove_trailing_ws(flags);
 
@@ -1089,6 +1096,10 @@ int imap_sync_message(IMAP_DATA *idata, HEADER *hdr, BUFFER *cmd, int *err_conti
     imap_set_flag(idata, MUTT_ACL_WRITE, 1, "\\Flagged ", flags, sizeof(flags));
     imap_set_flag(idata, MUTT_ACL_WRITE, 1, "\\Answered ", flags, sizeof(flags));
     imap_set_flag(idata, MUTT_ACL_DELETE, 1, "\\Deleted ", flags, sizeof(flags));
+
+    /* erase custom keywords */
+    if (mutt_bit_isset(idata->ctx->rights, MUTT_ACL_WRITE) && HEADER_DATA(hdr)->keywords_remote)
+      safe_strcat(flags, sizeof(flags), HEADER_DATA(hdr)->keywords_remote);
 
     mutt_remove_trailing_ws(flags);
 
@@ -1112,6 +1123,10 @@ int imap_sync_message(IMAP_DATA *idata, HEADER *hdr, BUFFER *cmd, int *err_conti
     if (*err_continue != MUTT_YES)
       return -1;
   }
+
+  /* server have now the updated keywords */
+  FREE(&HEADER_DATA(hdr)->keywords_remote);
+  HEADER_DATA(hdr)->keywords_remote = safe_strdup(hdr_tags_get_with_hidden(hdr));
 
   hdr->active = true;
   idata->ctx->changed = false;
@@ -1145,6 +1160,88 @@ static int sync_helper(IMAP_DATA *idata, int right, int flag, const char *name)
   count += rc;
 
   return count;
+}
+
+/**
+ * imap_sync_keywords - Add/Change/Remove keywords from headers
+ * @param[in] idata: pointer to a IMAP_DATA struct
+ * @param[in] h: pointer to a header struct
+ *
+ * @retval  0 Success
+ * @retval -1 Error
+ *
+ * This method update the server flags on the server by
+ * removing the last know custom keywords of a header
+ * and adds the local keywords
+ *
+ * If everything success we push the local keywords to the
+ * last know custom keywords (keywords_remote).
+ *
+ * Also this method check that each keywords is support by the server
+ * first and remove unsupported one.
+ */
+static int imap_sync_keywords(IMAP_DATA *idata, HEADER *h)
+{
+  BUFFER *cmd = NULL;
+  char uid[11];
+
+  if (!mutt_bit_isset(idata->ctx->rights, MUTT_ACL_WRITE))
+    return 0;
+
+  snprintf(uid, sizeof(uid), "%u", HEADER_DATA(h)->uid);
+
+  /* Remove old custom keywords */
+  if (HEADER_DATA(h)->keywords_remote)
+  {
+    if (!(cmd = mutt_buffer_new()))
+    {
+      mutt_debug(1, "imap_sync_keywords: unable to allocate buffer\n");
+      return -1;
+    }
+    cmd->dptr = cmd->data;
+    mutt_buffer_addstr(cmd, "UID STORE ");
+    mutt_buffer_addstr(cmd, uid);
+    mutt_buffer_addstr(cmd, " -FLAGS.SILENT (");
+    mutt_buffer_addstr(cmd, HEADER_DATA(h)->keywords_remote);
+    mutt_buffer_addstr(cmd, ")");
+
+    /* Should we return here, or we are fine and we could
+     * continue to add new keywords *
+     */
+    if (imap_exec(idata, cmd->data, 0) != 0)
+      return -1;
+
+    mutt_buffer_free(&cmd);
+  }
+
+  /* Add new custom keywords */
+  if (hdr_tags_get_with_hidden(h))
+  {
+    if (!(cmd = mutt_buffer_new()))
+    {
+      mutt_debug(1, "imap_sync_keywords: fail to remove old keywords\n");
+      return -1;
+    }
+    cmd->dptr = cmd->data;
+    mutt_buffer_addstr(cmd, "UID STORE ");
+    mutt_buffer_addstr(cmd, uid);
+    mutt_buffer_addstr(cmd, " +FLAGS.SILENT (");
+    mutt_buffer_addstr(cmd, hdr_tags_get_with_hidden(h));
+    mutt_buffer_addstr(cmd, ")");
+
+    if (imap_exec(idata, cmd->data, 0) != 0)
+    {
+      mutt_debug(1, "imap_sync_keywords: fail to add new keywords\n");
+      return -1;
+    }
+
+    mutt_buffer_free(&cmd);
+  }
+
+  /* We are good sync them and only keep those supported by the server */
+  FREE(&HEADER_DATA(h)->keywords_remote);
+  HEADER_DATA(h)->keywords_remote = safe_strdup(hdr_tags_get_with_hidden(h));
+  return 0;
 }
 
 /* update the IMAP server to reflect message changes done within mutt.
@@ -1214,6 +1311,12 @@ int imap_sync_mailbox(CONTEXT *ctx, int expunge)
 #ifdef USE_HCACHE
       imap_hcache_del(idata, HEADER_DATA(h)->uid);
 #endif
+    }
+
+    if (mutt_strcmp(HEADER_DATA(h)->keywords_remote, hdr_tags_get_with_hidden(h)) != 0)
+    {
+      if (imap_sync_keywords(idata, h) != 0)
+        mutt_error(_("Error syncing keywords"));
     }
 
     if (h->active && h->changed)

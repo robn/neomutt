@@ -42,13 +42,13 @@ SAMPLE_MUTTRC = muttrc.attach-headers-color muttrc.compress muttrc.cond-date \
 	muttrc.limit-current-thread muttrc.nested-if muttrc.new-mail \
 	muttrc.nntp muttrc.notmuch muttrc.progress muttrc.quasi-delete \
 	muttrc.reply-with-xorig muttrc.sidebar muttrc.skip-quoted \
-	muttrc.status-color muttrc.timeout
+	muttrc.status-color muttrc.timeout muttrc.imap-keywords
 
 SAMPLE_VIMRC = vimrc.attach-headers-color vimrc.compress vimrc.encrypt-to-self \
 	vimrc.forgotten-attachment vimrc.ifdef vimrc.index-color vimrc.keywords \
 	vimrc.new-mail vimrc.nntp vimrc.notmuch vimrc.progress \
 	vimrc.quasi-delete vimrc.reply-with-xorig vimrc.sidebar vimrc.timeout \
-	vimrc.misc
+	vimrc.misc vimrc.imap-keywords
 
 CHUNKED_DOCFILES = index.html intro.html gettingstarted.html \
 	configuration.html mimesupport.html advancedusage.html \
