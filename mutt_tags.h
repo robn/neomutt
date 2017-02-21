@@ -61,5 +61,7 @@ const char *hdr_tags_get_transformed_for(char *name, HEADER *h);
 void hdr_tags_init(HEADER *h);
 void hdr_tags_add(HEADER *h, char *new_tag);
 int hdr_tags_replace(HEADER *h, char *tags);
+int hdr_tags_editor(CONTEXT *ctx, const char *tags, char *buf);
+int hdr_tags_commit(CONTEXT *ctx, HEADER *h, char *tags);
 
 #endif /* _MUTT_TAG_H */

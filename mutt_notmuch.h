@@ -26,7 +26,6 @@ char *nm_header_get_folder(HEADER *h);
 int nm_update_filename(CONTEXT *ctx, const char *old, const char *new, HEADER *h);
 bool nm_normalize_uri(char *new_uri, const char *orig_uri, size_t new_uri_sz);
 char *nm_uri_from_query(CONTEXT *ctx, char *buf, size_t bufsz);
-int nm_modify_message_tags(CONTEXT *ctx, HEADER *hdr, char *buf);
 
 void nm_query_window_backward(void);
 void nm_query_window_forward(void);

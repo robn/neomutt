@@ -212,3 +212,23 @@ int hdr_tags_replace(HEADER *h, char *tags)
   }
   return 1;
 }
+
+
+int hdr_tags_editor(CONTEXT *ctx, const char *tags, char *buf)
+{
+  if (ctx->mx_ops->edit_msg_tags)
+    return ctx->mx_ops->edit_msg_tags(ctx, tags, buf);
+
+  mutt_message(_("Folder doesn't support tagging, aborting."));
+  return -1;
+}
+
+
+int hdr_tags_commit(CONTEXT *ctx, HEADER *h, char *tags)
+{
+  if (ctx->mx_ops->commit_msg_tags)
+    return ctx->mx_ops->commit_msg_tags(ctx, h, tags);
+
+  mutt_message(_("Folder doesn't support tagging, aborting."));
+  return -1;
+}
