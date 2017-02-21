@@ -1021,6 +1021,8 @@ struct mx_ops
   int (*close_msg) (struct _context *ctx, struct _message *msg);
   int (*commit_msg) (struct _context *ctx, struct _message *msg);
   int (*open_new_msg) (struct _message *msg, struct _context *ctx, HEADER *hdr);
+  int (*edit_msg_tags) (struct _context *ctx, const char *tags, char *buf);
+  int (*commit_msg_tags) (struct _context *msg, HEADER *hdr, char *buf);
 };
 
 #include "mutt_menu.h"

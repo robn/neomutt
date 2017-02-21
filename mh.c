@@ -2603,6 +2603,8 @@ struct mx_ops mx_maildir_ops = {
   .open_new_msg = maildir_open_new_message,
   .check = maildir_check_mailbox,
   .sync = mh_sync_mailbox,
+  .edit_msg_tags = NULL,
+  .commit_msg_tags = NULL,
 };
 
 struct mx_ops mx_mh_ops = {
@@ -2615,4 +2617,6 @@ struct mx_ops mx_mh_ops = {
   .open_new_msg = mh_open_new_message,
   .check = mh_check_mailbox,
   .sync = mh_sync_mailbox,
+  .edit_msg_tags = NULL,
+  .commit_msg_tags = NULL,
 };

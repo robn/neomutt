@@ -1173,8 +1173,88 @@ static int sync_helper (IMAP_DATA* idata, int right, int flag, const char* name)
   return count;
 }
 
+
+/* imap_edit_message_tags: Prompt and validate new messages tags
+ *
+ * @retval 0: no valid user input
+ * @retval 1: buf set
+ **/
+static int imap_edit_message_tags(CONTEXT* ctx, const char* tags, char* buf)
+{
+  char* new = NULL;
+  char* checker = NULL;
+
+  /* Check for \* flags capability */
+  if (!imap_has_flag (((IMAP_DATA *)ctx->data)->flags, NULL))
+  {
+      mutt_error (_("IMAP server doesn't support custom keywords"));
+      return -1;
+  }
+
+  *buf = '\0';
+  if (tags)
+    strncpy(buf, tags, LONG_STRING);
+
+  if (mutt_get_field("Keywords: ", buf, LONG_STRING, 0) != 0)
+    return -1;
+
+  /* each keyword must be atom defined by rfc822 as:
+   *
+   * atom           = 1*<any CHAR except specials, SPACE and CTLs>
+   * CHAR           = ( 0.-127. )
+   * specials       = "(" / ")" / "<" / ">" / "@"
+   *                  / "," / ";" / ":" / "\" / <">
+   *                  / "." / "[" / "]"
+   * SPACE          = ( 32. )
+   * CTLS           = ( 0.-31., 127.)
+   *
+   * And must be separated by one space.
+   */
+
+  new = buf;
+  checker = buf;
+  SKIPWS(checker);
+  while (*checker != '\0')
+  {
+    if (*checker < 32 || *checker >= 127 || // We allow space because it's the separator
+        *checker == 40 || // (
+        *checker == 41 || // )
+        *checker == 60 || // <
+        *checker == 62 || // >
+        *checker == 64 || // @
+        *checker == 44 || // ,
+        *checker == 59 || // ;
+        *checker == 58 || // :
+        *checker == 92 || // backslash
+        *checker == 34 || // "
+        *checker == 46 || // .
+        *checker == 91 || // [
+        *checker == 93 )  // ]
+    {
+        mutt_error (_("Invalid IMAP keyworks"));
+        mutt_sleep (2);
+        return 0;
+    }
+
+    /* Skip duplicate space */
+    while (*checker == ' ' && *(checker + 1) == ' ')
+      checker++;
+
+    /* copy char to new and go the next one */
+    *new++ = *checker++;
+  }
+  *new = '\0';
+  new = buf; /* rewind */
+  mutt_remove_trailing_ws(new);
+
+  if (mutt_strcmp(tags, buf) == 0)
+    return 0;
+  return 1;
+}
+
+
 /**
- * imap_sync_keywords - Add/Change/Remove keywords from headers
+ * imap_commit_message_tags - Add/Change/Remove keywords from headers
  * @param[in] idata: pointer to a IMAP_DATA struct
  * @param[in] h: pointer to a header struct
  *
@@ -1191,10 +1271,16 @@ static int sync_helper (IMAP_DATA* idata, int right, int flag, const char* name)
  * Also this method check that each keywords is support by the server
  * first and remove unsupported one.
  */
-static int imap_sync_keywords(IMAP_DATA* idata, HEADER* h)
+static int imap_commit_message_tags(CONTEXT *ctx, HEADER* h, char* tags)
 {
+  IMAP_DATA* idata = NULL;
   BUFFER* cmd = NULL;
   char uid[11];
+
+  idata = ctx->data;
+
+  if (*tags == '\0')
+    tags = NULL;
 
   if (!mutt_bit_isset (idata->ctx->rights, MUTT_ACL_WRITE))
     return 0;
@@ -1206,7 +1292,7 @@ static int imap_sync_keywords(IMAP_DATA* idata, HEADER* h)
   {
     if (! (cmd = mutt_buffer_new ()))
     {
-      mutt_debug (1, "imap_sync_keywords: unable to allocate buffer\n");
+      mutt_debug (1, "imap_commit_message_tags: unable to allocate buffer\n");
       return -1;
     }
     cmd->dptr = cmd->data;
@@ -1226,30 +1312,32 @@ static int imap_sync_keywords(IMAP_DATA* idata, HEADER* h)
   }
 
   /* Add new custom keywords */
-  if (hdr_tags_get_with_hidden(h))
+  if (tags)
   {
     if (! (cmd = mutt_buffer_new ()))
     {
-      mutt_debug (1, "imap_sync_keywords: fail to remove old keywords\n");
+      mutt_debug (1, "imap_commit_message_tags: fail to remove old keywords\n");
       return -1;
     }
     cmd->dptr = cmd->data;
     mutt_buffer_addstr (cmd, "UID STORE ");
     mutt_buffer_addstr (cmd, uid);
     mutt_buffer_addstr (cmd, " +FLAGS.SILENT (");
-    mutt_buffer_addstr (cmd, hdr_tags_get_with_hidden(h));
+    mutt_buffer_addstr (cmd, tags);
     mutt_buffer_addstr (cmd, ")");
 
     if (imap_exec (idata, cmd->data, 0) != 0)
     {
-        mutt_debug (1, "imap_sync_keywords: fail to add new keywords\n");
+        mutt_debug (1, "imap_commit_message_tags: fail to add new keywords\n");
         return -1;
     }
 
     mutt_buffer_free(&cmd);
   }
 
-  /* We are good sync them and only keep those supported by the server */
+  /* We are good sync them */
+  mutt_debug(1, "NEW TAGS: %d\n", tags);
+  hdr_tags_replace(h, tags);
   FREE (&HEADER_DATA(h)->keywords_remote);
   HEADER_DATA(h)->keywords_remote = safe_strdup(hdr_tags_get_with_hidden(h));
   return 0;
@@ -1322,12 +1410,6 @@ int imap_sync_mailbox (CONTEXT* ctx, int expunge)
 #ifdef USE_HCACHE
       imap_hcache_del (idata, HEADER_DATA(h)->uid);
 #endif
-    }
-
-    if (mutt_strcmp(HEADER_DATA(h)->keywords_remote, hdr_tags_get_with_hidden(h)) != 0)
-    {
-      if(imap_sync_keywords(idata, h) != 0)
-          mutt_error (_("Error syncing keywords"));
     }
 
     if (h->active && h->changed)
@@ -2284,6 +2366,7 @@ int imap_fast_trash (CONTEXT* ctx, char* dest)
   return rc < 0 ? -1 : rc;
 }
 
+
 struct mx_ops mx_imap_ops = {
   .open = imap_open_mailbox,
   .open_append = imap_open_mailbox_append,
@@ -2294,4 +2377,6 @@ struct mx_ops mx_imap_ops = {
   .open_new_msg = imap_open_new_message,
   .check = imap_check_mailbox_reopen,
   .sync = NULL,      /* imap syncing is handled by imap_sync_mailbox */
+  .edit_msg_tags = imap_edit_message_tags,
+  .commit_msg_tags = imap_commit_message_tags,
 };

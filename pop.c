@@ -945,4 +945,6 @@ struct mx_ops mx_pop_ops = {
   .commit_msg = NULL,
   .open_new_msg = NULL,
   .sync = pop_sync_mailbox,
+  .edit_msg_tags = NULL,
+  .commit_msg_tags = NULL,
 };
