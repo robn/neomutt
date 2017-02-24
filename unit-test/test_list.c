@@ -32,11 +32,11 @@ void test_list_find()
 
 void test_list_push_pop()
 {
-    LIST *l = mutt_new_list();
-    mutt_push_list(&l, "Hello");
-    mutt_push_list(&l, "World");
-    TEST_CHECK(strcmp(mutt_front_list(l), "World") == 0);
-    mutt_pop_list(&l);
-    TEST_CHECK(strcmp(mutt_front_list(l), "Hello") == 0);
-    mutt_free_list(&l);
+  LIST *l = mutt_new_list();
+  mutt_push_list(&l, "Hello");
+  mutt_push_list(&l, "World");
+  TEST_CHECK(strcmp(mutt_front_list(l), "World") == 0);
+  mutt_pop_list(&l);
+  TEST_CHECK(strcmp(mutt_front_list(l), "Hello") == 0);
+  mutt_free_list(&l);
 }

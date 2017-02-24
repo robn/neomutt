@@ -8,6 +8,7 @@
 
 #include "test_list.c"
 
+// clang-format off
 TEST_LIST = {
   { "list_create",   test_list_create   },
   { "list_add",      test_list_add      },
@@ -15,3 +16,4 @@ TEST_LIST = {
   { "list_push_pop", test_list_push_pop },
   { 0 }
 };
+// clang-format on
