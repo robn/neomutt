@@ -1156,6 +1156,8 @@ AC_SUBST(MUTT_LIB_OBJECTS)
 AC_SUBST(LIBIMAP)
 AC_SUBST(LIBIMAPDEPS)
 AC_SUBST(NOTMUCH_LIBS)
+AC_SUBST(LIBUNITTEST)
+AC_SUBST(LIBUNITTESTDEPS)
 
 dnl -- iconv/gettext --
 
@@ -1418,7 +1420,7 @@ if test x$full_doc != xno; then
 fi
 
 AC_CONFIG_FILES(Makefile contrib/Makefile doc/Makefile imap/Makefile
-	m4/Makefile po/Makefile.in
+	m4/Makefile po/Makefile.in unit-test/Makefile
 	hcachever.sh doc/instdoc.sh)
 AC_OUTPUT
 

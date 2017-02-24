@@ -27,6 +27,10 @@ SUBDIRS += imap
 IMAP_INCLUDES = -I$(top_srcdir)/imap
 endif
 
+if BUILD_UNITTEST
+SUBDIR += unit-test
+endif
+
 bin_SCRIPTS = $(SMIMEAUX_TARGET)
 
 if BUILD_HCACHE
@@ -53,9 +57,10 @@ nodist_mutt_SOURCES = $(BUILT_SOURCES)
 
 mutt_LDADD = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAP) $(MUTTLIBS) \
 	$(INTLLIBS) $(LIBICONV) $(GPGME_LIBS)
+	$(INTLLIBS) $(LIBICONV)  $(GPGME_LIBS) $(LIBUNITTEST)
 
 mutt_DEPENDENCIES = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAPDEPS) \
-	$(INTLDEPS)
+	$(INTLDEPS) $(LIBUNITTESTDEPS)
 
 DEFS=-DPKGDATADIR=\"$(pkgdatadir)\" -DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DBINDIR=\"$(bindir)\" -DMUTTLOCALEDIR=\"$(datadir)/locale\"
