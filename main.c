@@ -27,6 +27,9 @@
 #include <sys/stat.h>
 #include <sys/utsname.h>
 #include <unistd.h>
+#if WITH_UNITTEST
+extern int cutest_main(int, const char **);
+#endif
 #include "mutt.h"
 #include "keymap.h"
 #include "mailbox.h"
@@ -255,9 +258,9 @@ int main(int argc, char **argv, char **environ)
 
 #ifdef USE_NNTP
     if ((i = getopt(argc, argv,
-                    "+A:a:Bb:F:f:c:Dd:Ee:g:GH:s:i:hm:npQ:RSvxyzZ")) != EOF)
+                    "+A:a:Bb:F:f:c:Dd:Ee:g:GH:s:i:hm:npQ:RSTvxyzZ")) != EOF)
 #else
-    if ((i = getopt(argc, argv, "+A:a:Bb:F:f:c:Dd:Ee:H:s:i:hm:npQ:RSvxyzZ")) != EOF)
+    if ((i = getopt(argc, argv, "+A:a:Bb:F:f:c:Dd:Ee:H:s:i:hm:npQ:RSTvxyzZ")) != EOF)
 #endif
       switch (i)
       {
@@ -351,6 +354,18 @@ int main(int argc, char **argv, char **environ)
         case 'S':
           hide_sensitive = 1;
           break;
+
+        case 'T':
+#ifdef WITH_UNITTEST
+        {
+          const char *args[] = {"mutt", "--no-exec"};
+          exit(cutest_main(2, args));
+        }
+#else
+          puts(_("NeoMutt was built without unit-tests."));
+          exit(1);
+#endif
+        break;
 
         case 's':
           subject = optarg;
