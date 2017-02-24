@@ -9,8 +9,9 @@
 #include "test_list.c"
 
 TEST_LIST = {
-  { "list_create", test_list_create },
-  { "list_add",    test_list_add    },
-  { "list_find",   test_list_find   },
+  { "list_create",   test_list_create   },
+  { "list_add",      test_list_add      },
+  { "list_find",     test_list_find     },
+  { "list_push_pop", test_list_push_pop },
   { 0 }
 };
