@@ -14,6 +14,7 @@ TEST_LIST = {
   { "list_add",      test_list_add      },
   { "list_find",     test_list_find     },
   { "list_push_pop", test_list_push_pop },
+  { "list_copy",     test_list_copy     },
   { 0 }
 };
 // clang-format on
