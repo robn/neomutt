@@ -54,14 +54,18 @@
 #include <sys/wait.h>
 #include <sys/time.h>
 
-#define CHECK_PAGER \
-  if ((CurrentMenu == MENU_PAGER) && (idx >= 0) &&	\
-	    (MuttVars[idx].flags & R_RESORT)) \
-	{ \
-	  snprintf (err->data, err->dsize, \
-	    _("Not available in this menu.")); \
-	  return -1; \
-	}
+static int check_pager(int idx, BUFFER *err)
+{
+  if ((CurrentMenu == MENU_PAGER) && (idx >= 0) && (MuttVars[idx].flags & R_RESORT))
+  {
+    snprintf(err->data, err->dsize, _("Not available in this menu."));
+    return (-1);
+  }
+  else
+  {
+    return 0;
+  }
+}
 
 typedef struct myvar
 {
@@ -2019,6 +2023,16 @@ static void restore_default (struct option_t *p)
     mutt_set_current_menu_redraw_full ();
 }
 
+static void ESC_char(char C, char* p, char *dst, size_t len)
+{
+  do
+  {
+     *p++ = '\\';
+     if (p - dst < len)
+       *p++ = C;
+  } while(0);
+}
+
 static size_t escape_string (char *dst, size_t len, const char* src)
 {
   char* p = dst;
@@ -2026,19 +2040,18 @@ static size_t escape_string (char *dst, size_t len, const char* src)
   if (!len)
     return 0;
   len--; /* save room for \0 */
-#define ESC_CHAR(C)	do { *p++ = '\\'; if (p - dst < len) *p++ = C; } while(0)
   while (p - dst < len && src && *src)
   {
     switch (*src)
     {
     case '\n':
-      ESC_CHAR('n');
+      ESC_char('n', p, dst, len);
       break;
     case '\r':
-      ESC_CHAR('r');
+      ESC_char('r', p, dst, len);
       break;
     case '\t':
-      ESC_CHAR('t');
+      ESC_char('t', p, dst, len);
       break;
     default:
       if ((*src == '\\' || *src == '"') && p - dst < len - 1)
@@ -2047,7 +2060,6 @@ static size_t escape_string (char *dst, size_t len, const char* src)
     }
     src++;
   }
-#undef ESC_CHAR
   *p = '\0';
   return p - dst;
 }
@@ -2327,7 +2339,7 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
       }
       else
       {
-	CHECK_PAGER;
+        check_pager(idx,err);
         if (myvar)
           myvar_del (myvar);
         else
@@ -2364,7 +2376,7 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
 	return 0;
       }
 
-      CHECK_PAGER;
+      check_pager(idx,err);
       if (unset)
 	unset_option (MuttVars[idx].data);
       else if (inv)
@@ -2379,7 +2391,7 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
     {
       if (unset)
       {
-	CHECK_PAGER;
+        check_pager(idx,err);
         if (myvar)
           myvar_del (myvar);
 	else if (DTYPE (MuttVars[idx].type) == DT_ADDR)
@@ -2436,7 +2448,7 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
       }
       else
       {
-	CHECK_PAGER;
+        check_pager(idx,err);
         s->dptr++;
 
         if (myvar)
@@ -2518,7 +2530,7 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
 	break;
       }
 
-      CHECK_PAGER;
+      check_pager(idx,err);
       s->dptr++;
 
       /* copy the value of the string */
@@ -2572,7 +2584,7 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
 	break;
       }
 
-      CHECK_PAGER;
+      check_pager(idx,err);
       s->dptr++;
 
       /* copy the value of the string */
@@ -2602,7 +2614,7 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
 	break;
       }
 
-      CHECK_PAGER;
+      check_pager(idx,err);
       s->dptr++;
 
       mutt_extract_token (tmp, s, 0);
@@ -2656,7 +2668,7 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
 	break;
       }
 
-      CHECK_PAGER;
+      check_pager(idx,err);
       if (*s->dptr == '=')
       {
 	s->dptr++;
@@ -2730,7 +2742,7 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
 		  p);
 	return 0;
       }
-      CHECK_PAGER;
+      check_pager(idx,err);
       s->dptr++;
       mutt_extract_token (tmp, s , 0);
 
@@ -2750,7 +2762,7 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
 	break;
       }
 
-      CHECK_PAGER;
+      check_pager(idx,err);
       s->dptr++;
 
       /* copy the value of the string */
@@ -4280,4 +4292,3 @@ int mutt_label_complete (char *buffer, size_t len, int numtabs)
 
   return 1;
 }
-
