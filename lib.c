@@ -1023,8 +1023,11 @@ mutt_strsysexit(int e)
 }
 
 #ifdef DEBUG
+char debugfilename[_POSIX_PATH_MAX];
 FILE *debugfile;
 int debuglevel;
+char *debugfile_cmdline = NULL;
+int debuglevel_cmdline;
 
 void mutt_debug (int level, const char *fmt, ...)
 {
