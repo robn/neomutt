@@ -252,7 +252,7 @@ void km_bind (char *s, int menu, int op, char *macro, char *descr)
           char new_binding[MAX_SEQ];
           km_expand_key( old_binding, MAX_SEQ, map );
           km_expand_key( new_binding, MAX_SEQ, tmp );
-          printf( "M%d\tBinding '%s' will alias '%s'\n", menu, old_binding, new_binding);
+          mutt_error (_("Warning: For menu '%s', binding '%s' will alias '%s'"), mutt_getnamebyvalue(menu, Menus), old_binding, new_binding);
         }
         len = tmp->eq;
         next = tmp->next;
