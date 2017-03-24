@@ -447,7 +447,11 @@ static char *apply_subject_mods(ENVELOPE *env)
  * %X = number of MIME attachments
  * %y = `x-label:' field (if present)
  * %Y = `x-label:' field (if present, tree unfolded, and != parent's x-label)
- * %Z = status flags    */
+ * %Z = combined message flags
+ * %+Zs = message status flags
+ * %+Zc = message crypto flags
+ * %+Zt = message tag flags
+ */
 static const char *hdr_format_str(char *dest, size_t destlen, size_t col, int cols,
                                   char op, const char *src, const char *prefix,
                                   const char *ifstring, const char *elsestring,
@@ -1215,6 +1219,76 @@ static const char *hdr_format_str(char *dest, size_t destlen, size_t col, int co
       break;
     }
 #endif
+    case '+': /* to be used for 2 letter format strings */
+      if (src[0] == 'Z') /* message status flags */
+      {
+        if (src[1] == 's') /* status: deleted/new/old/replied */
+        {
+          char *ch;
+          if (hdr->deleted)
+            ch = get_nth_wchar(Flagchars, FlagCharDeleted);
+          else if (hdr->attach_del)
+            ch = get_nth_wchar(Flagchars, FlagCharDeletedAttach);
+          else if (THREAD_NEW)
+            ch = get_nth_wchar(Flagchars, FlagCharNewThread);
+          else if (THREAD_OLD)
+            ch = get_nth_wchar(Flagchars, FlagCharOldThread);
+          else if (hdr->read && (ctx && (ctx->msgnotreadyet != hdr->msgno)))
+          {
+            if (hdr->replied)
+              ch = get_nth_wchar(Flagchars, FlagCharReplied);
+            else
+              ch = get_nth_wchar(Flagchars, FlagCharZEmpty);
+          }
+          else
+          {
+            if (hdr->old)
+              ch = get_nth_wchar(Flagchars, FlagCharOld);
+            else
+              ch = get_nth_wchar(Flagchars, FlagCharNew);
+          }
+
+          snprintf(buf2, sizeof(buf2), "%s", ch);
+          src += 2;
+        }
+        else if (src[1] == 'c') /* crypto */
+        {
+          char *ch;
+          if (WithCrypto && (hdr->security & GOODSIGN))
+            ch = "S";
+          else if (WithCrypto && (hdr->security & ENCRYPT))
+            ch = "P";
+          else if (WithCrypto && (hdr->security & SIGN))
+            ch = "s";
+          else if ((WithCrypto & APPLICATION_PGP) && (hdr->security & PGPKEY))
+            ch = "K";
+          else
+            ch = " ";
+
+          snprintf(buf2, sizeof(buf2), "%s", ch);
+          src += 2;
+        }
+        else if (src[1] == 't') /* tagged, flagged, recipient */
+        {
+          char *ch;
+          if (hdr->tagged)
+            ch = get_nth_wchar(Flagchars, FlagCharTagged);
+          else if (hdr->flagged)
+            ch = get_nth_wchar(Flagchars, FlagCharImportant);
+          else
+            ch = get_nth_wchar(Tochars, user_is_recipient(hdr));
+
+          snprintf(buf2, sizeof(buf2), "%s", ch);
+          src += 2;
+        }
+        else /* fallthrough */
+          break;
+
+        colorlen = add_index_color(dest, destlen, flags, MT_COLOR_INDEX_FLAGS);
+        mutt_format_s(dest + colorlen, destlen - colorlen, prefix, buf2);
+        add_index_color(dest + colorlen, destlen - colorlen, flags, MT_COLOR_INDEX);
+      }
+      break;
 
     default:
       snprintf(dest, destlen, "%%%s%c", prefix, op);
