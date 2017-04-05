@@ -532,6 +532,15 @@ AC_CHECK_FUNCS(futimens)
 dnl AIX may not have fchdir()
 AC_CHECK_FUNCS(fchdir, , [mutt_cv_fchdir=no])
 
+AC_ARG_WITH(unittest, AS_HELP_STRING([--with-unittest],[Build in unit-test mode]),
+    [
+        mutt_unit_test=yes
+        AC_DEFINE(WITH_UNITTEST,1,[Define to build in unit-test mode])
+        LIBUNITTEST="-Lunit-test -lunittest"
+        LIBUNITTESTDEPS="unit-test/libunittest.a"
+   ])
+AM_CONDITIONAL(BUILD_UNITTEST, test x$mutt_unit_test = xyes)
+
 AC_ARG_WITH(homespool,
 	AS_HELP_STRING([--with-homespool@<:@=FILE@:>@],[File in user's directory where new mail is spooled]), with_homespool=${withval})
 if test x$with_homespool != x; then

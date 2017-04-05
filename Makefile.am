@@ -28,7 +28,7 @@ IMAP_INCLUDES = -I$(top_srcdir)/imap
 endif
 
 if BUILD_UNITTEST
-SUBDIR += unit-test
+SUBDIRS += unit-test
 endif
 
 bin_SCRIPTS = $(SMIMEAUX_TARGET)
@@ -56,8 +56,7 @@ mutt_SOURCES = addrbook.c alias.c ascii.c attach.c base64.c browser.c buffer.c \
 nodist_mutt_SOURCES = $(BUILT_SOURCES)
 
 mutt_LDADD = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAP) $(MUTTLIBS) \
-	$(INTLLIBS) $(LIBICONV) $(GPGME_LIBS)
-	$(INTLLIBS) $(LIBICONV)  $(GPGME_LIBS) $(LIBUNITTEST)
+	$(INTLLIBS) $(LIBICONV) $(GPGME_LIBS) $(LIBUNITTEST)
 
 mutt_DEPENDENCIES = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAPDEPS) \
 	$(INTLDEPS) $(LIBUNITTESTDEPS)
