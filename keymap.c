@@ -247,7 +247,8 @@ int km_bind_err (char *s, int menu, int op, char *macro, char *descr, BUFFER *er
       /* map and tmp match so overwrite */
       do
       {
-        if (tmp->len != len) {
+        /* Don't warn on overwriting a 'noop' binding */
+        if (tmp->len != len && tmp->op != OP_NULL) {
           /* Overwrite with the different lengths, warn */
           /* TODO: MAX_SEQ here is wrong */
           char old_binding[MAX_SEQ];
