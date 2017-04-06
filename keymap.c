@@ -967,11 +967,16 @@ static int try_bind(char *key, int menu, char *func,
   int i;
 
   for (i = 0; bindings[i].name; i++)
+  {
     if (mutt_strcmp(func, bindings[i].name) == 0)
     {
       return km_bindkey_err(key, menu, bindings[i].op, err);
     }
-  return -1;
+  }
+  snprintf(err->data, err->dsize,
+           _("Function '%s' not available for menu '%s'"), func,
+           mutt_getnamebyvalue(menu, Menus));
+  return -1; /* Couldn't find an existing function with this name */
 }
 
 const struct binding_t *km_get_table(int menu)
@@ -1052,7 +1057,7 @@ int mutt_parse_bind(BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err)
       }
       else
       {
-        r = -1; /* If you don't bind on generic, bind on the actual menu*/
+        r = -2; /* If you don't bind on generic, bind on the actual menu*/
       }
       if (r != 0)
       {
@@ -1060,10 +1065,6 @@ int mutt_parse_bind(BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err)
         if (bindings)
         {
           r = try_bind(key, menu[i], buf->data, bindings, err);
-          if (r == -1)
-          {
-            snprintf(err->data, err->dsize, _("%s: no such function in map"), buf->data);
-          }
         }
       }
     }
