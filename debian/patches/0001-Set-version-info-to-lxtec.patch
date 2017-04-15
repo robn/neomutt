@@ -1,0 +1,25 @@
+From 7eecb2d11fe254a64b12f69615d4e9938838ac26 Mon Sep 17 00:00:00 2001
+From: Elimar Riesebieter <riesebie@lxtec.de>
+Date: Fri, 4 Nov 2016 19:48:40 +0100
+Subject: [PATCH] Set version info to -lxtec
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8e72c16..403a631 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,7 +7,7 @@ dnl !!! TO DUMP THEIR RESULTS WHEN MUTT -V IS CALLED            !!!
+ CFLAGS=$CFLAGS
+ LDFLAGS=$LDFLAGS
+ 
+-AC_INIT([NeoMutt], [20170306], [neomutt-devel@neomutt.org], [mutt], [https://www.neomutt.org])
++AC_INIT([NeoMutt], [20170306-lxtec], [neomutt-devel@neomutt.org], [mutt], [https://www.neomutt.org])
+ AC_CONFIG_SRCDIR(mutt.h)
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADERS([config.h])
+-- 
+2.10.2
+

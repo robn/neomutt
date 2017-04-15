@@ -1,0 +1,45 @@
+
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 17:07:35 +0100
+Subject: 528233-readonly-open
+
+Open attachments as read-only so the editor won't be able to modify it;
+otherwise the user can believe that he/she can edit it and risk to lose
+his/her work (see upstream bug http://bugs.mutt.org/3261)
+
+Debian bugs: #528233, updated in #572203
+
+To apply to neomutt by:
+From 35484271d81be10be6314fcf8cdea6afb2a9aa7d Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Fri, 6 May 2016 00:24:02 +0100
+Subject: [PATCH 16/22] upstream/528233-readonly-open
+
+---
+ attach.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+Index: neomutt-20160818/attach.c
+===================================================================
+--- neomutt-20160818.orig/attach.c
++++ neomutt-20160818/attach.c
+@@ -415,6 +415,7 @@ int mutt_view_attachment (FILE *fp, BODY
+       FREE (&fname);
+       if (mutt_save_attachment (fp, a, tempfile, 0, NULL) == -1)
+ 	goto return_error;
++      chmod (tempfile, 0400);
+     }
+ 
+     use_pipe = rfc1524_expand_command (a, tempfile, type,
+@@ -587,7 +588,11 @@ int mutt_view_attachment (FILE *fp, BODY
+   if (entry)
+     rfc1524_free_entry (&entry);
+   if (fp && tempfile[0])
++  {
++    /* Restore write permission so mutt_unlink can open the file for writing */
++    chmod(tempfile, 0600);
+     mutt_unlink (tempfile);
++  }
+   else if (unlink_tempfile)
+     unlink(tempfile);
+ 

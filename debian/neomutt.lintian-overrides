@@ -1,0 +1,1 @@
+neomutt: setgid-binary usr/bin/mutt_dotlock 2755 root/mail

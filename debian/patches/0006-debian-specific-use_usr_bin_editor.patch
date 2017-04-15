@@ -1,0 +1,46 @@
+
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:06:15 +0100
+Subject: use_usr_bin_editor
+
+Even if EDITOR is not set, mutt will always use /usr/bin/editor
+(which is set by update-alternatives), rather than falling back
+to vi.
+
+To apply to neomutt:
+From c0cb96dd4eb27a6992b5aba1c8bf35029f4fb3b2 Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Fri, 6 May 2016 00:23:58 +0100
+Subject: [PATCH 06/22] debian-specific/use_usr_bin_editor
+
+---
+ init.c | 2 +-
+ init.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: neomutt-20160818/init.c
+===================================================================
+--- neomutt-20160818.orig/init.c
++++ neomutt-20160818/init.c
+@@ -3385,7 +3385,7 @@ void mutt_init (int skip_sys_rc, LIST *c
+   {
+     p = getenv ("EDITOR");
+     if (!p)
+-      p = "vi";
++      p = "/usr/bin/editor";
+   }
+   Editor = safe_strdup (p);
+   Visual = safe_strdup (p);
+Index: neomutt-20160818/init.h
+===================================================================
+--- neomutt-20160818.orig/init.h
++++ neomutt-20160818/init.h
+@@ -750,7 +750,7 @@ struct option_t MuttVars[] = {
+   ** .pp
+   ** This variable specifies which editor is used by mutt.
+   ** It defaults to the value of the \fC$$$VISUAL\fP, or \fC$$$EDITOR\fP, environment
+-  ** variable, or to the string ``vi'' if neither of those are set.
++  ** variable, or to the string ``/usr/bin/editor'' if neither of those are set.
+   ** .pp
+   ** The \fC$$editor\fP string may contain a \fI%s\fP escape, which will be replaced by the name
+   ** of the file to be edited.  If the \fI%s\fP escape does not appear in \fC$$editor\fP, a

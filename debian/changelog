@@ -1,0 +1,300 @@
+neomutt (1:20170306-1lxtec1) unstable; urgency=medium
+
+  * New upstream release NeoMutt 2017-03-06
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Mon, 06 Mar 2017 19:53:53 +0100
+
+neomutt (1:20170225-1lxtec1) unstable; urgency=medium
+
+  * New upstream release NeoMutt 2017-02-25
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 25 Feb 2017 10:48:48 +0100
+
+neomutt (1:20170206-1lxtec1) unstable; urgency=medium
+
+  * New upstream release NeoMutt 2017-02-06
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Mon, 06 Feb 2017 17:01:28 +0100
+
+neomutt (1:20170128-1lxtec2) unstable; urgency=medium
+
+  * Back to the LMDB!
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 29 Jan 2017 11:13:47 +0100
+
+neomutt (1:20170128-1lxtec1) unstable; urgency=medium
+
+  * New upstream release 
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 29 Jan 2017 09:28:24 +0100
+
+neomutt (1:20170113-1lxtec9) unstable; urgency=medium
+
+  * Switchted to QDBM.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Wed, 18 Jan 2017 14:33:08 +0100
+
+neomutt (1:20170113-1lxtec8) unstable; urgency=medium
+
+  * Back to the LMDB ROOT!
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 15 Jan 2017 04:40:06 +0100
+
+neomutt (1:20170113-1lxtec7) unstable; urgency=medium
+
+  * Switched to tokyoocabinet.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 14 Jan 2017 19:27:02 +0100
+
+neomutt (1:20170113-1lxtec6) unstable; urgency=medium
+
+  * Back to the LMDB ROOT!
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 14 Jan 2017 19:02:09 +0100
+
+neomutt (1:20170113-1lxtec5) unstable; urgency=medium
+
+  * Switched to tokyoocabinet.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 14 Jan 2017 18:27:08 +0100
+
+neomutt (1:20170113-1lxtec4) unstable; urgency=medium
+
+  * Switched to kyotocabinet.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 14 Jan 2017 18:18:49 +0100
+
+neomutt (1:20170113-1lxtec3) unstable; urgency=medium
+
+  * Switchted to QDBM. Seems to be a bit quicker.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 14 Jan 2017 18:01:04 +0100
+
+neomutt (1:20170113-1lxtec2) unstable; urgency=medium
+
+  * Removed --enable-hcache. It is enough to choose the wanted database.
+  * Bumped debhelper compatibility level to 10.
+  * Changed debian/compat accordingly.
+  *  Remove --with autoreconf from calls to dh.
+     With Debhelper compat level 10 the autoreconf sequence is enabled by
+     default.
+  * Drop Build-Depends on dh-autoreconf.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 14 Jan 2017 11:51:03 +0100
+
+neomutt (1:20170113-1lxtec1) unstable; urgency=medium
+
+  * New upstream release neomutt-20170113
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Fri, 13 Jan 2017 17:09:31 +0100
+
+neomutt (1:20161126-1lxtec1) unstable; urgency=medium
+
+  * New upstream release neomutt-20161126
+  * Change Build-Deps: from libgpgme11-dev to libgpgme-dev.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 27 Nov 2016 19:32:45 +0100
+
+neomutt (1:20161108-1lxtec2) unstable; urgency=medium
+
+  * Changed homepage url to https in debian/control
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Wed, 09 Nov 2016 08:40:01 +0100
+
+neomutt (1:20161108-1lxtec1) unstable; urgency=medium
+
+  * devel/hcache-refactor based on neomutt-20161104
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Tue, 08 Nov 2016 20:03:16 +0100
+
+neomutt (1:20161104-1lxtec1) unstable; urgency=medium
+
+  * New upstream release neomutt-20161104
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Fri, 04 Nov 2016 19:51:45 +0100
+
+neomutt (1:20161028-1lxtec2) unstable; urgency=medium
+
+  * Install neomutt-syntax.vim
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Fri, 28 Oct 2016 19:20:38 +0200
+
+neomutt (1:20161028-1lxtec1) unstable; urgency=medium
+
+  * New upstream release neomutt-20161028
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Fri, 28 Oct 2016 16:45:16 +0200
+
+neomutt (1:20161014-2lxtec1) unstable; urgency=medium
+
+  * Added neomutt-common (= ${source:Version} to package Depends:
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Fri, 28 Oct 2016 00:10:15 +0200
+
+neomutt (1:20161014-1lxtec1) unstable; urgency=medium
+
+  * New upstream release neomutt-20161014
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Fri, 14 Oct 2016 19:25:04 +0200
+
+neomutt (1:20161002-1lxtec2) unstable; urgency=medium
+
+  * introduced 0001-Set-version-info-to-lxtec.patch
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 02 Oct 2016 19:23:57 +0200
+
+neomutt (1:20161002-1lxtec1) unstable; urgency=medium
+
+  * New upstream release neomutt-20161002
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 02 Oct 2016 19:11:16 +0200
+
+neomutt (1:20160925-1lxtec1) unstable; urgency=medium
+
+  * Corected neomutt version info
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 25 Sep 2016 12:51:20 +0200
+
+neomutt (1:20160925-1lxtec1) unstable; urgency=medium
+
+  * Updated to latest neomutt commit 
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 25 Sep 2016 11:35:09 +0200
+
+neomutt (1:20160916-1lxtec2) unstable; urgency=medium
+
+  * Compiled with lmdb support
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 24 Sep 2016 10:52:53 +0200
+
+neomutt (1:20160916-1lxtec1) unstable; urgency=medium
+
+  * New upstream release neomutt-20160916
+  * git archived distro/debian which has aplied Debian specific patches.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 17 Sep 2016 09:13:11 +0200
+
+neomutt (1:20160910-1lxtec1) unstable; urgency=medium
+
+  * New upstream release neomutt-20160910.
+  * git archived distro/debian which has aplied Debian specific patches.
+  * Install contrib/keybase
+  * Enabled fmemopen
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 10 Sep 2016 14:43:18 +0200
+
+neomutt (1:20160827-1lxtec1) unstable; urgency=medium
+
+  * New upstream release neomutt-20160827
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 27 Aug 2016 07:40:26 +0200
+
+neomutt (1:20160822-1lxtec1) unstable; urgency=medium
+
+  * Build distro/debian
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Fri, 26 Aug 2016 18:27:30 +0200
+
+neomutt (1:20160818-1lxtec3) unstable; urgency=medium
+
+  * New patches:
+    0100-Changed-the-shebang-to-bin-sh-in-keybase-s-shellscri.patch
+    0101-fix-neomutt-wasn-t-reading-etc-Muttrc.patch
+  * Intrduced NeoMuttrc and NeoMuttrc.d.
+  * Re-enabled tokyocabinet.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 21 Aug 2016 12:29:53 +0200
+
+neomutt (1:20160818-1lxtec2) unstable; urgency=medium
+
+  * Enabled lmdb for testing
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 20 Aug 2016 12:52:51 +0200
+
+neomutt (1:20160818-1lxtec1) experimental; urgency=medium
+
+  * New upstream developer release
+  * Based on mutt 1.7.0
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Fri, 19 Aug 2016 07:51:02 +0200
+
+neomutt (1:20160808-1lxtec1) unstable; urgency=medium
+
+  * New upstream release
+  * Timeout hooks applied upstream. Patch stashed.
+  * Multiple hooks applied upstream. Patch stashed.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Mon, 08 Aug 2016 11:48:29 +0200
+
+neomutt (1:20160723-1lxtec2) unstable; urgency=medium
+
+  * Install vim-keybindings
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Thu, 28 Jul 2016 08:20:15 +0200
+
+neomutt (1:20160723-1lxtec1) unstable; urgency=medium
+
+  * New upstream release.
+  * Install ChangeLog.neomutt as changelog.
+  * Install all vimrc's as examples.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 24 Jul 2016 07:59:46 +0200
+
+neomutt (1:20160709-1lxtec4) unstable; urgency=medium
+
+  * Introduced --builddirectory=debian/build.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Mon, 11 Jul 2016 22:14:19 +0200
+
+neomutt (1:20160709-1lxtec3) unstable; urgency=medium
+
+  * Corrected lib/mutt to lib/neomutt.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Mon, 11 Jul 2016 21:48:16 +0200
+
+neomutt (1:20160709-1lxtec2) unstable; urgency=medium
+
+  * Upload to unstable.
+  * Really install to /usr/lib/neomutt.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Mon, 11 Jul 2016 21:29:56 +0200
+
+neomutt (1:20160709-1lxtec1) experimental; urgency=medium
+
+  * New upstream test release.
+  * Updated feature list in debian/control.
+  * Incorporated a possible build for lmdb in debian/rules.
+  * Added liblmdb-dev to Build-Depends:.
+  * Switched Priority: to optional.
+  * Make use of dh_bugfiles.
+  * debhelper pulls in autotools-dev. So removed it from Build-Depends:.
+  * dh-autoreconf has a Depends: on automake and libtool so removed from
+    Build-Depends.
+  * Remove quilt from Build-Depends. It'll be used automatically as we have
+    a 3.0 (quilt) source package.
+  * libtokyocabinet-dev and libgdbm-dev both are available in hurd-i386.
+  * Overhauled debian/copyright to mention all contributers to debian/*.
+  * Overhauled patch headers in debian/patches to mention the original authors.
+  * quilt refresh all patches.
+  * Reworked debian/extra/lib/* to meet neomutt. Install them in
+    /usr/lib/neomutt.
+  * Reworked debian/extra/neomutt.desktop to meet neomutt. Install it to
+    /usr/share/applications
+  * Link upstreams /u/s/d/neomutt/changelog.gz to
+    /u/s/d/neomutt-common/changelog.gz.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sun, 10 Jul 2016 15:13:52 +0200
+
+neomutt (1:20160611-1lxtec1) experimental; urgency=medium
+
+  * Switched back to official upstream release neomutt-20160611.
+  * Bumped epoch to meet lower version.
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Tue, 28 Jun 2016 22:01:26 +0200
+
+neomutt (20160620-1lxtec1) experimental; urgency=medium
+
+  * First public release available at http://www.lxtec.de/debarchiv.
+  * Build commit 20801c1 from https://github.com/neomutt/neomutt
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Thu, 23 Jun 2016 19:27:58 +0200

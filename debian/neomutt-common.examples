@@ -1,0 +1,9 @@
+contrib/keybase
+contrib/vim-keys
+contrib/hcache-bench
+debian/build/doc/neomutt-syntax.vim
+debian/extra/samples/*
+debian/tmp/etc/NeoMuttrc
+debian/tmp/usr/share/doc/neomutt/samples/*
+doc/muttrc*
+doc/vimrc*

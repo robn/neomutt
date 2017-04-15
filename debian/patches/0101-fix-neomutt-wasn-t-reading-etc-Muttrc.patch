@@ -1,0 +1,38 @@
+From aab5fafa70db7a13de971df4205b7b5ebb77187a Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Sun, 21 Aug 2016 10:37:40 +0100
+Subject: [PATCH 1/2] fix: neomutt wasn't reading /etc/Muttrc
+
+---
+ init.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+Index: neomutt-20160818/init.c
+===================================================================
+--- neomutt-20160818.orig/init.c
++++ neomutt-20160818/init.c
+@@ -3524,16 +3524,16 @@ void mutt_init (int skip_sys_rc, LIST *c
+         break;
+ 
+       snprintf (buffer, sizeof buffer, "%s/Muttrc", PKGDATADIR);
+-      if (access (buffer, F_OK) == 0)
++    } while (0);
++    if (access (buffer, F_OK) == 0)
++    {
++      if (source_rc (buffer, &err) != 0)
+       {
+-        if (source_rc (buffer, &err) != 0)
+-        {
+-          fputs (err.data, stderr);
+-          fputc ('\n', stderr);
+-          need_pause = 1;
+-        }
++	fputs (err.data, stderr);
++	fputc ('\n', stderr);
++	need_pause = 1;
+       }
+-    } while (0);
++    }
+   }
+ 
+   /* Read the user's initialization file.  */

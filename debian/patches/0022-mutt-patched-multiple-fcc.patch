@@ -1,0 +1,90 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Tue, 4 Mar 2014 15:40:45 +0100
+Subject: multiple-fcc
+
+A patch that allows multiple FCC separated by commas,
+written by Omen Wild.
+
+Original website: http://www.mandarb.com/mutt/
+Bug asking for the inclusion: #586454
+
+To apply to neomutt by:
+From 43e363ec95ef720c2428ca23f62478228ed35671 Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Fri, 6 May 2016 00:36:57 +0100
+Subject: [PATCH 22/22] mutt-patched/multiple-fcc
+
+---
+ protos.h  |  1 +
+ send.c    |  2 +-
+ sendlib.c | 32 ++++++++++++++++++++++++++++++++
+ 3 files changed, 34 insertions(+), 1 deletion(-)
+
+Index: neomutt-20160723/protos.h
+===================================================================
+--- neomutt-20160723.orig/protos.h
++++ neomutt-20160723/protos.h
+@@ -385,6 +385,7 @@ int mutt_user_is_recipient (HEADER *);
+ void mutt_update_num_postponed (void);
+ int mutt_wait_filter (pid_t);
+ int mutt_which_case (const char *);
++int mutt_write_multiple_fcc (const char *path, HEADER *hdr, const char *msgid, int, char *, char **);
+ int mutt_write_fcc (const char *path, HEADER *hdr, const char *msgid, int, char *, char **);
+ int mutt_write_mime_body (BODY *, FILE *);
+ int mutt_write_mime_header (BODY *, FILE *);
+Index: neomutt-20160723/send.c
+===================================================================
+--- neomutt-20160723.orig/send.c
++++ neomutt-20160723/send.c
+@@ -1975,7 +1975,7 @@ full_fcc:
+        * message was first postponed.
+        */
+       msg->received = time (NULL);
+-      if (mutt_write_fcc (fcc, msg, NULL, 0, NULL, &finalpath) == -1)
++      if (mutt_write_multiple_fcc (fcc, msg, NULL, 0, NULL, &finalpath) == -1)
+       {
+ 	/*
+ 	 * Error writing FCC, we should abort sending.
+Index: neomutt-20160723/sendlib.c
+===================================================================
+--- neomutt-20160723.orig/sendlib.c
++++ neomutt-20160723/sendlib.c
+@@ -2756,6 +2756,38 @@ static void set_noconv_flags (BODY *b, s
+   }
+ }
+ 
++/* Handle a Fcc with multiple, comma separated entries. */
++int mutt_write_multiple_fcc (const char *path, HEADER *hdr, const char *msgid,
++	int post, char *fcc, char **finalpath)
++{
++   char fcc_tok[_POSIX_PATH_MAX];
++   char fcc_expanded[_POSIX_PATH_MAX];
++   char *tok = NULL;
++   int status;
++
++  strfcpy(fcc_tok, path, _POSIX_PATH_MAX);
++
++   tok = strtok(fcc_tok, ",");
++   dprint(1, (debugfile, "Fcc: initial mailbox = '%s'\n", tok));
++   /* mutt_expand_path already called above for the first token */
++   if((status = mutt_write_fcc (tok, hdr, NULL, 0, NULL, finalpath)) != 0)
++	  return status;
++
++   while((tok = strtok(NULL, ",")) != NULL) {
++	  if(*tok) {
++		 /* Only call mutt_expand_path iff tok has some data */
++		 dprint(1, (debugfile, "Fcc: additional mailbox token = '%s'\n", tok));
++		 strfcpy(fcc_expanded, tok, sizeof(fcc_expanded));
++		 mutt_expand_path(fcc_expanded, sizeof(fcc_expanded));
++		 dprint(1, (debugfile, "     Additional mailbox expanded = '%s'\n", fcc_expanded));
++		 if((status = mutt_write_fcc (fcc_expanded, hdr, NULL, 0, NULL, finalpath)) != 0)
++			return status;
++	  }
++   }
++
++   return 0;
++}
++
+ int mutt_write_fcc (const char *path, HEADER *hdr, const char *msgid,
+ 		    int post, char *fcc, char **finalpath)
+ {

@@ -1,0 +1,92 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:19:30 +0100
+Subject: document_debian_defaults
+
+Some customization of the option which are straying
+from the default only on Debian systems.
+
+To apply to neomutt by:
+From 05cbd6fe6be9fbfbcd32c47627fb76f3af76f4bd Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Fri, 6 May 2016 00:23:59 +0100
+Subject: [PATCH 09/22] debian-specific/document_debian_defaults
+
+---
+ init.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+Index: neomutt-20160818/init.h
+===================================================================
+--- neomutt-20160818.orig/init.h
++++ neomutt-20160818/init.h
+@@ -336,6 +336,9 @@ struct option_t MuttVars[] = {
+   ** .pp
+   ** When this variable is \fIset\fP, mutt will include Delivered-To headers when
+   ** bouncing messages.  Postfix users may wish to \fIunset\fP this variable.
++  ** .pp
++  ** \fBNote:\fP On Debian systems, this option is unset by default in
++  ** /etc/Muttrc.
+   */
+   { "braille_friendly", DT_BOOL, R_NONE, OPTBRAILLEFRIENDLY, 0 },
+   /*
+@@ -1146,6 +1149,9 @@ struct option_t MuttVars[] = {
+   ** which case a detected one is not used.
+   ** .pp
+   ** Also see $$use_domain and $$hidden_host.
++  ** .pp
++  ** \fBNote:\fP On Debian systems, the default for this variable is obtained
++  ** from /etc/mailname when Mutt starts.
+   */
+ #ifdef HAVE_LIBIDN
+   { "idn_decode",	DT_BOOL, R_BOTH, OPTIDNDECODE, 1},
+@@ -1781,6 +1787,9 @@ struct option_t MuttVars[] = {
+   ** system.  It is used with various sets of parameters to gather the
+   ** list of known remailers, and to finally send a message through the
+   ** mixmaster chain.
++  ** .pp
++  ** \fBNote:\fP On Debian systems, this option is set by default to
++  ** ``mixmaster-filter'' in /etc/Muttrc.
+   */
+ #endif
+   { "move",		DT_QUAD, R_NONE, OPT_MOVE, MUTT_NO },
+@@ -3221,6 +3230,10 @@ struct option_t MuttVars[] = {
+   ** This variable contains the name of either a directory, or a file which
+   ** contains trusted certificates for use with OpenSSL.
+   ** (S/MIME only)
++  ** .pp
++  ** \fBNote:\fP On Debian systems, this defaults to the first existing file in
++  ** the following list: ~/.smime/ca-certificates.crt ~/.smime/ca-bundle.crt
++  ** /etc/ssl/certs/ca-certificates.crt.
+   */
+   { "smime_certificates",	DT_PATH, R_NONE, UL &SmimeCertificates, 0 },
+   /*
+@@ -3440,6 +3453,9 @@ struct option_t MuttVars[] = {
+   ** .ts
+   ** set smtp_authenticators="digest-md5:cram-md5"
+   ** .te
++  ** .pp
++  ** \fBNote:\fP On Debian systems, this variable defaults to the example
++  ** mentioned. This file is managed by the ``ca-certificates'' package.
+   */
+ # endif /* USE_SASL */
+   { "smtp_pass", 	DT_STR,  R_NONE, UL &SmtpPass, UL 0 },
+@@ -3487,6 +3503,9 @@ struct option_t MuttVars[] = {
+   ** .pp
+   ** You may optionally use the ``reverse-'' prefix to specify reverse sorting
+   ** order (example: ``\fCset sort=reverse-date-sent\fP'').
++  ** .pp
++  ** \fBNote:\fP On Debian systems, this option is set by default to
++  ** ``threads'' in /etc/Muttrc.
+   */
+   { "sort_alias",	DT_SORT|DT_SORT_ALIAS,	R_NONE,	UL &SortAlias, SORT_ALIAS },
+   /*
+@@ -4092,6 +4111,9 @@ struct option_t MuttVars[] = {
+   ** is set to deliver directly via SMTP (see $$smtp_url), this
+   ** option does nothing: mutt will never write out the ``Bcc:'' header
+   ** in this case.
++  ** .pp
++  ** \fBNote:\fP On Debian systems, exim4 and postfix strip BCC headers by
++  ** default. The above warning applies to exim3 users, see /etc/Muttrc.
+   */
+   { "write_inc",	DT_NUM,	 R_NONE, UL &WriteInc, 10 },
+   /*

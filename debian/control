@@ -1,0 +1,90 @@
+Source: neomutt
+Section: mail
+Priority: optional
+Maintainer: Elimar Riesebieter <riesebie@lxtec.de>
+Build-Depends: autotools-dev,
+               debhelper (>= 10),
+               docbook-xml,
+               docbook-xsl,
+               gawk,
+               gettext,
+               libgdbm-dev,
+               libgnutls28-dev,
+               libgpgme-dev,
+               libidn11-dev,
+               libkrb5-dev,
+               liblmdb-dev,
+               libncurses5-dev,
+               libncursesw5-dev,
+               libnotmuch-dev,
+               libsasl2-dev,
+               pkg-config,
+               w3m,
+               xsltproc,
+               zlib1g-dev
+Standards-Version: 3.9.8
+Homepage: https://www.neomutt.org/
+
+Package: neomutt-common
+Architecture: all
+Depends: ${misc:Depends}
+Recommends: neomutt
+Replaces: mutt
+Conflicts: mutt
+Description: shared files for neomutt package
+ NeoMutt is a sophisticated text-based Mail User Agent supporting MIME, GPG,
+ PGP and threading.
+ .
+ This Package contains architecture-independent files shared by the
+ neomutt package over any architecture available in Debian. Examples of
+ such shared files are: manpages, locale and mimetype definitions, and
+ configuration files.
+
+Package: neomutt
+Architecture: any
+Depends: neomutt-common (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Recommends: libsasl2-modules, locales, mime-support
+Suggests: aspell | ispell,
+          ca-certificates,
+          default-mta | mail-transport-agent,
+          gnupg,
+          mixmaster,
+          notmuch,
+          openssl,
+          urlview
+Provides: imap-client, mail-reader
+Replaces: mutt
+Conflicts: mutt
+Description: textbased mailreader which gathers all the patches against Mutt
+ NeoMutt is a sophisticated text-based Mail User Agent supporting MIME, GPG,
+ PGP and threading.
+ .
+ NeoMutt was created when Richard Russon (FlatCap) took all the old
+ Mutt patches, sorted through them, fixed them up and documented
+ them.
+ .
+ It's not a fork of Mutt.  It's a large set of feature patches (big
+ and small) that apply to Mutt.
+ .
+ A list of additional features on top of pristine mutt:
+ Compressed Folders    Read from/write to compressed mailboxes
+ Conditional Dates     Conditional Date Formatting
+ Fmemopen              Use fmemopen(3) for speedier temporary files
+ Ifdef                 Conditional config options
+ Index Color           Theming of the Index List
+ Initials Expando      For Author's Initials
+ Keywords              Labels/Tagging for emails
+ Limit-Current-Thread  Limit Index View to Current Thread
+ Nested If             Allow deeply nested conditionals in format strings
+ NNTP                  Talk to a Usenet news server
+ Notmuch               Powerful email search engine
+ Progress Bar          Colourful Progress Bar
+ Quasi-Delete          Hide emails from view, but don't delete them
+ Sensible-Browser      Highlight the folder you *used* to be in
+ Sidebar               Panel containing list of Mailboxes
+ Skip-Quoted           Skip Quoted Text
+ Status Color          Theming of the Status Bar
+ TLS-SNI               Negotiate with a Server for a Certificate
+ Trash Folder          Move 'deleted' emails to a trash folder

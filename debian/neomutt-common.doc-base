@@ -1,0 +1,13 @@
+Document: neomutt
+Title: NeoMutt E-Mail Client Manual
+Author: Various
+Abstract: This manual describes what neomutt is
+ and how it can be used on Debian systems..
+Section: Network/Communication
+
+Format: text
+Files: /usr/share/doc/neomutt-common/manual.txt.gz
+
+Format: HTML
+Index: /usr/share/doc/neomutt-common/html/manual.html
+Files: /usr/share/doc/neomutt-common/html/*

@@ -1,0 +1,99 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+###
+# header cache backend
+# HCACHE_DB := bdb
+HCACHE_DB := lmdb
+# HCACHE_DB := gdbm
+# HCACHE_DB := qdbm
+# HCACHE_DB := tokyocabinet
+# HCACHE_DB := kyotocabinet
+###
+
+# Configure arguments
+
+ifeq ($(HCACHE_DB),bdb)
+    hcache_db := --with-bdb --without-gdbm --without-qdbm --without-tokyocabinet --without-lmdb --without-kyotocabinet
+endif
+ifeq ($(HCACHE_DB),lmdb)
+    hcache_db := --with-lmdb --without-gdbm --without-qdbm --without-tokyocabinet --without-bdb --without-kyotocabinet
+endif
+ifeq ($(HCACHE_DB),gdbm)
+    hcache_db := --with-gdbm --without-qdbm --without-bdb --without-tokyocabinet --without lmdb --without-kyotocabinet
+endif
+ifeq ($(HCACHE_DB),qdbm)
+    hcache_db := --with-qdbm --without-gdbm --without-bdb --without-tokyocabinet --without-lmdb --without-kyotocabinet
+endif
+ifeq ($(HCACHE_DB),tokyocabinet)
+    hcache_db := --with-tokyocabinet --without-gdbm --without-bdb --without-qdbm --without-lmdb --without-kyotocabinet
+    ifeq ($(shell dpkg --print-architecture),hurd-i386)
+	hcache_db := --with-tokyocabinet --without-bdb --without-qdbm --without-lmdb --without-kyotocabinet
+    endif
+endif
+ifeq ($(HCACHE_DB),kyotocabinet)A
+    hcache_db := --with-kyotocabinet --without-gdbm --without-bdb --without-qdbm --without-lmdb --without-tokyocabinet
+    ifeq ($(shell dpkg --print-architecture),hurd-i386)
+	hcache_db := --with-kyotocabinet --without-bdb --without-qdbm --without-lmdb --without-tokyocabinet
+    endif
+endif
+
+%:
+	dh $@ --builddirectory=debian/build
+
+override_dh_auto_configure:
+		dh_auto_configure --				\
+			--with-docdir=/usr/share/doc/neomutt	\
+			--with-mailpath=/var/mail		\
+			--disable-dependency-tracking		\
+			--enable-gpgme				\
+			--enable-fmemopen			\
+			--enable-sidebar			\
+			--enable-notmuch			\
+			--enable-compressed			\
+			--enable-pop				\
+			--enable-imap				\
+			--enable-nntp				\
+			--enable-smtp				\
+			--enable-debug				\
+			--enable-fcntl				\
+			--with-mixmaster			\
+			--with-curses				\
+			--with-gss				\
+			--with-gnutls				\
+			--with-idn				\
+			--with-sasl				\
+			$(hcache_db)
+
+override_dh_auto_install:
+	dh_auto_install --destdir=debian/tmp
+
+override_dh_install:
+	rm -rf debian/tmp/usr/share/doc/neomutt/samples/iconv
+	rm -f debian/tmp/usr/share/doc/neomutt/samples/ca-bundle.crt
+	mv debian/tmp/etc/Muttrc debian/tmp/etc/NeoMuttrc
+	( sed -e '/## More settings/,$$d' debian/tmp/etc/NeoMuttrc || exit 1 ; \
+	  cat debian/extra/rc/Muttrc.foot ) > debian/tmp/NeoMuttrc
+	#mv debian/tmp/usr/share/doc/neomutt/NEWS  debian/tmp/usr/share/doc/neomutt/NEWS.old
+	cp NEWS  debian/tmp/usr/share/doc/neomutt/NEWS.old
+	cp UPDATING debian/tmp/usr/share/doc/neomutt/NEWS
+	dh_install
+
+override_dh_installchangelogs:
+	dh_installchangelogs ChangeLog.neomutt
+	dh_installchangelogs -XGPL -XChangeLog
+
+override_dh_installexamples:
+	dh_installexamples
+	find debian/ -size 0 -exec rm -v {} \;
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz
+
+override_dh_fixperms:
+	dh_fixperms --exclude usr/bin/mutt_dotlock
+
+override_dh_link:
+	rm -v debian/neomutt/usr/share/doc/neomutt/changelog
+	dh_link
