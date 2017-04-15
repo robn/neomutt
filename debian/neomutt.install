@@ -1,0 +1,7 @@
+debian/extra/mutt.xpm		usr/share/pixmaps
+debian/extra/neomutt.desktop	usr/share/applications
+debian/tmp/usr/bin/mutt
+debian/tmp/usr/bin/mutt_dotlock
+debian/tmp/usr/bin/pgpewrap	usr/lib/neomutt
+debian/tmp/usr/bin/pgpring	usr/lib/neomutt
+debian/tmp/usr/bin/smime_keys

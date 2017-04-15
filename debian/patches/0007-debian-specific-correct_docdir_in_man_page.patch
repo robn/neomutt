@@ -1,0 +1,31 @@
+
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:08:26 +0100
+Subject: correct_docdir_in_man_page
+
+Fix the link so it points to the correct docdir
+and gzipped manual.
+
+To apply to neomutt by:
+From c99e20ccba35d29772f65edf5600d0e45ac309f3 Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Fri, 6 May 2016 00:23:59 +0100
+Subject: [PATCH 07/22] debian-specific/correct_docdir_in_man_page
+
+---
+ doc/mutt.man | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: neomutt-20160818/doc/mutt.man
+===================================================================
+--- neomutt-20160818.orig/doc/mutt.man
++++ neomutt-20160818/doc/mutt.man
+@@ -195,7 +195,7 @@ User's personal mapping between MIME typ
+ System mapping between MIME types and file extensions.
+ .IP "@bindir@/mutt_dotlock"
+ The privileged dotlocking program.
+-.IP "@docdir@/manual.txt"
++.IP "/usr/share/doc/neomutt/manual.txt.gz"
+ The Mutt manual.
+ .SH BUGS
+ .PP

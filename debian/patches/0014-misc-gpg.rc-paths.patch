@@ -1,0 +1,33 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:30:20 +0100
+Subject: gpg.rc-paths
+
+To apply to neomutt by:
+Use the correct path of pgpewrap.
+From 8223bfe0e3ca510ca7b6e90741c9ffb7e6f13a79 Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Fri, 6 May 2016 00:24:02 +0100
+Subject: [PATCH 14/22] misc/gpg.rc-paths
+
+---
+ contrib/gpg.rc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: neomutt-20160818/contrib/gpg.rc
+===================================================================
+--- neomutt-20160818.orig/contrib/gpg.rc
++++ neomutt-20160818/contrib/gpg.rc
+@@ -49,11 +49,11 @@ set pgp_clearsign_command="gpg --no-verb
+ 
+ # create a pgp/mime encrypted attachment
+ # set pgp_encrypt_only_command="pgpewrap gpg-2comp -v --batch --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+-set pgp_encrypt_only_command="pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
++set pgp_encrypt_only_command="/usr/lib/neomutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+ 
+ # create a pgp/mime encrypted and signed attachment
+ # set pgp_encrypt_sign_command="pgpewrap gpg-2comp %?p?--passphrase-fd 0? -v --batch --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+-set pgp_encrypt_sign_command="pgpewrap gpg %?p?--passphrase-fd 0? --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
++set pgp_encrypt_sign_command="/usr/lib/neomutt/pgpewrap gpg %?p?--passphrase-fd 0? --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+ 
+ # import a key into the public key ring
+ set pgp_import_command="gpg --no-verbose --import %f"

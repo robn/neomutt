@@ -1,0 +1,32 @@
+From 53fc7ac69ff1831aedce28b75b5633552b1db672 Mon Sep 17 00:00:00 2001
+From: Elimar Riesebieter <riesebie@lxtec.de>
+Date: Sun, 11 Sep 2016 10:17:52 +0200
+Subject: [PATCH] tarname in AC_INIT is not correct (#136)
+
+The latest release has [neomutt] as second last argument of AC_INIT in
+configure.ac, that causes the docs to be installed in
+/usr/share/doc/neomutt and the locales to be called neomutt.mo.
+
+Changing it to [mutt] will fix the issue (and it will also make sure
+that people who have a locale different from English will get the right
+messages, as the binary generated is still called mutt).
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1727342..097f928 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -6,7 +6,7 @@ dnl !!! TO DUMP THEIR RESULTS WHEN MUTT -V IS CALLED            !!!
+ CFLAGS=$CFLAGS
+ LDFLAGS=$LDFLAGS
+ 
+-AC_INIT([NeoMutt], [20160910], [neomutt-devel@neomutt.org], [neomutt], [http://www.neomutt.org])
++AC_INIT([NeoMutt], [20160910], [neomutt-devel@neomutt.org], [mutt], [http://www.neomutt.org])
+ AC_CONFIG_SRCDIR(mutt.h)
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADERS([config.h])
+-- 
+2.9.3
+

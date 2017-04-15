@@ -1,0 +1,30 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 17:14:35 +0100
+Subject: 383769-score-match
+
+Better matching for ~f, same as mutt-ng did.
+(see upstream http://bugs.mutt.org/2179)
+
+To apply to neomutt by:
+From a1b974ee4391f678a909a329194d1bb2c63b3aac Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Fri, 6 May 2016 00:24:03 +0100
+Subject: [PATCH 18/22] upstream/383769-score-match
+
+---
+ score.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: neomutt-20160818/score.c
+===================================================================
+--- neomutt-20160818.orig/score.c
++++ neomutt-20160818/score.c
+@@ -133,7 +133,7 @@ void mutt_score_message (CONTEXT *ctx, H
+   hdr->score = 0; /* in case of re-scoring */
+   for (tmp = Score; tmp; tmp = tmp->next)
+   {
+-    if (mutt_pattern_exec (tmp->pat, 0, NULL, hdr) > 0)
++    if (mutt_pattern_exec (tmp->pat, MUTT_MATCH_FULL_ADDRESS, NULL, hdr) > 0)
+     {
+       if (tmp->exact || tmp->val == 9999 || tmp->val == -9999)
+       {

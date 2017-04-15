@@ -1,0 +1,33 @@
+
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:20:58 +0100
+Subject: assumed_charset-compat
+
+On upstream inclusion of the assumed_charset patch (past 1.5.14),
+file_charset got renamed to attach_charset. We add it back
+for compatibility.
+
+To apply to neomutt by:
+From b1cf3b01aeeb7780aba884c8a2b471e126b3a61e Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Fri, 6 May 2016 00:24:00 +0100
+Subject: [PATCH 10/22] debian-specific/assumed_charset-compat
+
+---
+ init.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: neomutt-20160818/init.h
+===================================================================
+--- neomutt-20160818.orig/init.h
++++ neomutt-20160818/init.h
+@@ -228,6 +228,9 @@ struct option_t MuttVars[] = {
+   ** Note: for Japanese users, ``iso-2022-*'' must be put at the head
+   ** of the value as shown above if included.
+   */
++  { "file_charset",	DT_SYN,  R_NONE, UL "attach_charset", 0 },
++  /*
++  */
+   { "attach_format",	DT_STR,  R_NONE, UL &AttachFormat, UL "%u%D%I %t%4n %T%.40d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] " },
+   /*
+   ** .pp

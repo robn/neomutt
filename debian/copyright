@@ -1,0 +1,53 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: neomutt
+Upstream-Contact: Richard Russon <rich@flatcap.org>
+Source: https://github.com/neomutt/neomutt
+Comment: This is Debian's prepackaged version of NeoMutt, a powerful text-mode
+         mail user agent. It was debianized from Elimar Riesebieter
+         <riesebie@lxtec.de>  Mon, 30 May 2016 14:25:15 +0200
+         The authors of the applied patches to this version of NeoMutt
+         can be found in `/usr/share/doc/neomutt/README.$PATCHNAME'.
+
+Files: *
+Copyright: Copyright (C) 1996-2014 Michael R. Elkins <me@cs.hmc.edu>
+           Copyright (C) 1996-2002 Brandon Long <blong@fiction.net>
+           Copyright (C) 1997-2009 Thomas Roessler <roessler@does-not-exist.org>
+           Copyright (C) 1998-2005 Werner Koch <wk@isil.d.shuttle.de>
+           Copyright (C) 1999-2014 Brendan Cully <brendan@kublai.com>
+           Copyright (C) 1999-2002 Tommi Komulainen <Tommi.Komulainen@iki.fi>
+           Copyright (C) 2000-2004 Edmund Grimley Evans <edmundo@rano.org>
+           Copyright (C) 2006-2009 Rocco Rutte <pdmef@gmx.net>
+           Copyright (C) 2014-2015 Kevin J. McCarthy <kevin@8t8.us>
+	   Copyright (C) 2016 Richard Russon <rich@flatcap.org>
+Comment: Contributors:
+           Copyright (C) 2001 Marco d'Itri
+           Copyright (C) 2001-2002 Oliver Ehli
+           Copyright (C) 2004 Brian Fundakowski Feldman
+           Copyright (C) 2004 g10 Code GmbH
+           Copyright (C) 2004 Thomas Glanzmann
+           Copyright (C) 2003 Bjoern Jacke
+           Copyright (C) 2000 Manoj Kasichainula
+           Copyright (C) 2001-2004 Andrew McDonald
+           Copyright (C) 2001 Mike Schiraldi
+           Copyright (C) 2000-2003 Vsevolod Volkov
+           Copyright (C) 2004 Tobias Werth
+           Copyright (C) 2005 Andreas Krennmair <ak@synflood.at>
+           Copyright (C) 2005 Peter J. Holzer <hjp@hjp.net>
+License: GPL-2+
+
+
+Files: debian/*
+Copyright: 1999-2004 Marco d'Itri <md@linux.it>
+           2005-2009 Adeodato Simó <dato@net.com.org.es>
+           2006-2016 Christoph Berg <myon@debian.org>
+           2009-2016 Antonio Radici <antonio@dyne.org>
+           2013-2016 Evgeni Golov <evgeni@debian.org>
+           2014-2016 Matteo F. Vescovi <mfv@debian.org>
+           2016 Elimar Riesebieter <riesebie@lxtec.de>
+License: GPL-2+
+
+
+License: GPL-2+
+ On Debian systems, the full text of the GNU General Public
+ License version 2 can be found in the file
+ /usr/share/common-licenses/GPL-2.

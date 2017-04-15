@@ -1,0 +1,44 @@
+From d9b401bf7ecd52a6a9d6d1165cd3218c115b7717 Mon Sep 17 00:00:00 2001
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:25:39 +0100
+Subject: 566076-build_doc_adjustments
+
+Use w3m to build the txt manual.
+
+To apply to neomutt by:
+From: Richard Russon <rich@flatcap.org>
+Date: Fri, 6 May 2016 00:24:01 +0100
+Subject: [PATCH 12/22] debian-specific/566076-build_doc_adjustments
+
+---
+ doc/Makefile.am | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+Index: neomutt-20160818/doc/Makefile.am
+===================================================================
+--- neomutt-20160818.orig/doc/Makefile.am
++++ neomutt-20160818/doc/Makefile.am
+@@ -110,9 +110,7 @@ uninstall-local:
+ 
+ check:
+ manual.txt: manual.html
+-	-LC_ALL=C lynx -dump -nolist -with_backspaces -display_charset=us-ascii manual.html > $@ || \
+-	LC_ALL=C w3m -dump manual.html > $@ || \
+-	LC_ALL=C elinks -dump -no-numbering -no-references manual.html | sed -e 's,\\001, ,g' > $@
++	LC_ALL=C w3m -dump -O UTF-8 manual.html > $@
+ 
+ Muttrc: stamp-doc-rc
+ 
+@@ -124,10 +122,10 @@ stamp-doc-rc: $(top_srcdir)/init.h maked
+ 	touch stamp-doc-rc
+ 
+ manual.html: $(srcdir)/html.xsl $(srcdir)/mutt.xsl stamp-doc-xml $(srcdir)/mutt.css
+-	-xsltproc --nonet -o $@ $(srcdir)/html.xsl manual.xml
++	xsltproc --nonet -o $@ $(srcdir)/html.xsl manual.xml
+ 
+ stamp-doc-chunked: $(srcdir)/chunk.xsl $(srcdir)/mutt.xsl stamp-doc-xml $(srcdir)/mutt.css
+-	-xsltproc --nonet $(srcdir)/chunk.xsl manual.xml
++	xsltproc --nonet $(srcdir)/chunk.xsl manual.xml
+ 	touch stamp-doc-chunked
+ 
+ $(CHUNKED_DOCFILES): stamp-doc-chunked

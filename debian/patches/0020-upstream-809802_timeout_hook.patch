@@ -1,0 +1,126 @@
+From: "Matteo F. Vescovi" <mfv@debian.org>
+Date: Sat, 9 Jan 2016 14:47:53 +0100
+Subject: 809802_timeout_hook
+
+Patch provided by gustavo panizzo <gfa@zumbi.com.ar>
+
+To apply to neomutt by:
+From 5f5548400dd7fa5a7f36ccf3fd6f947558647dd6 Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Fri, 6 May 2016 00:24:10 +0100
+Subject: [PATCH 20/22] upstream/809802_timeout_hook
+
+---
+ curs_main.c |  4 +++-
+ hook.c      | 29 ++++++++++++++++++++++++++++-
+ init.h      |  1 +
+ mutt.h      |  7 ++++---
+ protos.h    |  1 +
+ 5 files changed, 37 insertions(+), 5 deletions(-)
+
+Index: neomutt-20160723/curs_main.c
+===================================================================
+--- neomutt-20160723.orig/curs_main.c
++++ neomutt-20160723/curs_main.c
+@@ -949,8 +949,10 @@ int mutt_index_menu (void)
+ 
+       dprint(4, (debugfile, "mutt_index_menu[%d]: Got op %d\n", __LINE__, op));
+ 
+-      if (op == -1)
++      if (op == -1) {
++        mutt_timeout_hook(".");
+ 	continue; /* either user abort or timeout */
++      }
+ 
+       mutt_curs_set (1);
+ 
+Index: neomutt-20160723/hook.c
+===================================================================
+--- neomutt-20160723.orig/hook.c
++++ neomutt-20160723/hook.c
+@@ -154,7 +154,7 @@ int mutt_parse_hook (BUFFER *buf, BUFFER
+ 	ptr->rx.not == not &&
+ 	!mutt_strcmp (pattern.data, ptr->rx.pattern))
+     {
+-      if (data & (M_FOLDERHOOK | M_SENDHOOK | M_SEND2HOOK | M_MESSAGEHOOK | M_ACCOUNTHOOK | M_REPLYHOOK | M_CRYPTHOOK))
++      if (data & (M_FOLDERHOOK | M_SENDHOOK | M_SEND2HOOK | M_MESSAGEHOOK | M_ACCOUNTHOOK | M_REPLYHOOK | M_CRYPTHOOK | M_TIMEOUTHOOK))
+       {
+ 	/* these hooks allow multiple commands with the same
+ 	 * pattern, so if we've already seen this pattern/command pair, just
+@@ -506,6 +506,33 @@ LIST *mutt_crypt_hook (ADDRESS *adr)
+   return _mutt_list_hook (adr->mailbox, M_CRYPTHOOK);
+ }
+ 
++
++void mutt_timeout_hook (const char *chs)
++{
++  HOOK* hook;
++  BUFFER token;
++  BUFFER err;
++  char buf[STRING];
++
++  err.data = buf;
++  err.dsize = sizeof (buf);
++  memset (&token, 0, sizeof (token));
++
++  for (hook = Hooks; hook; hook = hook->next)
++  {
++    if (! (hook->command && (hook->type & M_TIMEOUTHOOK)))
++      continue;
++
++    if (mutt_parse_rc_line (hook->command, &token, &err) == -1)
++    {
++      FREE (&token.data);
++      mutt_error ("%s", err.data);
++      mutt_sleep (1);
++
++      return;
++    }
++  }
++}
+ #ifdef USE_SOCKET
+ void mutt_account_hook (const char* url)
+ {
+Index: neomutt-20160723/init.h
+===================================================================
+--- neomutt-20160723.orig/init.h
++++ neomutt-20160723/init.h
+@@ -4335,6 +4335,7 @@ const struct command_t Commands[] = {
+   { "spam",		parse_spam_list,	M_SPAM },
+   { "nospam",		parse_spam_list,	M_NOSPAM },
+   { "subscribe",	parse_subscribe,	0 },
++  { "timeout-hook",	mutt_parse_hook,	M_TIMEOUTHOOK },
+   { "toggle",		parse_set,		M_SET_INV },
+   { "unalias",		parse_unalias,		0 },
+   { "unalternative_order",parse_unlist,		UL &AlternativeOrderList },
+Index: neomutt-20160723/mutt.h
+===================================================================
+--- neomutt-20160723.orig/mutt.h
++++ neomutt-20160723/mutt.h
+@@ -159,10 +159,11 @@ typedef enum
+ #define M_ACCOUNTHOOK	(1<<9)
+ #define M_REPLYHOOK	(1<<10)
+ #define M_SEND2HOOK     (1<<11)
++#define M_TIMEOUTHOOK	(1<<12)
+ #ifdef USE_COMPRESSED
+-#define M_OPENHOOK	(1<<12)
+-#define M_APPENDHOOK	(1<<13)
+-#define M_CLOSEHOOK	(1<<14)
++#define M_OPENHOOK	(1<<13)
++#define M_APPENDHOOK	(1<<14)
++#define M_CLOSEHOOK	(1<<15)
+ #endif
+ 
+ /* tree characters for linearize_tree and print_enriched_string */
+Index: neomutt-20160723/protos.h
+===================================================================
+--- neomutt-20160723.orig/protos.h
++++ neomutt-20160723/protos.h
+@@ -154,6 +154,7 @@ const char *mutt_get_name (ADDRESS *);
+ char *mutt_get_parameter (const char *, PARAMETER *);
+ LIST *mutt_crypt_hook (ADDRESS *);
+ char *mutt_make_date (char *, size_t);
++void mutt_timeout_hook (const char *);
+ 
+ const char *mutt_make_version (void);
+ 

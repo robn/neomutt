@@ -1,0 +1,2 @@
+version=3
+https://github.com/neomutt/neomutt/releases /neomutt/neomutt/archive/neomutt-(.+)\.tar\.gz

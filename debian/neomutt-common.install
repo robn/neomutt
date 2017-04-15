@@ -1,0 +1,12 @@
+README.*					usr/share/doc/neomutt-common/README
+contrib/gpg.rc					etc/NeoMuttrc.d
+contrib/smime.rc				etc/NeoMuttrc.d
+debian/build/doc/*.html				usr/share/doc/neomutt-common/html
+debian/build/doc/manual.txt			usr/share/doc/neomutt-common
+debian/extra/lib/debian-ldap-query		usr/lib/neomutt
+debian/extra/lib/mailspell			usr/lib/neomutt
+debian/extra/lib/mailto-mutt			usr/lib/neomutt
+debian/extra/lib/source-muttrc.d		usr/lib/neomutt
+debian/extra/rc/*.rc				etc/NeoMuttrc.d
+debian/tmp/NeoMuttrc				etc
+debian/tmp/usr/share/locale

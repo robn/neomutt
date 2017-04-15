@@ -1,0 +1,57 @@
+From 091682339fb2417af87abf377309e3409a0480db Mon Sep 17 00:00:00 2001
+From: Elimar Riesebieter <riesebie@lxtec.de>
+Date: Sat, 20 Aug 2016 09:20:09 +0200
+Subject: [PATCH] Changed the shebang to '#!/bin/sh' in all keybase's
+ shellscripts. This is more flexible for use in a wider range of distros.
+
+---
+ contrib/keybase/decrypt.sh    | 2 +-
+ contrib/keybase/install.sh    | 2 +-
+ contrib/keybase/pgpdecrypt.sh | 2 +-
+ contrib/keybase/pgpverify.sh  | 2 +-
+ contrib/keybase/verify.sh     | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+Index: neomutt-20160818/contrib/keybase/decrypt.sh
+===================================================================
+--- neomutt-20160818.orig/contrib/keybase/decrypt.sh
++++ neomutt-20160818/contrib/keybase/decrypt.sh
+@@ -1,2 +1,2 @@
+-#! /usr/bin/bash
++#!/bin/sh
+ sed -n 's/^.*BEGIN KEYBASE/BEGIN KEYBASE/p' | keybase decrypt
+Index: neomutt-20160818/contrib/keybase/install.sh
+===================================================================
+--- neomutt-20160818.orig/contrib/keybase/install.sh
++++ neomutt-20160818/contrib/keybase/install.sh
+@@ -1,4 +1,4 @@
+-#! /usr/bin/bash
++#!/bin/sh
+ 
+ # If no directory exists, make it exist.
+ if [ -d "$HOME/.mutt/keybaseMutt" ]; then
+Index: neomutt-20160818/contrib/keybase/pgpdecrypt.sh
+===================================================================
+--- neomutt-20160818.orig/contrib/keybase/pgpdecrypt.sh
++++ neomutt-20160818/contrib/keybase/pgpdecrypt.sh
+@@ -1,3 +1,3 @@
+-#! /usr/bin/bash
++#!/bin/sh
+ 
+ gawk '/BEGIN/{y=1}y' | keybase pgp decrypt
+Index: neomutt-20160818/contrib/keybase/pgpverify.sh
+===================================================================
+--- neomutt-20160818.orig/contrib/keybase/pgpverify.sh
++++ neomutt-20160818/contrib/keybase/pgpverify.sh
+@@ -1,2 +1,2 @@
+-#! /usr/bin/bash
++#!/bin/sh
+ gawk '/BEGIN/{y=1}y' | keybase pgp verify
+Index: neomutt-20160818/contrib/keybase/verify.sh
+===================================================================
+--- neomutt-20160818.orig/contrib/keybase/verify.sh
++++ neomutt-20160818/contrib/keybase/verify.sh
+@@ -1,2 +1,2 @@
+-#! /usr/bin/bash
++#!/bin/sh
+ sed -n 's/^.*BEGIN KEYBASE/BEGIN KEYBASE/p' | keybase verify
