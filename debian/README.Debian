@@ -2,8 +2,8 @@
 # Description:   How to build a Debian package from neomutt's git source
 # Author:        Elimar Riesebieter <riesebie@lxtec.de>
 # Created:       Sat, 15 Apr 2017 12:32:08 +0200
-# Last modified: Sat, 15 Apr 2017 13:43:39 +0200
-# File:          /source/neomutt/git/neomutt/debian/README
+# Last modified: Sat, 15 Apr 2017 13:52:33 +0200
+# File:          /source/neomutt/git/neomutt/debian/README.Debian
 ###############################################################################
 
 Clone the sources:
