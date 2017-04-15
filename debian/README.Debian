@@ -2,7 +2,7 @@
 # Description:   How to build a Debian package from neomutt's git source
 # Author:        Elimar Riesebieter <riesebie@lxtec.de>
 # Created:       Sat, 15 Apr 2017 12:32:08 +0200
-# Last modified: Sat, 15 Apr 2017 13:32:01 +0200
+# Last modified: Sat, 15 Apr 2017 13:43:39 +0200
 # File:          /source/neomutt/git/neomutt/debian/README
 ###############################################################################
 
@@ -18,7 +18,7 @@ $ sudo apt install gitpkg
 $ gitpkg distro/debian
 
 You will find the package at:
-$ ls ../deb-packages/neomutt
+$ ls ../deb-packages/neomutt/
 
 ###############################################################################
 
@@ -32,7 +32,7 @@ $ sudo apt install gitpkg
 $ gitpkg mybranch
 
 You will find the package at:
-$ ls ../deb-packages/neomutt
+$ ls ../deb-packages/neomutt/
 
 ###############################################################################
 
@@ -62,7 +62,9 @@ $(hcache_db)
 
 Whereas hcache_db points to lmdb.
 
-To suite to your own settings adapt debian/rules accordingly.
+To suite to your own settings adapt debian/rules accordingly. debian/control has
+to be adapted to point to you as an uploader and force to demand the dev
+packages needed for your changes. This is the case for changing the header cache.
 
 ###############################################################################
 
