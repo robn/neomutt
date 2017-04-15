@@ -1,6 +1,7 @@
 neomutt (1:20170414-1lxtec1) unstable; urgency=medium
 
   * New upstream development release neomutt-20170414
+  * Install contrib/lua to doc/neomutt-common/examples.
 
  -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 15 Apr 2017 11:44:09 +0200
 
