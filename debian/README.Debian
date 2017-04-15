@@ -1,0 +1,91 @@
+###############################################################################
+# Description:   How to build a Debian package from neomutt's git source
+# Author:        Elimar Riesebieter <riesebie@lxtec.de>
+# Created:       Sat, 15 Apr 2017 12:32:08 +0200
+# Last modified: Sat, 15 Apr 2017 13:32:01 +0200
+# File:          /source/neomutt/git/neomutt/debian/README
+###############################################################################
+
+Clone the sources:
+$ git clone https://github.com/neomutt/neomutt.git.
+
+Checkout distro/debian:
+$ cd neomutt
+$ git checkout distro/debian
+
+Create a package from default settings:
+$ sudo apt install gitpkg
+$ gitpkg distro/debian
+
+You will find the package at:
+$ ls ../deb-packages/neomutt
+
+###############################################################################
+
+Preparing for customizing:
+$ git checkout -b mybranch
+
+Make changes to whatever file in the debian dir.
+
+Create a package from customized settings:
+$ sudo apt install gitpkg
+$ gitpkg mybranch
+
+You will find the package at:
+$ ls ../deb-packages/neomutt
+
+###############################################################################
+
+The default will build with:
+
+--with-docdir=/usr/share/doc/neomutt	\
+--with-mailpath=/var/mail		\
+--disable-dependency-tracking		\
+--enable-gpgme				\
+--enable-fmemopen			\
+--enable-sidebar			\
+--enable-notmuch			\
+--enable-compressed			\
+--enable-pop				\
+--enable-imap				\
+--enable-nntp				\
+--enable-smtp				\
+--enable-debug				\
+--enable-fcntl				\
+--with-mixmaster			\
+--with-curses				\
+--with-gss				\
+--with-gnutls				\
+--with-idn				\
+--with-sasl				\
+$(hcache_db)
+
+Whereas hcache_db points to lmdb.
+
+To suite to your own settings adapt debian/rules accordingly.
+
+###############################################################################
+
+To build the package:
+
+$ cp -av ../deb-packages/neomutt/neomutt_YYYYMMDD mybuilddir
+$ apt install devscripts
+$ cd mybuilddir
+$ dpkg-source -x neomutt_YYYYMMDD-1lxtec1.dsc
+$ cd neomutt-YYYYMMDD
+$ debuild
+
+After a successful build the deb's should be in ../ ;-)
+
+Please not that a pristine Debian mutt install will be removed. Installing
+neomutt will have /etc/NeoMuttrc and /etc/NeoMuttrc.d. The neomutt-common
+package includes all the documentation and contribs from neomutt's source.
+To go back to Debian's mutt please first remove the neomutt packages:
+
+# apt remove --purge neomutt-common.
+
+If you hit a bug or want to propose optimizations to the package please send me an
+e-mail or we can discuss any issue according to distro/debian at
+https://github.com/neomutt/neomutt/issues ,at
+http://mailman.neomutt.org/mailman/listinfo/neomutt-devel-neomutt.org or
+irc://irc.freenode.net/neomutt.
