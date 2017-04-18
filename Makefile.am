@@ -8,7 +8,7 @@ EXTRA_PROGRAMS = mutt_dotlock pgpring pgpewrap mutt_md5
 # Test the .tar file by building everything
 AM_DISTCHECK_CONFIGURE_FLAGS = --enable-compressed --enable-debug \
 	--enable-gpgme --enable-imap --enable-nntp --enable-notmuch \
-	--enable-pop --enable-sidebar --enable-smtp --with-bdb --with-gdbm \
+	--enable-pop --enable-smtp --with-bdb --with-gdbm \
 	--with-gnutls --with-gss --with-kyotocabinet --with-lmdb --with-qdbm \
 	--with-sasl --with-tokyocabinet
 
@@ -46,7 +46,7 @@ mutt_SOURCES = addrbook.c alias.c ascii.c attach.c base64.c browser.c buffer.c \
 	mutt_idna.c mutt_sasl_plain.c mx.c pager.c parse.c pattern.c \
 	postpone.c query.c recvattach.c recvcmd.c rfc1524.c rfc2047.c \
 	rfc2231.c rfc3676.c rfc822.c safe_asprintf.c score.c send.c sendlib.c \
-	signal.c sort.c status.c system.c thread.c url.c version.c
+	sidebar.c signal.c sort.c status.c system.c thread.c url.c version.c
 
 nodist_mutt_SOURCES = $(BUILT_SOURCES)
 
@@ -68,7 +68,7 @@ EXTRA_mutt_SOURCES = account.c bcache.c bcache.h browser.h compress.c \
 	mutt_lua.c mutt_sasl.c mutt_socket.c mutt_ssl.c mutt_ssl_gnutls.c \
 	mutt_tunnel.c newsrc.c nntp.c pgp.c pgpinvoke.c pgpkey.c pgplib.c \
 	pgpmicalg.c pgppacket.c pop.c pop_auth.c pop_lib.c remailer.c \
-	remailer.h resize.c sha1.c sidebar.c smime.c smtp.c url.h utf8.c \
+	remailer.h resize.c sha1.c smime.c smtp.c url.h utf8.c \
 	wcwidth.c
 
 EXTRA_DIST = account.h ascii.h attach.h browser.h buffer.h buffy.h ChangeLog \
@@ -81,11 +81,11 @@ EXTRA_DIST = account.h ascii.h attach.h browser.h buffer.h buffy.h ChangeLog \
 	mutt.h mutt_commands.h mutt_crypt.h mutt_curses.h mutt_idna.h \
 	mutt_lua.h mutt_menu.h mutt_options.h mutt_regex.h mutt_sasl.h \
 	mutt_sasl_plain.h mutt_socket.h mutt_ssl.h mutt_tunnel.h mx.h myvar.h \
-	nntp.h OPS OPS.CRYPT OPS.MIX OPS.NOTMUCH OPS.PGP OPS.SIDEBAR OPS.SMIME \
+	nntp.h OPS OPS.CRYPT OPS.MIX OPS.NOTMUCH OPS.PGP OPS.SMIME \
 	pager.h PATCHES patchlist.sh pgp.h pgpewrap.c pgplib.h pgppacket.h \
 	pop.h protos.h README.md README.neomutt README.notmuch README.SECURITY \
 	README.SSL remailer.c remailer.h rfc1524.h rfc2047.h rfc2231.h \
-	rfc3676.h rfc822.h sha1.h sidebar.h smime.h smime_keys.pl sort.h TODO \
+	rfc3676.h rfc822.h sha1.h smime.h smime_keys.pl sort.h TODO \
 	txt2c.c txt2c.sh UPDATING UPDATING.kz version.h keymap_alldefs.h
 
 EXTRA_SCRIPTS = smime_keys
@@ -147,9 +147,9 @@ smime_keys: $(srcdir)/smime_keys.pl
 keymap_defs.h: $(OPS) $(srcdir)/gen_defs
 	$(srcdir)/gen_defs $(OPS) > keymap_defs.h
 
-keymap_alldefs.h: $(srcdir)/OPS $(srcdir)/OPS.SIDEBAR $(srcdir)/OPS.NOTMUCH $(srcdir)/OPS.MIX $(srcdir)/OPS.PGP $(srcdir)/OPS.SMIME $(srcdir)/OPS.CRYPT $(srcdir)/gen_defs config.h
+keymap_alldefs.h: $(srcdir)/OPS $(srcdir)/OPS.NOTMUCH $(srcdir)/OPS.MIX $(srcdir)/OPS.PGP $(srcdir)/OPS.SMIME $(srcdir)/OPS.CRYPT $(srcdir)/gen_defs $(srcdir)/config.h
 	rm -f $@
-	$(srcdir)/gen_defs $(srcdir)/OPS $(srcdir)/OPS.SIDEBAR $(srcdir)/OPS.NOTMUCH \
+	$(srcdir)/gen_defs $(srcdir)/OPS $(srcdir)/OPS.NOTMUCH \
 		$(srcdir)/OPS.MIX $(srcdir)/OPS.PGP $(srcdir)/OPS.SMIME $(srcdir)/OPS.CRYPT \
 		> keymap_alldefs.h
 

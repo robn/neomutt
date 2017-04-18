@@ -147,7 +147,6 @@ AS_IF([test x$enable_everything = "xyes"], [
 	use_gpgme="yes"
 	use_pgp="yes"
 	use_smime="yes"
-	use_sidebar="yes"
 	use_compressed="yes"
 	use_notmuch="yes"
 	use_pop="yes"
@@ -165,7 +164,6 @@ AS_IF([test x$enable_everything = "xyes"], [
 	use_gpgme="no"
 	use_pgp="no"
 	use_smime="no"
-	use_sidebar="no"
 	use_compressed="no"
 	use_notmuch="no"
 	use_pop="no"
@@ -206,10 +204,6 @@ AC_ARG_ENABLE(pgp,
 AC_ARG_ENABLE(smime,
 	AS_HELP_STRING([--disable-smime], [Disable SMIME support]),
 	[use_smime=$enableval], [use_smime=yes])
-
-AC_ARG_ENABLE(sidebar,
-	AC_HELP_STRING([--enable-sidebar], [Enable Sidebar support]),
-	[use_sidebar=$enableval])
 
 AC_ARG_ENABLE(lua,
 	AC_HELP_STRING([--enable-lua], [Enable lua scripting support]),
@@ -281,12 +275,7 @@ AS_IF([test x$use_smime != "xno"], [
 	SMIMEAUX_TARGET="smime_keys"
 ])
 
-dnl --enable-sidebar
-AS_IF([test x$use_sidebar = "xyes"], [
-	AC_DEFINE(USE_SIDEBAR, 1, [Define if you want support for the sidebar.])
-	OPS="$OPS \$(srcdir)/OPS.SIDEBAR"
-	MUTT_LIB_OBJECTS="$MUTT_LIB_OBJECTS sidebar.o"
-])
+AC_DEFINE(USE_SIDEBAR, 1, [Define if you want support for the sidebar.])
 
 dnl --enable-compressed
 AS_IF([test x$use_compressed = "xyes"], [
@@ -1436,7 +1425,6 @@ AC_MSG_NOTICE([Summary of build options:
   GPGME:             $use_gpgme
   PGP:               $use_pgp
   SMIME:             $use_smime
-  Sidebar:           $use_sidebar
   Notmuch:           $use_notmuch
   Compressed Folder: $use_compressed
   Header Cache(s):   $hcache_db_used
