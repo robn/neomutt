@@ -15,8 +15,8 @@ index 8e72c16..403a631 100644
  CFLAGS=$CFLAGS
  LDFLAGS=$LDFLAGS
  
--AC_INIT([NeoMutt], [20170414], [neomutt-devel@neomutt.org], [mutt], [https://www.neomutt.org])
-+AC_INIT([NeoMutt], [20170414-lxtec], [neomutt-devel@neomutt.org], [mutt], [https://www.neomutt.org])
+-AC_INIT([NeoMutt], [20170421], [neomutt-devel@neomutt.org], [mutt], [https://www.neomutt.org])
++AC_INIT([NeoMutt], [20170421-lxtec], [neomutt-devel@neomutt.org], [mutt], [https://www.neomutt.org])
  AC_CONFIG_SRCDIR(mutt.h)
  AM_INIT_AUTOMAKE
  AC_CONFIG_HEADERS([config.h])
