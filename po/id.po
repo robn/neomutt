@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: neomutt-20161104\n"
 "Report-Msgid-Bugs-To: neomutt-devel@neomutt.org\n"
-"POT-Creation-Date: 2017-04-13 13:26+0100\n"
+"POT-Creation-Date: 2017-04-21 13:02+0100\n"
 "PO-Revision-Date: 2007-11-07 10:39+1100\n"
 "Last-Translator: Ronny Haryanto <ronny@haryan.to>\n"
 "Language-Team: Indonesian <web@linux.or.id>\n"
@@ -32,12 +32,12 @@ msgstr "Nama user di %s: "
 msgid "Password for %s@%s: "
 msgstr "Password utk %s@%s: "
 
-#: addrbook.c:31 browser.c:48 browser.c:58 pager.c:1598 postpone.c:36
+#: addrbook.c:31 browser.c:48 browser.c:58 pager.c:1599 postpone.c:36
 #: query.c:44 recvattach.c:50
 msgid "Exit"
 msgstr "Keluar"
 
-#: addrbook.c:31 curs_main.c:775 curs_main.c:788 pager.c:1602 pager.c:1612
+#: addrbook.c:31 curs_main.c:775 curs_main.c:788 pager.c:1603 pager.c:1613
 #: postpone.c:37
 msgid "Del"
 msgstr "Hapus"
@@ -52,7 +52,7 @@ msgstr "Pilih"
 
 #: addrbook.c:33 browser.c:52 browser.c:64 compose.c:105 compose.c:117
 #: crypt_gpgme.c:3943 curs_main.c:781 curs_main.c:794 mutt_ssl.c:837
-#: mutt_ssl_gnutls.c:714 pager.c:2021 pgpkey.c:500 postpone.c:39 query.c:49
+#: mutt_ssl_gnutls.c:714 pager.c:2022 pgpkey.c:500 postpone.c:39 query.c:49
 #: recvattach.c:51 smime.c:412
 msgid "Help"
 msgstr "Bantuan"
@@ -125,7 +125,7 @@ msgid "Mailcap compose entry requires %%s"
 msgstr "'compose' di file mailcap membutuhkan %%s"
 
 #: attach.c:127 attach.c:255 commands.c:223 compose.c:1406 compress.c:429
-#: curs_lib.c:215 curs_lib.c:800
+#: curs_lib.c:217 curs_lib.c:871
 #, c-format
 msgid "Error running \"%s\"!"
 msgstr "Gagal menjalankan \"%s\"!"
@@ -145,7 +145,8 @@ msgstr "Gagal mengganti nama file."
 #: attach.c:191
 #, c-format
 msgid "No mailcap compose entry for %s, creating empty file."
-msgstr "'compose' di file mailcap tidak ditemukan untuk %s, membuat file kosong."
+msgstr ""
+"'compose' di file mailcap tidak ditemukan untuk %s, membuat file kosong."
 
 #: attach.c:247
 #, c-format
@@ -319,13 +320,18 @@ msgstr "File Mask: "
 #. L10N: The highlighted letters must match the "Sort" options
 #: browser.c:1710
 #, fuzzy
-msgid "Reverse sort by (d)ate, (a)lpha, si(z)e, d(e)scription, (c)ount, ne(w) count, or do(n)'t sort? "
-msgstr "Urut terbalik berdasarkan (t)anggal, (a)bjad, (u)kuran atau (n)ggak diurut? "
+msgid ""
+"Reverse sort by (d)ate, (a)lpha, si(z)e, d(e)scription, (c)ount, ne(w) "
+"count, or do(n)'t sort? "
+msgstr ""
+"Urut terbalik berdasarkan (t)anggal, (a)bjad, (u)kuran atau (n)ggak diurut? "
 
 #. L10N: The highlighted letters must match the "Reverse Sort" options
 #: browser.c:1713
 #, fuzzy
-msgid "Sort by (d)ate, (a)lpha, si(z)e, d(e)scription, (c)ount, ne(w) count, or do(n)'t sort? "
+msgid ""
+"Sort by (d)ate, (a)lpha, si(z)e, d(e)scription, (c)ount, ne(w) count, or "
+"do(n)'t sort? "
 msgstr "Urut berdasarkan (t)anggal, (a)bjad, (u)kuran atau (n)ggak diurut? "
 
 #. L10N: These must match the highlighted letters from "Sort" and "Reverse Sort"
@@ -406,7 +412,7 @@ msgstr "mono: parameternya kurang"
 msgid "%s: no such attribute"
 msgstr "%s: tidak ada atribut begitu"
 
-#: color.c:774 hook.c:69 hook.c:81 init.c:2152 init.c:2227 keymap.c:920
+#: color.c:774 hook.c:69 hook.c:81 init.c:2160 init.c:2235 keymap.c:920
 msgid "too few arguments"
 msgstr "parameternya kurang"
 
@@ -546,86 +552,94 @@ msgid "Messages could not be printed"
 msgstr "Surat-surat tidak dapat dicetak"
 
 #. L10N: The highlighted letters must match the "Sort" options
-#: commands.c:516
+#: commands.c:515
 #, fuzzy
-msgid "Rev-Sort Date/Frm/Recv/Subj/tO/Thread/Unsort/siZe/sCore/sPam/Label?: "
-msgstr "Urut terbalik tan(g)gal/d(a)ri/t(e)rima/(s)ubj/(k)e/(t)hread/(n)ggak urut/(u)kuran/n(i)lai/s(p)am?: "
+msgid ""
+"Rev-Sort (d)ate/(f)rm/(r)ecv/(s)ubj/t(o)/(t)hread/(u)nsort/si(z)e/s(c)ore/"
+"s(p)am/(l)abel?: "
+msgstr ""
+"Urut terbalik tan(g)gal/d(a)ri/t(e)rima/(s)ubj/(k)e/(t)hread/(n)ggak urut/"
+"(u)kuran/n(i)lai/s(p)am?: "
 
 #. L10N: The highlighted letters must match the "Rev-Sort" options
 #: commands.c:519
 #, fuzzy
-msgid "Sort Date/Frm/Recv/Subj/tO/Thread/Unsort/siZe/sCore/sPam/Label?: "
-msgstr "Urut tan(g)gal/d(a)ri/t(e)rima/(s)ubj/(k)e/(t)hread/(n)ggak urut/(u)kuran/n(i)lai/s(p)am?: "
+msgid ""
+"Sort (d)ate/(f)rm/(r)ecv/(s)ubj/t(o)/(t)hread/(u)nsort/si(z)e/s(c)ore/s(p)am/"
+"(l)abel?: "
+msgstr ""
+"Urut tan(g)gal/d(a)ri/t(e)rima/(s)ubj/(k)e/(t)hread/(n)ggak urut/(u)kuran/"
+"n(i)lai/s(p)am?: "
 
 #. L10N: These must match the highlighted letters from "Sort" and "Rev-Sort"
-#: commands.c:522
+#: commands.c:523
 #, fuzzy
 msgid "dfrsotuzcpl"
 msgstr "gaesktnuip"
 
-#: commands.c:583
+#: commands.c:584
 msgid "Shell command: "
 msgstr "Perintah shell: "
 
-#: commands.c:726
+#: commands.c:727
 #, c-format
 msgid "Decode-save%s to mailbox"
 msgstr "Urai-simpan%s ke kotak surat"
 
-#: commands.c:727
+#: commands.c:728
 #, c-format
 msgid "Decode-copy%s to mailbox"
 msgstr "Urai-salin%s ke kotak surat"
 
-#: commands.c:728
+#: commands.c:729
 #, c-format
 msgid "Decrypt-save%s to mailbox"
 msgstr "Dekripsi-simpan%s ke kotak surat"
 
-#: commands.c:729
+#: commands.c:730
 #, c-format
 msgid "Decrypt-copy%s to mailbox"
 msgstr "Dekripsi-salin%s ke kotak surat"
 
-#: commands.c:730
+#: commands.c:731
 #, c-format
 msgid "Save%s to mailbox"
 msgstr "Simpan%s ke kotak surat"
 
-#: commands.c:731
+#: commands.c:732
 #, c-format
 msgid "Copy%s to mailbox"
 msgstr "Salin%s ke kotak surat"
 
-#: commands.c:732
+#: commands.c:733
 msgid " tagged"
 msgstr " telah ditandai"
 
-#: commands.c:796
+#: commands.c:797
 #, c-format
 msgid "Copying to %s..."
 msgstr "Sedang menyalin ke %s..."
 
-#: commands.c:958
+#: commands.c:959
 #, c-format
 msgid "Convert to %s upon sending?"
 msgstr "Ubah ke %s saat mengirim?"
 
-#: commands.c:968
+#: commands.c:969
 #, c-format
 msgid "Content-Type changed to %s."
 msgstr "Content-Type diubah ke %s."
 
-#: commands.c:973
+#: commands.c:974
 #, c-format
 msgid "Character set changed to %s; %s."
 msgstr "Character set diubah ke %s; %s."
 
-#: commands.c:975
+#: commands.c:976
 msgid "not converting"
 msgstr "tidak melakukan konversi"
 
-#: commands.c:975
+#: commands.c:976
 msgid "converting"
 msgstr "melakukan konversi"
 
@@ -917,6 +931,119 @@ msgstr "Sedang menyalin ke %s..."
 msgid "No decryption engine available for message"
 msgstr ""
 
+#: crypt.c:59
+#, c-format
+msgid " (current time: %c)"
+msgstr " (waktu skrg: %c)"
+
+#: crypt.c:64
+#, c-format
+msgid "[-- %s output follows%s --]\n"
+msgstr "[-- Keluaran dari %s%s --]\n"
+
+#: crypt.c:78
+msgid "Passphrase(s) forgotten."
+msgstr "Passphrase sudah dilupakan."
+
+#: crypt.c:139
+#, fuzzy
+msgid "Inline PGP can't be used with attachments.  Revert to PGP/MIME?"
+msgstr "Pesan tdk bisa dikirim inline. Gunakan PGP/MIME?"
+
+#: crypt.c:143
+msgid "Mail not sent: inline PGP can't be used with attachments."
+msgstr ""
+
+#: crypt.c:151 cryptglue.c:106 pgpkey.c:541 pgpkey.c:724
+msgid "Invoking PGP..."
+msgstr "Memanggil PGP..."
+
+#: crypt.c:162
+msgid "Message can't be sent inline.  Revert to using PGP/MIME?"
+msgstr "Pesan tdk bisa dikirim inline. Gunakan PGP/MIME?"
+
+#: crypt.c:164 send.c:1796
+msgid "Mail not sent."
+msgstr "Surat tidak dikirim."
+
+#: crypt.c:224
+msgid "Encrypt message to S/MIME Default Key also?"
+msgstr ""
+
+#: crypt.c:259
+msgid "Encrypt message to PGP Default Key also?"
+msgstr ""
+
+#: crypt.c:502
+msgid "S/MIME messages with no hints on content are unsupported."
+msgstr "Surat2 S/MIME tanpa hints pada isi tidak didukung."
+
+#: crypt.c:710 crypt.c:751
+msgid "Trying to extract PGP keys...\n"
+msgstr "Mencoba mengekstrak kunci2 PGP...\n"
+
+#: crypt.c:732 crypt.c:772
+msgid "Trying to extract S/MIME certificates...\n"
+msgstr "Mencoba mengekstrak sertifikat2 S/MIME...\n"
+
+#: crypt.c:913
+#, c-format
+msgid ""
+"[-- Error: Unknown multipart/signed protocol %s! --]\n"
+"\n"
+msgstr ""
+"[-- Error: Protokol multipart/signed %s tidak dikenal! --]\n"
+"\n"
+
+#: crypt.c:947
+msgid ""
+"[-- Error: Inconsistent multipart/signed structure! --]\n"
+"\n"
+msgstr ""
+"[-- Error: Struktur multipart/signed tidak konsisten! --]\n"
+"\n"
+
+#: crypt.c:983
+#, c-format
+msgid ""
+"[-- Warning: We can't verify %s/%s signatures. --]\n"
+"\n"
+msgstr ""
+"[-- Warning: Tidak dapat mem-verifikasi tandatangan %s/%s. --]\n"
+"\n"
+
+#: crypt.c:995
+msgid ""
+"[-- The following data is signed --]\n"
+"\n"
+msgstr ""
+"[-- Data berikut ini ditandatangani --]\n"
+"\n"
+
+#: crypt.c:1001
+msgid ""
+"[-- Warning: Can't find any signatures. --]\n"
+"\n"
+msgstr ""
+"[-- Warning: Tidak dapat menemukan tandatangan. --]\n"
+"\n"
+
+#: crypt.c:1007
+msgid ""
+"\n"
+"[-- End of signed data --]\n"
+msgstr ""
+"\n"
+"[-- Akhir data yang ditandatangani --]\n"
+
+#: cryptglue.c:84
+msgid "\"crypt_use_gpgme\" set but not built with GPGME support."
+msgstr "\"crypt_use_gpgme\" diset tapi tidak ada dukungan GPGME."
+
+#: cryptglue.c:108
+msgid "Invoking S/MIME..."
+msgstr "Memanggil S/MIME..."
+
 #: crypt_gpgme.c:384
 #, c-format
 msgid "error creating gpgme context: %s\n"
@@ -1000,7 +1127,9 @@ msgstr "Perhatian: Salah satu kunci telah dicabut.\n"
 
 #: crypt_gpgme.c:1135
 msgid "Warning: The key used to create the signature expired at: "
-msgstr "Perhatian: Kunci yg digunakan utk membuat tandatangan telah kadaluwarsa pada: "
+msgstr ""
+"Perhatian: Kunci yg digunakan utk membuat tandatangan telah kadaluwarsa "
+"pada: "
 
 #: crypt_gpgme.c:1142
 msgid "Warning: At least one certification key has expired\n"
@@ -1012,7 +1141,8 @@ msgstr "Perhatian: Tandatangan sudah kadaluwarsa pada: "
 
 #: crypt_gpgme.c:1164
 msgid "Can't verify due to a missing key or certificate\n"
-msgstr "Tidak bisa memverifikasi karena kunci atau sertifikat tidak ditemukan\n"
+msgstr ""
+"Tidak bisa memverifikasi karena kunci atau sertifikat tidak ditemukan\n"
 
 #: crypt_gpgme.c:1170
 msgid "The CRL is not available\n"
@@ -1047,16 +1177,26 @@ msgid "Fingerprint: "
 msgstr "Cap jari: "
 
 #: crypt_gpgme.c:1309
-msgid "WARNING: We have NO indication whether the key belongs to the person named as shown above\n"
-msgstr "PERHATIAN: TIDAK ada indikasi bahwa kunci tersebut dimiliki oleh orang yang namanya tertera di atas\n"
+msgid ""
+"WARNING: We have NO indication whether the key belongs to the person named "
+"as shown above\n"
+msgstr ""
+"PERHATIAN: TIDAK ada indikasi bahwa kunci tersebut dimiliki oleh orang yang "
+"namanya tertera di atas\n"
 
 #: crypt_gpgme.c:1316
 msgid "WARNING: The key does NOT BELONG to the person named as shown above\n"
-msgstr "PERHATIAN: Kunci tersebut TIDAK dimiliki oleh oleh orang yang namanya tertera di atas\n"
+msgstr ""
+"PERHATIAN: Kunci tersebut TIDAK dimiliki oleh oleh orang yang namanya "
+"tertera di atas\n"
 
 #: crypt_gpgme.c:1320
-msgid "WARNING: It is NOT certain that the key belongs to the person named as shown above\n"
-msgstr "PERHATIAN: TIDAK bisa dipastikan bahwa kunci tersebut dimiliki oleh orang yang namanya tertera di atas\n"
+msgid ""
+"WARNING: It is NOT certain that the key belongs to the person named as shown "
+"above\n"
+msgstr ""
+"PERHATIAN: TIDAK bisa dipastikan bahwa kunci tersebut dimiliki oleh orang "
+"yang namanya tertera di atas\n"
 
 #: crypt_gpgme.c:1350 crypt_gpgme.c:1355
 msgid "aka: "
@@ -1148,7 +1288,7 @@ msgstr "Error: dekripsi/verifikasi gagal: %s\n"
 msgid "Error: copy data failed\n"
 msgstr "Error: penyalinan data gagal\n"
 
-#: crypt_gpgme.c:2493 pgp.c:501
+#: crypt_gpgme.c:2493 pgp.c:504
 msgid ""
 "[-- BEGIN PGP MESSAGE --]\n"
 "\n"
@@ -1156,11 +1296,11 @@ msgstr ""
 "[-- AWAL SURAT PGP --]\n"
 "\n"
 
-#: crypt_gpgme.c:2495 pgp.c:503
+#: crypt_gpgme.c:2495 pgp.c:506
 msgid "[-- BEGIN PGP PUBLIC KEY BLOCK --]\n"
 msgstr "[-- AWAL PGP PUBLIC KEY BLOCK --]\n"
 
-#: crypt_gpgme.c:2497 pgp.c:505
+#: crypt_gpgme.c:2497 pgp.c:508
 msgid ""
 "[-- BEGIN PGP SIGNED MESSAGE --]\n"
 "\n"
@@ -1168,19 +1308,19 @@ msgstr ""
 "[-- AWAL SURAT DG TANDATANGAN PGP --]\n"
 "\n"
 
-#: crypt_gpgme.c:2523 pgp.c:548
+#: crypt_gpgme.c:2523 pgp.c:551
 msgid "[-- END PGP MESSAGE --]\n"
 msgstr "[-- AKHIR PESAN PGP --]\n"
 
-#: crypt_gpgme.c:2525 pgp.c:555
+#: crypt_gpgme.c:2525 pgp.c:558
 msgid "[-- END PGP PUBLIC KEY BLOCK --]\n"
 msgstr "[-- AKHIR PGP PUBLIC KEY BLOCK --]\n"
 
-#: crypt_gpgme.c:2527 pgp.c:557
+#: crypt_gpgme.c:2527 pgp.c:560
 msgid "[-- END PGP SIGNED MESSAGE --]\n"
 msgstr "[-- AKHIR PESAN DG TANDATANGAN PGP --]\n"
 
-#: crypt_gpgme.c:2550 pgp.c:591
+#: crypt_gpgme.c:2550 pgp.c:594
 msgid ""
 "[-- Error: could not find beginning of PGP message! --]\n"
 "\n"
@@ -1188,7 +1328,7 @@ msgstr ""
 "[-- Error: tidak tahu dimana surat PGP dimulai! --]\n"
 "\n"
 
-#: crypt_gpgme.c:2582 crypt_gpgme.c:2657 pgp.c:1010
+#: crypt_gpgme.c:2582 crypt_gpgme.c:2657 pgp.c:1013
 msgid "[-- Error: could not create temporary file! --]\n"
 msgstr "[-- Error: tidak bisa membuat file sementara! --]\n"
 
@@ -1200,7 +1340,7 @@ msgstr ""
 "[-- Data berikut ditandatangani dan dienkripsi dg PGP/MIME --]\n"
 "\n"
 
-#: crypt_gpgme.c:2597 pgp.c:1021
+#: crypt_gpgme.c:2597 pgp.c:1024
 msgid ""
 "[-- The following data is PGP/MIME encrypted --]\n"
 "\n"
@@ -1212,15 +1352,15 @@ msgstr ""
 msgid "[-- End of PGP/MIME signed and encrypted data --]\n"
 msgstr "[-- Akhir data yang ditandatangani dan dienkripsi dg PGP/MIME --]\n"
 
-#: crypt_gpgme.c:2620 pgp.c:1041
+#: crypt_gpgme.c:2620 pgp.c:1044
 msgid "[-- End of PGP/MIME encrypted data --]\n"
 msgstr "[-- Akhir data yang dienkripsi dg PGP/MIME --]\n"
 
-#: crypt_gpgme.c:2625 pgp.c:552 pgp.c:1046
+#: crypt_gpgme.c:2625 pgp.c:555 pgp.c:1049
 msgid "PGP message successfully decrypted."
 msgstr "Surat PGP berhasil didekrip."
 
-#: crypt_gpgme.c:2629 pgp.c:487 pgp.c:550 pgp.c:1050
+#: crypt_gpgme.c:2629 pgp.c:490 pgp.c:553 pgp.c:1053
 msgid "Could not decrypt PGP message"
 msgstr "Tidak bisa mendekripsi surat PGP"
 
@@ -1457,12 +1597,12 @@ msgstr "%s Anda yakin mau menggunakan kunci tsb?"
 msgid "Looking for keys matching \"%s\"..."
 msgstr "Mencari kunci yg cocok dengan \"%s\"..."
 
-#: crypt_gpgme.c:4375 pgp.c:1224
+#: crypt_gpgme.c:4375 pgp.c:1227
 #, c-format
 msgid "Use keyID = \"%s\" for %s?"
 msgstr "Gunakan keyID = '%s' untuk %s?"
 
-#: crypt_gpgme.c:4426 pgp.c:1273 smime.c:765 smime.c:865
+#: crypt_gpgme.c:4426 pgp.c:1276 smime.c:765 smime.c:865
 #, c-format
 msgid "Enter keyID for %s: "
 msgstr "Masukkan keyID untuk %s: "
@@ -1496,7 +1636,9 @@ msgstr ""
 #: crypt_gpgme.c:4610
 #, fuzzy
 msgid "S/MIME (s)ign, sign (a)s, (p)gp, (c)lear, or (o)ppenc mode off? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, (p)gp atau (b)ersih? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, (p)gp atau "
+"(b)ersih? "
 
 #. L10N: S/MIME options (opportunistic encryption is on)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1507,7 +1649,9 @@ msgstr ""
 #: crypt_gpgme.c:4620
 #, fuzzy
 msgid "PGP (s)ign, sign (a)s, s/(m)ime, (c)lear, or (o)ppenc mode off? "
-msgstr "PGP (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, s/(m)ime atau (b)ersih? "
+msgstr ""
+"PGP (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, s/(m)ime atau "
+"(b)ersih? "
 
 #. L10N: PGP options (opportunistic encryption is on)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1518,8 +1662,12 @@ msgstr ""
 #. L10N: S/MIME options (opportunistic encryption is off)
 #: crypt_gpgme.c:4636
 #, fuzzy
-msgid "S/MIME (e)ncrypt, (s)ign, sign (a)s, (b)oth, (p)gp, (c)lear, or (o)ppenc mode? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, (p)gp atau (b)ersih? "
+msgid ""
+"S/MIME (e)ncrypt, (s)ign, sign (a)s, (b)oth, (p)gp, (c)lear, or (o)ppenc "
+"mode? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, (p)gp atau "
+"(b)ersih? "
 
 #. L10N: S/MIME options (opportunistic encryption is off)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1531,8 +1679,12 @@ msgstr "etsdplb"
 #. L10N: PGP options (opportunistic encryption is off)
 #: crypt_gpgme.c:4646
 #, fuzzy
-msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, s/(m)ime, (c)lear, or (o)ppenc mode? "
-msgstr "PGP (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, s/(m)ime atau (b)ersih? "
+msgid ""
+"PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, s/(m)ime, (c)lear, or (o)ppenc "
+"mode? "
+msgstr ""
+"PGP (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, s/(m)ime atau "
+"(b)ersih? "
 
 #. L10N: PGP options (opportunistic encryption is off)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1544,7 +1696,9 @@ msgstr "etsdmlb"
 #: crypt_gpgme.c:4663
 #, fuzzy
 msgid "S/MIME (e)ncrypt, (s)ign, sign (a)s, (b)oth, (p)gp or (c)lear? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, (p)gp atau (b)ersih? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, (p)gp atau "
+"(b)ersih? "
 
 #. L10N: S/MIME options
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1555,7 +1709,9 @@ msgstr "etsdplb"
 #: crypt_gpgme.c:4673
 #, fuzzy
 msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, s/(m)ime or (c)lear? "
-msgstr "PGP (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, s/(m)ime atau (b)ersih? "
+msgstr ""
+"PGP (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, s/(m)ime atau "
+"(b)ersih? "
 
 #. L10N: PGP options
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1563,7 +1719,7 @@ msgstr "PGP (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, s/(m)ime ata
 msgid "esabmfc"
 msgstr "etsdmlb"
 
-#: crypt_gpgme.c:4701 pgp.c:1757 smime.c:2143 smime.c:2158
+#: crypt_gpgme.c:4701 pgp.c:1760 smime.c:2143 smime.c:2158
 msgid "Sign as: "
 msgstr "Tandatangani sebagai: "
 
@@ -1575,140 +1731,27 @@ msgstr "Gagal memverifikasi pengirim"
 msgid "Failed to figure out sender"
 msgstr "Gagal menentukan pengirim"
 
-#: crypt.c:59
-#, c-format
-msgid " (current time: %c)"
-msgstr " (waktu skrg: %c)"
-
-#: crypt.c:64
-#, c-format
-msgid "[-- %s output follows%s --]\n"
-msgstr "[-- Keluaran dari %s%s --]\n"
-
-#: crypt.c:78
-msgid "Passphrase(s) forgotten."
-msgstr "Passphrase sudah dilupakan."
-
-#: crypt.c:139
-#, fuzzy
-msgid "Inline PGP can't be used with attachments.  Revert to PGP/MIME?"
-msgstr "Pesan tdk bisa dikirim inline. Gunakan PGP/MIME?"
-
-#: crypt.c:143
-msgid "Mail not sent: inline PGP can't be used with attachments."
-msgstr ""
-
-#: crypt.c:151 cryptglue.c:106 pgpkey.c:541 pgpkey.c:724
-msgid "Invoking PGP..."
-msgstr "Memanggil PGP..."
-
-#: crypt.c:162
-msgid "Message can't be sent inline.  Revert to using PGP/MIME?"
-msgstr "Pesan tdk bisa dikirim inline. Gunakan PGP/MIME?"
-
-#: crypt.c:164 send.c:1796
-msgid "Mail not sent."
-msgstr "Surat tidak dikirim."
-
-#: crypt.c:224
-msgid "Encrypt message to S/MIME Default Key also?"
-msgstr ""
-
-#: crypt.c:259
-msgid "Encrypt message to PGP Default Key also?"
-msgstr ""
-
-#: crypt.c:502
-msgid "S/MIME messages with no hints on content are unsupported."
-msgstr "Surat2 S/MIME tanpa hints pada isi tidak didukung."
-
-#: crypt.c:710 crypt.c:751
-msgid "Trying to extract PGP keys...\n"
-msgstr "Mencoba mengekstrak kunci2 PGP...\n"
-
-#: crypt.c:732 crypt.c:772
-msgid "Trying to extract S/MIME certificates...\n"
-msgstr "Mencoba mengekstrak sertifikat2 S/MIME...\n"
-
-#: crypt.c:913
-#, c-format
-msgid ""
-"[-- Error: Unknown multipart/signed protocol %s! --]\n"
-"\n"
-msgstr ""
-"[-- Error: Protokol multipart/signed %s tidak dikenal! --]\n"
-"\n"
-
-#: crypt.c:947
-msgid ""
-"[-- Error: Inconsistent multipart/signed structure! --]\n"
-"\n"
-msgstr ""
-"[-- Error: Struktur multipart/signed tidak konsisten! --]\n"
-"\n"
-
-#: crypt.c:983
-#, c-format
-msgid ""
-"[-- Warning: We can't verify %s/%s signatures. --]\n"
-"\n"
-msgstr ""
-"[-- Warning: Tidak dapat mem-verifikasi tandatangan %s/%s. --]\n"
-"\n"
-
-#: crypt.c:995
-msgid ""
-"[-- The following data is signed --]\n"
-"\n"
-msgstr ""
-"[-- Data berikut ini ditandatangani --]\n"
-"\n"
-
-#: crypt.c:1001
-msgid ""
-"[-- Warning: Can't find any signatures. --]\n"
-"\n"
-msgstr ""
-"[-- Warning: Tidak dapat menemukan tandatangan. --]\n"
-"\n"
-
-#: crypt.c:1007
-msgid ""
-"\n"
-"[-- End of signed data --]\n"
-msgstr ""
-"\n"
-"[-- Akhir data yang ditandatangani --]\n"
-
-#: cryptglue.c:84
-msgid "\"crypt_use_gpgme\" set but not built with GPGME support."
-msgstr "\"crypt_use_gpgme\" diset tapi tidak ada dukungan GPGME."
-
-#: cryptglue.c:108
-msgid "Invoking S/MIME..."
-msgstr "Memanggil S/MIME..."
-
-#: curs_lib.c:229
+#: curs_lib.c:231
 msgid "yes"
 msgstr "ya"
 
-#: curs_lib.c:230
+#: curs_lib.c:232
 msgid "no"
 msgstr "nggak"
 
-#: curs_lib.c:337
+#: curs_lib.c:383
 msgid "Exit Mutt?"
 msgstr "Keluar dari Mutt?"
 
-#: curs_lib.c:753 mutt_socket.c:562 mutt_ssl.c:1072
+#: curs_lib.c:824 mutt_socket.c:562 mutt_ssl.c:1072
 msgid "unknown error"
 msgstr "eh..eh.. napa nih?"
 
-#: curs_lib.c:775
+#: curs_lib.c:846
 msgid "Press any key to continue..."
 msgstr "Tekan sembarang tombol untuk lanjut..."
 
-#: curs_lib.c:818
+#: curs_lib.c:889
 msgid " ('?' for list): "
 msgstr " ('?' utk lihat daftar): "
 
@@ -1720,11 +1763,11 @@ msgstr "Tidak ada kotak surat yang terbuka."
 msgid "There are no messages."
 msgstr "Tidak ada surat."
 
-#: curs_main.c:55 mx.c:1173 pager.c:50 recvattach.c:39
+#: curs_main.c:55 mx.c:1173 pager.c:51 recvattach.c:39
 msgid "Mailbox is read-only."
 msgstr "Kotak surat hanya bisa dibaca."
 
-#: curs_main.c:57 pager.c:52 recvattach.c:909
+#: curs_main.c:57 pager.c:53 recvattach.c:909
 msgid "Function not permitted in attach-message mode."
 msgstr "Fungsi ini tidak diperbolehkan pada mode pelampiran-surat"
 
@@ -1733,7 +1776,7 @@ msgid "No visible messages."
 msgstr "Tidak ada surat yg bisa dilihat."
 
 #. L10N: %s is one of the CHECK_ACL entries below.
-#: curs_main.c:104 pager.c:87
+#: curs_main.c:104 pager.c:88
 #, fuzzy, c-format
 msgid "%s: Operation not permitted by ACL"
 msgstr "Tidak dapat %s: tidak diijinkan oleh ACL"
@@ -1767,7 +1810,7 @@ msgstr "Simpan"
 msgid "Mail"
 msgstr "Surat"
 
-#: curs_main.c:779 pager.c:1603
+#: curs_main.c:779 pager.c:1604
 msgid "Reply"
 msgstr "Balas"
 
@@ -1775,20 +1818,22 @@ msgstr "Balas"
 msgid "Group"
 msgstr "Grup"
 
-#: curs_main.c:791 pager.c:1610
+#: curs_main.c:791 pager.c:1611
 msgid "Post"
 msgstr ""
 
-#: curs_main.c:792 pager.c:1611
+#: curs_main.c:792 pager.c:1612
 #, fuzzy
 msgid "Followup"
 msgstr "Balas ke %s%s?"
 
 #: curs_main.c:948
 msgid "Mailbox was externally modified.  Flags may be wrong."
-msgstr "Kotak surat diobok-obok oleh program lain. Tanda-tanda surat mungkin tidak tepat."
+msgstr ""
+"Kotak surat diobok-obok oleh program lain. Tanda-tanda surat mungkin tidak "
+"tepat."
 
-#: curs_main.c:955 pager.c:2102
+#: curs_main.c:955 pager.c:2103
 msgid "New mail in this mailbox."
 msgstr "Surat baru di kotak ini."
 
@@ -1858,7 +1903,7 @@ msgid "Invalid message number."
 msgstr "Tidak ada nomer begitu."
 
 #. L10N: CHECK_ACL
-#: curs_main.c:1434 curs_main.c:2758 pager.c:2681
+#: curs_main.c:1434 curs_main.c:2758 pager.c:2694
 #, fuzzy
 msgid "Cannot delete message(s)"
 msgstr "tidak jadi hapus surat(-surat)"
@@ -1885,7 +1930,7 @@ msgstr "Hanya surat-surat yang: "
 msgid "To view all messages, limit to \"all\"."
 msgstr "Utk melihat semua pesan, batasi dengan \"semua\"."
 
-#: curs_main.c:1537 pager.c:2199
+#: curs_main.c:1537 pager.c:2201
 msgid "Quit Mutt?"
 msgstr "Keluar dari Mutt?"
 
@@ -1894,7 +1939,7 @@ msgid "Tag messages matching: "
 msgstr "Tandai surat-surat yang: "
 
 #. L10N: CHECK_ACL
-#: curs_main.c:1640 curs_main.c:3162 pager.c:3048
+#: curs_main.c:1640 curs_main.c:3162 pager.c:3061
 #, fuzzy
 msgid "Cannot undelete message(s)"
 msgstr "tidak jadi hapus surat(-surat)"
@@ -2034,11 +2079,11 @@ msgstr "Tidak ada surat yang tidak jadi dihapus."
 msgid "You are on the first message."
 msgstr "Anda sudah di surat yang pertama."
 
-#: curs_main.c:2385 menu.c:929 pager.c:2319 pattern.c:1963
+#: curs_main.c:2385 menu.c:929 pager.c:2321 pattern.c:1963
 msgid "Search wrapped to top."
 msgstr "Pencarian kembali ke atas."
 
-#: curs_main.c:2394 pager.c:2340 pattern.c:1974
+#: curs_main.c:2394 pager.c:2342 pattern.c:1974
 msgid "Search wrapped to bottom."
 msgstr "Pencarian kembali ke bawah."
 
@@ -2069,7 +2114,7 @@ msgid "Cannot flag message"
 msgstr "tandai surat"
 
 #. L10N: CHECK_ACL
-#: curs_main.c:2502 pager.c:3011
+#: curs_main.c:2502 pager.c:3024
 #, fuzzy
 msgid "Cannot toggle new"
 msgstr "tandai/tidak baru"
@@ -2087,7 +2132,7 @@ msgid "Thread contains unread messages."
 msgstr "Thread berisi surat yang belum dibaca."
 
 #. L10N: CHECK_ACL
-#: curs_main.c:2713 pager.c:2647
+#: curs_main.c:2713 pager.c:2660
 #, fuzzy
 msgid "Cannot delete message"
 msgstr "tidak jadi hapus surat"
@@ -2100,7 +2145,7 @@ msgstr "Tidak dapat menulis surat"
 
 #. L10N: This is displayed when the x-label on one or more
 #. * messages is edited.
-#: curs_main.c:2863 pager.c:3111
+#: curs_main.c:2863 pager.c:3124
 #, fuzzy, c-format
 msgid "%d labels changed."
 msgstr "Kotak surat tidak berubah."
@@ -2108,7 +2153,7 @@ msgstr "Kotak surat tidak berubah."
 #. L10N: This is displayed when editing an x-label, but no messages
 #. * were updated.  Possibly due to canceling at the prompt or if the new
 #. * label is the same as the old label.
-#: curs_main.c:2870 pager.c:3115
+#: curs_main.c:2870 pager.c:3128
 #, fuzzy
 msgid "No labels changed."
 msgstr "Kotak surat tidak berubah."
@@ -2149,16 +2194,16 @@ msgstr "Surat telah dibounce."
 msgid "No message ID to macro."
 msgstr "Tidak ada surat di kotak tersebut."
 
-#: curs_main.c:3068 pager.c:2873 recvattach.c:1229
+#: curs_main.c:3068 pager.c:2886 recvattach.c:1229
 msgid "Reply by mail as poster prefers?"
 msgstr ""
 
-#: curs_main.c:3071 pager.c:2842 pager.c:2852 pager.c:2876
+#: curs_main.c:3071 pager.c:2855 pager.c:2865 pager.c:2889
 msgid "Posting to this group not allowed, may be moderated. Continue?"
 msgstr ""
 
 #. L10N: CHECK_ACL
-#: curs_main.c:3132 pager.c:3031
+#: curs_main.c:3132 pager.c:3044
 #, fuzzy
 msgid "Cannot undelete message"
 msgstr "tidak jadi hapus surat"
@@ -2310,7 +2355,8 @@ msgstr "[-- Jenis: %s/%s, Encoding: %s, Ukuran: %s --]\n"
 
 #: handler.c:1208
 msgid "[-- Error:  Could not display any parts of Multipart/Alternative! --]\n"
-msgstr "[-- Error: Tidak ada bagian Multipart/Alternative yg bisa ditampilkan! --]\n"
+msgstr ""
+"[-- Error: Tidak ada bagian Multipart/Alternative yg bisa ditampilkan! --]\n"
 
 #: handler.c:1327
 #, c-format
@@ -2344,7 +2390,8 @@ msgstr "[-- Stderr dari tampil-otomatis %s --]\n"
 
 #: handler.c:1510
 msgid "[-- Error: message/external-body has no access-type parameter --]\n"
-msgstr "[-- Error:  message/external-body tidak punya parameter access-type --]\n"
+msgstr ""
+"[-- Error:  message/external-body tidak punya parameter access-type --]\n"
 
 #: handler.c:1533
 #, c-format
@@ -2540,12 +2587,12 @@ msgstr "Sedang login..."
 msgid "Login failed."
 msgstr "Login gagal."
 
-#: imap/auth_sasl.c:94 nntp.c:367 nntp.c:432 smtp.c:372
+#: imap/auth_sasl.c:95 nntp.c:367 nntp.c:432 smtp.c:372
 #, c-format
 msgid "Authenticating (%s)..."
 msgstr "Mengauthentikasi (%s)..."
 
-#: imap/auth_sasl.c:222 pop_auth.c:175
+#: imap/auth_sasl.c:223 pop_auth.c:175
 msgid "SASL authentication failed."
 msgstr "Authentikasi SASL gagal."
 
@@ -2738,7 +2785,7 @@ msgstr "Menyalin surat %d ke %s..."
 msgid "Continue?"
 msgstr "Lanjutkan?"
 
-#: init.c:55 init.c:2308 pager.c:49
+#: init.c:55 init.c:2316 pager.c:50
 #, c-format
 msgid "Not available in this menu."
 msgstr "Tidak ada di menu ini."
@@ -2748,7 +2795,7 @@ msgstr "Tidak ada di menu ini."
 msgid "%s: unknown sorting method"
 msgstr "%s: metoda pengurutan tidak dikenali"
 
-#: init.c:377 init.c:414 init.c:2715
+#: init.c:377 init.c:414 init.c:2723
 #, c-format
 msgid "%s: Unknown type."
 msgstr "%s: Jenis tidak dikenali."
@@ -2833,126 +2880,126 @@ msgstr "kolom header tidak dikenali"
 msgid "restore_default(%s): error in regexp: %s\n"
 msgstr "mutt_restore_default(%s): error pada regexp: %s\n"
 
-#: init.c:2189 init.c:2355
+#: init.c:2197 init.c:2363
 #, c-format
 msgid "%s is unset"
 msgstr "%s mati"
 
-#: init.c:2285 init.c:2400
+#: init.c:2293 init.c:2408
 #, c-format
 msgid "%s: unknown variable"
 msgstr "%s: variable tidak diketahui"
 
-#: init.c:2294
+#: init.c:2302
 #, c-format
 msgid "prefix is illegal with reset"
 msgstr "prefix tidak diperbolehkan dengan reset"
 
-#: init.c:2300
+#: init.c:2308
 #, c-format
 msgid "value is illegal with reset"
 msgstr "nilai tidak diperbolehkan dengan reset"
 
-#: init.c:2335 init.c:2347
+#: init.c:2343 init.c:2355
 #, c-format
 msgid "Usage: set variable=yes|no"
 msgstr "Penggunaan: set variable=yes|no"
 
-#: init.c:2355
+#: init.c:2363
 #, c-format
 msgid "%s is set"
 msgstr "%s hidup"
 
-#: init.c:2467 init.c:2482
+#: init.c:2475 init.c:2490
 #, fuzzy, c-format
 msgid "Invalid value for option %s: \"%s\""
 msgstr "Tidak tanggal: %s"
 
-#: init.c:2579
+#: init.c:2587
 #, c-format
 msgid "%s: invalid mailbox type"
 msgstr "%s: jenis kotak surat tidak dikenali"
 
-#: init.c:2610
+#: init.c:2618
 #, fuzzy, c-format
 msgid "%s: invalid value (%s)"
 msgstr "%s: nilai tidak betul"
 
-#: init.c:2611
+#: init.c:2619
 msgid "format error"
 msgstr ""
 
-#: init.c:2611
+#: init.c:2619
 msgid "number overflow"
 msgstr ""
 
-#: init.c:2671
+#: init.c:2679
 #, c-format
 msgid "%s: invalid value"
 msgstr "%s: nilai tidak betul"
 
-#: init.c:2761
+#: init.c:2769
 #, fuzzy, c-format
 msgid "%s: invalid backend"
 msgstr "%s: nilai tidak betul"
 
-#: init.c:2769
+#: init.c:2777
 #, c-format
 msgid "%s: unknown type"
 msgstr "%s: jenis tidak dikenali"
 
-#: init.c:2914
+#: init.c:2922
 #, c-format
 msgid "Error in %s, line %d: %s"
 msgstr "Error di %s, baris %d: %s"
 
-#: init.c:2944
+#: init.c:2952
 #, c-format
 msgid "source: errors in %s"
 msgstr "source: errors di %s"
 
-#: init.c:2945
+#: init.c:2953
 #, fuzzy, c-format
 msgid "source: reading aborted due to too many errors in %s"
 msgstr "source: pembacaan dibatalkan sebab terlalu banyak error di %s"
 
-#: init.c:2963 mutt_lua.c:405
+#: init.c:2971 mutt_lua.c:405
 #, c-format
 msgid "source: error at %s"
 msgstr "source: error pada %s"
 
-#: init.c:2968 mutt_lua.c:410
+#: init.c:2976 mutt_lua.c:410
 msgid "source: too many arguments"
 msgstr "source: parameter terlalu banyak"
 
-#: init.c:3025
+#: init.c:3033
 #, c-format
 msgid "%s: unknown command"
 msgstr "%s: perintah tidak dikenali"
 
-#: init.c:3715
+#: init.c:3723
 #, c-format
 msgid "Error in command line: %s\n"
 msgstr "Error di baris perintah: %s\n"
 
-#: init.c:3822
+#: init.c:3830
 msgid "unable to determine home directory"
 msgstr "tidak bisa menentukan home direktori"
 
-#: init.c:3830
+#: init.c:3838
 msgid "unable to determine username"
 msgstr "tidak bisa menentukan username"
 
-#: init.c:3852
+#: init.c:3860
 #, fuzzy
 msgid "unable to determine nodename via uname()"
 msgstr "tidak bisa menentukan username"
 
-#: init.c:4147
+#: init.c:4155
 msgid "-group: no group name"
 msgstr "-group: tidak ada nama group"
 
-#: init.c:4157
+#: init.c:4165
 msgid "out of arguments"
 msgstr "parameternya kurang"
 
@@ -3021,6 +3068,1016 @@ msgstr "Masukkan kunci-kunci (^G utk batal): "
 msgid "Char = %s, Octal = %o, Decimal = %d"
 msgstr "Kar = %s, Oktal = %o, Desimal = %d"
 
+#: keymap_alldefs.h:5
+msgid "null operation"
+msgstr "null operation"
+
+#: keymap_alldefs.h:6
+msgid "end of conditional execution (noop)"
+msgstr "akhir eksekusi bersyarat (noop)"
+
+#: keymap_alldefs.h:7
+msgid "force viewing of attachment using mailcap"
+msgstr "paksa menampilkan lampiran menggunakan mailcap"
+
+#: keymap_alldefs.h:8
+msgid "view attachment as text"
+msgstr "tampilkan lampiran sebagai teks"
+
+#: keymap_alldefs.h:9
+msgid "Toggle display of subparts"
+msgstr "Tampilkan atau tidak sub-bagian"
+
+#: keymap_alldefs.h:10
+msgid "move to the bottom of the page"
+msgstr "ke akhir halaman"
+
+#: keymap_alldefs.h:11
+msgid "remail a message to another user"
+msgstr "kirim surat ke user lain"
+
+#: keymap_alldefs.h:12
+msgid "swap the current folder position with $folder if it exists"
+msgstr ""
+
+#: keymap_alldefs.h:13
+msgid "select a new file in this directory"
+msgstr "pilih file baru di direktori ini"
+
+#: keymap_alldefs.h:14
+msgid "view file"
+msgstr "tampilkan file"
+
+#: keymap_alldefs.h:15
+msgid "display the currently selected file's name"
+msgstr "tampilkan nama file yang sedang dipilih"
+
+#: keymap_alldefs.h:16
+#, fuzzy
+msgid "subscribe to current mbox (IMAP/NNTP only)"
+msgstr "berlangganan ke kotak surat ini (untuk IMAP)"
+
+#: keymap_alldefs.h:17
+#, fuzzy
+msgid "unsubscribe from current mbox (IMAP/NNTP only)"
+msgstr "berhenti langganan dari kotak surat ini (untuk IMAP)"
+
+#: keymap_alldefs.h:18
+msgid "toggle view all/subscribed mailboxes (IMAP only)"
+msgstr "tampilkan semua kotak surat atau hanya yang langganan? (untuk IMAP)"
+
+#: keymap_alldefs.h:19
+msgid "list mailboxes with new mail"
+msgstr "tampilkan daftar kotak surat dengan surat baru"
+
+#: keymap_alldefs.h:20
+msgid "mark all articles in newsgroup as read"
+msgstr ""
+
+#: keymap_alldefs.h:21
+msgid "change directories"
+msgstr "pindah direktori"
+
+#: keymap_alldefs.h:22
+msgid "check mailboxes for new mail"
+msgstr "periksa kotak surat apakah ada surat baru"
+
+#: keymap_alldefs.h:23
+msgid "attach file(s) to this message"
+msgstr "lampirkan file ke surat ini"
+
+#: keymap_alldefs.h:24
+msgid "attach message(s) to this message"
+msgstr "lampirkan surat lain ke surat ini"
+
+#: keymap_alldefs.h:25
+#, fuzzy
+msgid "attach news article(s) to this message"
+msgstr "lampirkan file ke surat ini"
+
+#: keymap_alldefs.h:26
+msgid "edit the BCC list"
+msgstr "edit daftar BCC"
+
+#: keymap_alldefs.h:27
+msgid "edit the CC list"
+msgstr "edit daftar CC"
+
+#: keymap_alldefs.h:28
+msgid "edit attachment description"
+msgstr "edit keterangan lampiran"
+
+#: keymap_alldefs.h:29
+msgid "edit attachment transfer-encoding"
+msgstr "edit transfer-encoding dari lampiran"
+
+#: keymap_alldefs.h:30
+msgid "enter a file to save a copy of this message in"
+msgstr "masukkan nama file di mana salinan surat ini mau disimpan"
+
+#: keymap_alldefs.h:31
+msgid "edit the file to be attached"
+msgstr "edit file yang akan dilampirkan"
+
+#: keymap_alldefs.h:32
+msgid "edit the from field"
+msgstr "edit kolom From"
+
+#: keymap_alldefs.h:33
+msgid "edit the message with headers"
+msgstr "edit surat berikut dengan headers"
+
+#: keymap_alldefs.h:34
+msgid "edit the message"
+msgstr "edit surat"
+
+#: keymap_alldefs.h:35
+msgid "edit attachment using mailcap entry"
+msgstr "edit lampiran berdasarkan mailcap"
+
+#: keymap_alldefs.h:36
+#, fuzzy
+msgid "edit the newsgroups list"
+msgstr "edit daftar CC"
+
+#: keymap_alldefs.h:37
+msgid "edit the Reply-To field"
+msgstr "edit kolom Reply-To"
+
+#: keymap_alldefs.h:38
+#, fuzzy
+msgid "edit the Followup-To field"
+msgstr "edit kolom Reply-To"
+
+#: keymap_alldefs.h:39
+#, fuzzy
+msgid "edit the X-Comment-To field"
+msgstr "edit kolom Reply-To"
+
+#: keymap_alldefs.h:40
+msgid "edit the subject of this message"
+msgstr "edit subjek dari surat ini"
+
+#: keymap_alldefs.h:41
+msgid "edit the TO list"
+msgstr "edit daftar TO"
+
+#: keymap_alldefs.h:42
+msgid "create a new mailbox (IMAP only)"
+msgstr "buat kotak surat baru (untuk IMAP)"
+
+#: keymap_alldefs.h:43
+msgid "edit attachment content type"
+msgstr "edit jenis isi (content-type) lampiran"
+
+#: keymap_alldefs.h:44
+msgid "get a temporary copy of an attachment"
+msgstr "ambil salinan sementara dari lampiran"
+
+#: keymap_alldefs.h:45
+msgid "run ispell on the message"
+msgstr "jalankan ispell ke surat"
+
+#: keymap_alldefs.h:46
+msgid "compose new attachment using mailcap entry"
+msgstr "buat lampiran berdasarkan mailcap"
+
+#: keymap_alldefs.h:47
+msgid "toggle recoding of this attachment"
+msgstr "peng-coding-an ulang dari lampiran ini"
+
+#: keymap_alldefs.h:48
+msgid "save this message to send later"
+msgstr "simpan surat ini untuk dikirim nanti"
+
+#: keymap_alldefs.h:49
+#, fuzzy
+msgid "send attachment with a different name"
+msgstr "edit transfer-encoding dari lampiran"
+
+#: keymap_alldefs.h:50
+msgid "rename/move an attached file"
+msgstr "ganti nama/pindahkan file lampiran"
+
+#: keymap_alldefs.h:51
+#, fuzzy
+msgid "compose a new message to the sender"
+msgstr "menulis surat baru"
+
+#: keymap_alldefs.h:52
+msgid "send the message"
+msgstr "kirim suratnya"
+
+#: keymap_alldefs.h:53
+msgid "toggle disposition between inline/attachment"
+msgstr "penampilan inline atau sebagai attachment"
+
+#: keymap_alldefs.h:54
+msgid "toggle whether to delete file after sending it"
+msgstr "hapus atau tidak setelah suratnya dikirim"
+
+#: keymap_alldefs.h:55
+msgid "update an attachment's encoding info"
+msgstr "betulkan encoding info dari lampiran"
+
+#: keymap_alldefs.h:56
+msgid "write the message to a folder"
+msgstr "simpan surat ke sebuah folder"
+
+#: keymap_alldefs.h:57
+msgid "copy a message to a file/mailbox"
+msgstr "simpan surat ke file/kotak surat"
+
+#: keymap_alldefs.h:58
+msgid "create an alias from a message sender"
+msgstr "buat alias dari pengirim surat"
+
+#: keymap_alldefs.h:59
+msgid "move entry to bottom of screen"
+msgstr "pindahkan entry ke akhir layar"
+
+#: keymap_alldefs.h:60
+msgid "move entry to middle of screen"
+msgstr "pindahkan entry ke tengah layar"
+
+#: keymap_alldefs.h:61
+msgid "move entry to top of screen"
+msgstr "pindahkan entry ke awal layar"
+
+#: keymap_alldefs.h:62
+msgid "make decoded (text/plain) copy"
+msgstr "buat salinan (text/plain) yang sudah di-decode"
+
+#: keymap_alldefs.h:63
+msgid "make decoded copy (text/plain) and delete"
+msgstr "buat salinan (text/plain) yang sudah di-decode dan hapus"
+
+#: keymap_alldefs.h:64
+msgid "delete the current entry"
+msgstr "hapus entry ini"
+
+#: keymap_alldefs.h:65
+msgid "delete the current mailbox (IMAP only)"
+msgstr "hapus kotak surat ini (untuk IMAP)"
+
+#: keymap_alldefs.h:66
+msgid "delete all messages in subthread"
+msgstr "hapus semua surat di subthread"
+
+#: keymap_alldefs.h:67
+msgid "delete all messages in thread"
+msgstr "hapus semua surat di thread"
+
+#: keymap_alldefs.h:68
+msgid "display full address of sender"
+msgstr "tampilkan alamat lengkap pengirim"
+
+#: keymap_alldefs.h:69
+msgid "display message and toggle header weeding"
+msgstr "tampilkan surat dan pilih penghapusan header"
+
+#: keymap_alldefs.h:70
+msgid "display a message"
+msgstr "tampilkan surat"
+
+#: keymap_alldefs.h:71
+msgid "add, change, or delete a message's label"
+msgstr ""
+
+#: keymap_alldefs.h:72
+msgid "edit the raw message"
+msgstr "edit keseluruhan surat"
+
+#: keymap_alldefs.h:73
+msgid "delete the char in front of the cursor"
+msgstr "hapus karakter di depan kursor"
+
+#: keymap_alldefs.h:74
+msgid "move the cursor one character to the left"
+msgstr "pindahkan kursor satu karakter ke kanan"
+
+#: keymap_alldefs.h:75
+msgid "move the cursor to the beginning of the word"
+msgstr "ke awal kata"
+
+#: keymap_alldefs.h:76
+msgid "jump to the beginning of the line"
+msgstr "ke awal baris"
+
+#: keymap_alldefs.h:77
+msgid "cycle among incoming mailboxes"
+msgstr "cycle antara kotak surat yang menerima surat"
+
+#: keymap_alldefs.h:78
+msgid "complete filename or alias"
+msgstr "lengkapi nama file atau alias"
+
+#: keymap_alldefs.h:79
+msgid "complete address with query"
+msgstr "lengkapi alamat dengan query"
+
+#: keymap_alldefs.h:80
+msgid "delete the char under the cursor"
+msgstr "hapus karakter di bawah kursor"
+
+#: keymap_alldefs.h:81
+msgid "jump to the end of the line"
+msgstr "ke akhir baris"
+
+#: keymap_alldefs.h:82
+msgid "move the cursor one character to the right"
+msgstr "pindahkan kursor satu karakter ke kanan"
+
+#: keymap_alldefs.h:83
+msgid "move the cursor to the end of the word"
+msgstr "pindahkan kursor ke akhir kata"
+
+#: keymap_alldefs.h:84
+msgid "scroll down through the history list"
+msgstr "scroll daftar history ke bawah"
+
+#: keymap_alldefs.h:85
+msgid "scroll up through the history list"
+msgstr "scroll daftar history ke atas"
+
+#: keymap_alldefs.h:86
+msgid "delete chars from cursor to end of line"
+msgstr "hapus dari kursor sampai akhir baris"
+
+#: keymap_alldefs.h:87
+msgid "delete chars from the cursor to the end of the word"
+msgstr "hapus dari kursor sampai akhir kata"
+
+#: keymap_alldefs.h:88
+msgid "delete all chars on the line"
+msgstr "hapus baris"
+
+#: keymap_alldefs.h:89
+msgid "delete the word in front of the cursor"
+msgstr "hapus kata di depan kursor"
+
+#: keymap_alldefs.h:90
+msgid "quote the next typed key"
+msgstr "kutip tombol yang akan ditekan berikut"
+
+#: keymap_alldefs.h:91
+msgid "transpose character under cursor with previous"
+msgstr "tukar karakter di bawah kursor dg yg sebelumnya"
+
+#: keymap_alldefs.h:92
+msgid "capitalize the word"
+msgstr "ubah kata ke huruf kapital"
+
+#: keymap_alldefs.h:93
+msgid "convert the word to lower case"
+msgstr "ubah kata ke huruf kecil"
+
+#: keymap_alldefs.h:94
+msgid "convert the word to upper case"
+msgstr "ubah kata ke huruf besar"
+
+#: keymap_alldefs.h:95
+msgid "enter a muttrc command"
+msgstr "menjalankan perintah muttrc"
+
+#: keymap_alldefs.h:96
+msgid "enter a file mask"
+msgstr "menentukan file mask"
+
+#: keymap_alldefs.h:97
+msgid "exit this menu"
+msgstr "keluar dari menu ini"
+
+#: keymap_alldefs.h:98
+msgid "filter attachment through a shell command"
+msgstr "mem-filter lampiran melalui perintah shell"
+
+#: keymap_alldefs.h:99
+msgid "move to the first entry"
+msgstr "ke entry pertama"
+
+#: keymap_alldefs.h:100
+msgid "toggle a message's 'important' flag"
+msgstr "menandai surat penting atau tidak ('important' flag)"
+
+#: keymap_alldefs.h:101
+#, fuzzy
+msgid "followup to newsgroup"
+msgstr "Balas ke %s%s?"
+
+#: keymap_alldefs.h:102
+msgid "forward to newsgroup"
+msgstr ""
+
+#: keymap_alldefs.h:103
+msgid "forward a message with comments"
+msgstr "forward surat dengan komentar"
+
+#: keymap_alldefs.h:104
+msgid "select the current entry"
+msgstr "pilih entry ini"
+
+#: keymap_alldefs.h:105
+#, fuzzy
+msgid "get all children of the current message"
+msgstr "Anda sudah di surat yang pertama."
+
+#: keymap_alldefs.h:106
+#, fuzzy
+msgid "get message with Message-Id"
+msgstr "edit surat berikut dengan headers"
+
+#: keymap_alldefs.h:107
+#, fuzzy
+msgid "get parent of the current message"
+msgstr "Anda sudah di surat yang pertama."
+
+#: keymap_alldefs.h:108
+msgid "reply to all recipients"
+msgstr "balas ke semua penerima"
+
+#: keymap_alldefs.h:109
+msgid "scroll down 1/2 page"
+msgstr "geser ke bawah setengah layar"
+
+#: keymap_alldefs.h:110
+msgid "scroll up 1/2 page"
+msgstr "geser ke atas setengah layar"
+
+#: keymap_alldefs.h:111
+msgid "this screen"
+msgstr "layar ini"
+
+#: keymap_alldefs.h:112
+msgid "jump to an index number"
+msgstr "ke nomer indeks"
+
+#: keymap_alldefs.h:113
+msgid "move to the last entry"
+msgstr "ke entry terakhir"
+
+#: keymap_alldefs.h:114
+msgid "reply to specified mailing list"
+msgstr "balas ke mailing list yang disebut"
+
+#: keymap_alldefs.h:115
+msgid "load list of all newsgroups from NNTP server"
+msgstr ""
+
+#: keymap_alldefs.h:116
+msgid "execute a macro"
+msgstr "menjalankan macro"
+
+#: keymap_alldefs.h:117
+msgid "compose a new mail message"
+msgstr "menulis surat baru"
+
+#: keymap_alldefs.h:118
+msgid "break the thread in two"
+msgstr "pecahkan thread jadi dua"
+
+#: keymap_alldefs.h:119
+msgid "open a different folder"
+msgstr "membuka folder lain"
+
+#: keymap_alldefs.h:120
+msgid "open a different folder in read only mode"
+msgstr "membuka folder lain dengan mode read-only"
+
+#: keymap_alldefs.h:121
+#, fuzzy
+msgid "open a different newsgroup"
+msgstr "membuka folder lain"
+
+#: keymap_alldefs.h:122
+#, fuzzy
+msgid "open a different newsgroup in read only mode"
+msgstr "membuka folder lain dengan mode read-only"
+
+#: keymap_alldefs.h:123
+msgid "clear a status flag from a message"
+msgstr "bersihkan suatu tanda status pada surat"
+
+#: keymap_alldefs.h:124
+msgid "delete messages matching a pattern"
+msgstr "hapus surat yang cocok dengan suatu kriteria"
+
+#: keymap_alldefs.h:125
+msgid "force retrieval of mail from IMAP server"
+msgstr "paksa mengambil surat dari server IMAP"
+
+#: keymap_alldefs.h:126
+msgid "logout from all IMAP servers"
+msgstr ""
+
+#: keymap_alldefs.h:127
+msgid "retrieve mail from POP server"
+msgstr "mengambil surat dari server POP"
+
+#: keymap_alldefs.h:128
+msgid "show only messages matching a pattern"
+msgstr "hanya tunjukkan surat yang cocok dengan suatu kriteria"
+
+#: keymap_alldefs.h:129
+msgid "link tagged message to the current one"
+msgstr "hubungkan surat yang telah ditandai ke yang sedang dipilih"
+
+#: keymap_alldefs.h:130
+msgid "open next mailbox with new mail"
+msgstr "buka kotak surat dengan surat baru"
+
+#: keymap_alldefs.h:131
+msgid "jump to the next new message"
+msgstr "ke surat berikutnya yang baru"
+
+#: keymap_alldefs.h:132
+msgid "jump to the next new or unread message"
+msgstr "ke surat berikutnya yang baru atau belum dibaca"
+
+#: keymap_alldefs.h:133
+msgid "jump to the next subthread"
+msgstr "ke subthread berikutnya"
+
+#: keymap_alldefs.h:134
+msgid "jump to the next thread"
+msgstr "ke thread berikutnya"
+
+#: keymap_alldefs.h:135
+msgid "move to the next undeleted message"
+msgstr "ke surat berikutnya yang tidak dihapus"
+
+#: keymap_alldefs.h:136
+msgid "jump to the next unread message"
+msgstr "ke surat berikutnya yang belum dibaca"
+
+#: keymap_alldefs.h:137
+msgid "jump to parent message in thread"
+msgstr "loncat ke surat induk di thread ini"
+
+#: keymap_alldefs.h:138
+msgid "jump to previous thread"
+msgstr "ke thread sebelumnya"
+
+#: keymap_alldefs.h:139
+msgid "jump to previous subthread"
+msgstr "ke subthread sebelumnya"
+
+#: keymap_alldefs.h:140
+msgid "move to the previous undeleted message"
+msgstr "ke surat sebelumnya yang tidak dihapus"
+
+#: keymap_alldefs.h:141
+msgid "jump to the previous new message"
+msgstr "ke surat sebelumnya yang baru"
+
+#: keymap_alldefs.h:142
+msgid "jump to the previous new or unread message"
+msgstr "ke surat sebelumnya yang baru atau belum dibaca"
+
+#: keymap_alldefs.h:143
+msgid "jump to the previous unread message"
+msgstr "ke surat sebelumnya yang belum dibaca"
+
+#: keymap_alldefs.h:144
+msgid "mark the current thread as read"
+msgstr "tandai thread ini 'sudah dibaca'"
+
+#: keymap_alldefs.h:145
+msgid "mark the current subthread as read"
+msgstr "tandai subthread ini 'sudah dibaca'"
+
+#: keymap_alldefs.h:146
+#, fuzzy
+msgid "jump to root message in thread"
+msgstr "loncat ke surat induk di thread ini"
+
+#: keymap_alldefs.h:147
+msgid "set a status flag on a message"
+msgstr "tandai status dari surat"
+
+#: keymap_alldefs.h:148
+msgid "save changes to mailbox"
+msgstr "simpan perubahan ke kotak surat"
+
+#: keymap_alldefs.h:149
+msgid "tag messages matching a pattern"
+msgstr "tandai surat-surat yang cocok dengan kriteria"
+
+#: keymap_alldefs.h:150
+msgid "delete from mutt, don't touch on disk"
+msgstr ""
+
+#: keymap_alldefs.h:151
+msgid "undelete messages matching a pattern"
+msgstr "tidak jadi menghapus surat-surat yang cocok dengan kriteria"
+
+#: keymap_alldefs.h:152
+msgid "untag messages matching a pattern"
+msgstr "tidak jadi menandai surat-surat yang cocok dengan kriteria"
+
+#: keymap_alldefs.h:153
+#, fuzzy
+msgid "create a hotkey macro for the current message"
+msgstr "Anda sudah di surat yang pertama."
+
+#: keymap_alldefs.h:154
+msgid "move to the middle of the page"
+msgstr "ke tengah halaman"
+
+#: keymap_alldefs.h:155
+msgid "move to the next entry"
+msgstr "ke entry berikutnya"
+
+#: keymap_alldefs.h:156
+msgid "scroll down one line"
+msgstr "geser ke bawah satu baris"
+
+#: keymap_alldefs.h:157
+msgid "move to the next page"
+msgstr "ke halaman berikutnya"
+
+#: keymap_alldefs.h:158
+msgid "jump to the bottom of the message"
+msgstr "ke akhir surat"
+
+#: keymap_alldefs.h:159
+msgid "toggle display of quoted text"
+msgstr "tampilkan atau tidak teks yang dikutip"
+
+#: keymap_alldefs.h:160
+msgid "skip beyond quoted text"
+msgstr "lompati setelah teks yang dikutip"
+
+#: keymap_alldefs.h:161
+msgid "jump to the top of the message"
+msgstr "ke awal surat"
+
+#: keymap_alldefs.h:162
+msgid "pipe message/attachment to a shell command"
+msgstr "pipe surat/lampiran ke perintah shell"
+
+#: keymap_alldefs.h:163
+#, fuzzy
+msgid "post message to newsgroup"
+msgstr "Bounce surat ke %s"
+
+#: keymap_alldefs.h:164
+msgid "move to the previous entry"
+msgstr "ke entry sebelumnya"
+
+#: keymap_alldefs.h:165
+msgid "scroll up one line"
+msgstr "geser ke atas satu baris"
+
+#: keymap_alldefs.h:166
+msgid "move to the previous page"
+msgstr "ke halaman sebelumnya"
+
+#: keymap_alldefs.h:167
+msgid "print the current entry"
+msgstr "cetak entry ini"
+
+#: keymap_alldefs.h:168
+msgid "really delete the current entry, bypassing the trash folder"
+msgstr ""
+
+#: keymap_alldefs.h:169
+msgid "really delete the current thread, bypassing the trash folder"
+msgstr ""
+
+#: keymap_alldefs.h:170
+msgid "query external program for addresses"
+msgstr "gunakan program lain untuk mencari alamat"
+
+#: keymap_alldefs.h:171
+msgid "append new query results to current results"
+msgstr "tambahkan hasil pencarian baru ke hasil yang sudah ada"
+
+#: keymap_alldefs.h:172
+msgid "save changes to mailbox and quit"
+msgstr "simpan perubahan ke kotak surat dan keluar"
+
+#: keymap_alldefs.h:173
+msgid "recall a postponed message"
+msgstr "lanjutkan surat yang ditunda"
+
+#: keymap_alldefs.h:174
+#, fuzzy
+msgid "reconstruct thread containing current message"
+msgstr "Thread berisi surat yang belum dibaca."
+
+#: keymap_alldefs.h:175
+msgid "clear and redraw the screen"
+msgstr "bersihkan layar dan redraw"
+
+#: keymap_alldefs.h:176
+msgid "{internal}"
+msgstr "{jerohan}"
+
+#: keymap_alldefs.h:177
+msgid "rename the current mailbox (IMAP only)"
+msgstr "ganti nama kotak surat ini (untuk IMAP)"
+
+#: keymap_alldefs.h:178
+msgid "reply to a message"
+msgstr "balas surat"
+
+#: keymap_alldefs.h:179
+msgid "use the current message as a template for a new one"
+msgstr "gunakan surat ini sebagai template"
+
+#: keymap_alldefs.h:180
+#, fuzzy
+msgid "save message/attachment to a mailbox/file"
+msgstr "simpan surat/lampiran ke suatu file"
+
+#: keymap_alldefs.h:181
+msgid "search for a regular expression"
+msgstr "cari dengan regular expression"
+
+#: keymap_alldefs.h:182
+msgid "search backwards for a regular expression"
+msgstr "cari mundur dengan regular expression"
+
+#: keymap_alldefs.h:183
+msgid "search for next match"
+msgstr "cari yang cocok berikutnya"
+
+#: keymap_alldefs.h:184
+msgid "search for next match in opposite direction"
+msgstr "cari mundur yang cocok berikutnya"
+
+#: keymap_alldefs.h:185
+msgid "toggle search pattern coloring"
+msgstr "diwarnai atau tidak jika ketemu"
+
+#: keymap_alldefs.h:186
+msgid "invoke a command in a subshell"
+msgstr "jalankan perintah di subshell"
+
+#: keymap_alldefs.h:187
+msgid "sort messages"
+msgstr "urutkan surat-surat"
+
+#: keymap_alldefs.h:188
+msgid "sort messages in reverse order"
+msgstr "urutkan terbalik surat-surat"
+
+#: keymap_alldefs.h:189
+#, fuzzy
+msgid "subscribe to newsgroups matching a pattern"
+msgstr "tidak jadi menandai surat-surat yang cocok dengan kriteria"
+
+#: keymap_alldefs.h:190
+msgid "tag the current entry"
+msgstr "tandai entry ini"
+
+#: keymap_alldefs.h:191
+msgid "apply next function to tagged messages"
+msgstr "lakukan fungsi berikutnya ke surat-surat yang ditandai"
+
+#: keymap_alldefs.h:192
+msgid "apply next function ONLY to tagged messages"
+msgstr "lakukan fungsi berikutnya HANYA ke surat-surat yang ditandai"
+
+#: keymap_alldefs.h:193
+msgid "tag the current subthread"
+msgstr "tandai subthread ini"
+
+#: keymap_alldefs.h:194
+msgid "tag the current thread"
+msgstr "tandai thread ini"
+
+#: keymap_alldefs.h:195
+msgid "toggle a message's 'new' flag"
+msgstr "tandai atau tidak sebuah surat 'baru'"
+
+#: keymap_alldefs.h:196
+#, fuzzy
+msgid "toggle view of read messages"
+msgstr "ke surat sebelumnya yang baru atau belum dibaca"
+
+#: keymap_alldefs.h:197
+msgid "toggle whether the mailbox will be rewritten"
+msgstr "apakah kotak surat akan ditulis ulang"
+
+#: keymap_alldefs.h:198
+msgid "toggle whether to browse mailboxes or all files"
+msgstr "apakah menjelajahi kotak-kotak surat saja atau semua file"
+
+#: keymap_alldefs.h:199
+msgid "move to the top of the page"
+msgstr "ke awal halaman"
+
+#: keymap_alldefs.h:200
+msgid "mark all articles in newsgroup as unread"
+msgstr ""
+
+#: keymap_alldefs.h:201
+msgid "undelete the current entry"
+msgstr "tidak jadi hapus entry ini"
+
+#: keymap_alldefs.h:202
+msgid "undelete all messages in thread"
+msgstr "tidak jadi hapus semua surat di thread"
+
+#: keymap_alldefs.h:203
+msgid "undelete all messages in subthread"
+msgstr "tidak jadi hapus semua surat di subthread"
+
+#: keymap_alldefs.h:204
+#, fuzzy
+msgid "unsubscribe from newsgroups matching a pattern"
+msgstr "tidak jadi menandai surat-surat yang cocok dengan kriteria"
+
+#: keymap_alldefs.h:205
+msgid "show the Mutt version number and date"
+msgstr "tunjukkan versi dan tanggal dari Mutt"
+
+#: keymap_alldefs.h:206
+msgid "view attachment using mailcap entry if necessary"
+msgstr "tampilkan lampiran berdasarkan mailcap jika perlu"
+
+#: keymap_alldefs.h:207
+msgid "show MIME attachments"
+msgstr "tampilkan lampiran MIME"
+
+#: keymap_alldefs.h:208
+msgid "display the keycode for a key press"
+msgstr "tampilkan keycode untuk penekanan tombol"
+
+#: keymap_alldefs.h:209
+#, fuzzy
+msgid "limit view to current thread"
+msgstr "tandai thread ini"
+
+#: keymap_alldefs.h:210
+msgid "show currently active limit pattern"
+msgstr "tampilkan kriteria batas yang sedang aktif"
+
+#: keymap_alldefs.h:211
+msgid "collapse/uncollapse current thread"
+msgstr "collapse/uncollapse thread ini"
+
+#: keymap_alldefs.h:212
+msgid "collapse/uncollapse all threads"
+msgstr "collapse/uncollapse semua thread"
+
+#: keymap_alldefs.h:213
+msgid "move the highlight to next mailbox"
+msgstr ""
+
+#: keymap_alldefs.h:214
+#, fuzzy
+msgid "move the highlight to next mailbox with new mail"
+msgstr "buka kotak surat dengan surat baru"
+
+#: keymap_alldefs.h:215
+#, fuzzy
+msgid "open highlighted mailbox"
+msgstr "Membuka kembali kotak surat..."
+
+#: keymap_alldefs.h:216
+#, fuzzy
+msgid "scroll the sidebar down 1 page"
+msgstr "geser ke bawah setengah layar"
+
+#: keymap_alldefs.h:217
+#, fuzzy
+msgid "scroll the sidebar up 1 page"
+msgstr "geser ke atas setengah layar"
+
+#: keymap_alldefs.h:218
+#, fuzzy
+msgid "move the highlight to previous mailbox"
+msgstr "ke halaman sebelumnya"
+
+#: keymap_alldefs.h:219
+#, fuzzy
+msgid "move the highlight to previous mailbox with new mail"
+msgstr "buka kotak surat dengan surat baru"
+
+#: keymap_alldefs.h:220
+#, fuzzy
+msgid "toggle between mailboxes and virtual mailboxes"
+msgstr "apakah menjelajahi kotak-kotak surat saja atau semua file"
+
+#: keymap_alldefs.h:221
+msgid "make the sidebar (in)visible"
+msgstr ""
+
+#: keymap_alldefs.h:222
+#, fuzzy
+msgid "open a different virtual folder"
+msgstr "membuka folder lain"
+
+#: keymap_alldefs.h:223
+msgid "generate virtual folder from query"
+msgstr ""
+
+#: keymap_alldefs.h:224
+msgid "generate virtual folder from query and time window"
+msgstr ""
+
+#: keymap_alldefs.h:225
+msgid "shifts virtual folder time window forwards"
+msgstr ""
+
+#: keymap_alldefs.h:226
+msgid "shifts virtual folder time window backwards"
+msgstr ""
+
+#: keymap_alldefs.h:227
+msgid "modify (notmuch) tags"
+msgstr ""
+
+#: keymap_alldefs.h:228
+#, fuzzy
+msgid "modify labels and then hide message"
+msgstr "Anda sudah di surat yang pertama."
+
+#: keymap_alldefs.h:229
+msgid "read entire thread of the current message"
+msgstr ""
+
+#: keymap_alldefs.h:230
+#, fuzzy
+msgid "accept the chain constructed"
+msgstr "Terima rangkaian yang dibentuk"
+
+#: keymap_alldefs.h:231
+#, fuzzy
+msgid "append a remailer to the chain"
+msgstr "Tambahkan remailer ke rangkaian"
+
+#: keymap_alldefs.h:232
+#, fuzzy
+msgid "insert a remailer into the chain"
+msgstr "Sisipkan remailer ke rangkaian"
+
+#: keymap_alldefs.h:233
+#, fuzzy
+msgid "delete a remailer from the chain"
+msgstr "Hapus remailer dari rangkaian"
+
+#: keymap_alldefs.h:234
+#, fuzzy
+msgid "select the previous element of the chain"
+msgstr "Pilih elemen sebelumnya dalam rangkaian"
+
+#: keymap_alldefs.h:235
+#, fuzzy
+msgid "select the next element of the chain"
+msgstr "Pilih elemen berikutnya dalam rangkaian"
+
+#: keymap_alldefs.h:236
+msgid "send the message through a mixmaster remailer chain"
+msgstr "kirim surat melalui sebuah rangkaian remailer mixmaster"
+
+#: keymap_alldefs.h:237
+msgid "attach a PGP public key"
+msgstr "lampirkan PGP public key"
+
+#: keymap_alldefs.h:238
+msgid "show PGP options"
+msgstr "tunjukan opsi2 PGP"
+
+#: keymap_alldefs.h:239
+msgid "mail a PGP public key"
+msgstr "kirim PGP public key lewat surat"
+
+#: keymap_alldefs.h:240
+msgid "verify a PGP public key"
+msgstr "periksa PGP public key"
+
+#: keymap_alldefs.h:241
+msgid "view the key's user id"
+msgstr "tampilkan user ID dari key"
+
+#: keymap_alldefs.h:242
+msgid "check for classic PGP"
+msgstr "periksa PGP klasik"
+
+#: keymap_alldefs.h:243
+msgid "show S/MIME options"
+msgstr "tunjukan opsi2 S/MIME"
+
+#: keymap_alldefs.h:244
+msgid "make decrypted copy and delete"
+msgstr "buat salinan yang sudah di-decrypt dan hapus"
+
+#: keymap_alldefs.h:245
+msgid "make decrypted copy"
+msgstr "buat salinan yang sudah di-decrypt"
+
+#: keymap_alldefs.h:246
+msgid "wipe passphrase(s) from memory"
+msgstr "hapus passphrase dari memory"
+
+#: keymap_alldefs.h:247
+msgid "extract supported public keys"
+msgstr "ekstrak kunci2 publik yg didukung"
+
 #: lib.c:118
 msgid "Integer overflow -- can't allocate memory!"
 msgstr "Integer overflow -- tidak bisa mengalokasikan memori!"
@@ -3032,8 +4089,10 @@ msgstr "Buset, memory abis!"
 #: main.c:77
 msgid ""
 "usage: mutt [<options>] [-z] [-f <file> | -yZ]\n"
-"       mutt [<options>] [-Ex] [-Hi <file>] [-s <subj>] [-bc <addr>] [-a <file> [...] --] <addr> [...]\n"
-"       mutt [<options>] [-x] [-s <subj>] [-bc <addr>] [-a <file> [...] --] <addr> [...] < message\n"
+"       mutt [<options>] [-Ex] [-Hi <file>] [-s <subj>] [-bc <addr>] [-a "
+"<file> [...] --] <addr> [...]\n"
+"       mutt [<options>] [-x] [-s <subj>] [-bc <addr>] [-a <file> [...] --] "
+"<addr> [...] < message\n"
 "       mutt [<options>] -p\n"
 "       mutt [<options>] -A <alias> [...]\n"
 "       mutt [<options>] -Q <query> [...]\n"
@@ -3048,7 +4107,8 @@ msgid ""
 "options:\n"
 "  -A <alias>    expand the given alias\n"
 "  -a <file> [...] --    attach file(s) to the message\n"
-"                the list of files must be terminated with the \"--\" sequence\n"
+"                the list of files must be terminated with the \"--\" "
+"sequence\n"
 "  -b <address>  specify a blind carbon-copy (BCC) address\n"
 "  -c <address>  specify a carbon-copy (CC) address\n"
 "  -D            print the value of all variables to stdout\n"
@@ -3063,9 +4123,8 @@ msgstr ""
 "  -D            tampilkan semua nilai variabel ke stdout"
 
 #: main.c:97
-#, fuzzy
 msgid "  -d <level>    log debugging output to ~/.muttdebug0"
-msgstr " -d <level>      catat keluaran debugging ke ~/.muttdebug0"
+msgstr " -d <level>     catat keluaran debugging ke ~/.muttdebug0"
 
 #: main.c:100
 #, fuzzy
@@ -3092,7 +4151,6 @@ msgstr ""
 "  -p            lanjutkan surat yang ditunda"
 
 #: main.c:112
-#, fuzzy
 msgid ""
 "  -Q <variable> query a configuration variable\n"
 "  -R            open mailbox in read-only mode\n"
@@ -3101,7 +4159,8 @@ msgid ""
 "  -x            simulate the mailx send mode\n"
 "  -y            select a mailbox specified in your `mailboxes' list\n"
 "  -z            exit immediately if there are no messages in the mailbox\n"
-"  -Z            open the first folder with new message, exit immediately if none\n"
+"  -Z            open the first folder with new message, exit immediately if "
+"none\n"
 "  -h            this help message"
 msgstr ""
 "  -Q <variabel> melakukan query thd suatu variabel konfigurasi\n"
@@ -3111,7 +4170,8 @@ msgstr ""
 "  -x            simulasi mailx untuk mengirim surat\n"
 "  -y            pilih kotak surat yg ada di daftar `mailboxes'\n"
 "  -z            langsung keluar jika tidak ada surat di kotak surat\n"
-"  -Z            buka folder pertama dg surat baru, langsung keluar jika tidak ada\n"
+"  -Z            buka folder pertama dg surat baru, langsung keluar jika "
+"tidak ada\n"
 "  -h            pesan bantuan ini"
 
 #: main.c:144
@@ -3199,7 +4259,8 @@ msgstr "Fatal error! Tidak bisa membuka kembali kotak surat!"
 
 #: mbox.c:1085
 msgid "sync: mbox modified, but no modified messages! (report this bug)"
-msgstr "sync: mbox diubah, tapi tidak ada surat yang berubah! (laporkan bug ini)"
+msgstr ""
+"sync: mbox diubah, tapi tidak ada surat yang berubah! (laporkan bug ini)"
 
 #: mbox.c:1109 mh.c:2268 mutt_notmuch.c:2320 mx.c:746
 #, c-format
@@ -3256,15 +4317,15 @@ msgstr "Anda di entry terakhir."
 msgid "You are on the first entry."
 msgstr "Anda di entry pertama."
 
-#: menu.c:899 pager.c:2362 pattern.c:1901
+#: menu.c:899 pager.c:2364 pattern.c:1901
 msgid "Search for: "
 msgstr "Cari: "
 
-#: menu.c:900 pager.c:2363 pattern.c:1902
+#: menu.c:900 pager.c:2365 pattern.c:1902
 msgid "Reverse search for: "
 msgstr "Cari mundur: "
 
-#: menu.c:947 pager.c:2316 pager.c:2337 pager.c:2461 pattern.c:2018
+#: menu.c:947 pager.c:2318 pager.c:2339 pager.c:2463 pattern.c:2018
 msgid "Not found."
 msgstr "Tidak ketemu."
 
@@ -3319,7 +4380,8 @@ msgstr ""
 #. See the msgid "Save to file: " (alias.c, recvattach.c)
 #: muttlib.c:1100
 msgid "File is a directory, save under it? [(y)es, (n)o, (a)ll]"
-msgstr "File adalah sebuah direktori, simpan di dalamnya? [(y)a, (t)idak, (s)emua]"
+msgstr ""
+"File adalah sebuah direktori, simpan di dalamnya? [(y)a, (t)idak, (s)emua]"
 
 #: muttlib.c:1100
 msgid "yna"
@@ -3380,7 +4442,9 @@ msgid "failed to parse notmuch query type: %s"
 msgstr ""
 
 #: mutt_notmuch.c:521
-msgid "Invalid nm_query_window_timebase value (valid values are: hour, day, week, month or year)."
+msgid ""
+"Invalid nm_query_window_timebase value (valid values are: hour, day, week, "
+"month or year)."
 msgstr ""
 
 #: mutt_notmuch.c:575
@@ -3937,42 +5001,43 @@ msgid "Checking for new newsgroups..."
 msgstr "Memeriksa surat baru..."
 
 #: nntp.c:2372
-msgid "Unable to find child articles because server does not support XPAT command."
+msgid ""
+"Unable to find child articles because server does not support XPAT command."
 msgstr ""
 
-#: pager.c:1598
+#: pager.c:1599
 msgid "PrevPg"
 msgstr "HlmnSblm"
 
-#: pager.c:1598
+#: pager.c:1599
 msgid "NextPg"
 msgstr "HlmnBrkt"
 
-#: pager.c:1601
+#: pager.c:1602
 msgid "View Attachm."
 msgstr "Lampiran"
 
-#: pager.c:1604 pager.c:1613
+#: pager.c:1605 pager.c:1614
 msgid "Next"
 msgstr "Brkt"
 
-#: pager.c:2215 pager.c:2246 pager.c:2280 pager.c:2580
+#: pager.c:2217 pager.c:2248 pager.c:2282 pager.c:2593
 msgid "Bottom of message is shown."
 msgstr "Sudah paling bawah."
 
-#: pager.c:2232 pager.c:2253 pager.c:2260 pager.c:2268
+#: pager.c:2234 pager.c:2255 pager.c:2262 pager.c:2270
 msgid "Top of message is shown."
 msgstr "Sudah paling atas."
 
-#: pager.c:2496
+#: pager.c:2509
 msgid "Help is currently being shown."
 msgstr "Bantuan sedang ditampilkan."
 
-#: pager.c:2544
+#: pager.c:2557
 msgid "No more quoted text."
 msgstr "Tidak ada lagi teks kutipan."
 
-#: pager.c:2559
+#: pager.c:2572
 msgid "No more unquoted text after quoted text."
 msgstr "Tidak ada lagi teks yang tidak dikutp setelah teks kutipan."
 
@@ -4105,11 +5170,11 @@ msgstr "Pencarian dibatalkan."
 msgid "Enter PGP passphrase:"
 msgstr "Masukkan passphrase PGP: "
 
-#: pgp.c:428
+#: pgp.c:431
 msgid "[-- Error: unable to create PGP subprocess! --]\n"
 msgstr "[-- Error: tidak bisa membuat subproses utk PGP! --]\n"
 
-#: pgp.c:465 pgp.c:731 pgp.c:883
+#: pgp.c:468 pgp.c:734 pgp.c:886
 msgid ""
 "[-- End of PGP output --]\n"
 "\n"
@@ -4117,11 +5182,11 @@ msgstr ""
 "[-- Akhir keluaran PGP --]\n"
 "\n"
 
-#: pgp.c:775
+#: pgp.c:778
 msgid "Internal error.  Please submit a bug report."
 msgstr ""
 
-#: pgp.c:840
+#: pgp.c:843
 msgid ""
 "[-- Error: could not create a PGP subprocess! --]\n"
 "\n"
@@ -4129,105 +5194,113 @@ msgstr ""
 "[-- Error: tidak bisa membuat subproses PGP! --]\n"
 "\n"
 
-#: pgp.c:871 pgp.c:895
+#: pgp.c:874 pgp.c:898
 msgid "Decryption failed"
 msgstr "Dekripsi gagal"
 
-#: pgp.c:1102
+#: pgp.c:1105
 msgid "Can't open PGP subprocess!"
 msgstr "Tidak bisa membuka subproses PGP!"
 
-#: pgp.c:1533
+#: pgp.c:1536
 msgid "Can't invoke PGP"
 msgstr "Tidak dapat menjalankan PGP"
 
 #. L10N: These next string MUST have the same highlighted letter
 #. One of them will appear in each of the three strings marked "(inline"), below.
-#: pgp.c:1631
+#: pgp.c:1634
 msgid "PGP/M(i)ME"
 msgstr "PGP/M(i)ME"
 
 #. L10N: These previous string MUST have the same highlighted letter
 #. One of them will appear in each of the three strings marked "(inline"), below.
-#: pgp.c:1637
+#: pgp.c:1640
 msgid "(i)nline"
 msgstr "(i)nline"
 
 #. L10N: PGP options (inline) (opportunistic encryption is on)
-#: pgp.c:1651
+#: pgp.c:1654
 #, fuzzy, c-format
 msgid "PGP (s)ign, sign (a)s, %s format, (c)lear, or (o)ppenc mode off? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
 
 #. L10N: PGP options (inline) (opportunistic encryption is on)
 #. The 'i' is from the "PGP/M(i)ME" or "(i)nline", above.
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1658
+#: pgp.c:1661
 msgid "safcoi"
 msgstr ""
 
 #. L10N: PGP options (opportunistic encryption is on)
-#: pgp.c:1664
+#: pgp.c:1667
 #, fuzzy
 msgid "PGP (s)ign, sign (a)s, (c)lear, or (o)ppenc mode off? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
 
 #. L10N: PGP options (opportunistic encryption is on)
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1667
+#: pgp.c:1670
 msgid "safco"
 msgstr ""
 
 #. L10N: PGP options (inline) (opportunistic encryption is off)
-#: pgp.c:1684
+#: pgp.c:1687
 #, fuzzy, c-format
-msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, %s format, (c)lear, or (o)ppenc mode? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
+msgid ""
+"PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, %s format, (c)lear, or (o)ppenc "
+"mode? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
 
 #. L10N: PGP options (inline) (opportunistic encryption is off)
 #. The 'i' is from the "PGP/M(i)ME" or "(i)nline", above.
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1691
+#: pgp.c:1694
 #, fuzzy
 msgid "esabfcoi"
 msgstr "etsdplb"
 
 #. L10N: PGP options (opportunistic encryption is off)
-#: pgp.c:1697
+#: pgp.c:1700
 #, fuzzy
 msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, (c)lear, or (o)ppenc mode? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
 
 #. L10N: PGP options (opportunistic encryption is off)
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1701
+#: pgp.c:1704
 #, fuzzy
 msgid "esabfco"
 msgstr "etsdplb"
 
 #. L10N: PGP options (inline)
-#: pgp.c:1714
+#: pgp.c:1717
 #, fuzzy, c-format
 msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, %s format, or (c)lear? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
 
 #. L10N: PGP options (inline)
 #. The 'i' is from the "PGP/M(i)ME" or "(i)nline", above.
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1721
+#: pgp.c:1724
 #, fuzzy
 msgid "esabfci"
 msgstr "etsdplb"
 
 #. L10N: PGP options
-#: pgp.c:1727
+#: pgp.c:1730
 #, fuzzy
 msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, or (c)lear? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, tandatangan (s)bg, ke(d)uanya, %s, (b)ersih? "
 
 #. L10N: PGP options
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1730
+#: pgp.c:1733
 #, fuzzy
 msgid "esabfc"
 msgstr "etsdplb"
@@ -4499,7 +5572,8 @@ msgstr "Penghapusan lampiran dari surat yg dienkripsi tidak didukung."
 
 #: recvattach.c:1125
 #, fuzzy
-msgid "Deletion of attachments from signed messages may invalidate the signature."
+msgid ""
+"Deletion of attachments from signed messages may invalidate the signature."
 msgstr "Penghapusan lampiran dari surat yg dienkripsi tidak didukung."
 
 #: recvattach.c:1143 recvattach.c:1160
@@ -4529,7 +5603,9 @@ msgstr "Forward sebagai lampiran?"
 
 #: recvcmd.c:449
 msgid "Can't decode all tagged attachments.  MIME-forward the others?"
-msgstr "Tidak dapat menguraikan semua lampiran yang ditandai. MIME-forward yg lainnya?"
+msgstr ""
+"Tidak dapat menguraikan semua lampiran yang ditandai. MIME-forward yg "
+"lainnya?"
 
 #: recvcmd.c:573
 msgid "Forward MIME encapsulated?"
@@ -4550,7 +5626,9 @@ msgstr "Tidak ada mailing list yang ditemukan!"
 
 #: recvcmd.c:817
 msgid "Can't decode all tagged attachments.  MIME-encapsulate the others?"
-msgstr "Tidak dapat menguraikan semua lampiran yang ditandai. Ubah yg lainnya ke MIME?"
+msgstr ""
+"Tidak dapat menguraikan semua lampiran yang ditandai. Ubah yg lainnya ke "
+"MIME?"
 
 #: remailer.c:138
 msgid "<random>"
@@ -4607,7 +5685,8 @@ msgid "Mixmaster doesn't accept Cc or Bcc headers."
 msgstr "Mixmaster tidak menerima header Cc maupun Bcc."
 
 #: remailer.c:680
-msgid "Please set the hostname variable to a proper value when using mixmaster!"
+msgid ""
+"Please set the hostname variable to a proper value when using mixmaster!"
 msgstr "Mohon variabel hostname diisi dengan benar jika menggunakan mixmaster!"
 
 #: remailer.c:715
@@ -4941,8 +6020,11 @@ msgstr ""
 #. L10N: S/MIME options (opportunistic encryption is on)
 #: smime.c:2027
 #, fuzzy
-msgid "S/MIME (s)ign, encrypt (w)ith, sign (a)s, (c)lear, or (o)ppenc mode off? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, enkrip d(g), tandatangan (s)bg, ke(d)uanya, atau (b)ersih? "
+msgid ""
+"S/MIME (s)ign, encrypt (w)ith, sign (a)s, (c)lear, or (o)ppenc mode off? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, enkrip d(g), tandatangan (s)bg, ke(d)uanya, "
+"atau (b)ersih? "
 
 #. L10N: S/MIME options (opportunistic encryption is on)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -4953,8 +6035,12 @@ msgstr ""
 #. L10N: S/MIME options (opportunistic encryption is off)
 #: smime.c:2041
 #, fuzzy
-msgid "S/MIME (e)ncrypt, (s)ign, encrypt (w)ith, sign (a)s, (b)oth, (c)lear, or (o)ppenc mode? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, enkrip d(g), tandatangan (s)bg, ke(d)uanya, atau (b)ersih? "
+msgid ""
+"S/MIME (e)ncrypt, (s)ign, encrypt (w)ith, sign (a)s, (b)oth, (c)lear, or "
+"(o)ppenc mode? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, enkrip d(g), tandatangan (s)bg, ke(d)uanya, "
+"atau (b)ersih? "
 
 #. L10N: S/MIME options (opportunistic encryption is off)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -4965,8 +6051,11 @@ msgstr "etgsdlb"
 
 #. L10N: S/MIME options
 #: smime.c:2054
-msgid "S/MIME (e)ncrypt, (s)ign, encrypt (w)ith, sign (a)s, (b)oth, or (c)lear? "
-msgstr "S/MIME (e)nkrip, (t)andatangan, enkrip d(g), tandatangan (s)bg, ke(d)uanya, atau (b)ersih? "
+msgid ""
+"S/MIME (e)ncrypt, (s)ign, encrypt (w)ith, sign (a)s, (b)oth, or (c)lear? "
+msgstr ""
+"S/MIME (e)nkrip, (t)andatangan, enkrip d(g), tandatangan (s)bg, ke(d)uanya, "
+"atau (b)ersih? "
 
 #. L10N: S/MIME options
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -5087,7 +6176,7 @@ msgid ""
 "Copyright (C) 2000-2004 Edmund Grimley Evans <edmundo@rano.org>\n"
 "Copyright (C) 2006-2009 Rocco Rutte <pdmef@gmx.net>\n"
 "Copyright (C) 2014-2016 Kevin J. McCarthy <kevin@8t8.us>\n"
-"Copyright (C) 2015-2016 Richard Russon <rich@flatcap.org>\n"
+"Copyright (C) 2015-2017 Richard Russon <rich@flatcap.org>\n"
 "\n"
 "Many others not mentioned here contributed code, fixes,\n"
 "and suggestions.\n"
@@ -5120,7 +6209,8 @@ msgstr ""
 msgid ""
 "    You should have received a copy of the GNU General Public License\n"
 "    along with this program; if not, write to the Free Software\n"
-"    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.\n"
+"    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  "
+"02110-1301, USA.\n"
 msgstr ""
 
 #: version.c:79
@@ -5151,734 +6241,3 @@ msgid ""
 msgstr ""
 "\n"
 "Opsi2 saat kompilasi:"
-
-#~ msgid "PGP passphrase forgotten."
-#~ msgstr "Passphrase PGP sudah dilupakan."
-
-#~ msgid "Query"
-#~ msgstr "Query"
-
-#~ msgid "null operation"
-#~ msgstr "null operation"
-
-#~ msgid "end of conditional execution (noop)"
-#~ msgstr "akhir eksekusi bersyarat (noop)"
-
-#~ msgid "force viewing of attachment using mailcap"
-#~ msgstr "paksa menampilkan lampiran menggunakan mailcap"
-
-#~ msgid "view attachment as text"
-#~ msgstr "tampilkan lampiran sebagai teks"
-
-#~ msgid "Toggle display of subparts"
-#~ msgstr "Tampilkan atau tidak sub-bagian"
-
-#~ msgid "move to the bottom of the page"
-#~ msgstr "ke akhir halaman"
-
-#~ msgid "remail a message to another user"
-#~ msgstr "kirim surat ke user lain"
-
-#~ msgid "select a new file in this directory"
-#~ msgstr "pilih file baru di direktori ini"
-
-#~ msgid "view file"
-#~ msgstr "tampilkan file"
-
-#~ msgid "display the currently selected file's name"
-#~ msgstr "tampilkan nama file yang sedang dipilih"
-
-#, fuzzy
-#~ msgid "subscribe to current mbox (IMAP/NNTP only)"
-#~ msgstr "berlangganan ke kotak surat ini (untuk IMAP)"
-
-#, fuzzy
-#~ msgid "unsubscribe from current mbox (IMAP/NNTP only)"
-#~ msgstr "berhenti langganan dari kotak surat ini (untuk IMAP)"
-
-#~ msgid "toggle view all/subscribed mailboxes (IMAP only)"
-#~ msgstr "tampilkan semua kotak surat atau hanya yang langganan? (untuk IMAP)"
-
-#~ msgid "list mailboxes with new mail"
-#~ msgstr "tampilkan daftar kotak surat dengan surat baru"
-
-#~ msgid "change directories"
-#~ msgstr "pindah direktori"
-
-#~ msgid "check mailboxes for new mail"
-#~ msgstr "periksa kotak surat apakah ada surat baru"
-
-#~ msgid "attach file(s) to this message"
-#~ msgstr "lampirkan file ke surat ini"
-
-#~ msgid "attach message(s) to this message"
-#~ msgstr "lampirkan surat lain ke surat ini"
-
-#, fuzzy
-#~ msgid "attach news article(s) to this message"
-#~ msgstr "lampirkan file ke surat ini"
-
-#~ msgid "edit the BCC list"
-#~ msgstr "edit daftar BCC"
-
-#~ msgid "edit the CC list"
-#~ msgstr "edit daftar CC"
-
-#~ msgid "edit attachment description"
-#~ msgstr "edit keterangan lampiran"
-
-#~ msgid "edit attachment transfer-encoding"
-#~ msgstr "edit transfer-encoding dari lampiran"
-
-#~ msgid "enter a file to save a copy of this message in"
-#~ msgstr "masukkan nama file di mana salinan surat ini mau disimpan"
-
-#~ msgid "edit the file to be attached"
-#~ msgstr "edit file yang akan dilampirkan"
-
-#~ msgid "edit the from field"
-#~ msgstr "edit kolom From"
-
-#~ msgid "edit the message with headers"
-#~ msgstr "edit surat berikut dengan headers"
-
-#~ msgid "edit the message"
-#~ msgstr "edit surat"
-
-#~ msgid "edit attachment using mailcap entry"
-#~ msgstr "edit lampiran berdasarkan mailcap"
-
-#, fuzzy
-#~ msgid "edit the newsgroups list"
-#~ msgstr "edit daftar CC"
-
-#~ msgid "edit the Reply-To field"
-#~ msgstr "edit kolom Reply-To"
-
-#, fuzzy
-#~ msgid "edit the Followup-To field"
-#~ msgstr "edit kolom Reply-To"
-
-#, fuzzy
-#~ msgid "edit the X-Comment-To field"
-#~ msgstr "edit kolom Reply-To"
-
-#~ msgid "edit the subject of this message"
-#~ msgstr "edit subjek dari surat ini"
-
-#~ msgid "edit the TO list"
-#~ msgstr "edit daftar TO"
-
-#~ msgid "create a new mailbox (IMAP only)"
-#~ msgstr "buat kotak surat baru (untuk IMAP)"
-
-#~ msgid "edit attachment content type"
-#~ msgstr "edit jenis isi (content-type) lampiran"
-
-#~ msgid "get a temporary copy of an attachment"
-#~ msgstr "ambil salinan sementara dari lampiran"
-
-#~ msgid "run ispell on the message"
-#~ msgstr "jalankan ispell ke surat"
-
-#~ msgid "compose new attachment using mailcap entry"
-#~ msgstr "buat lampiran berdasarkan mailcap"
-
-#~ msgid "toggle recoding of this attachment"
-#~ msgstr "peng-coding-an ulang dari lampiran ini"
-
-#~ msgid "save this message to send later"
-#~ msgstr "simpan surat ini untuk dikirim nanti"
-
-#, fuzzy
-#~ msgid "send attachment with a different name"
-#~ msgstr "edit transfer-encoding dari lampiran"
-
-#~ msgid "rename/move an attached file"
-#~ msgstr "ganti nama/pindahkan file lampiran"
-
-#, fuzzy
-#~ msgid "compose a new message to the sender"
-#~ msgstr "menulis surat baru"
-
-#~ msgid "send the message"
-#~ msgstr "kirim suratnya"
-
-#~ msgid "toggle disposition between inline/attachment"
-#~ msgstr "penampilan inline atau sebagai attachment"
-
-#~ msgid "toggle whether to delete file after sending it"
-#~ msgstr "hapus atau tidak setelah suratnya dikirim"
-
-#~ msgid "update an attachment's encoding info"
-#~ msgstr "betulkan encoding info dari lampiran"
-
-#~ msgid "write the message to a folder"
-#~ msgstr "simpan surat ke sebuah folder"
-
-#~ msgid "copy a message to a file/mailbox"
-#~ msgstr "simpan surat ke file/kotak surat"
-
-#~ msgid "create an alias from a message sender"
-#~ msgstr "buat alias dari pengirim surat"
-
-#~ msgid "move entry to bottom of screen"
-#~ msgstr "pindahkan entry ke akhir layar"
-
-#~ msgid "move entry to middle of screen"
-#~ msgstr "pindahkan entry ke tengah layar"
-
-#~ msgid "move entry to top of screen"
-#~ msgstr "pindahkan entry ke awal layar"
-
-#~ msgid "make decoded (text/plain) copy"
-#~ msgstr "buat salinan (text/plain) yang sudah di-decode"
-
-#~ msgid "make decoded copy (text/plain) and delete"
-#~ msgstr "buat salinan (text/plain) yang sudah di-decode dan hapus"
-
-#~ msgid "delete the current entry"
-#~ msgstr "hapus entry ini"
-
-#~ msgid "delete the current mailbox (IMAP only)"
-#~ msgstr "hapus kotak surat ini (untuk IMAP)"
-
-#~ msgid "delete all messages in subthread"
-#~ msgstr "hapus semua surat di subthread"
-
-#~ msgid "delete all messages in thread"
-#~ msgstr "hapus semua surat di thread"
-
-#~ msgid "display full address of sender"
-#~ msgstr "tampilkan alamat lengkap pengirim"
-
-#~ msgid "display message and toggle header weeding"
-#~ msgstr "tampilkan surat dan pilih penghapusan header"
-
-#~ msgid "display a message"
-#~ msgstr "tampilkan surat"
-
-#~ msgid "edit the raw message"
-#~ msgstr "edit keseluruhan surat"
-
-#~ msgid "delete the char in front of the cursor"
-#~ msgstr "hapus karakter di depan kursor"
-
-#~ msgid "move the cursor one character to the left"
-#~ msgstr "pindahkan kursor satu karakter ke kanan"
-
-#~ msgid "move the cursor to the beginning of the word"
-#~ msgstr "ke awal kata"
-
-#~ msgid "jump to the beginning of the line"
-#~ msgstr "ke awal baris"
-
-#~ msgid "cycle among incoming mailboxes"
-#~ msgstr "cycle antara kotak surat yang menerima surat"
-
-#~ msgid "complete filename or alias"
-#~ msgstr "lengkapi nama file atau alias"
-
-#~ msgid "complete address with query"
-#~ msgstr "lengkapi alamat dengan query"
-
-#~ msgid "delete the char under the cursor"
-#~ msgstr "hapus karakter di bawah kursor"
-
-#~ msgid "jump to the end of the line"
-#~ msgstr "ke akhir baris"
-
-#~ msgid "move the cursor one character to the right"
-#~ msgstr "pindahkan kursor satu karakter ke kanan"
-
-#~ msgid "move the cursor to the end of the word"
-#~ msgstr "pindahkan kursor ke akhir kata"
-
-#~ msgid "scroll down through the history list"
-#~ msgstr "scroll daftar history ke bawah"
-
-#~ msgid "scroll up through the history list"
-#~ msgstr "scroll daftar history ke atas"
-
-#~ msgid "delete chars from cursor to end of line"
-#~ msgstr "hapus dari kursor sampai akhir baris"
-
-#~ msgid "delete chars from the cursor to the end of the word"
-#~ msgstr "hapus dari kursor sampai akhir kata"
-
-#~ msgid "delete all chars on the line"
-#~ msgstr "hapus baris"
-
-#~ msgid "delete the word in front of the cursor"
-#~ msgstr "hapus kata di depan kursor"
-
-#~ msgid "quote the next typed key"
-#~ msgstr "kutip tombol yang akan ditekan berikut"
-
-#~ msgid "transpose character under cursor with previous"
-#~ msgstr "tukar karakter di bawah kursor dg yg sebelumnya"
-
-#~ msgid "capitalize the word"
-#~ msgstr "ubah kata ke huruf kapital"
-
-#~ msgid "convert the word to lower case"
-#~ msgstr "ubah kata ke huruf kecil"
-
-#~ msgid "convert the word to upper case"
-#~ msgstr "ubah kata ke huruf besar"
-
-#~ msgid "enter a muttrc command"
-#~ msgstr "menjalankan perintah muttrc"
-
-#~ msgid "enter a file mask"
-#~ msgstr "menentukan file mask"
-
-#~ msgid "exit this menu"
-#~ msgstr "keluar dari menu ini"
-
-#~ msgid "filter attachment through a shell command"
-#~ msgstr "mem-filter lampiran melalui perintah shell"
-
-#~ msgid "move to the first entry"
-#~ msgstr "ke entry pertama"
-
-#~ msgid "toggle a message's 'important' flag"
-#~ msgstr "menandai surat penting atau tidak ('important' flag)"
-
-#, fuzzy
-#~ msgid "followup to newsgroup"
-#~ msgstr "Balas ke %s%s?"
-
-#~ msgid "forward a message with comments"
-#~ msgstr "forward surat dengan komentar"
-
-#~ msgid "select the current entry"
-#~ msgstr "pilih entry ini"
-
-#, fuzzy
-#~ msgid "get all children of the current message"
-#~ msgstr "Anda sudah di surat yang pertama."
-
-#, fuzzy
-#~ msgid "get message with Message-Id"
-#~ msgstr "edit surat berikut dengan headers"
-
-#, fuzzy
-#~ msgid "get parent of the current message"
-#~ msgstr "Anda sudah di surat yang pertama."
-
-#~ msgid "reply to all recipients"
-#~ msgstr "balas ke semua penerima"
-
-#~ msgid "scroll down 1/2 page"
-#~ msgstr "geser ke bawah setengah layar"
-
-#~ msgid "scroll up 1/2 page"
-#~ msgstr "geser ke atas setengah layar"
-
-#~ msgid "this screen"
-#~ msgstr "layar ini"
-
-#~ msgid "jump to an index number"
-#~ msgstr "ke nomer indeks"
-
-#~ msgid "move to the last entry"
-#~ msgstr "ke entry terakhir"
-
-#~ msgid "reply to specified mailing list"
-#~ msgstr "balas ke mailing list yang disebut"
-
-#~ msgid "execute a macro"
-#~ msgstr "menjalankan macro"
-
-#~ msgid "compose a new mail message"
-#~ msgstr "menulis surat baru"
-
-#~ msgid "break the thread in two"
-#~ msgstr "pecahkan thread jadi dua"
-
-#~ msgid "open a different folder"
-#~ msgstr "membuka folder lain"
-
-#~ msgid "open a different folder in read only mode"
-#~ msgstr "membuka folder lain dengan mode read-only"
-
-#, fuzzy
-#~ msgid "open a different newsgroup"
-#~ msgstr "membuka folder lain"
-
-#, fuzzy
-#~ msgid "open a different newsgroup in read only mode"
-#~ msgstr "membuka folder lain dengan mode read-only"
-
-#~ msgid "clear a status flag from a message"
-#~ msgstr "bersihkan suatu tanda status pada surat"
-
-#~ msgid "delete messages matching a pattern"
-#~ msgstr "hapus surat yang cocok dengan suatu kriteria"
-
-#~ msgid "force retrieval of mail from IMAP server"
-#~ msgstr "paksa mengambil surat dari server IMAP"
-
-#~ msgid "retrieve mail from POP server"
-#~ msgstr "mengambil surat dari server POP"
-
-#~ msgid "show only messages matching a pattern"
-#~ msgstr "hanya tunjukkan surat yang cocok dengan suatu kriteria"
-
-#~ msgid "link tagged message to the current one"
-#~ msgstr "hubungkan surat yang telah ditandai ke yang sedang dipilih"
-
-#~ msgid "open next mailbox with new mail"
-#~ msgstr "buka kotak surat dengan surat baru"
-
-#~ msgid "jump to the next new message"
-#~ msgstr "ke surat berikutnya yang baru"
-
-#~ msgid "jump to the next new or unread message"
-#~ msgstr "ke surat berikutnya yang baru atau belum dibaca"
-
-#~ msgid "jump to the next subthread"
-#~ msgstr "ke subthread berikutnya"
-
-#~ msgid "jump to the next thread"
-#~ msgstr "ke thread berikutnya"
-
-#~ msgid "move to the next undeleted message"
-#~ msgstr "ke surat berikutnya yang tidak dihapus"
-
-#~ msgid "jump to the next unread message"
-#~ msgstr "ke surat berikutnya yang belum dibaca"
-
-#~ msgid "jump to parent message in thread"
-#~ msgstr "loncat ke surat induk di thread ini"
-
-#~ msgid "jump to previous thread"
-#~ msgstr "ke thread sebelumnya"
-
-#~ msgid "jump to previous subthread"
-#~ msgstr "ke subthread sebelumnya"
-
-#~ msgid "move to the previous undeleted message"
-#~ msgstr "ke surat sebelumnya yang tidak dihapus"
-
-#~ msgid "jump to the previous new message"
-#~ msgstr "ke surat sebelumnya yang baru"
-
-#~ msgid "jump to the previous new or unread message"
-#~ msgstr "ke surat sebelumnya yang baru atau belum dibaca"
-
-#~ msgid "jump to the previous unread message"
-#~ msgstr "ke surat sebelumnya yang belum dibaca"
-
-#~ msgid "mark the current thread as read"
-#~ msgstr "tandai thread ini 'sudah dibaca'"
-
-#~ msgid "mark the current subthread as read"
-#~ msgstr "tandai subthread ini 'sudah dibaca'"
-
-#, fuzzy
-#~ msgid "jump to root message in thread"
-#~ msgstr "loncat ke surat induk di thread ini"
-
-#~ msgid "set a status flag on a message"
-#~ msgstr "tandai status dari surat"
-
-#~ msgid "save changes to mailbox"
-#~ msgstr "simpan perubahan ke kotak surat"
-
-#~ msgid "tag messages matching a pattern"
-#~ msgstr "tandai surat-surat yang cocok dengan kriteria"
-
-#~ msgid "undelete messages matching a pattern"
-#~ msgstr "tidak jadi menghapus surat-surat yang cocok dengan kriteria"
-
-#~ msgid "untag messages matching a pattern"
-#~ msgstr "tidak jadi menandai surat-surat yang cocok dengan kriteria"
-
-#, fuzzy
-#~ msgid "create a hotkey macro for the current message"
-#~ msgstr "Anda sudah di surat yang pertama."
-
-#~ msgid "move to the middle of the page"
-#~ msgstr "ke tengah halaman"
-
-#~ msgid "move to the next entry"
-#~ msgstr "ke entry berikutnya"
-
-#~ msgid "scroll down one line"
-#~ msgstr "geser ke bawah satu baris"
-
-#~ msgid "move to the next page"
-#~ msgstr "ke halaman berikutnya"
-
-#~ msgid "jump to the bottom of the message"
-#~ msgstr "ke akhir surat"
-
-#~ msgid "toggle display of quoted text"
-#~ msgstr "tampilkan atau tidak teks yang dikutip"
-
-#~ msgid "skip beyond quoted text"
-#~ msgstr "lompati setelah teks yang dikutip"
-
-#~ msgid "jump to the top of the message"
-#~ msgstr "ke awal surat"
-
-#~ msgid "pipe message/attachment to a shell command"
-#~ msgstr "pipe surat/lampiran ke perintah shell"
-
-#, fuzzy
-#~ msgid "post message to newsgroup"
-#~ msgstr "Bounce surat ke %s"
-
-#~ msgid "move to the previous entry"
-#~ msgstr "ke entry sebelumnya"
-
-#~ msgid "scroll up one line"
-#~ msgstr "geser ke atas satu baris"
-
-#~ msgid "move to the previous page"
-#~ msgstr "ke halaman sebelumnya"
-
-#~ msgid "print the current entry"
-#~ msgstr "cetak entry ini"
-
-#~ msgid "query external program for addresses"
-#~ msgstr "gunakan program lain untuk mencari alamat"
-
-#~ msgid "append new query results to current results"
-#~ msgstr "tambahkan hasil pencarian baru ke hasil yang sudah ada"
-
-#~ msgid "save changes to mailbox and quit"
-#~ msgstr "simpan perubahan ke kotak surat dan keluar"
-
-#~ msgid "recall a postponed message"
-#~ msgstr "lanjutkan surat yang ditunda"
-
-#, fuzzy
-#~ msgid "reconstruct thread containing current message"
-#~ msgstr "Thread berisi surat yang belum dibaca."
-
-#~ msgid "clear and redraw the screen"
-#~ msgstr "bersihkan layar dan redraw"
-
-#~ msgid "{internal}"
-#~ msgstr "{jerohan}"
-
-#~ msgid "rename the current mailbox (IMAP only)"
-#~ msgstr "ganti nama kotak surat ini (untuk IMAP)"
-
-#~ msgid "reply to a message"
-#~ msgstr "balas surat"
-
-#~ msgid "use the current message as a template for a new one"
-#~ msgstr "gunakan surat ini sebagai template"
-
-#, fuzzy
-#~ msgid "save message/attachment to a mailbox/file"
-#~ msgstr "simpan surat/lampiran ke suatu file"
-
-#~ msgid "search for a regular expression"
-#~ msgstr "cari dengan regular expression"
-
-#~ msgid "search backwards for a regular expression"
-#~ msgstr "cari mundur dengan regular expression"
-
-#~ msgid "search for next match"
-#~ msgstr "cari yang cocok berikutnya"
-
-#~ msgid "search for next match in opposite direction"
-#~ msgstr "cari mundur yang cocok berikutnya"
-
-#~ msgid "toggle search pattern coloring"
-#~ msgstr "diwarnai atau tidak jika ketemu"
-
-#~ msgid "invoke a command in a subshell"
-#~ msgstr "jalankan perintah di subshell"
-
-#~ msgid "sort messages"
-#~ msgstr "urutkan surat-surat"
-
-#~ msgid "sort messages in reverse order"
-#~ msgstr "urutkan terbalik surat-surat"
-
-#, fuzzy
-#~ msgid "subscribe to newsgroups matching a pattern"
-#~ msgstr "tidak jadi menandai surat-surat yang cocok dengan kriteria"
-
-#~ msgid "tag the current entry"
-#~ msgstr "tandai entry ini"
-
-#~ msgid "apply next function to tagged messages"
-#~ msgstr "lakukan fungsi berikutnya ke surat-surat yang ditandai"
-
-#~ msgid "apply next function ONLY to tagged messages"
-#~ msgstr "lakukan fungsi berikutnya HANYA ke surat-surat yang ditandai"
-
-#~ msgid "tag the current subthread"
-#~ msgstr "tandai subthread ini"
-
-#~ msgid "tag the current thread"
-#~ msgstr "tandai thread ini"
-
-#~ msgid "toggle a message's 'new' flag"
-#~ msgstr "tandai atau tidak sebuah surat 'baru'"
-
-#, fuzzy
-#~ msgid "toggle view of read messages"
-#~ msgstr "ke surat sebelumnya yang baru atau belum dibaca"
-
-#~ msgid "toggle whether the mailbox will be rewritten"
-#~ msgstr "apakah kotak surat akan ditulis ulang"
-
-#~ msgid "toggle whether to browse mailboxes or all files"
-#~ msgstr "apakah menjelajahi kotak-kotak surat saja atau semua file"
-
-#~ msgid "move to the top of the page"
-#~ msgstr "ke awal halaman"
-
-#~ msgid "undelete the current entry"
-#~ msgstr "tidak jadi hapus entry ini"
-
-#~ msgid "undelete all messages in thread"
-#~ msgstr "tidak jadi hapus semua surat di thread"
-
-#~ msgid "undelete all messages in subthread"
-#~ msgstr "tidak jadi hapus semua surat di subthread"
-
-#, fuzzy
-#~ msgid "unsubscribe from newsgroups matching a pattern"
-#~ msgstr "tidak jadi menandai surat-surat yang cocok dengan kriteria"
-
-#~ msgid "show the Mutt version number and date"
-#~ msgstr "tunjukkan versi dan tanggal dari Mutt"
-
-#~ msgid "view attachment using mailcap entry if necessary"
-#~ msgstr "tampilkan lampiran berdasarkan mailcap jika perlu"
-
-#~ msgid "show MIME attachments"
-#~ msgstr "tampilkan lampiran MIME"
-
-#~ msgid "display the keycode for a key press"
-#~ msgstr "tampilkan keycode untuk penekanan tombol"
-
-#, fuzzy
-#~ msgid "limit view to current thread"
-#~ msgstr "tandai thread ini"
-
-#~ msgid "show currently active limit pattern"
-#~ msgstr "tampilkan kriteria batas yang sedang aktif"
-
-#~ msgid "collapse/uncollapse current thread"
-#~ msgstr "collapse/uncollapse thread ini"
-
-#~ msgid "collapse/uncollapse all threads"
-#~ msgstr "collapse/uncollapse semua thread"
-
-#, fuzzy
-#~ msgid "move the highlight to next mailbox with new mail"
-#~ msgstr "buka kotak surat dengan surat baru"
-
-#, fuzzy
-#~ msgid "open highlighted mailbox"
-#~ msgstr "Membuka kembali kotak surat..."
-
-#, fuzzy
-#~ msgid "scroll the sidebar down 1 page"
-#~ msgstr "geser ke bawah setengah layar"
-
-#, fuzzy
-#~ msgid "scroll the sidebar up 1 page"
-#~ msgstr "geser ke atas setengah layar"
-
-#, fuzzy
-#~ msgid "move the highlight to previous mailbox"
-#~ msgstr "ke halaman sebelumnya"
-
-#, fuzzy
-#~ msgid "move the highlight to previous mailbox with new mail"
-#~ msgstr "buka kotak surat dengan surat baru"
-
-#, fuzzy
-#~ msgid "toggle between mailboxes and virtual mailboxes"
-#~ msgstr "apakah menjelajahi kotak-kotak surat saja atau semua file"
-
-#, fuzzy
-#~ msgid "open a different virtual folder"
-#~ msgstr "membuka folder lain"
-
-#, fuzzy
-#~ msgid "modify labels and then hide message"
-#~ msgstr "Anda sudah di surat yang pertama."
-
-#~ msgid "attach a PGP public key"
-#~ msgstr "lampirkan PGP public key"
-
-#~ msgid "show PGP options"
-#~ msgstr "tunjukan opsi2 PGP"
-
-#~ msgid "mail a PGP public key"
-#~ msgstr "kirim PGP public key lewat surat"
-
-#~ msgid "verify a PGP public key"
-#~ msgstr "periksa PGP public key"
-
-#~ msgid "view the key's user id"
-#~ msgstr "tampilkan user ID dari key"
-
-#~ msgid "check for classic PGP"
-#~ msgstr "periksa PGP klasik"
-
-#, fuzzy
-#~ msgid "accept the chain constructed"
-#~ msgstr "Terima rangkaian yang dibentuk"
-
-#, fuzzy
-#~ msgid "append a remailer to the chain"
-#~ msgstr "Tambahkan remailer ke rangkaian"
-
-#, fuzzy
-#~ msgid "insert a remailer into the chain"
-#~ msgstr "Sisipkan remailer ke rangkaian"
-
-#, fuzzy
-#~ msgid "delete a remailer from the chain"
-#~ msgstr "Hapus remailer dari rangkaian"
-
-#, fuzzy
-#~ msgid "select the previous element of the chain"
-#~ msgstr "Pilih elemen sebelumnya dalam rangkaian"
-
-#, fuzzy
-#~ msgid "select the next element of the chain"
-#~ msgstr "Pilih elemen berikutnya dalam rangkaian"
-
-#~ msgid "send the message through a mixmaster remailer chain"
-#~ msgstr "kirim surat melalui sebuah rangkaian remailer mixmaster"
-
-#~ msgid "make decrypted copy and delete"
-#~ msgstr "buat salinan yang sudah di-decrypt dan hapus"
-
-#~ msgid "make decrypted copy"
-#~ msgstr "buat salinan yang sudah di-decrypt"
-
-#~ msgid "wipe passphrase(s) from memory"
-#~ msgstr "hapus passphrase dari memory"
-
-#~ msgid "extract supported public keys"
-#~ msgstr "ekstrak kunci2 publik yg didukung"
-
-#~ msgid "show S/MIME options"
-#~ msgstr "tunjukan opsi2 S/MIME"
-
-#~ msgid "Fingerprint: %s"
-#~ msgstr "Cap jari: %s"
-
-#~ msgid "SMTP authentication requires SASL"
-#~ msgstr "Authentikasi SMTP membutuhkan SASL"
-
-#~ msgid "move to the first message"
-#~ msgstr "ke surat pertama"
-
-#~ msgid "move to the last message"
-#~ msgstr "ke surat terakhir"

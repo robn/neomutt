@@ -7,12 +7,12 @@ dnl !!! TO DUMP THEIR RESULTS WHEN MUTT -V IS CALLED               !!!
 CFLAGS=$CFLAGS
 LDFLAGS=$LDFLAGS
 
-AC_INIT([NeoMutt], [20170414], [neomutt-devel@neomutt.org], [mutt], [https://www.neomutt.org])
+AC_INIT([NeoMutt], [20170421], [neomutt-devel@neomutt.org], [mutt], [https://www.neomutt.org])
 AC_CONFIG_SRCDIR(mutt.h)
 AM_INIT_AUTOMAKE
 AC_CONFIG_HEADERS([config.h])
 
-AC_DEFINE(MUTT_VERSION, "1.8.1", [Version of upstream Mutt])
+AC_DEFINE(MUTT_VERSION, "1.8.2", [Version of upstream Mutt])
 
 AC_USE_SYSTEM_EXTENSIONS
 
@@ -1159,7 +1159,7 @@ AC_SUBST(NOTMUCH_LIBS)
 
 dnl -- iconv/gettext --
 
-AM_GNU_GETTEXT_VERSION([0.18])
+AM_GNU_GETTEXT_VERSION([0.17])
 AM_GNU_GETTEXT([external])
 AC_CHECK_HEADERS([locale.h])
 

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: neomutt-20161104\n"
 "Report-Msgid-Bugs-To: neomutt-devel@neomutt.org\n"
-"POT-Creation-Date: 2017-04-13 13:26+0100\n"
+"POT-Creation-Date: 2017-04-21 13:02+0100\n"
 "PO-Revision-Date: 2016-11-09 22:45+0000\n"
 "Last-Translator: Velko Hristov <hristov@informatik.hu-berlin.de>\n"
 "Language-Team: none\n"
@@ -34,12 +34,12 @@ msgstr "Потребителско име на %s: "
 msgid "Password for %s@%s: "
 msgstr "Парола за %s@%s: "
 
-#: addrbook.c:31 browser.c:48 browser.c:58 pager.c:1598 postpone.c:36
+#: addrbook.c:31 browser.c:48 browser.c:58 pager.c:1599 postpone.c:36
 #: query.c:44 recvattach.c:50
 msgid "Exit"
 msgstr "Изход"
 
-#: addrbook.c:31 curs_main.c:775 curs_main.c:788 pager.c:1602 pager.c:1612
+#: addrbook.c:31 curs_main.c:775 curs_main.c:788 pager.c:1603 pager.c:1613
 #: postpone.c:37
 msgid "Del"
 msgstr "Изтр."
@@ -54,7 +54,7 @@ msgstr "Избор"
 
 #: addrbook.c:33 browser.c:52 browser.c:64 compose.c:105 compose.c:117
 #: crypt_gpgme.c:3943 curs_main.c:781 curs_main.c:794 mutt_ssl.c:837
-#: mutt_ssl_gnutls.c:714 pager.c:2021 pgpkey.c:500 postpone.c:39 query.c:49
+#: mutt_ssl_gnutls.c:714 pager.c:2022 pgpkey.c:500 postpone.c:39 query.c:49
 #: recvattach.c:51 smime.c:412
 msgid "Help"
 msgstr "Помощ"
@@ -78,7 +78,8 @@ msgstr "Вече има запис за този псевдоним!"
 
 #: alias.c:269
 msgid "Warning: This alias name may not work.  Fix it?"
-msgstr "Предупреждение: Този псевдоним може да не работи. Желаете ли да го поправите?"
+msgstr ""
+"Предупреждение: Този псевдоним може да не работи. Желаете ли да го поправите?"
 
 #: alias.c:294
 msgid "Address: "
@@ -127,7 +128,7 @@ msgid "Mailcap compose entry requires %%s"
 msgstr "Записът \"compose\" в mailcap изисква %%s"
 
 #: attach.c:127 attach.c:255 commands.c:223 compose.c:1406 compress.c:429
-#: curs_lib.c:215 curs_lib.c:800
+#: curs_lib.c:217 curs_lib.c:871
 #, c-format
 msgid "Error running \"%s\"!"
 msgstr "Грешка при изпълнението на \"%s\"!"
@@ -162,7 +163,8 @@ msgstr "В mailcap липсва запис \"edit\" за %s"
 
 #: attach.c:359
 msgid "No matching mailcap entry found.  Viewing as text."
-msgstr "Не е намерено подходящо mailcap вписване. Приложението е показано като текст."
+msgstr ""
+"Не е намерено подходящо mailcap вписване. Приложението е показано като текст."
 
 #: attach.c:372
 msgid "MIME type not defined.  Cannot view attachment."
@@ -324,14 +326,21 @@ msgstr "Файлова маска: "
 #. L10N: The highlighted letters must match the "Sort" options
 #: browser.c:1710
 #, fuzzy
-msgid "Reverse sort by (d)ate, (a)lpha, si(z)e, d(e)scription, (c)ount, ne(w) count, or do(n)'t sort? "
-msgstr "Обратно подреждане по дата(d), азбучен ред(a), размер(z) или без подреждане(n)?"
+msgid ""
+"Reverse sort by (d)ate, (a)lpha, si(z)e, d(e)scription, (c)ount, ne(w) "
+"count, or do(n)'t sort? "
+msgstr ""
+"Обратно подреждане по дата(d), азбучен ред(a), размер(z) или без "
+"подреждане(n)?"
 
 #. L10N: The highlighted letters must match the "Reverse Sort" options
 #: browser.c:1713
 #, fuzzy
-msgid "Sort by (d)ate, (a)lpha, si(z)e, d(e)scription, (c)ount, ne(w) count, or do(n)'t sort? "
-msgstr "Подреждане по дата(d), азбучен ред(a), размер(z) или без подреждане(n)?"
+msgid ""
+"Sort by (d)ate, (a)lpha, si(z)e, d(e)scription, (c)ount, ne(w) count, or "
+"do(n)'t sort? "
+msgstr ""
+"Подреждане по дата(d), азбучен ред(a), размер(z) или без подреждане(n)?"
 
 #. L10N: These must match the highlighted letters from "Sort" and "Reverse Sort"
 #: browser.c:1716
@@ -411,7 +420,7 @@ msgstr "mono: недостатъчно аргументи"
 msgid "%s: no such attribute"
 msgstr "%s: няма такъв атрибут"
 
-#: color.c:774 hook.c:69 hook.c:81 init.c:2152 init.c:2227 keymap.c:920
+#: color.c:774 hook.c:69 hook.c:81 init.c:2160 init.c:2235 keymap.c:920
 msgid "too few arguments"
 msgstr "недостатъчно аргументи"
 
@@ -551,86 +560,94 @@ msgid "Messages could not be printed"
 msgstr "Писмата не са отпечатани"
 
 #. L10N: The highlighted letters must match the "Sort" options
-#: commands.c:516
+#: commands.c:515
 #, fuzzy
-msgid "Rev-Sort Date/Frm/Recv/Subj/tO/Thread/Unsort/siZe/sCore/sPam/Label?: "
-msgstr "Обратно подреждане по: дата на изпращане(d)/от(f)/дата на получаване(r)/тема(s)/получател(o)/нишка(t)/без подреждане(u)/размер(z)/важност(c)?: "
+msgid ""
+"Rev-Sort (d)ate/(f)rm/(r)ecv/(s)ubj/t(o)/(t)hread/(u)nsort/si(z)e/s(c)ore/"
+"s(p)am/(l)abel?: "
+msgstr ""
+"Обратно подреждане по: дата на изпращане(d)/от(f)/дата на получаване(r)/"
+"тема(s)/получател(o)/нишка(t)/без подреждане(u)/размер(z)/важност(c)?: "
 
 #. L10N: The highlighted letters must match the "Rev-Sort" options
 #: commands.c:519
 #, fuzzy
-msgid "Sort Date/Frm/Recv/Subj/tO/Thread/Unsort/siZe/sCore/sPam/Label?: "
-msgstr "Подреждане по: дата на изпращане(d)/от(f)/дата на получаване(r)/тема(s)/получател(o)/нишка(t)/без подреждане(u)/размер(z)/важност(c)?: "
+msgid ""
+"Sort (d)ate/(f)rm/(r)ecv/(s)ubj/t(o)/(t)hread/(u)nsort/si(z)e/s(c)ore/s(p)am/"
+"(l)abel?: "
+msgstr ""
+"Подреждане по: дата на изпращане(d)/от(f)/дата на получаване(r)/тема(s)/"
+"получател(o)/нишка(t)/без подреждане(u)/размер(z)/важност(c)?: "
 
 #. L10N: These must match the highlighted letters from "Sort" and "Rev-Sort"
-#: commands.c:522
+#: commands.c:523
 #, fuzzy
 msgid "dfrsotuzcpl"
 msgstr "dfrsotuzc"
 
-#: commands.c:583
+#: commands.c:584
 msgid "Shell command: "
 msgstr "Шел команда: "
 
-#: commands.c:726
+#: commands.c:727
 #, c-format
 msgid "Decode-save%s to mailbox"
 msgstr "Декодиране и запис на%s в пощенска кутия"
 
-#: commands.c:727
+#: commands.c:728
 #, c-format
 msgid "Decode-copy%s to mailbox"
 msgstr "Декодиране и копиране на%s в пощенска кутия"
 
-#: commands.c:728
+#: commands.c:729
 #, c-format
 msgid "Decrypt-save%s to mailbox"
 msgstr "Дешифриране и запис на%s в пощенска кутия"
 
-#: commands.c:729
+#: commands.c:730
 #, c-format
 msgid "Decrypt-copy%s to mailbox"
 msgstr "Дешифриране и запис на%s в пощенска кутия"
 
-#: commands.c:730
+#: commands.c:731
 #, c-format
 msgid "Save%s to mailbox"
 msgstr "Запис на%s в пощенска кутия"
 
-#: commands.c:731
+#: commands.c:732
 #, c-format
 msgid "Copy%s to mailbox"
 msgstr "Копиране на%s в пощенска кутия"
 
-#: commands.c:732
+#: commands.c:733
 msgid " tagged"
 msgstr " маркиран"
 
-#: commands.c:796
+#: commands.c:797
 #, c-format
 msgid "Copying to %s..."
 msgstr "Създаване на копие в %s..."
 
-#: commands.c:958
+#: commands.c:959
 #, c-format
 msgid "Convert to %s upon sending?"
 msgstr "Желаете ли да го конвертирате до %s при изпращане?"
 
-#: commands.c:968
+#: commands.c:969
 #, c-format
 msgid "Content-Type changed to %s."
 msgstr "Content-Type е променен на %s."
 
-#: commands.c:973
+#: commands.c:974
 #, c-format
 msgid "Character set changed to %s; %s."
 msgstr "Кодовата таблица е променена на %s; %s."
 
-#: commands.c:975
+#: commands.c:976
 msgid "not converting"
 msgstr "не е конвертирано"
 
-#: commands.c:975
+#: commands.c:976
 msgid "converting"
 msgstr "конвертирано"
 
@@ -923,6 +940,119 @@ msgstr "Създаване на копие в %s..."
 msgid "No decryption engine available for message"
 msgstr ""
 
+#: crypt.c:59
+#, c-format
+msgid " (current time: %c)"
+msgstr " (текущо време: %c)"
+
+#: crypt.c:64
+#, c-format
+msgid "[-- %s output follows%s --]\n"
+msgstr "[-- %s следва резултатът%s) --]\n"
+
+#: crypt.c:78
+msgid "Passphrase(s) forgotten."
+msgstr "Паролите са забравени."
+
+#: crypt.c:139
+msgid "Inline PGP can't be used with attachments.  Revert to PGP/MIME?"
+msgstr ""
+
+#: crypt.c:143
+msgid "Mail not sent: inline PGP can't be used with attachments."
+msgstr ""
+
+#: crypt.c:151 cryptglue.c:106 pgpkey.c:541 pgpkey.c:724
+msgid "Invoking PGP..."
+msgstr "Стартиране на PGP..."
+
+#: crypt.c:162
+msgid "Message can't be sent inline.  Revert to using PGP/MIME?"
+msgstr ""
+
+#: crypt.c:164 send.c:1796
+msgid "Mail not sent."
+msgstr "Писмото не е изпратено."
+
+#: crypt.c:224
+msgid "Encrypt message to S/MIME Default Key also?"
+msgstr ""
+
+#: crypt.c:259
+msgid "Encrypt message to PGP Default Key also?"
+msgstr ""
+
+#: crypt.c:502
+msgid "S/MIME messages with no hints on content are unsupported."
+msgstr "S/MIME писма без указание за съдържанието им не се поддържат."
+
+#: crypt.c:710 crypt.c:751
+msgid "Trying to extract PGP keys...\n"
+msgstr "Опит за извличане на PGP ключове...\n"
+
+#: crypt.c:732 crypt.c:772
+msgid "Trying to extract S/MIME certificates...\n"
+msgstr "Опит за извличане на S/MIME сертификати...\n"
+
+#: crypt.c:913
+#, c-format
+msgid ""
+"[-- Error: Unknown multipart/signed protocol %s! --]\n"
+"\n"
+msgstr ""
+"[-- Грешка: Непознат multipart/signed протокол %s! --]\n"
+"\n"
+
+#: crypt.c:947
+msgid ""
+"[-- Error: Inconsistent multipart/signed structure! --]\n"
+"\n"
+msgstr ""
+"[-- Грешка: Противоречива multipart/signed структура! --]\n"
+"\n"
+
+#: crypt.c:983
+#, c-format
+msgid ""
+"[-- Warning: We can't verify %s/%s signatures. --]\n"
+"\n"
+msgstr ""
+"[-- Предупреждение: %s/%s-подписи не могат да бъдат проверявани. --]\n"
+"\n"
+
+#: crypt.c:995
+msgid ""
+"[-- The following data is signed --]\n"
+"\n"
+msgstr ""
+"[-- Следните данни са подписани --]\n"
+"\n"
+
+#: crypt.c:1001
+msgid ""
+"[-- Warning: Can't find any signatures. --]\n"
+"\n"
+msgstr ""
+"[-- Предупреждение: не могат да бъдат намерени подписи. --]\n"
+"\n"
+
+#: crypt.c:1007
+msgid ""
+"\n"
+"[-- End of signed data --]\n"
+msgstr ""
+"\n"
+"[-- Край на подписаните данни --]\n"
+
+#: cryptglue.c:84
+msgid "\"crypt_use_gpgme\" set but not built with GPGME support."
+msgstr ""
+
+#: cryptglue.c:108
+#, fuzzy
+msgid "Invoking S/MIME..."
+msgstr "Стартиране на PGP..."
+
 #: crypt_gpgme.c:384
 #, fuzzy, c-format
 msgid "error creating gpgme context: %s\n"
@@ -1056,7 +1186,9 @@ msgid "Fingerprint: "
 msgstr "Пръстов отпечатък: %s"
 
 #: crypt_gpgme.c:1309
-msgid "WARNING: We have NO indication whether the key belongs to the person named as shown above\n"
+msgid ""
+"WARNING: We have NO indication whether the key belongs to the person named "
+"as shown above\n"
 msgstr ""
 
 #: crypt_gpgme.c:1316
@@ -1064,7 +1196,9 @@ msgid "WARNING: The key does NOT BELONG to the person named as shown above\n"
 msgstr ""
 
 #: crypt_gpgme.c:1320
-msgid "WARNING: It is NOT certain that the key belongs to the person named as shown above\n"
+msgid ""
+"WARNING: It is NOT certain that the key belongs to the person named as shown "
+"above\n"
 msgstr ""
 
 #: crypt_gpgme.c:1350 crypt_gpgme.c:1355
@@ -1152,7 +1286,7 @@ msgstr ""
 msgid "Error: copy data failed\n"
 msgstr ""
 
-#: crypt_gpgme.c:2493 pgp.c:501
+#: crypt_gpgme.c:2493 pgp.c:504
 msgid ""
 "[-- BEGIN PGP MESSAGE --]\n"
 "\n"
@@ -1160,11 +1294,11 @@ msgstr ""
 "[-- НАЧАЛО НА PGP-ПИСМО --]\n"
 "\n"
 
-#: crypt_gpgme.c:2495 pgp.c:503
+#: crypt_gpgme.c:2495 pgp.c:506
 msgid "[-- BEGIN PGP PUBLIC KEY BLOCK --]\n"
 msgstr "[-- НАЧАЛО НА БЛОК С ПУБЛИЧЕН PGP-КЛЮЧ --]\n"
 
-#: crypt_gpgme.c:2497 pgp.c:505
+#: crypt_gpgme.c:2497 pgp.c:508
 msgid ""
 "[-- BEGIN PGP SIGNED MESSAGE --]\n"
 "\n"
@@ -1172,19 +1306,19 @@ msgstr ""
 "[-- НАЧАЛО НА PGP-ПОДПИСАНО ПИСМО --]\n"
 "\n"
 
-#: crypt_gpgme.c:2523 pgp.c:548
+#: crypt_gpgme.c:2523 pgp.c:551
 msgid "[-- END PGP MESSAGE --]\n"
 msgstr "[-- КРАЙ НА PGP-ПИСМОТО --]\n"
 
-#: crypt_gpgme.c:2525 pgp.c:555
+#: crypt_gpgme.c:2525 pgp.c:558
 msgid "[-- END PGP PUBLIC KEY BLOCK --]\n"
 msgstr "[-- КРАЙ НА БЛОКА С ПУБЛИЧНИЯ PGP-КЛЮЧ --]\n"
 
-#: crypt_gpgme.c:2527 pgp.c:557
+#: crypt_gpgme.c:2527 pgp.c:560
 msgid "[-- END PGP SIGNED MESSAGE --]\n"
 msgstr "[-- КРАЙ НА PGP-ПОДПИСАНОТО ПИСМО --]\n"
 
-#: crypt_gpgme.c:2550 pgp.c:591
+#: crypt_gpgme.c:2550 pgp.c:594
 msgid ""
 "[-- Error: could not find beginning of PGP message! --]\n"
 "\n"
@@ -1192,7 +1326,7 @@ msgstr ""
 "[-- Грешка: началото на PGP-писмото не може да бъде намерено! --]\n"
 "\n"
 
-#: crypt_gpgme.c:2582 crypt_gpgme.c:2657 pgp.c:1010
+#: crypt_gpgme.c:2582 crypt_gpgme.c:2657 pgp.c:1013
 msgid "[-- Error: could not create temporary file! --]\n"
 msgstr "[-- Грешка: не може да бъде създаден временен файл! --]\n"
 
@@ -1205,7 +1339,7 @@ msgstr ""
 "[-- Следните данни са шифровани с PGP/MIME --]\n"
 "\n"
 
-#: crypt_gpgme.c:2597 pgp.c:1021
+#: crypt_gpgme.c:2597 pgp.c:1024
 msgid ""
 "[-- The following data is PGP/MIME encrypted --]\n"
 "\n"
@@ -1218,16 +1352,16 @@ msgstr ""
 msgid "[-- End of PGP/MIME signed and encrypted data --]\n"
 msgstr "[-- Край на шифрованите с PGP/MIME данни --]\n"
 
-#: crypt_gpgme.c:2620 pgp.c:1041
+#: crypt_gpgme.c:2620 pgp.c:1044
 msgid "[-- End of PGP/MIME encrypted data --]\n"
 msgstr "[-- Край на шифрованите с PGP/MIME данни --]\n"
 
-#: crypt_gpgme.c:2625 pgp.c:552 pgp.c:1046
+#: crypt_gpgme.c:2625 pgp.c:555 pgp.c:1049
 #, fuzzy
 msgid "PGP message successfully decrypted."
 msgstr "PGP-подписът е потвърден успешно."
 
-#: crypt_gpgme.c:2629 pgp.c:487 pgp.c:550 pgp.c:1050
+#: crypt_gpgme.c:2629 pgp.c:490 pgp.c:553 pgp.c:1053
 #, fuzzy
 msgid "Could not decrypt PGP message"
 msgstr "Писмото не може да бъде копирано."
@@ -1452,7 +1586,9 @@ msgstr ""
 
 #: crypt_gpgme.c:4001 pgpkey.c:579
 msgid "This key can't be used: expired/disabled/revoked."
-msgstr "Този ключ не може да бъде използван, защото е остарял, деактивиран или анулиран."
+msgstr ""
+"Този ключ не може да бъде използван, защото е остарял, деактивиран или "
+"анулиран."
 
 #: crypt_gpgme.c:4014 pgpkey.c:590 smime.c:440
 msgid "ID is expired/disabled/revoked."
@@ -1480,12 +1616,12 @@ msgstr "%s Действително ли искате да използвате 
 msgid "Looking for keys matching \"%s\"..."
 msgstr "Търсене на ключове, отговарящи на \"%s\"..."
 
-#: crypt_gpgme.c:4375 pgp.c:1224
+#: crypt_gpgme.c:4375 pgp.c:1227
 #, c-format
 msgid "Use keyID = \"%s\" for %s?"
 msgstr "Желаете ли използвате ключовия идентификатор \"%s\" за %s?"
 
-#: crypt_gpgme.c:4426 pgp.c:1273 smime.c:765 smime.c:865
+#: crypt_gpgme.c:4426 pgp.c:1276 smime.c:765 smime.c:865
 #, c-format
 msgid "Enter keyID for %s: "
 msgstr "Въведете ключов идентификатор за %s: "
@@ -1519,7 +1655,8 @@ msgstr ""
 #: crypt_gpgme.c:4610
 #, fuzzy
 msgid "S/MIME (s)ign, sign (a)s, (p)gp, (c)lear, or (o)ppenc mode off? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: S/MIME options (opportunistic encryption is on)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1530,7 +1667,8 @@ msgstr ""
 #: crypt_gpgme.c:4620
 #, fuzzy
 msgid "PGP (s)ign, sign (a)s, s/(m)ime, (c)lear, or (o)ppenc mode off? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: PGP options (opportunistic encryption is on)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1541,8 +1679,11 @@ msgstr ""
 #. L10N: S/MIME options (opportunistic encryption is off)
 #: crypt_gpgme.c:4636
 #, fuzzy
-msgid "S/MIME (e)ncrypt, (s)ign, sign (a)s, (b)oth, (p)gp, (c)lear, or (o)ppenc mode? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgid ""
+"S/MIME (e)ncrypt, (s)ign, sign (a)s, (b)oth, (p)gp, (c)lear, or (o)ppenc "
+"mode? "
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: S/MIME options (opportunistic encryption is off)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1554,8 +1695,11 @@ msgstr "eswabf"
 #. L10N: PGP options (opportunistic encryption is off)
 #: crypt_gpgme.c:4646
 #, fuzzy
-msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, s/(m)ime, (c)lear, or (o)ppenc mode? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgid ""
+"PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, s/(m)ime, (c)lear, or (o)ppenc "
+"mode? "
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: PGP options (opportunistic encryption is off)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1567,7 +1711,8 @@ msgstr "eswabf"
 #: crypt_gpgme.c:4663
 #, fuzzy
 msgid "S/MIME (e)ncrypt, (s)ign, sign (a)s, (b)oth, (p)gp or (c)lear? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: S/MIME options
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1579,7 +1724,8 @@ msgstr "eswabf"
 #: crypt_gpgme.c:4673
 #, fuzzy
 msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, s/(m)ime or (c)lear? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: PGP options
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -1588,7 +1734,7 @@ msgstr "PGP шифроване(e), подпис(s), подпис като(a), и
 msgid "esabmfc"
 msgstr "eswabf"
 
-#: crypt_gpgme.c:4701 pgp.c:1757 smime.c:2143 smime.c:2158
+#: crypt_gpgme.c:4701 pgp.c:1760 smime.c:2143 smime.c:2158
 msgid "Sign as: "
 msgstr "Подпис като: "
 
@@ -1601,140 +1747,27 @@ msgstr ""
 msgid "Failed to figure out sender"
 msgstr "Грешка при отваряне на файла за прочит на заглавната информация."
 
-#: crypt.c:59
-#, c-format
-msgid " (current time: %c)"
-msgstr " (текущо време: %c)"
-
-#: crypt.c:64
-#, c-format
-msgid "[-- %s output follows%s --]\n"
-msgstr "[-- %s следва резултатът%s) --]\n"
-
-#: crypt.c:78
-msgid "Passphrase(s) forgotten."
-msgstr "Паролите са забравени."
-
-#: crypt.c:139
-msgid "Inline PGP can't be used with attachments.  Revert to PGP/MIME?"
-msgstr ""
-
-#: crypt.c:143
-msgid "Mail not sent: inline PGP can't be used with attachments."
-msgstr ""
-
-#: crypt.c:151 cryptglue.c:106 pgpkey.c:541 pgpkey.c:724
-msgid "Invoking PGP..."
-msgstr "Стартиране на PGP..."
-
-#: crypt.c:162
-msgid "Message can't be sent inline.  Revert to using PGP/MIME?"
-msgstr ""
-
-#: crypt.c:164 send.c:1796
-msgid "Mail not sent."
-msgstr "Писмото не е изпратено."
-
-#: crypt.c:224
-msgid "Encrypt message to S/MIME Default Key also?"
-msgstr ""
-
-#: crypt.c:259
-msgid "Encrypt message to PGP Default Key also?"
-msgstr ""
-
-#: crypt.c:502
-msgid "S/MIME messages with no hints on content are unsupported."
-msgstr "S/MIME писма без указание за съдържанието им не се поддържат."
-
-#: crypt.c:710 crypt.c:751
-msgid "Trying to extract PGP keys...\n"
-msgstr "Опит за извличане на PGP ключове...\n"
-
-#: crypt.c:732 crypt.c:772
-msgid "Trying to extract S/MIME certificates...\n"
-msgstr "Опит за извличане на S/MIME сертификати...\n"
-
-#: crypt.c:913
-#, c-format
-msgid ""
-"[-- Error: Unknown multipart/signed protocol %s! --]\n"
-"\n"
-msgstr ""
-"[-- Грешка: Непознат multipart/signed протокол %s! --]\n"
-"\n"
-
-#: crypt.c:947
-msgid ""
-"[-- Error: Inconsistent multipart/signed structure! --]\n"
-"\n"
-msgstr ""
-"[-- Грешка: Противоречива multipart/signed структура! --]\n"
-"\n"
-
-#: crypt.c:983
-#, c-format
-msgid ""
-"[-- Warning: We can't verify %s/%s signatures. --]\n"
-"\n"
-msgstr ""
-"[-- Предупреждение: %s/%s-подписи не могат да бъдат проверявани. --]\n"
-"\n"
-
-#: crypt.c:995
-msgid ""
-"[-- The following data is signed --]\n"
-"\n"
-msgstr ""
-"[-- Следните данни са подписани --]\n"
-"\n"
-
-#: crypt.c:1001
-msgid ""
-"[-- Warning: Can't find any signatures. --]\n"
-"\n"
-msgstr ""
-"[-- Предупреждение: не могат да бъдат намерени подписи. --]\n"
-"\n"
-
-#: crypt.c:1007
-msgid ""
-"\n"
-"[-- End of signed data --]\n"
-msgstr ""
-"\n"
-"[-- Край на подписаните данни --]\n"
-
-#: cryptglue.c:84
-msgid "\"crypt_use_gpgme\" set but not built with GPGME support."
-msgstr ""
-
-#: cryptglue.c:108
-#, fuzzy
-msgid "Invoking S/MIME..."
-msgstr "Стартиране на PGP..."
-
-#: curs_lib.c:229
+#: curs_lib.c:231
 msgid "yes"
 msgstr "yes"
 
-#: curs_lib.c:230
+#: curs_lib.c:232
 msgid "no"
 msgstr "no"
 
-#: curs_lib.c:337
+#: curs_lib.c:383
 msgid "Exit Mutt?"
 msgstr "Желаете ли да напуснете mutt?"
 
-#: curs_lib.c:753 mutt_socket.c:562 mutt_ssl.c:1072
+#: curs_lib.c:824 mutt_socket.c:562 mutt_ssl.c:1072
 msgid "unknown error"
 msgstr "непозната грешка"
 
-#: curs_lib.c:775
+#: curs_lib.c:846
 msgid "Press any key to continue..."
 msgstr "Натиснете някой клавиш..."
 
-#: curs_lib.c:818
+#: curs_lib.c:889
 msgid " ('?' for list): "
 msgstr " (използвайте'?' за избор от списък): "
 
@@ -1746,11 +1779,11 @@ msgstr "Няма отворена пощенска кутия."
 msgid "There are no messages."
 msgstr "Няма писма."
 
-#: curs_main.c:55 mx.c:1173 pager.c:50 recvattach.c:39
+#: curs_main.c:55 mx.c:1173 pager.c:51 recvattach.c:39
 msgid "Mailbox is read-only."
 msgstr "Тази пощенска кутия е само за четене."
 
-#: curs_main.c:57 pager.c:52 recvattach.c:909
+#: curs_main.c:57 pager.c:53 recvattach.c:909
 msgid "Function not permitted in attach-message mode."
 msgstr "Тази функция не може да се изпълни при прилагане на писма."
 
@@ -1759,14 +1792,15 @@ msgid "No visible messages."
 msgstr "Няма видими писма."
 
 #. L10N: %s is one of the CHECK_ACL entries below.
-#: curs_main.c:104 pager.c:87
+#: curs_main.c:104 pager.c:88
 #, c-format
 msgid "%s: Operation not permitted by ACL"
 msgstr ""
 
 #: curs_main.c:252
 msgid "Cannot toggle write on a readonly mailbox!"
-msgstr "Режимът на защитената от запис пощенска кутия не може да бъде променен!"
+msgstr ""
+"Режимът на защитената от запис пощенска кутия не може да бъде променен!"
 
 #: curs_main.c:259
 msgid "Changes to folder will be written on folder exit."
@@ -1793,7 +1827,7 @@ msgstr "Запис"
 msgid "Mail"
 msgstr "Ново"
 
-#: curs_main.c:779 pager.c:1603
+#: curs_main.c:779 pager.c:1604
 msgid "Reply"
 msgstr "Отговор"
 
@@ -1801,20 +1835,22 @@ msgstr "Отговор"
 msgid "Group"
 msgstr "Груп. отг."
 
-#: curs_main.c:791 pager.c:1610
+#: curs_main.c:791 pager.c:1611
 msgid "Post"
 msgstr ""
 
-#: curs_main.c:792 pager.c:1611
+#: curs_main.c:792 pager.c:1612
 #, fuzzy
 msgid "Followup"
 msgstr "Желаете ли да проследите до %s%s?"
 
 #: curs_main.c:948
 msgid "Mailbox was externally modified.  Flags may be wrong."
-msgstr "Пощенската кутия е променена от друга програма. Маркировките може да са остарели."
+msgstr ""
+"Пощенската кутия е променена от друга програма. Маркировките може да са "
+"остарели."
 
-#: curs_main.c:955 pager.c:2102
+#: curs_main.c:955 pager.c:2103
 msgid "New mail in this mailbox."
 msgstr "Нови писма в тази пощенска кутия."
 
@@ -1885,7 +1921,7 @@ msgid "Invalid message number."
 msgstr "Грешен номер на писмо."
 
 #. L10N: CHECK_ACL
-#: curs_main.c:1434 curs_main.c:2758 pager.c:2681
+#: curs_main.c:1434 curs_main.c:2758 pager.c:2694
 #, fuzzy
 msgid "Cannot delete message(s)"
 msgstr "Няма възстановени писма."
@@ -1912,7 +1948,7 @@ msgstr "Ограничаване до писмата, отговарящи на:
 msgid "To view all messages, limit to \"all\"."
 msgstr ""
 
-#: curs_main.c:1537 pager.c:2199
+#: curs_main.c:1537 pager.c:2201
 msgid "Quit Mutt?"
 msgstr "Желаете ли да напуснете mutt?"
 
@@ -1921,7 +1957,7 @@ msgid "Tag messages matching: "
 msgstr "Маркиране на писмата, отговарящи на: "
 
 #. L10N: CHECK_ACL
-#: curs_main.c:1640 curs_main.c:3162 pager.c:3048
+#: curs_main.c:1640 curs_main.c:3162 pager.c:3061
 #, fuzzy
 msgid "Cannot undelete message(s)"
 msgstr "Няма възстановени писма."
@@ -2063,11 +2099,11 @@ msgstr "Няма възстановени писма."
 msgid "You are on the first message."
 msgstr "Това е първото писмо."
 
-#: curs_main.c:2385 menu.c:929 pager.c:2319 pattern.c:1963
+#: curs_main.c:2385 menu.c:929 pager.c:2321 pattern.c:1963
 msgid "Search wrapped to top."
 msgstr "Търсенето е започнато отгоре."
 
-#: curs_main.c:2394 pager.c:2340 pattern.c:1974
+#: curs_main.c:2394 pager.c:2342 pattern.c:1974
 msgid "Search wrapped to bottom."
 msgstr "Търсенето е започнато отдолу."
 
@@ -2098,7 +2134,7 @@ msgid "Cannot flag message"
 msgstr "показва писмо"
 
 #. L10N: CHECK_ACL
-#: curs_main.c:2502 pager.c:3011
+#: curs_main.c:2502 pager.c:3024
 msgid "Cannot toggle new"
 msgstr ""
 
@@ -2115,7 +2151,7 @@ msgid "Thread contains unread messages."
 msgstr "Нишката съдържа непрочетени писма."
 
 #. L10N: CHECK_ACL
-#: curs_main.c:2713 pager.c:2647
+#: curs_main.c:2713 pager.c:2660
 #, fuzzy
 msgid "Cannot delete message"
 msgstr "Няма възстановени писма."
@@ -2128,7 +2164,7 @@ msgstr "Невъзможен запис на писмо"
 
 #. L10N: This is displayed when the x-label on one or more
 #. * messages is edited.
-#: curs_main.c:2863 pager.c:3111
+#: curs_main.c:2863 pager.c:3124
 #, fuzzy, c-format
 msgid "%d labels changed."
 msgstr "Пощенската кутия е непроменена."
@@ -2136,7 +2172,7 @@ msgstr "Пощенската кутия е непроменена."
 #. L10N: This is displayed when editing an x-label, but no messages
 #. * were updated.  Possibly due to canceling at the prompt or if the new
 #. * label is the same as the old label.
-#: curs_main.c:2870 pager.c:3115
+#: curs_main.c:2870 pager.c:3128
 #, fuzzy
 msgid "No labels changed."
 msgstr "Пощенската кутия е непроменена."
@@ -2177,16 +2213,16 @@ msgstr "Писмото е препратено."
 msgid "No message ID to macro."
 msgstr "В тази кутия няма писма."
 
-#: curs_main.c:3068 pager.c:2873 recvattach.c:1229
+#: curs_main.c:3068 pager.c:2886 recvattach.c:1229
 msgid "Reply by mail as poster prefers?"
 msgstr ""
 
-#: curs_main.c:3071 pager.c:2842 pager.c:2852 pager.c:2876
+#: curs_main.c:3071 pager.c:2855 pager.c:2865 pager.c:2889
 msgid "Posting to this group not allowed, may be moderated. Continue?"
 msgstr ""
 
 #. L10N: CHECK_ACL
-#: curs_main.c:3132 pager.c:3031
+#: curs_main.c:3132 pager.c:3044
 #, fuzzy
 msgid "Cannot undelete message"
 msgstr "Няма възстановени писма."
@@ -2208,10 +2244,12 @@ msgstr ""
 "~b адрес        добавяне на получатели на копие (Cc) от писмото:\n"
 "~c адреси       добавяне на получатели на сляпо копие (Bcc) от писмото:\n"
 "~f писма        включване на писма\n"
-"~F писма        същото като ~f, с изключение на това, че са включени и заглавните части\n"
+"~F писма        същото като ~f, с изключение на това, че са включени и "
+"заглавните части\n"
 "~h              редактиране на заглавната част\n"
 "~m писма        включване и цитиране на писма\n"
-"~M писма        същото като ~m, с изключение на това, че са включени и заглавните части\n"
+"~M писма        същото като ~m, с изключение на това, че са включени и "
+"заглавните части\n"
 "~p              отпечатване на писмото\n"
 "~q              запис на файла и затваряне на редактора\n"
 "~r файл         отваряне на файла в редактора\n"
@@ -2240,10 +2278,12 @@ msgstr ""
 "~b адрес        добавяне на получатели на копие (Cc) от писмото:\n"
 "~c адреси       добавяне на получатели на сляпо копие (Bcc) от писмото:\n"
 "~f писма        включване на писма\n"
-"~F писма        същото като ~f, с изключение на това, че са включени и заглавните части\n"
+"~F писма        същото като ~f, с изключение на това, че са включени и "
+"заглавните части\n"
 "~h              редактиране на заглавната част\n"
 "~m писма        включване и цитиране на писма\n"
-"~M писма        същото като ~m, с изключение на това, че са включени и заглавните части\n"
+"~M писма        същото като ~m, с изключение на това, че са включени и "
+"заглавните части\n"
 "~p              отпечатване на писмото\n"
 "~q              запис на файла и затваряне на редактора\n"
 "~r файл         отваряне на файла в редактора\n"
@@ -2357,7 +2397,9 @@ msgstr "[-- Тип: %s/%s, Кодиране: %s, Размер: %s --]\n"
 
 #: handler.c:1208
 msgid "[-- Error:  Could not display any parts of Multipart/Alternative! --]\n"
-msgstr "[-- Грешка: Невъзможно е показването на която и да е от алтернативните части на писмото --]\n"
+msgstr ""
+"[-- Грешка: Невъзможно е показването на която и да е от алтернативните части "
+"на писмото --]\n"
 
 #: handler.c:1327
 #, c-format
@@ -2390,7 +2432,8 @@ msgstr "[-- Грешки от %s --]\n"
 
 #: handler.c:1510
 msgid "[-- Error: message/external-body has no access-type parameter --]\n"
-msgstr "[-- Грешка: message/external-body няма параметри за метод на достъп --]\n"
+msgstr ""
+"[-- Грешка: message/external-body няма параметри за метод на достъп --]\n"
 
 #: handler.c:1533
 #, c-format
@@ -2584,12 +2627,12 @@ msgstr "Включване..."
 msgid "Login failed."
 msgstr "Неуспешно включване."
 
-#: imap/auth_sasl.c:94 nntp.c:367 nntp.c:432 smtp.c:372
+#: imap/auth_sasl.c:95 nntp.c:367 nntp.c:432 smtp.c:372
 #, c-format
 msgid "Authenticating (%s)..."
 msgstr "Идентифициране (%s)..."
 
-#: imap/auth_sasl.c:222 pop_auth.c:175
+#: imap/auth_sasl.c:223 pop_auth.c:175
 msgid "SASL authentication failed."
 msgstr "Неуспешна SASL идентификация."
 
@@ -2750,7 +2793,8 @@ msgstr "Копиране на %d съобщения в %s..."
 
 #: imap/message.c:396
 msgid "Unable to fetch headers from this IMAP server version."
-msgstr "Грешка при получаване на заглавните части от тази версия на IMAP-сървъра."
+msgstr ""
+"Грешка при получаване на заглавните части от тази версия на IMAP-сървъра."
 
 #: imap/message.c:406
 #, c-format
@@ -2770,7 +2814,8 @@ msgstr "Изтегляне на писмо..."
 
 #: imap/message.c:791 pop.c:563
 msgid "The message index is incorrect. Try reopening the mailbox."
-msgstr "Невалиден индекс на писмо. Опитайте да отворите отново пощенската кутия."
+msgstr ""
+"Невалиден индекс на писмо. Опитайте да отворите отново пощенската кутия."
 
 #: imap/message.c:964
 #, fuzzy
@@ -2786,7 +2831,7 @@ msgstr "Копиране на %d-то съобщение в %s..."
 msgid "Continue?"
 msgstr "Желаете ли да продължите?"
 
-#: init.c:55 init.c:2308 pager.c:49
+#: init.c:55 init.c:2316 pager.c:50
 #, c-format
 msgid "Not available in this menu."
 msgstr "Функцията не е достъпна от това меню."
@@ -2796,7 +2841,7 @@ msgstr "Функцията не е достъпна от това меню."
 msgid "%s: unknown sorting method"
 msgstr "%s: непознат метод за сортиране"
 
-#: init.c:377 init.c:414 init.c:2715
+#: init.c:377 init.c:414 init.c:2723
 #, c-format
 msgid "%s: Unknown type."
 msgstr "%s: Непознат тип."
@@ -2886,126 +2931,126 @@ msgstr "невалидно заглавно поле"
 msgid "restore_default(%s): error in regexp: %s\n"
 msgstr "mutt_restore_default(%s): грешка в регулярния израз: %s\n"
 
-#: init.c:2189 init.c:2355
+#: init.c:2197 init.c:2363
 #, c-format
 msgid "%s is unset"
 msgstr "%s е изключен"
 
-#: init.c:2285 init.c:2400
+#: init.c:2293 init.c:2408
 #, c-format
 msgid "%s: unknown variable"
 msgstr "%s: непозната променлива"
 
-#: init.c:2294
+#: init.c:2302
 #, c-format
 msgid "prefix is illegal with reset"
 msgstr "този префикс не е валиден с \"reset\""
 
-#: init.c:2300
+#: init.c:2308
 #, c-format
 msgid "value is illegal with reset"
 msgstr "тази стойност не е валидна с \"reset\""
 
-#: init.c:2335 init.c:2347
+#: init.c:2343 init.c:2355
 #, c-format
 msgid "Usage: set variable=yes|no"
 msgstr ""
 
-#: init.c:2355
+#: init.c:2363
 #, c-format
 msgid "%s is set"
 msgstr "%s е включен"
 
-#: init.c:2467 init.c:2482
+#: init.c:2475 init.c:2490
 #, fuzzy, c-format
 msgid "Invalid value for option %s: \"%s\""
 msgstr "Невалиден ден от месеца: %s"
 
-#: init.c:2579
+#: init.c:2587
 #, c-format
 msgid "%s: invalid mailbox type"
 msgstr "%s: невалиден тип на пощенската кутия"
 
-#: init.c:2610
+#: init.c:2618
 #, fuzzy, c-format
 msgid "%s: invalid value (%s)"
 msgstr "%s: невалидна стойност"
 
-#: init.c:2611
+#: init.c:2619
 msgid "format error"
 msgstr ""
 
-#: init.c:2611
+#: init.c:2619
 msgid "number overflow"
 msgstr ""
 
-#: init.c:2671
+#: init.c:2679
 #, c-format
 msgid "%s: invalid value"
 msgstr "%s: невалидна стойност"
 
-#: init.c:2761
+#: init.c:2769
 #, fuzzy, c-format
 msgid "%s: invalid backend"
 msgstr "%s: невалидна стойност"
 
-#: init.c:2769
+#: init.c:2777
 #, c-format
 msgid "%s: unknown type"
 msgstr "%s: непознат тип"
 
-#: init.c:2914
+#: init.c:2922
 #, c-format
 msgid "Error in %s, line %d: %s"
 msgstr "Грешка в %s, ред %d: %s"
 
-#: init.c:2944
+#: init.c:2952
 #, c-format
 msgid "source: errors in %s"
 msgstr "source: грешки в %s"
 
-#: init.c:2945
+#: init.c:2953
 #, fuzzy, c-format
 msgid "source: reading aborted due to too many errors in %s"
 msgstr "source: вмъкването е прекъснато поради твърде много грешки в %s"
 
-#: init.c:2963 mutt_lua.c:405
+#: init.c:2971 mutt_lua.c:405
 #, c-format
 msgid "source: error at %s"
 msgstr "source: грешка при %s"
 
-#: init.c:2968 mutt_lua.c:410
+#: init.c:2976 mutt_lua.c:410
 msgid "source: too many arguments"
 msgstr "source: твърде много аргументи"
 
-#: init.c:3025
+#: init.c:3033
 #, c-format
 msgid "%s: unknown command"
 msgstr "%s: непозната команда"
 
-#: init.c:3715
+#: init.c:3723
 #, c-format
 msgid "Error in command line: %s\n"
 msgstr "Грешка в командния ред: %s\n"
 
-#: init.c:3822
+#: init.c:3830
 msgid "unable to determine home directory"
 msgstr "личната Ви директория не може да бъде намерена"
 
-#: init.c:3830
+#: init.c:3838
 msgid "unable to determine username"
 msgstr "потребителското Ви име не може да бъде установено"
 
-#: init.c:3852
+#: init.c:3860
 #, fuzzy
 msgid "unable to determine nodename via uname()"
 msgstr "потребителското Ви име не може да бъде установено"
 
-#: init.c:4147
+#: init.c:4155
 msgid "-group: no group name"
 msgstr ""
 
-#: init.c:4157
+#: init.c:4165
 #, fuzzy
 msgid "out of arguments"
 msgstr "недостатъчно аргументи"
@@ -3075,6 +3120,1024 @@ msgstr "Въведете ключове (^G за прекъсване): "
 msgid "Char = %s, Octal = %o, Decimal = %d"
 msgstr "Символ = %s, Осмично = %o, Десетично = %d"
 
+#: keymap_alldefs.h:5
+msgid "null operation"
+msgstr "празна функция"
+
+#: keymap_alldefs.h:6
+msgid "end of conditional execution (noop)"
+msgstr "край на условното изпълнение (noop)"
+
+#: keymap_alldefs.h:7
+msgid "force viewing of attachment using mailcap"
+msgstr "показва принудително приложението след търсене в mailcap"
+
+#: keymap_alldefs.h:8
+msgid "view attachment as text"
+msgstr "показва приложението като текст"
+
+#: keymap_alldefs.h:9
+#, fuzzy
+msgid "Toggle display of subparts"
+msgstr "показва/скрива подчасти"
+
+#: keymap_alldefs.h:10
+msgid "move to the bottom of the page"
+msgstr "придвижване до края на страницата"
+
+#: keymap_alldefs.h:11
+msgid "remail a message to another user"
+msgstr "препраща писмото на друг адрес"
+
+#: keymap_alldefs.h:12
+msgid "swap the current folder position with $folder if it exists"
+msgstr ""
+
+#: keymap_alldefs.h:13
+msgid "select a new file in this directory"
+msgstr "избор на нов файл в тази директория"
+
+#: keymap_alldefs.h:14
+msgid "view file"
+msgstr "разглеждане на файл"
+
+#: keymap_alldefs.h:15
+msgid "display the currently selected file's name"
+msgstr "показва името на текущо маркирания файл"
+
+#: keymap_alldefs.h:16
+#, fuzzy
+msgid "subscribe to current mbox (IMAP/NNTP only)"
+msgstr "абонира текущо избраната пощенска кутия (само IMAP)"
+
+#: keymap_alldefs.h:17
+#, fuzzy
+msgid "unsubscribe from current mbox (IMAP/NNTP only)"
+msgstr "отписва абонамента на текущо избраната пощенска кутия (само IMAP)"
+
+#: keymap_alldefs.h:18
+msgid "toggle view all/subscribed mailboxes (IMAP only)"
+msgstr "показва всички или само абонираните пощенски кутии (само IMAP)"
+
+#: keymap_alldefs.h:19
+msgid "list mailboxes with new mail"
+msgstr "показва пощенските кутии, съдържащи нови писма."
+
+#: keymap_alldefs.h:20
+msgid "mark all articles in newsgroup as read"
+msgstr ""
+
+#: keymap_alldefs.h:21
+msgid "change directories"
+msgstr "промяна на директориите"
+
+#: keymap_alldefs.h:22
+msgid "check mailboxes for new mail"
+msgstr "проверява пощенските кутии за нови писма"
+
+#: keymap_alldefs.h:23
+#, fuzzy
+msgid "attach file(s) to this message"
+msgstr "прилага файл(ове) към писмото"
+
+#: keymap_alldefs.h:24
+msgid "attach message(s) to this message"
+msgstr "прилага писмо към това писмо"
+
+#: keymap_alldefs.h:25
+#, fuzzy
+msgid "attach news article(s) to this message"
+msgstr "прилага файл(ове) към писмото"
+
+#: keymap_alldefs.h:26
+msgid "edit the BCC list"
+msgstr "променя списъка на получателите на сляпо копие от писмото (BCC)"
+
+#: keymap_alldefs.h:27
+msgid "edit the CC list"
+msgstr "променя списъка на получателите на копие от писмото (CC)"
+
+#: keymap_alldefs.h:28
+msgid "edit attachment description"
+msgstr "променя описанието на приложението"
+
+#: keymap_alldefs.h:29
+msgid "edit attachment transfer-encoding"
+msgstr "променя кодирането на приложението"
+
+#: keymap_alldefs.h:30
+msgid "enter a file to save a copy of this message in"
+msgstr "избор на файл, в който да бъде записано копие от това писмо"
+
+#: keymap_alldefs.h:31
+msgid "edit the file to be attached"
+msgstr "избор на файл, който да бъде приложен"
+
+#: keymap_alldefs.h:32
+msgid "edit the from field"
+msgstr "променя изпращача (From)"
+
+#: keymap_alldefs.h:33
+msgid "edit the message with headers"
+msgstr "редактира писмо и заглавните му полета"
+
+#: keymap_alldefs.h:34
+msgid "edit the message"
+msgstr "редактира писмо"
+
+#: keymap_alldefs.h:35
+msgid "edit attachment using mailcap entry"
+msgstr "редактира приложение, посредством вписване в mailcap"
+
+#: keymap_alldefs.h:36
+#, fuzzy
+msgid "edit the newsgroups list"
+msgstr "променя списъка на получателите на копие от писмото (CC)"
+
+#: keymap_alldefs.h:37
+msgid "edit the Reply-To field"
+msgstr "редактира получателя на отговор от писмото (Reply-To)"
+
+#: keymap_alldefs.h:38
+#, fuzzy
+msgid "edit the Followup-To field"
+msgstr "редактира получателя на отговор от писмото (Reply-To)"
+
+#: keymap_alldefs.h:39
+#, fuzzy
+msgid "edit the X-Comment-To field"
+msgstr "редактира получателя на отговор от писмото (Reply-To)"
+
+#: keymap_alldefs.h:40
+msgid "edit the subject of this message"
+msgstr "редактира темата на писмо"
+
+#: keymap_alldefs.h:41
+msgid "edit the TO list"
+msgstr "редактира списъка на получателите"
+
+#: keymap_alldefs.h:42
+msgid "create a new mailbox (IMAP only)"
+msgstr "създава нова пощенска кутия (само IMAP)"
+
+#: keymap_alldefs.h:43
+msgid "edit attachment content type"
+msgstr "редактира типа на приложението"
+
+#: keymap_alldefs.h:44
+msgid "get a temporary copy of an attachment"
+msgstr "създава временно копие на приложението"
+
+#: keymap_alldefs.h:45
+msgid "run ispell on the message"
+msgstr "извършва правописна проверка на писмото с ispell"
+
+#: keymap_alldefs.h:46
+msgid "compose new attachment using mailcap entry"
+msgstr "създава на ново приложение, с използване на вписване в mailcap"
+
+#: keymap_alldefs.h:47
+msgid "toggle recoding of this attachment"
+msgstr "включва/изключва прекодирането на това приложение"
+
+#: keymap_alldefs.h:48
+msgid "save this message to send later"
+msgstr "записва писмото като чернова за по-късно изпращане"
+
+#: keymap_alldefs.h:49
+#, fuzzy
+msgid "send attachment with a different name"
+msgstr "променя кодирането на приложението"
+
+#: keymap_alldefs.h:50
+msgid "rename/move an attached file"
+msgstr "променя името или преместване на приложение"
+
+#: keymap_alldefs.h:51
+#, fuzzy
+msgid "compose a new message to the sender"
+msgstr "създава ново писмо"
+
+#: keymap_alldefs.h:52
+msgid "send the message"
+msgstr "изпраща писмото"
+
+#: keymap_alldefs.h:53
+msgid "toggle disposition between inline/attachment"
+msgstr "превключва между вмъкнат в писмото или приложен файл"
+
+#: keymap_alldefs.h:54
+msgid "toggle whether to delete file after sending it"
+msgstr ""
+"превключва между режим на изтриване или запазване на файла след изпращане"
+
+#: keymap_alldefs.h:55
+msgid "update an attachment's encoding info"
+msgstr "актуализира информацията за кодиране на приложението"
+
+#: keymap_alldefs.h:56
+msgid "write the message to a folder"
+msgstr "записва писмото в пощенска кутия"
+
+#: keymap_alldefs.h:57
+msgid "copy a message to a file/mailbox"
+msgstr "копира писмо във файл/пощенска кутия"
+
+#: keymap_alldefs.h:58
+msgid "create an alias from a message sender"
+msgstr "вписва подателя на писмото в адресната книга"
+
+#: keymap_alldefs.h:59
+msgid "move entry to bottom of screen"
+msgstr "премества записа към долния край на екрана"
+
+#: keymap_alldefs.h:60
+msgid "move entry to middle of screen"
+msgstr "премества записа към средата на екрана"
+
+#: keymap_alldefs.h:61
+msgid "move entry to top of screen"
+msgstr "премества записa към горния край на екрана"
+
+#: keymap_alldefs.h:62
+msgid "make decoded (text/plain) copy"
+msgstr "създава декодирано (text/plain) копие"
+
+#: keymap_alldefs.h:63
+msgid "make decoded copy (text/plain) and delete"
+msgstr "създаване на декодирано (text/plain) копие на писмото и изтриване"
+
+#: keymap_alldefs.h:64
+msgid "delete the current entry"
+msgstr "изтрива избрания запис"
+
+#: keymap_alldefs.h:65
+msgid "delete the current mailbox (IMAP only)"
+msgstr "изтрива текущата пощенска кутия (само IMAP)"
+
+#: keymap_alldefs.h:66
+msgid "delete all messages in subthread"
+msgstr "изтрива всички писма в поднишката"
+
+#: keymap_alldefs.h:67
+msgid "delete all messages in thread"
+msgstr "изтрива всички писма в нишката"
+
+#: keymap_alldefs.h:68
+msgid "display full address of sender"
+msgstr "показва пълния адрес на подателя на писмото"
+
+#: keymap_alldefs.h:69
+msgid "display message and toggle header weeding"
+msgstr "показва писмо и включва/изключва показването на заглавните части"
+
+#: keymap_alldefs.h:70
+msgid "display a message"
+msgstr "показва писмо"
+
+#: keymap_alldefs.h:71
+msgid "add, change, or delete a message's label"
+msgstr ""
+
+#: keymap_alldefs.h:72
+msgid "edit the raw message"
+msgstr "редактира необработеното писмо"
+
+#: keymap_alldefs.h:73
+msgid "delete the char in front of the cursor"
+msgstr "изтрива символа пред курсора"
+
+#: keymap_alldefs.h:74
+msgid "move the cursor one character to the left"
+msgstr "премества курсора с един символ наляво"
+
+#: keymap_alldefs.h:75
+msgid "move the cursor to the beginning of the word"
+msgstr "премества курсора към началото на думата"
+
+#: keymap_alldefs.h:76
+msgid "jump to the beginning of the line"
+msgstr "скок към началото на реда"
+
+#: keymap_alldefs.h:77
+msgid "cycle among incoming mailboxes"
+msgstr "циклично превъртане между входните пощенски кутии"
+
+#: keymap_alldefs.h:78
+msgid "complete filename or alias"
+msgstr "допълва името на файл или на псевдоним"
+
+#: keymap_alldefs.h:79
+msgid "complete address with query"
+msgstr "допълва адрес чрез запитване"
+
+#: keymap_alldefs.h:80
+msgid "delete the char under the cursor"
+msgstr "изтрива символа под курсора"
+
+#: keymap_alldefs.h:81
+msgid "jump to the end of the line"
+msgstr "скок към края на реда"
+
+#: keymap_alldefs.h:82
+msgid "move the cursor one character to the right"
+msgstr "премества курсора с един символ надясно"
+
+#: keymap_alldefs.h:83
+msgid "move the cursor to the end of the word"
+msgstr "премества курсора към края на думата"
+
+#: keymap_alldefs.h:84
+msgid "scroll down through the history list"
+msgstr "превърта надолу в списъка с историята"
+
+#: keymap_alldefs.h:85
+msgid "scroll up through the history list"
+msgstr "превърта нагоре в списъка с историята"
+
+#: keymap_alldefs.h:86
+msgid "delete chars from cursor to end of line"
+msgstr "изтрива символите от курсора до края на реда"
+
+#: keymap_alldefs.h:87
+msgid "delete chars from the cursor to the end of the word"
+msgstr "изтрива символите от курсора до края на думата"
+
+#: keymap_alldefs.h:88
+msgid "delete all chars on the line"
+msgstr "изтрива всички символи на реда"
+
+#: keymap_alldefs.h:89
+msgid "delete the word in front of the cursor"
+msgstr "изтрива думата преди курсора"
+
+#: keymap_alldefs.h:90
+msgid "quote the next typed key"
+msgstr "буквално приемане на следващия клавиш"
+
+#: keymap_alldefs.h:91
+msgid "transpose character under cursor with previous"
+msgstr "разменя текущия символ с предишния"
+
+#: keymap_alldefs.h:92
+#, fuzzy
+msgid "capitalize the word"
+msgstr "capitalize the word"
+
+#: keymap_alldefs.h:93
+msgid "convert the word to lower case"
+msgstr "конвертиране на думата до букви от долен регистър"
+
+#: keymap_alldefs.h:94
+msgid "convert the word to upper case"
+msgstr "конвертиране на думата до букви от горен регистър"
+
+#: keymap_alldefs.h:95
+msgid "enter a muttrc command"
+msgstr "въвеждане нa muttrc команда"
+
+#: keymap_alldefs.h:96
+msgid "enter a file mask"
+msgstr "въвеждане на файлова маска"
+
+#: keymap_alldefs.h:97
+msgid "exit this menu"
+msgstr "напуска това меню"
+
+#: keymap_alldefs.h:98
+msgid "filter attachment through a shell command"
+msgstr "филтрира приложението през команда на командния интерпретатор"
+
+#: keymap_alldefs.h:99
+msgid "move to the first entry"
+msgstr "преместване към първият запис"
+
+#: keymap_alldefs.h:100
+msgid "toggle a message's 'important' flag"
+msgstr "включва/изключва маркировката за важност на писмото"
+
+#: keymap_alldefs.h:101
+#, fuzzy
+msgid "followup to newsgroup"
+msgstr "Желаете ли да проследите до %s%s?"
+
+#: keymap_alldefs.h:102
+msgid "forward to newsgroup"
+msgstr ""
+
+#: keymap_alldefs.h:103
+msgid "forward a message with comments"
+msgstr "препраща писмо с коментар"
+
+#: keymap_alldefs.h:104
+msgid "select the current entry"
+msgstr "избира текущият запис"
+
+#: keymap_alldefs.h:105
+#, fuzzy
+msgid "get all children of the current message"
+msgstr "Това е първото писмо."
+
+#: keymap_alldefs.h:106
+#, fuzzy
+msgid "get message with Message-Id"
+msgstr "редактира писмо и заглавните му полета"
+
+#: keymap_alldefs.h:107
+#, fuzzy
+msgid "get parent of the current message"
+msgstr "Това е първото писмо."
+
+#: keymap_alldefs.h:108
+msgid "reply to all recipients"
+msgstr "отговор на всички получатели"
+
+#: keymap_alldefs.h:109
+msgid "scroll down 1/2 page"
+msgstr "превърта екрана надолу с 1/2 страница"
+
+#: keymap_alldefs.h:110
+msgid "scroll up 1/2 page"
+msgstr "превърта екрана нагоре с 1/2 страница"
+
+#: keymap_alldefs.h:111
+msgid "this screen"
+msgstr "този екран"
+
+#: keymap_alldefs.h:112
+msgid "jump to an index number"
+msgstr "скок към индексен номер"
+
+#: keymap_alldefs.h:113
+msgid "move to the last entry"
+msgstr "преместване към последният запис"
+
+#: keymap_alldefs.h:114
+msgid "reply to specified mailing list"
+msgstr "отговор на указания mailing list"
+
+#: keymap_alldefs.h:115
+msgid "load list of all newsgroups from NNTP server"
+msgstr ""
+
+#: keymap_alldefs.h:116
+msgid "execute a macro"
+msgstr "изпълнява макрос"
+
+#: keymap_alldefs.h:117
+msgid "compose a new mail message"
+msgstr "създава ново писмо"
+
+#: keymap_alldefs.h:118
+msgid "break the thread in two"
+msgstr ""
+
+#: keymap_alldefs.h:119
+msgid "open a different folder"
+msgstr "отваря друга пощенска кутия"
+
+#: keymap_alldefs.h:120
+msgid "open a different folder in read only mode"
+msgstr "отваря друга пощенска кутия само за четене"
+
+#: keymap_alldefs.h:121
+#, fuzzy
+msgid "open a different newsgroup"
+msgstr "отваря друга пощенска кутия"
+
+#: keymap_alldefs.h:122
+#, fuzzy
+msgid "open a different newsgroup in read only mode"
+msgstr "отваря друга пощенска кутия само за четене"
+
+#: keymap_alldefs.h:123
+msgid "clear a status flag from a message"
+msgstr "отстранява маркировката за статус от писмо"
+
+#: keymap_alldefs.h:124
+msgid "delete messages matching a pattern"
+msgstr "изтрива писма, отговарящи на шаблон"
+
+#: keymap_alldefs.h:125
+msgid "force retrieval of mail from IMAP server"
+msgstr "изтегля принудително писма от IMAP сървър"
+
+#: keymap_alldefs.h:126
+msgid "logout from all IMAP servers"
+msgstr ""
+
+#: keymap_alldefs.h:127
+msgid "retrieve mail from POP server"
+msgstr "изтегля писма от POP сървър"
+
+#: keymap_alldefs.h:128
+msgid "show only messages matching a pattern"
+msgstr "показва само писма, отговарящи на шаблон"
+
+#: keymap_alldefs.h:129
+#, fuzzy
+msgid "link tagged message to the current one"
+msgstr "Препращане на маркираните писма към: "
+
+#: keymap_alldefs.h:130
+#, fuzzy
+msgid "open next mailbox with new mail"
+msgstr "Няма пощенска кутия с нови писма."
+
+#: keymap_alldefs.h:131
+msgid "jump to the next new message"
+msgstr "скок към следващото ново писмо"
+
+#: keymap_alldefs.h:132
+msgid "jump to the next new or unread message"
+msgstr "скок към следващото ново или непрочетено писмо"
+
+#: keymap_alldefs.h:133
+msgid "jump to the next subthread"
+msgstr "скок към следващата поднишка"
+
+#: keymap_alldefs.h:134
+msgid "jump to the next thread"
+msgstr "скок към следващата нишка"
+
+#: keymap_alldefs.h:135
+msgid "move to the next undeleted message"
+msgstr "преместване към следващото възстановено писмо"
+
+#: keymap_alldefs.h:136
+msgid "jump to the next unread message"
+msgstr "скок към следващото непрочетено писмо"
+
+#: keymap_alldefs.h:137
+msgid "jump to parent message in thread"
+msgstr "скок към родителското писмо в нишката"
+
+#: keymap_alldefs.h:138
+msgid "jump to previous thread"
+msgstr "скок към предишната нишка"
+
+#: keymap_alldefs.h:139
+msgid "jump to previous subthread"
+msgstr "скок към предишната поднишка"
+
+#: keymap_alldefs.h:140
+msgid "move to the previous undeleted message"
+msgstr "преместване към предишното възстановено писмо"
+
+#: keymap_alldefs.h:141
+msgid "jump to the previous new message"
+msgstr "скок към предишното ново писмо"
+
+#: keymap_alldefs.h:142
+msgid "jump to the previous new or unread message"
+msgstr "скок към предишното ново или непрочетено писмо"
+
+#: keymap_alldefs.h:143
+msgid "jump to the previous unread message"
+msgstr "скок към предишното непрочетено писмо"
+
+#: keymap_alldefs.h:144
+msgid "mark the current thread as read"
+msgstr "маркира текущата нишка като прочетена"
+
+#: keymap_alldefs.h:145
+msgid "mark the current subthread as read"
+msgstr "маркира текущата поднишка като прочетена"
+
+#: keymap_alldefs.h:146
+#, fuzzy
+msgid "jump to root message in thread"
+msgstr "скок към родителското писмо в нишката"
+
+#: keymap_alldefs.h:147
+msgid "set a status flag on a message"
+msgstr "поставя маркировката за статус на писмо"
+
+#: keymap_alldefs.h:148
+msgid "save changes to mailbox"
+msgstr "записва промените в пощенската кутия"
+
+#: keymap_alldefs.h:149
+msgid "tag messages matching a pattern"
+msgstr "маркира писма, отговарящи на шаблон"
+
+#: keymap_alldefs.h:150
+msgid "delete from mutt, don't touch on disk"
+msgstr ""
+
+#: keymap_alldefs.h:151
+msgid "undelete messages matching a pattern"
+msgstr "възстановява писма, отговарящи на шаблон"
+
+#: keymap_alldefs.h:152
+msgid "untag messages matching a pattern"
+msgstr "премахва маркировката от писма, отговарящи на шаблон"
+
+#: keymap_alldefs.h:153
+#, fuzzy
+msgid "create a hotkey macro for the current message"
+msgstr "Това е първото писмо."
+
+#: keymap_alldefs.h:154
+msgid "move to the middle of the page"
+msgstr "преместване към средата на страницата"
+
+#: keymap_alldefs.h:155
+msgid "move to the next entry"
+msgstr "преместване към следващия запис"
+
+#: keymap_alldefs.h:156
+msgid "scroll down one line"
+msgstr "превърта надолу с един ред"
+
+#: keymap_alldefs.h:157
+msgid "move to the next page"
+msgstr "преместване към следващата страница"
+
+#: keymap_alldefs.h:158
+msgid "jump to the bottom of the message"
+msgstr "скок към края на писмото"
+
+#: keymap_alldefs.h:159
+msgid "toggle display of quoted text"
+msgstr "показва/скрива цитиран текст"
+
+#: keymap_alldefs.h:160
+msgid "skip beyond quoted text"
+msgstr "прескача цитирания текст"
+
+#: keymap_alldefs.h:161
+msgid "jump to the top of the message"
+msgstr "скок към началото на писмото"
+
+#: keymap_alldefs.h:162
+msgid "pipe message/attachment to a shell command"
+msgstr "изпраща писмо или приложение към команда на командния интерпретатор"
+
+#: keymap_alldefs.h:163
+#, fuzzy
+msgid "post message to newsgroup"
+msgstr "Препращане на писмото към %s"
+
+#: keymap_alldefs.h:164
+msgid "move to the previous entry"
+msgstr "преместване към предишния запис"
+
+#: keymap_alldefs.h:165
+msgid "scroll up one line"
+msgstr "превъртане нагоре с един ред"
+
+#: keymap_alldefs.h:166
+msgid "move to the previous page"
+msgstr "преместване към предишната страница"
+
+#: keymap_alldefs.h:167
+msgid "print the current entry"
+msgstr "отпечатва текущото писмо"
+
+#: keymap_alldefs.h:168
+msgid "really delete the current entry, bypassing the trash folder"
+msgstr ""
+
+#: keymap_alldefs.h:169
+msgid "really delete the current thread, bypassing the trash folder"
+msgstr ""
+
+#: keymap_alldefs.h:170
+msgid "query external program for addresses"
+msgstr "изпраща запитване към външна програма за адрес"
+
+#: keymap_alldefs.h:171
+msgid "append new query results to current results"
+msgstr "добавя резултатите от запитването към досегашните"
+
+#: keymap_alldefs.h:172
+msgid "save changes to mailbox and quit"
+msgstr "записва промените в пощенската кутия и напуска програмата"
+
+#: keymap_alldefs.h:173
+msgid "recall a postponed message"
+msgstr "редактира чернова"
+
+#: keymap_alldefs.h:174
+#, fuzzy
+msgid "reconstruct thread containing current message"
+msgstr "Нишката съдържа непрочетени писма."
+
+#: keymap_alldefs.h:175
+msgid "clear and redraw the screen"
+msgstr "изтрива и прерисува екрана"
+
+#: keymap_alldefs.h:176
+msgid "{internal}"
+msgstr "{вътрешно}"
+
+#: keymap_alldefs.h:177
+#, fuzzy
+msgid "rename the current mailbox (IMAP only)"
+msgstr "изтрива текущата пощенска кутия (само IMAP)"
+
+#: keymap_alldefs.h:178
+msgid "reply to a message"
+msgstr "отговор на писмо"
+
+#: keymap_alldefs.h:179
+msgid "use the current message as a template for a new one"
+msgstr "използва текущото писмо като шаблон за ново"
+
+#: keymap_alldefs.h:180
+#, fuzzy
+msgid "save message/attachment to a mailbox/file"
+msgstr "записва писмо или приложение във файл"
+
+#: keymap_alldefs.h:181
+msgid "search for a regular expression"
+msgstr "търсене на регулярен израз"
+
+#: keymap_alldefs.h:182
+msgid "search backwards for a regular expression"
+msgstr "търсене на регулярен израз в обратната посока"
+
+#: keymap_alldefs.h:183
+msgid "search for next match"
+msgstr "търси следващото попадение"
+
+#: keymap_alldefs.h:184
+msgid "search for next match in opposite direction"
+msgstr "търси следващото попадение в обратната посока"
+
+#: keymap_alldefs.h:185
+msgid "toggle search pattern coloring"
+msgstr "включва/изключва оцветяването при търсене"
+
+#: keymap_alldefs.h:186
+msgid "invoke a command in a subshell"
+msgstr "изпълнява команда в командния интерпретатор"
+
+#: keymap_alldefs.h:187
+msgid "sort messages"
+msgstr "подрежда писмата"
+
+#: keymap_alldefs.h:188
+msgid "sort messages in reverse order"
+msgstr "подрежда писмата в обратен ред"
+
+#: keymap_alldefs.h:189
+#, fuzzy
+msgid "subscribe to newsgroups matching a pattern"
+msgstr "премахва маркировката от писма, отговарящи на шаблон"
+
+#: keymap_alldefs.h:190
+msgid "tag the current entry"
+msgstr "маркира текущият запис"
+
+#: keymap_alldefs.h:191
+msgid "apply next function to tagged messages"
+msgstr "прилага следващата функция върху маркираните писма"
+
+#: keymap_alldefs.h:192
+msgid "apply next function ONLY to tagged messages"
+msgstr "прилага следващата функция САМО върху маркираните писма"
+
+#: keymap_alldefs.h:193
+msgid "tag the current subthread"
+msgstr "маркира текущата поднишка"
+
+#: keymap_alldefs.h:194
+msgid "tag the current thread"
+msgstr "маркира текущата нишка"
+
+#: keymap_alldefs.h:195
+msgid "toggle a message's 'new' flag"
+msgstr "включва/изключва индикатора, дали писмото е ново"
+
+#: keymap_alldefs.h:196
+#, fuzzy
+msgid "toggle view of read messages"
+msgstr "скок към предишното ново или непрочетено писмо"
+
+#: keymap_alldefs.h:197
+msgid "toggle whether the mailbox will be rewritten"
+msgstr "включва/изключва презаписът на пощенската кутия"
+
+#: keymap_alldefs.h:198
+msgid "toggle whether to browse mailboxes or all files"
+msgstr "превключва търсенето между пощенски кутии или всички файлове"
+
+#: keymap_alldefs.h:199
+msgid "move to the top of the page"
+msgstr "преместване към началото на страницата"
+
+#: keymap_alldefs.h:200
+msgid "mark all articles in newsgroup as unread"
+msgstr ""
+
+#: keymap_alldefs.h:201
+msgid "undelete the current entry"
+msgstr "възстановява текущото писмо"
+
+#: keymap_alldefs.h:202
+msgid "undelete all messages in thread"
+msgstr "възстановява всички писма в нишката"
+
+#: keymap_alldefs.h:203
+msgid "undelete all messages in subthread"
+msgstr "възстановява всички писма в поднишката"
+
+#: keymap_alldefs.h:204
+#, fuzzy
+msgid "unsubscribe from newsgroups matching a pattern"
+msgstr "премахва маркировката от писма, отговарящи на шаблон"
+
+#: keymap_alldefs.h:205
+msgid "show the Mutt version number and date"
+msgstr "показва версията на mutt"
+
+#: keymap_alldefs.h:206
+msgid "view attachment using mailcap entry if necessary"
+msgstr "показва приложение, използвайки mailcap"
+
+#: keymap_alldefs.h:207
+msgid "show MIME attachments"
+msgstr "показва MIME приложения"
+
+#: keymap_alldefs.h:208
+msgid "display the keycode for a key press"
+msgstr "показва кода на натиснат клавиш"
+
+#: keymap_alldefs.h:209
+#, fuzzy
+msgid "limit view to current thread"
+msgstr "маркира текущата нишка"
+
+#: keymap_alldefs.h:210
+msgid "show currently active limit pattern"
+msgstr "показва активния ограничителен шаблон"
+
+#: keymap_alldefs.h:211
+msgid "collapse/uncollapse current thread"
+msgstr "свива/разтваря текущата нишка"
+
+#: keymap_alldefs.h:212
+msgid "collapse/uncollapse all threads"
+msgstr "свива/разтваря всички нишки"
+
+#: keymap_alldefs.h:213
+msgid "move the highlight to next mailbox"
+msgstr ""
+
+#: keymap_alldefs.h:214
+#, fuzzy
+msgid "move the highlight to next mailbox with new mail"
+msgstr "Няма пощенска кутия с нови писма."
+
+#: keymap_alldefs.h:215
+#, fuzzy
+msgid "open highlighted mailbox"
+msgstr "Повторно отваряне на пощенската кутия..."
+
+#: keymap_alldefs.h:216
+#, fuzzy
+msgid "scroll the sidebar down 1 page"
+msgstr "превърта екрана надолу с 1/2 страница"
+
+#: keymap_alldefs.h:217
+#, fuzzy
+msgid "scroll the sidebar up 1 page"
+msgstr "превърта екрана нагоре с 1/2 страница"
+
+#: keymap_alldefs.h:218
+#, fuzzy
+msgid "move the highlight to previous mailbox"
+msgstr "преместване към предишната страница"
+
+#: keymap_alldefs.h:219
+#, fuzzy
+msgid "move the highlight to previous mailbox with new mail"
+msgstr "Няма пощенска кутия с нови писма."
+
+#: keymap_alldefs.h:220
+#, fuzzy
+msgid "toggle between mailboxes and virtual mailboxes"
+msgstr "превключва търсенето между пощенски кутии или всички файлове"
+
+#: keymap_alldefs.h:221
+msgid "make the sidebar (in)visible"
+msgstr ""
+
+#: keymap_alldefs.h:222
+#, fuzzy
+msgid "open a different virtual folder"
+msgstr "отваря друга пощенска кутия"
+
+#: keymap_alldefs.h:223
+msgid "generate virtual folder from query"
+msgstr ""
+
+#: keymap_alldefs.h:224
+msgid "generate virtual folder from query and time window"
+msgstr ""
+
+#: keymap_alldefs.h:225
+msgid "shifts virtual folder time window forwards"
+msgstr ""
+
+#: keymap_alldefs.h:226
+msgid "shifts virtual folder time window backwards"
+msgstr ""
+
+#: keymap_alldefs.h:227
+msgid "modify (notmuch) tags"
+msgstr ""
+
+#: keymap_alldefs.h:228
+#, fuzzy
+msgid "modify labels and then hide message"
+msgstr "Това е първото писмо."
+
+#: keymap_alldefs.h:229
+msgid "read entire thread of the current message"
+msgstr ""
+
+#: keymap_alldefs.h:230
+#, fuzzy
+msgid "accept the chain constructed"
+msgstr "одобрява конструираната верига"
+
+#: keymap_alldefs.h:231
+#, fuzzy
+msgid "append a remailer to the chain"
+msgstr "добавя remailer към веригата"
+
+#: keymap_alldefs.h:232
+#, fuzzy
+msgid "insert a remailer into the chain"
+msgstr "вмъква remailer във веригата"
+
+#: keymap_alldefs.h:233
+#, fuzzy
+msgid "delete a remailer from the chain"
+msgstr "изтрива remailer от веригата"
+
+#: keymap_alldefs.h:234
+#, fuzzy
+msgid "select the previous element of the chain"
+msgstr "избира предишния елемент от веригата"
+
+#: keymap_alldefs.h:235
+#, fuzzy
+msgid "select the next element of the chain"
+msgstr "избира следващия елемент от веригата"
+
+#: keymap_alldefs.h:236
+msgid "send the message through a mixmaster remailer chain"
+msgstr "изпраща писмото през mixmaster remailer верига"
+
+#: keymap_alldefs.h:237
+msgid "attach a PGP public key"
+msgstr "прилага PGP публичен ключ"
+
+#: keymap_alldefs.h:238
+msgid "show PGP options"
+msgstr "показва PGP настройките"
+
+#: keymap_alldefs.h:239
+msgid "mail a PGP public key"
+msgstr "изпраща PGP публичен ключ"
+
+#: keymap_alldefs.h:240
+msgid "verify a PGP public key"
+msgstr "потвърждава PGP публичен ключ"
+
+#: keymap_alldefs.h:241
+msgid "view the key's user id"
+msgstr "показва потребителския номер към ключ"
+
+#: keymap_alldefs.h:242
+#, fuzzy
+msgid "check for classic PGP"
+msgstr "проверява за класически pgp"
+
+#: keymap_alldefs.h:243
+msgid "show S/MIME options"
+msgstr "показва S/MIME настройките"
+
+#: keymap_alldefs.h:244
+msgid "make decrypted copy and delete"
+msgstr "създава дешифрирано копие и изтрива"
+
+#: keymap_alldefs.h:245
+msgid "make decrypted copy"
+msgstr "създава дешифрирано копие"
+
+#: keymap_alldefs.h:246
+msgid "wipe passphrase(s) from memory"
+msgstr "отстранява паролите от паметта"
+
+#: keymap_alldefs.h:247
+msgid "extract supported public keys"
+msgstr "извлича поддържаните публични ключове"
+
 #: lib.c:118
 #, fuzzy
 msgid "Integer overflow -- can't allocate memory!"
@@ -3087,8 +4150,10 @@ msgstr "Недостатъчно памет!"
 #: main.c:77
 msgid ""
 "usage: mutt [<options>] [-z] [-f <file> | -yZ]\n"
-"       mutt [<options>] [-Ex] [-Hi <file>] [-s <subj>] [-bc <addr>] [-a <file> [...] --] <addr> [...]\n"
-"       mutt [<options>] [-x] [-s <subj>] [-bc <addr>] [-a <file> [...] --] <addr> [...] < message\n"
+"       mutt [<options>] [-Ex] [-Hi <file>] [-s <subj>] [-bc <addr>] [-a "
+"<file> [...] --] <addr> [...]\n"
+"       mutt [<options>] [-x] [-s <subj>] [-bc <addr>] [-a <file> [...] --] "
+"<addr> [...] < message\n"
 "       mutt [<options>] -p\n"
 "       mutt [<options>] -A <alias> [...]\n"
 "       mutt [<options>] -Q <query> [...]\n"
@@ -3102,7 +4167,8 @@ msgid ""
 "options:\n"
 "  -A <alias>    expand the given alias\n"
 "  -a <file> [...] --    attach file(s) to the message\n"
-"                the list of files must be terminated with the \"--\" sequence\n"
+"                the list of files must be terminated with the \"--\" "
+"sequence\n"
 "  -b <address>  specify a blind carbon-copy (BCC) address\n"
 "  -c <address>  specify a carbon-copy (CC) address\n"
 "  -D            print the value of all variables to stdout\n"
@@ -3129,10 +4195,15 @@ msgid ""
 "  -n            causes Mutt not to read the system Muttrc\n"
 "  -p            recall a postponed message"
 msgstr ""
-"Стартиране: mutt [ -nRyzZ ] [ -e <команда> ] [ -F <файл> ] [ -m <тип> ] [ -f <файл> ]\n"
-"       mutt [ -nR ] [ -e <команда> ] [ -F <файл> ] -Q <запитване> [ -Q <запитване> ] [...]\n"
-"       mutt [ -nR ] [ -e <команда> ] [ -F <файл> ] -A <псевдоним> [ -A <псевдоним> ] [...]\n"
-"       mutt [ -nx ] [ -e <команда> ] [ -a <файл> ] [ -F <файл> ] [ -H <файл> ] [ -i <файл> ] [ -s <тема> ] [ -b <адрес> ] [ -c <адрес> ] <адрес> [ ... ]\n"
+"Стартиране: mutt [ -nRyzZ ] [ -e <команда> ] [ -F <файл> ] [ -m <тип> ] [ -f "
+"<файл> ]\n"
+"       mutt [ -nR ] [ -e <команда> ] [ -F <файл> ] -Q <запитване> [ -Q "
+"<запитване> ] [...]\n"
+"       mutt [ -nR ] [ -e <команда> ] [ -F <файл> ] -A <псевдоним> [ -A "
+"<псевдоним> ] [...]\n"
+"       mutt [ -nx ] [ -e <команда> ] [ -a <файл> ] [ -F <файл> ] [ -H "
+"<файл> ] [ -i <файл> ] [ -s <тема> ] [ -b <адрес> ] [ -c <адрес> ] <адрес> "
+"[ ... ]\n"
 "       mutt [ -n ] [ -e <команда> ] [ -F <файл> ] -p\n"
 "       mutt -v[v]\n"
 "\n"
@@ -3151,12 +4222,15 @@ msgstr ""
 "  -p            редактира чернова\n"
 "  -Q <variable> запитване за конфигурационна променлива\n"
 "  -R            отваря пощенската кутия само за четене\n"
-"  -s <тема>     тема на писмото (трябва да е в кавички, ако съдържа интервали)\n"
+"  -s <тема>     тема на писмото (трябва да е в кавички, ако съдържа "
+"интервали)\n"
 "  -v            показва версията и дефинициите, използвани при компилация\n"
 "  -x            симулира mailx изпращане\n"
 "  -y            избор на файл от листа `mailboxes'\n"
-"  -z            незабавен изход от програмата, ако в пощенската кутия няма писма\n"
-"  -Z            отваряне на първата пощенска кутия с нови писма или незабавен изход от програмата ако няма такава\n"
+"  -z            незабавен изход от програмата, ако в пощенската кутия няма "
+"писма\n"
+"  -Z            отваряне на първата пощенска кутия с нови писма или "
+"незабавен изход от програмата ако няма такава\n"
 "  -h            показва този текст"
 
 #: main.c:112
@@ -3169,13 +4243,19 @@ msgid ""
 "  -x            simulate the mailx send mode\n"
 "  -y            select a mailbox specified in your `mailboxes' list\n"
 "  -z            exit immediately if there are no messages in the mailbox\n"
-"  -Z            open the first folder with new message, exit immediately if none\n"
+"  -Z            open the first folder with new message, exit immediately if "
+"none\n"
 "  -h            this help message"
 msgstr ""
-"Стартиране: mutt [ -nRyzZ ] [ -e <команда> ] [ -F <файл> ] [ -m <тип> ] [ -f <файл> ]\n"
-"       mutt [ -nR ] [ -e <команда> ] [ -F <файл> ] -Q <запитване> [ -Q <запитване> ] [...]\n"
-"       mutt [ -nR ] [ -e <команда> ] [ -F <файл> ] -A <псевдоним> [ -A <псевдоним> ] [...]\n"
-"       mutt [ -nx ] [ -e <команда> ] [ -a <файл> ] [ -F <файл> ] [ -H <файл> ] [ -i <файл> ] [ -s <тема> ] [ -b <адрес> ] [ -c <адрес> ] <адрес> [ ... ]\n"
+"Стартиране: mutt [ -nRyzZ ] [ -e <команда> ] [ -F <файл> ] [ -m <тип> ] [ -f "
+"<файл> ]\n"
+"       mutt [ -nR ] [ -e <команда> ] [ -F <файл> ] -Q <запитване> [ -Q "
+"<запитване> ] [...]\n"
+"       mutt [ -nR ] [ -e <команда> ] [ -F <файл> ] -A <псевдоним> [ -A "
+"<псевдоним> ] [...]\n"
+"       mutt [ -nx ] [ -e <команда> ] [ -a <файл> ] [ -F <файл> ] [ -H "
+"<файл> ] [ -i <файл> ] [ -s <тема> ] [ -b <адрес> ] [ -c <адрес> ] <адрес> "
+"[ ... ]\n"
 "       mutt [ -n ] [ -e <команда> ] [ -F <файл> ] -p\n"
 "       mutt -v[v]\n"
 "\n"
@@ -3194,12 +4274,15 @@ msgstr ""
 "  -p            редактира чернова\n"
 "  -Q <variable> запитване за конфигурационна променлива\n"
 "  -R            отваря пощенската кутия само за четене\n"
-"  -s <тема>     тема на писмото (трябва да е в кавички, ако съдържа интервали)\n"
+"  -s <тема>     тема на писмото (трябва да е в кавички, ако съдържа "
+"интервали)\n"
 "  -v            показва версията и дефинициите, използвани при компилация\n"
 "  -x            симулира mailx изпращане\n"
 "  -y            избор на файл от листа `mailboxes'\n"
-"  -z            незабавен изход от програмата, ако в пощенската кутия няма писма\n"
-"  -Z            отваряне на първата пощенска кутия с нови писма или незабавен изход от програмата ако няма такава\n"
+"  -z            незабавен изход от програмата, ако в пощенската кутия няма "
+"писма\n"
+"  -Z            отваряне на първата пощенска кутия с нови писма или "
+"незабавен изход от програмата ако няма такава\n"
 "  -h            показва този текст"
 
 #: main.c:144
@@ -3283,11 +4366,14 @@ msgstr "Пощенската кутия е повредена!"
 
 #: mbox.c:1031 mbox.c:1297
 msgid "Fatal error!  Could not reopen mailbox!"
-msgstr "Непоправима грешка! Грешка при повторното отваряне на пощенската кутия!"
+msgstr ""
+"Непоправима грешка! Грешка при повторното отваряне на пощенската кутия!"
 
 #: mbox.c:1085
 msgid "sync: mbox modified, but no modified messages! (report this bug)"
-msgstr "sync: пощенската кутия е променена, но няма променени писма! (моля, съобщете за тази грешка)"
+msgstr ""
+"sync: пощенската кутия е променена, но няма променени писма! (моля, съобщете "
+"за тази грешка)"
 
 #: mbox.c:1109 mh.c:2268 mutt_notmuch.c:2320 mx.c:746
 #, c-format
@@ -3344,15 +4430,15 @@ msgstr "Това е последният запис."
 msgid "You are on the first entry."
 msgstr "Това е първият запис."
 
-#: menu.c:899 pager.c:2362 pattern.c:1901
+#: menu.c:899 pager.c:2364 pattern.c:1901
 msgid "Search for: "
 msgstr "Търсене: "
 
-#: menu.c:900 pager.c:2363 pattern.c:1902
+#: menu.c:900 pager.c:2365 pattern.c:1902
 msgid "Reverse search for: "
 msgstr "Обратно търсене: "
 
-#: menu.c:947 pager.c:2316 pager.c:2337 pager.c:2461 pattern.c:2018
+#: menu.c:947 pager.c:2318 pager.c:2339 pager.c:2463 pattern.c:2018
 msgid "Not found."
 msgstr "Няма резултати от търсенето."
 
@@ -3385,7 +4471,8 @@ msgstr "Писмото не може да бъде изпратено."
 #: mh.c:1596
 #, fuzzy
 msgid "_maildir_commit_message(): unable to set time on file"
-msgstr "maildir_commit_message(): грешка при поставянето на марка за време на файла"
+msgstr ""
+"maildir_commit_message(): грешка при поставянето на марка за време на файла"
 
 #: muttlib.c:838
 #, c-format
@@ -3407,7 +4494,9 @@ msgstr ""
 #. See the msgid "Save to file: " (alias.c, recvattach.c)
 #: muttlib.c:1100
 msgid "File is a directory, save under it? [(y)es, (n)o, (a)ll]"
-msgstr "Файлът е директория. Желаете ли да запишете в нея? [(y) да, (n) не, (a) всички]"
+msgstr ""
+"Файлът е директория. Желаете ли да запишете в нея? [(y) да, (n) не, (a) "
+"всички]"
 
 #: muttlib.c:1100
 msgid "yna"
@@ -3468,7 +4557,9 @@ msgid "failed to parse notmuch query type: %s"
 msgstr ""
 
 #: mutt_notmuch.c:521
-msgid "Invalid nm_query_window_timebase value (valid values are: hour, day, week, month or year)."
+msgid ""
+"Invalid nm_query_window_timebase value (valid values are: hour, day, week, "
+"month or year)."
 msgstr ""
 
 #: mutt_notmuch.c:575
@@ -3831,7 +4922,9 @@ msgstr "Грешка в комуникацията с %s (%s)"
 #: mx.c:149
 #, c-format
 msgid "Lock count exceeded, remove lock for %s?"
-msgstr "Преминат е допустимият брой заключвания. Желаете ли да премахнете заключването за %s?"
+msgstr ""
+"Преминат е допустимият брой заключвания. Желаете ли да премахнете "
+"заключването за %s?"
 
 #: mx.c:160
 #, c-format
@@ -4032,42 +5125,43 @@ msgid "Checking for new newsgroups..."
 msgstr "Проверка за нови писма..."
 
 #: nntp.c:2372
-msgid "Unable to find child articles because server does not support XPAT command."
+msgid ""
+"Unable to find child articles because server does not support XPAT command."
 msgstr ""
 
-#: pager.c:1598
+#: pager.c:1599
 msgid "PrevPg"
 msgstr "Пред. стр."
 
-#: pager.c:1598
+#: pager.c:1599
 msgid "NextPg"
 msgstr "Следв. стр."
 
-#: pager.c:1601
+#: pager.c:1602
 msgid "View Attachm."
 msgstr "Приложения"
 
-#: pager.c:1604 pager.c:1613
+#: pager.c:1605 pager.c:1614
 msgid "Next"
 msgstr "Следващо"
 
-#: pager.c:2215 pager.c:2246 pager.c:2280 pager.c:2580
+#: pager.c:2217 pager.c:2248 pager.c:2282 pager.c:2593
 msgid "Bottom of message is shown."
 msgstr "Това е краят на писмото."
 
-#: pager.c:2232 pager.c:2253 pager.c:2260 pager.c:2268
+#: pager.c:2234 pager.c:2255 pager.c:2262 pager.c:2270
 msgid "Top of message is shown."
 msgstr "Това е началото на писмото."
 
-#: pager.c:2496
+#: pager.c:2509
 msgid "Help is currently being shown."
 msgstr "Помощта вече е показана."
 
-#: pager.c:2544
+#: pager.c:2557
 msgid "No more quoted text."
 msgstr "Няма повече цитиран текст."
 
-#: pager.c:2559
+#: pager.c:2572
 msgid "No more unquoted text after quoted text."
 msgstr "Няма повече нецитиран текст след цитирания."
 
@@ -4201,11 +5295,11 @@ msgstr "Търсенето е прекъснато."
 msgid "Enter PGP passphrase:"
 msgstr "Въвеждане на PGP парола:"
 
-#: pgp.c:428
+#: pgp.c:431
 msgid "[-- Error: unable to create PGP subprocess! --]\n"
 msgstr "[-- Грешка: не може да бъде стартиран дъщерен PGP процес! --]\n"
 
-#: pgp.c:465 pgp.c:731 pgp.c:883
+#: pgp.c:468 pgp.c:734 pgp.c:886
 msgid ""
 "[-- End of PGP output --]\n"
 "\n"
@@ -4213,11 +5307,11 @@ msgstr ""
 "[-- Край на PGP-резултата --]\n"
 "\n"
 
-#: pgp.c:775
+#: pgp.c:778
 msgid "Internal error.  Please submit a bug report."
 msgstr ""
 
-#: pgp.c:840
+#: pgp.c:843
 msgid ""
 "[-- Error: could not create a PGP subprocess! --]\n"
 "\n"
@@ -4225,106 +5319,114 @@ msgstr ""
 "[-- Грешка: не може да бъде стартиран дъщерен PGP процес! --]\n"
 "\n"
 
-#: pgp.c:871 pgp.c:895
+#: pgp.c:874 pgp.c:898
 #, fuzzy
 msgid "Decryption failed"
 msgstr "Неуспешно разшифроване."
 
-#: pgp.c:1102
+#: pgp.c:1105
 msgid "Can't open PGP subprocess!"
 msgstr "Не може да бъде стартиран дъщерен PGP процес!"
 
-#: pgp.c:1533
+#: pgp.c:1536
 msgid "Can't invoke PGP"
 msgstr "PGP не може да бъде стартиран"
 
 #. L10N: These next string MUST have the same highlighted letter
 #. One of them will appear in each of the three strings marked "(inline"), below.
-#: pgp.c:1631
+#: pgp.c:1634
 msgid "PGP/M(i)ME"
 msgstr ""
 
 #. L10N: These previous string MUST have the same highlighted letter
 #. One of them will appear in each of the three strings marked "(inline"), below.
-#: pgp.c:1637
+#: pgp.c:1640
 msgid "(i)nline"
 msgstr ""
 
 #. L10N: PGP options (inline) (opportunistic encryption is on)
-#: pgp.c:1651
+#: pgp.c:1654
 #, fuzzy, c-format
 msgid "PGP (s)ign, sign (a)s, %s format, (c)lear, or (o)ppenc mode off? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: PGP options (inline) (opportunistic encryption is on)
 #. The 'i' is from the "PGP/M(i)ME" or "(i)nline", above.
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1658
+#: pgp.c:1661
 msgid "safcoi"
 msgstr ""
 
 #. L10N: PGP options (opportunistic encryption is on)
-#: pgp.c:1664
+#: pgp.c:1667
 #, fuzzy
 msgid "PGP (s)ign, sign (a)s, (c)lear, or (o)ppenc mode off? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: PGP options (opportunistic encryption is on)
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1667
+#: pgp.c:1670
 msgid "safco"
 msgstr ""
 
 #. L10N: PGP options (inline) (opportunistic encryption is off)
-#: pgp.c:1684
+#: pgp.c:1687
 #, fuzzy, c-format
-msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, %s format, (c)lear, or (o)ppenc mode? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgid ""
+"PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, %s format, (c)lear, or (o)ppenc "
+"mode? "
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: PGP options (inline) (opportunistic encryption is off)
 #. The 'i' is from the "PGP/M(i)ME" or "(i)nline", above.
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1691
+#: pgp.c:1694
 #, fuzzy
 msgid "esabfcoi"
 msgstr "eswabf"
 
 #. L10N: PGP options (opportunistic encryption is off)
-#: pgp.c:1697
+#: pgp.c:1700
 #, fuzzy
 msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, (c)lear, or (o)ppenc mode? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: PGP options (opportunistic encryption is off)
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1701
+#: pgp.c:1704
 #, fuzzy
 msgid "esabfco"
 msgstr "eswabf"
 
 #. L10N: PGP options (inline)
-#: pgp.c:1714
+#: pgp.c:1717
 #, fuzzy, c-format
 msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, %s format, or (c)lear? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: PGP options (inline)
 #. The 'i' is from the "PGP/M(i)ME" or "(i)nline", above.
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1721
+#: pgp.c:1724
 #, fuzzy
 msgid "esabfci"
 msgstr "eswabf"
 
 #. L10N: PGP options
-#: pgp.c:1727
+#: pgp.c:1730
 #, fuzzy
 msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, or (c)lear? "
-msgstr "PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
+msgstr ""
+"PGP шифроване(e), подпис(s), подпис като(a), и двете(b) или без тях(f)?"
 
 #. L10N: PGP options
 #. The 'f' is undocumented. Please DO NOT translate it.
-#: pgp.c:1730
+#: pgp.c:1733
 #, fuzzy
 msgid "esabfc"
 msgstr "eswabf"
@@ -4378,7 +5480,8 @@ msgstr "Сървърът не поддържа командата UIDL."
 #: pop.c:291
 #, fuzzy, c-format
 msgid "%d messages have been lost. Try reopening the mailbox."
-msgstr "Невалиден индекс на писмо. Опитайте да отворите отново пощенската кутия."
+msgstr ""
+"Невалиден индекс на писмо. Опитайте да отворите отново пощенската кутия."
 
 #: pop.c:405 pop.c:804
 #, c-format
@@ -4600,7 +5703,8 @@ msgstr "Изтриването на приложения от шифровани
 
 #: recvattach.c:1125
 #, fuzzy
-msgid "Deletion of attachments from signed messages may invalidate the signature."
+msgid ""
+"Deletion of attachments from signed messages may invalidate the signature."
 msgstr "Изтриването на приложения от шифровани писма не се поддържа."
 
 #: recvattach.c:1143 recvattach.c:1160
@@ -4630,7 +5734,9 @@ msgstr "Желаете ли да ги препратите като прилож
 
 #: recvcmd.c:449
 msgid "Can't decode all tagged attachments.  MIME-forward the others?"
-msgstr "Декодирането на всички маркирани приложения е невъзможно. Желаете ли да препратите с MIME останалите?"
+msgstr ""
+"Декодирането на всички маркирани приложения е невъзможно. Желаете ли да "
+"препратите с MIME останалите?"
 
 #: recvcmd.c:573
 msgid "Forward MIME encapsulated?"
@@ -4651,7 +5757,9 @@ msgstr "Няма mailing list-ове!"
 
 #: recvcmd.c:817
 msgid "Can't decode all tagged attachments.  MIME-encapsulate the others?"
-msgstr "Декодирането на всички маркирани приложения е невъзможно. Желаете ли да капсулирате с MIME останалите?"
+msgstr ""
+"Декодирането на всички маркирани приложения е невъзможно. Желаете ли да "
+"капсулирате с MIME останалите?"
 
 #: remailer.c:138
 msgid "<random>"
@@ -4708,8 +5816,11 @@ msgid "Mixmaster doesn't accept Cc or Bcc headers."
 msgstr "mixmaster не приема Cc или Bcc заглавни полета."
 
 #: remailer.c:680
-msgid "Please set the hostname variable to a proper value when using mixmaster!"
-msgstr "Моля, поставете валидна стойност в променливата \"hostname\" когато използвате mixmaster!"
+msgid ""
+"Please set the hostname variable to a proper value when using mixmaster!"
+msgstr ""
+"Моля, поставете валидна стойност в променливата \"hostname\" когато "
+"използвате mixmaster!"
 
 #: remailer.c:715
 #, c-format
@@ -5044,8 +6155,11 @@ msgstr ""
 #. L10N: S/MIME options (opportunistic encryption is on)
 #: smime.c:2027
 #, fuzzy
-msgid "S/MIME (s)ign, encrypt (w)ith, sign (a)s, (c)lear, or (o)ppenc mode off? "
-msgstr "S/MIME шифроване(e), подпис(s), шифроване с(w), подпис като(a), и двете(b) или без тях(f)?"
+msgid ""
+"S/MIME (s)ign, encrypt (w)ith, sign (a)s, (c)lear, or (o)ppenc mode off? "
+msgstr ""
+"S/MIME шифроване(e), подпис(s), шифроване с(w), подпис като(a), и двете(b) "
+"или без тях(f)?"
 
 #. L10N: S/MIME options (opportunistic encryption is on)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -5056,8 +6170,12 @@ msgstr ""
 #. L10N: S/MIME options (opportunistic encryption is off)
 #: smime.c:2041
 #, fuzzy
-msgid "S/MIME (e)ncrypt, (s)ign, encrypt (w)ith, sign (a)s, (b)oth, (c)lear, or (o)ppenc mode? "
-msgstr "S/MIME шифроване(e), подпис(s), шифроване с(w), подпис като(a), и двете(b) или без тях(f)?"
+msgid ""
+"S/MIME (e)ncrypt, (s)ign, encrypt (w)ith, sign (a)s, (b)oth, (c)lear, or "
+"(o)ppenc mode? "
+msgstr ""
+"S/MIME шифроване(e), подпис(s), шифроване с(w), подпис като(a), и двете(b) "
+"или без тях(f)?"
 
 #. L10N: S/MIME options (opportunistic encryption is off)
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -5069,8 +6187,11 @@ msgstr "eswabf"
 #. L10N: S/MIME options
 #: smime.c:2054
 #, fuzzy
-msgid "S/MIME (e)ncrypt, (s)ign, encrypt (w)ith, sign (a)s, (b)oth, or (c)lear? "
-msgstr "S/MIME шифроване(e), подпис(s), шифроване с(w), подпис като(a), и двете(b) или без тях(f)?"
+msgid ""
+"S/MIME (e)ncrypt, (s)ign, encrypt (w)ith, sign (a)s, (b)oth, or (c)lear? "
+msgstr ""
+"S/MIME шифроване(e), подпис(s), шифроване с(w), подпис като(a), и двете(b) "
+"или без тях(f)?"
 
 #. L10N: S/MIME options
 #. The 'f' is undocumented. Please DO NOT translate it.
@@ -5162,7 +6283,9 @@ msgstr "Подреждане на пощенската кутия..."
 
 #: sort.c:348
 msgid "Could not find sorting function! [report this bug]"
-msgstr "Не може да бъде намерена функция за подреждане! (Моля, съобщете за тази грешка)"
+msgstr ""
+"Не може да бъде намерена функция за подреждане! (Моля, съобщете за тази "
+"грешка)"
 
 #: status.c:116
 msgid "(no mailbox)"
@@ -5192,7 +6315,7 @@ msgid ""
 "Copyright (C) 2000-2004 Edmund Grimley Evans <edmundo@rano.org>\n"
 "Copyright (C) 2006-2009 Rocco Rutte <pdmef@gmx.net>\n"
 "Copyright (C) 2014-2016 Kevin J. McCarthy <kevin@8t8.us>\n"
-"Copyright (C) 2015-2016 Richard Russon <rich@flatcap.org>\n"
+"Copyright (C) 2015-2017 Richard Russon <rich@flatcap.org>\n"
 "\n"
 "Many others not mentioned here contributed code, fixes,\n"
 "and suggestions.\n"
@@ -5215,7 +6338,8 @@ msgstr ""
 msgid ""
 "    You should have received a copy of the GNU General Public License\n"
 "    along with this program; if not, write to the Free Software\n"
-"    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.\n"
+"    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  "
+"02110-1301, USA.\n"
 msgstr ""
 
 #: version.c:79
@@ -5246,739 +6370,3 @@ msgid ""
 msgstr ""
 "\n"
 "Опции при компилация:"
-
-#~ msgid "PGP passphrase forgotten."
-#~ msgstr "PGP паролата е забравена."
-
-#~ msgid "Query"
-#~ msgstr "Запитване"
-
-#~ msgid "null operation"
-#~ msgstr "празна функция"
-
-#~ msgid "end of conditional execution (noop)"
-#~ msgstr "край на условното изпълнение (noop)"
-
-#~ msgid "force viewing of attachment using mailcap"
-#~ msgstr "показва принудително приложението след търсене в mailcap"
-
-#~ msgid "view attachment as text"
-#~ msgstr "показва приложението като текст"
-
-#, fuzzy
-#~ msgid "Toggle display of subparts"
-#~ msgstr "показва/скрива подчасти"
-
-#~ msgid "move to the bottom of the page"
-#~ msgstr "придвижване до края на страницата"
-
-#~ msgid "remail a message to another user"
-#~ msgstr "препраща писмото на друг адрес"
-
-#~ msgid "select a new file in this directory"
-#~ msgstr "избор на нов файл в тази директория"
-
-#~ msgid "view file"
-#~ msgstr "разглеждане на файл"
-
-#~ msgid "display the currently selected file's name"
-#~ msgstr "показва името на текущо маркирания файл"
-
-#, fuzzy
-#~ msgid "subscribe to current mbox (IMAP/NNTP only)"
-#~ msgstr "абонира текущо избраната пощенска кутия (само IMAP)"
-
-#, fuzzy
-#~ msgid "unsubscribe from current mbox (IMAP/NNTP only)"
-#~ msgstr "отписва абонамента на текущо избраната пощенска кутия (само IMAP)"
-
-#~ msgid "toggle view all/subscribed mailboxes (IMAP only)"
-#~ msgstr "показва всички или само абонираните пощенски кутии (само IMAP)"
-
-#~ msgid "list mailboxes with new mail"
-#~ msgstr "показва пощенските кутии, съдържащи нови писма."
-
-#~ msgid "change directories"
-#~ msgstr "промяна на директориите"
-
-#~ msgid "check mailboxes for new mail"
-#~ msgstr "проверява пощенските кутии за нови писма"
-
-#, fuzzy
-#~ msgid "attach file(s) to this message"
-#~ msgstr "прилага файл(ове) към писмото"
-
-#~ msgid "attach message(s) to this message"
-#~ msgstr "прилага писмо към това писмо"
-
-#, fuzzy
-#~ msgid "attach news article(s) to this message"
-#~ msgstr "прилага файл(ове) към писмото"
-
-#~ msgid "edit the BCC list"
-#~ msgstr "променя списъка на получателите на сляпо копие от писмото (BCC)"
-
-#~ msgid "edit the CC list"
-#~ msgstr "променя списъка на получателите на копие от писмото (CC)"
-
-#~ msgid "edit attachment description"
-#~ msgstr "променя описанието на приложението"
-
-#~ msgid "edit attachment transfer-encoding"
-#~ msgstr "променя кодирането на приложението"
-
-#~ msgid "enter a file to save a copy of this message in"
-#~ msgstr "избор на файл, в който да бъде записано копие от това писмо"
-
-#~ msgid "edit the file to be attached"
-#~ msgstr "избор на файл, който да бъде приложен"
-
-#~ msgid "edit the from field"
-#~ msgstr "променя изпращача (From)"
-
-#~ msgid "edit the message with headers"
-#~ msgstr "редактира писмо и заглавните му полета"
-
-#~ msgid "edit the message"
-#~ msgstr "редактира писмо"
-
-#~ msgid "edit attachment using mailcap entry"
-#~ msgstr "редактира приложение, посредством вписване в mailcap"
-
-#, fuzzy
-#~ msgid "edit the newsgroups list"
-#~ msgstr "променя списъка на получателите на копие от писмото (CC)"
-
-#~ msgid "edit the Reply-To field"
-#~ msgstr "редактира получателя на отговор от писмото (Reply-To)"
-
-#, fuzzy
-#~ msgid "edit the Followup-To field"
-#~ msgstr "редактира получателя на отговор от писмото (Reply-To)"
-
-#, fuzzy
-#~ msgid "edit the X-Comment-To field"
-#~ msgstr "редактира получателя на отговор от писмото (Reply-To)"
-
-#~ msgid "edit the subject of this message"
-#~ msgstr "редактира темата на писмо"
-
-#~ msgid "edit the TO list"
-#~ msgstr "редактира списъка на получателите"
-
-#~ msgid "create a new mailbox (IMAP only)"
-#~ msgstr "създава нова пощенска кутия (само IMAP)"
-
-#~ msgid "edit attachment content type"
-#~ msgstr "редактира типа на приложението"
-
-#~ msgid "get a temporary copy of an attachment"
-#~ msgstr "създава временно копие на приложението"
-
-#~ msgid "run ispell on the message"
-#~ msgstr "извършва правописна проверка на писмото с ispell"
-
-#~ msgid "compose new attachment using mailcap entry"
-#~ msgstr "създава на ново приложение, с използване на вписване в mailcap"
-
-#~ msgid "toggle recoding of this attachment"
-#~ msgstr "включва/изключва прекодирането на това приложение"
-
-#~ msgid "save this message to send later"
-#~ msgstr "записва писмото като чернова за по-късно изпращане"
-
-#, fuzzy
-#~ msgid "send attachment with a different name"
-#~ msgstr "променя кодирането на приложението"
-
-#~ msgid "rename/move an attached file"
-#~ msgstr "променя името или преместване на приложение"
-
-#, fuzzy
-#~ msgid "compose a new message to the sender"
-#~ msgstr "създава ново писмо"
-
-#~ msgid "send the message"
-#~ msgstr "изпраща писмото"
-
-#~ msgid "toggle disposition between inline/attachment"
-#~ msgstr "превключва между вмъкнат в писмото или приложен файл"
-
-#~ msgid "toggle whether to delete file after sending it"
-#~ msgstr "превключва между режим на изтриване или запазване на файла след изпращане"
-
-#~ msgid "update an attachment's encoding info"
-#~ msgstr "актуализира информацията за кодиране на приложението"
-
-#~ msgid "write the message to a folder"
-#~ msgstr "записва писмото в пощенска кутия"
-
-#~ msgid "copy a message to a file/mailbox"
-#~ msgstr "копира писмо във файл/пощенска кутия"
-
-#~ msgid "create an alias from a message sender"
-#~ msgstr "вписва подателя на писмото в адресната книга"
-
-#~ msgid "move entry to bottom of screen"
-#~ msgstr "премества записа към долния край на екрана"
-
-#~ msgid "move entry to middle of screen"
-#~ msgstr "премества записа към средата на екрана"
-
-#~ msgid "move entry to top of screen"
-#~ msgstr "премества записa към горния край на екрана"
-
-#~ msgid "make decoded (text/plain) copy"
-#~ msgstr "създава декодирано (text/plain) копие"
-
-#~ msgid "make decoded copy (text/plain) and delete"
-#~ msgstr "създаване на декодирано (text/plain) копие на писмото и изтриване"
-
-#~ msgid "delete the current entry"
-#~ msgstr "изтрива избрания запис"
-
-#~ msgid "delete the current mailbox (IMAP only)"
-#~ msgstr "изтрива текущата пощенска кутия (само IMAP)"
-
-#~ msgid "delete all messages in subthread"
-#~ msgstr "изтрива всички писма в поднишката"
-
-#~ msgid "delete all messages in thread"
-#~ msgstr "изтрива всички писма в нишката"
-
-#~ msgid "display full address of sender"
-#~ msgstr "показва пълния адрес на подателя на писмото"
-
-#~ msgid "display message and toggle header weeding"
-#~ msgstr "показва писмо и включва/изключва показването на заглавните части"
-
-#~ msgid "display a message"
-#~ msgstr "показва писмо"
-
-#~ msgid "edit the raw message"
-#~ msgstr "редактира необработеното писмо"
-
-#~ msgid "delete the char in front of the cursor"
-#~ msgstr "изтрива символа пред курсора"
-
-#~ msgid "move the cursor one character to the left"
-#~ msgstr "премества курсора с един символ наляво"
-
-#~ msgid "move the cursor to the beginning of the word"
-#~ msgstr "премества курсора към началото на думата"
-
-#~ msgid "jump to the beginning of the line"
-#~ msgstr "скок към началото на реда"
-
-#~ msgid "cycle among incoming mailboxes"
-#~ msgstr "циклично превъртане между входните пощенски кутии"
-
-#~ msgid "complete filename or alias"
-#~ msgstr "допълва името на файл или на псевдоним"
-
-#~ msgid "complete address with query"
-#~ msgstr "допълва адрес чрез запитване"
-
-#~ msgid "delete the char under the cursor"
-#~ msgstr "изтрива символа под курсора"
-
-#~ msgid "jump to the end of the line"
-#~ msgstr "скок към края на реда"
-
-#~ msgid "move the cursor one character to the right"
-#~ msgstr "премества курсора с един символ надясно"
-
-#~ msgid "move the cursor to the end of the word"
-#~ msgstr "премества курсора към края на думата"
-
-#~ msgid "scroll down through the history list"
-#~ msgstr "превърта надолу в списъка с историята"
-
-#~ msgid "scroll up through the history list"
-#~ msgstr "превърта нагоре в списъка с историята"
-
-#~ msgid "delete chars from cursor to end of line"
-#~ msgstr "изтрива символите от курсора до края на реда"
-
-#~ msgid "delete chars from the cursor to the end of the word"
-#~ msgstr "изтрива символите от курсора до края на думата"
-
-#~ msgid "delete all chars on the line"
-#~ msgstr "изтрива всички символи на реда"
-
-#~ msgid "delete the word in front of the cursor"
-#~ msgstr "изтрива думата преди курсора"
-
-#~ msgid "quote the next typed key"
-#~ msgstr "буквално приемане на следващия клавиш"
-
-#~ msgid "transpose character under cursor with previous"
-#~ msgstr "разменя текущия символ с предишния"
-
-#, fuzzy
-#~ msgid "capitalize the word"
-#~ msgstr "capitalize the word"
-
-#~ msgid "convert the word to lower case"
-#~ msgstr "конвертиране на думата до букви от долен регистър"
-
-#~ msgid "convert the word to upper case"
-#~ msgstr "конвертиране на думата до букви от горен регистър"
-
-#~ msgid "enter a muttrc command"
-#~ msgstr "въвеждане нa muttrc команда"
-
-#~ msgid "enter a file mask"
-#~ msgstr "въвеждане на файлова маска"
-
-#~ msgid "exit this menu"
-#~ msgstr "напуска това меню"
-
-#~ msgid "filter attachment through a shell command"
-#~ msgstr "филтрира приложението през команда на командния интерпретатор"
-
-#~ msgid "move to the first entry"
-#~ msgstr "преместване към първият запис"
-
-#~ msgid "toggle a message's 'important' flag"
-#~ msgstr "включва/изключва маркировката за важност на писмото"
-
-#, fuzzy
-#~ msgid "followup to newsgroup"
-#~ msgstr "Желаете ли да проследите до %s%s?"
-
-#~ msgid "forward a message with comments"
-#~ msgstr "препраща писмо с коментар"
-
-#~ msgid "select the current entry"
-#~ msgstr "избира текущият запис"
-
-#, fuzzy
-#~ msgid "get all children of the current message"
-#~ msgstr "Това е първото писмо."
-
-#, fuzzy
-#~ msgid "get message with Message-Id"
-#~ msgstr "редактира писмо и заглавните му полета"
-
-#, fuzzy
-#~ msgid "get parent of the current message"
-#~ msgstr "Това е първото писмо."
-
-#~ msgid "reply to all recipients"
-#~ msgstr "отговор на всички получатели"
-
-#~ msgid "scroll down 1/2 page"
-#~ msgstr "превърта екрана надолу с 1/2 страница"
-
-#~ msgid "scroll up 1/2 page"
-#~ msgstr "превърта екрана нагоре с 1/2 страница"
-
-#~ msgid "this screen"
-#~ msgstr "този екран"
-
-#~ msgid "jump to an index number"
-#~ msgstr "скок към индексен номер"
-
-#~ msgid "move to the last entry"
-#~ msgstr "преместване към последният запис"
-
-#~ msgid "reply to specified mailing list"
-#~ msgstr "отговор на указания mailing list"
-
-#~ msgid "execute a macro"
-#~ msgstr "изпълнява макрос"
-
-#~ msgid "compose a new mail message"
-#~ msgstr "създава ново писмо"
-
-#~ msgid "open a different folder"
-#~ msgstr "отваря друга пощенска кутия"
-
-#~ msgid "open a different folder in read only mode"
-#~ msgstr "отваря друга пощенска кутия само за четене"
-
-#, fuzzy
-#~ msgid "open a different newsgroup"
-#~ msgstr "отваря друга пощенска кутия"
-
-#, fuzzy
-#~ msgid "open a different newsgroup in read only mode"
-#~ msgstr "отваря друга пощенска кутия само за четене"
-
-#~ msgid "clear a status flag from a message"
-#~ msgstr "отстранява маркировката за статус от писмо"
-
-#~ msgid "delete messages matching a pattern"
-#~ msgstr "изтрива писма, отговарящи на шаблон"
-
-#~ msgid "force retrieval of mail from IMAP server"
-#~ msgstr "изтегля принудително писма от IMAP сървър"
-
-#~ msgid "retrieve mail from POP server"
-#~ msgstr "изтегля писма от POP сървър"
-
-#~ msgid "show only messages matching a pattern"
-#~ msgstr "показва само писма, отговарящи на шаблон"
-
-#, fuzzy
-#~ msgid "link tagged message to the current one"
-#~ msgstr "Препращане на маркираните писма към: "
-
-#, fuzzy
-#~ msgid "open next mailbox with new mail"
-#~ msgstr "Няма пощенска кутия с нови писма."
-
-#~ msgid "jump to the next new message"
-#~ msgstr "скок към следващото ново писмо"
-
-#~ msgid "jump to the next new or unread message"
-#~ msgstr "скок към следващото ново или непрочетено писмо"
-
-#~ msgid "jump to the next subthread"
-#~ msgstr "скок към следващата поднишка"
-
-#~ msgid "jump to the next thread"
-#~ msgstr "скок към следващата нишка"
-
-#~ msgid "move to the next undeleted message"
-#~ msgstr "преместване към следващото възстановено писмо"
-
-#~ msgid "jump to the next unread message"
-#~ msgstr "скок към следващото непрочетено писмо"
-
-#~ msgid "jump to parent message in thread"
-#~ msgstr "скок към родителското писмо в нишката"
-
-#~ msgid "jump to previous thread"
-#~ msgstr "скок към предишната нишка"
-
-#~ msgid "jump to previous subthread"
-#~ msgstr "скок към предишната поднишка"
-
-#~ msgid "move to the previous undeleted message"
-#~ msgstr "преместване към предишното възстановено писмо"
-
-#~ msgid "jump to the previous new message"
-#~ msgstr "скок към предишното ново писмо"
-
-#~ msgid "jump to the previous new or unread message"
-#~ msgstr "скок към предишното ново или непрочетено писмо"
-
-#~ msgid "jump to the previous unread message"
-#~ msgstr "скок към предишното непрочетено писмо"
-
-#~ msgid "mark the current thread as read"
-#~ msgstr "маркира текущата нишка като прочетена"
-
-#~ msgid "mark the current subthread as read"
-#~ msgstr "маркира текущата поднишка като прочетена"
-
-#, fuzzy
-#~ msgid "jump to root message in thread"
-#~ msgstr "скок към родителското писмо в нишката"
-
-#~ msgid "set a status flag on a message"
-#~ msgstr "поставя маркировката за статус на писмо"
-
-#~ msgid "save changes to mailbox"
-#~ msgstr "записва промените в пощенската кутия"
-
-#~ msgid "tag messages matching a pattern"
-#~ msgstr "маркира писма, отговарящи на шаблон"
-
-#~ msgid "undelete messages matching a pattern"
-#~ msgstr "възстановява писма, отговарящи на шаблон"
-
-#~ msgid "untag messages matching a pattern"
-#~ msgstr "премахва маркировката от писма, отговарящи на шаблон"
-
-#, fuzzy
-#~ msgid "create a hotkey macro for the current message"
-#~ msgstr "Това е първото писмо."
-
-#~ msgid "move to the middle of the page"
-#~ msgstr "преместване към средата на страницата"
-
-#~ msgid "move to the next entry"
-#~ msgstr "преместване към следващия запис"
-
-#~ msgid "scroll down one line"
-#~ msgstr "превърта надолу с един ред"
-
-#~ msgid "move to the next page"
-#~ msgstr "преместване към следващата страница"
-
-#~ msgid "jump to the bottom of the message"
-#~ msgstr "скок към края на писмото"
-
-#~ msgid "toggle display of quoted text"
-#~ msgstr "показва/скрива цитиран текст"
-
-#~ msgid "skip beyond quoted text"
-#~ msgstr "прескача цитирания текст"
-
-#~ msgid "jump to the top of the message"
-#~ msgstr "скок към началото на писмото"
-
-#~ msgid "pipe message/attachment to a shell command"
-#~ msgstr "изпраща писмо или приложение към команда на командния интерпретатор"
-
-#, fuzzy
-#~ msgid "post message to newsgroup"
-#~ msgstr "Препращане на писмото към %s"
-
-#~ msgid "move to the previous entry"
-#~ msgstr "преместване към предишния запис"
-
-#~ msgid "scroll up one line"
-#~ msgstr "превъртане нагоре с един ред"
-
-#~ msgid "move to the previous page"
-#~ msgstr "преместване към предишната страница"
-
-#~ msgid "print the current entry"
-#~ msgstr "отпечатва текущото писмо"
-
-#~ msgid "query external program for addresses"
-#~ msgstr "изпраща запитване към външна програма за адрес"
-
-#~ msgid "append new query results to current results"
-#~ msgstr "добавя резултатите от запитването към досегашните"
-
-#~ msgid "save changes to mailbox and quit"
-#~ msgstr "записва промените в пощенската кутия и напуска програмата"
-
-#~ msgid "recall a postponed message"
-#~ msgstr "редактира чернова"
-
-#, fuzzy
-#~ msgid "reconstruct thread containing current message"
-#~ msgstr "Нишката съдържа непрочетени писма."
-
-#~ msgid "clear and redraw the screen"
-#~ msgstr "изтрива и прерисува екрана"
-
-#~ msgid "{internal}"
-#~ msgstr "{вътрешно}"
-
-#, fuzzy
-#~ msgid "rename the current mailbox (IMAP only)"
-#~ msgstr "изтрива текущата пощенска кутия (само IMAP)"
-
-#~ msgid "reply to a message"
-#~ msgstr "отговор на писмо"
-
-#~ msgid "use the current message as a template for a new one"
-#~ msgstr "използва текущото писмо като шаблон за ново"
-
-#, fuzzy
-#~ msgid "save message/attachment to a mailbox/file"
-#~ msgstr "записва писмо или приложение във файл"
-
-#~ msgid "search for a regular expression"
-#~ msgstr "търсене на регулярен израз"
-
-#~ msgid "search backwards for a regular expression"
-#~ msgstr "търсене на регулярен израз в обратната посока"
-
-#~ msgid "search for next match"
-#~ msgstr "търси следващото попадение"
-
-#~ msgid "search for next match in opposite direction"
-#~ msgstr "търси следващото попадение в обратната посока"
-
-#~ msgid "toggle search pattern coloring"
-#~ msgstr "включва/изключва оцветяването при търсене"
-
-#~ msgid "invoke a command in a subshell"
-#~ msgstr "изпълнява команда в командния интерпретатор"
-
-#~ msgid "sort messages"
-#~ msgstr "подрежда писмата"
-
-#~ msgid "sort messages in reverse order"
-#~ msgstr "подрежда писмата в обратен ред"
-
-#, fuzzy
-#~ msgid "subscribe to newsgroups matching a pattern"
-#~ msgstr "премахва маркировката от писма, отговарящи на шаблон"
-
-#~ msgid "tag the current entry"
-#~ msgstr "маркира текущият запис"
-
-#~ msgid "apply next function to tagged messages"
-#~ msgstr "прилага следващата функция върху маркираните писма"
-
-#~ msgid "apply next function ONLY to tagged messages"
-#~ msgstr "прилага следващата функция САМО върху маркираните писма"
-
-#~ msgid "tag the current subthread"
-#~ msgstr "маркира текущата поднишка"
-
-#~ msgid "tag the current thread"
-#~ msgstr "маркира текущата нишка"
-
-#~ msgid "toggle a message's 'new' flag"
-#~ msgstr "включва/изключва индикатора, дали писмото е ново"
-
-#, fuzzy
-#~ msgid "toggle view of read messages"
-#~ msgstr "скок към предишното ново или непрочетено писмо"
-
-#~ msgid "toggle whether the mailbox will be rewritten"
-#~ msgstr "включва/изключва презаписът на пощенската кутия"
-
-#~ msgid "toggle whether to browse mailboxes or all files"
-#~ msgstr "превключва търсенето между пощенски кутии или всички файлове"
-
-#~ msgid "move to the top of the page"
-#~ msgstr "преместване към началото на страницата"
-
-#~ msgid "undelete the current entry"
-#~ msgstr "възстановява текущото писмо"
-
-#~ msgid "undelete all messages in thread"
-#~ msgstr "възстановява всички писма в нишката"
-
-#~ msgid "undelete all messages in subthread"
-#~ msgstr "възстановява всички писма в поднишката"
-
-#, fuzzy
-#~ msgid "unsubscribe from newsgroups matching a pattern"
-#~ msgstr "премахва маркировката от писма, отговарящи на шаблон"
-
-#~ msgid "show the Mutt version number and date"
-#~ msgstr "показва версията на mutt"
-
-#~ msgid "view attachment using mailcap entry if necessary"
-#~ msgstr "показва приложение, използвайки mailcap"
-
-#~ msgid "show MIME attachments"
-#~ msgstr "показва MIME приложения"
-
-#~ msgid "display the keycode for a key press"
-#~ msgstr "показва кода на натиснат клавиш"
-
-#, fuzzy
-#~ msgid "limit view to current thread"
-#~ msgstr "маркира текущата нишка"
-
-#~ msgid "show currently active limit pattern"
-#~ msgstr "показва активния ограничителен шаблон"
-
-#~ msgid "collapse/uncollapse current thread"
-#~ msgstr "свива/разтваря текущата нишка"
-
-#~ msgid "collapse/uncollapse all threads"
-#~ msgstr "свива/разтваря всички нишки"
-
-#, fuzzy
-#~ msgid "move the highlight to next mailbox with new mail"
-#~ msgstr "Няма пощенска кутия с нови писма."
-
-#, fuzzy
-#~ msgid "open highlighted mailbox"
-#~ msgstr "Повторно отваряне на пощенската кутия..."
-
-#, fuzzy
-#~ msgid "scroll the sidebar down 1 page"
-#~ msgstr "превърта екрана надолу с 1/2 страница"
-
-#, fuzzy
-#~ msgid "scroll the sidebar up 1 page"
-#~ msgstr "превърта екрана нагоре с 1/2 страница"
-
-#, fuzzy
-#~ msgid "move the highlight to previous mailbox"
-#~ msgstr "преместване към предишната страница"
-
-#, fuzzy
-#~ msgid "move the highlight to previous mailbox with new mail"
-#~ msgstr "Няма пощенска кутия с нови писма."
-
-#, fuzzy
-#~ msgid "toggle between mailboxes and virtual mailboxes"
-#~ msgstr "превключва търсенето между пощенски кутии или всички файлове"
-
-#, fuzzy
-#~ msgid "open a different virtual folder"
-#~ msgstr "отваря друга пощенска кутия"
-
-#, fuzzy
-#~ msgid "modify labels and then hide message"
-#~ msgstr "Това е първото писмо."
-
-#~ msgid "attach a PGP public key"
-#~ msgstr "прилага PGP публичен ключ"
-
-#~ msgid "show PGP options"
-#~ msgstr "показва PGP настройките"
-
-#~ msgid "mail a PGP public key"
-#~ msgstr "изпраща PGP публичен ключ"
-
-#~ msgid "verify a PGP public key"
-#~ msgstr "потвърждава PGP публичен ключ"
-
-#~ msgid "view the key's user id"
-#~ msgstr "показва потребителския номер към ключ"
-
-#, fuzzy
-#~ msgid "check for classic PGP"
-#~ msgstr "проверява за класически pgp"
-
-#, fuzzy
-#~ msgid "accept the chain constructed"
-#~ msgstr "одобрява конструираната верига"
-
-#, fuzzy
-#~ msgid "append a remailer to the chain"
-#~ msgstr "добавя remailer към веригата"
-
-#, fuzzy
-#~ msgid "insert a remailer into the chain"
-#~ msgstr "вмъква remailer във веригата"
-
-#, fuzzy
-#~ msgid "delete a remailer from the chain"
-#~ msgstr "изтрива remailer от веригата"
-
-#, fuzzy
-#~ msgid "select the previous element of the chain"
-#~ msgstr "избира предишния елемент от веригата"
-
-#, fuzzy
-#~ msgid "select the next element of the chain"
-#~ msgstr "избира следващия елемент от веригата"
-
-#~ msgid "send the message through a mixmaster remailer chain"
-#~ msgstr "изпраща писмото през mixmaster remailer верига"
-
-#~ msgid "make decrypted copy and delete"
-#~ msgstr "създава дешифрирано копие и изтрива"
-
-#~ msgid "make decrypted copy"
-#~ msgstr "създава дешифрирано копие"
-
-#~ msgid "wipe passphrase(s) from memory"
-#~ msgstr "отстранява паролите от паметта"
-
-#~ msgid "extract supported public keys"
-#~ msgstr "извлича поддържаните публични ключове"
-
-#~ msgid "show S/MIME options"
-#~ msgstr "показва S/MIME настройките"
-
-#~ msgid "Fingerprint: %s"
-#~ msgstr "Пръстов отпечатък: %s"
-
-#, fuzzy
-#~ msgid "SMTP authentication requires SASL"
-#~ msgstr "Неуспешна GSSAPI идентификация."
-
-#~ msgid "move to the first message"
-#~ msgstr "преместване към първото писмо"
-
-#~ msgid "move to the last message"
-#~ msgstr "преместване към последното писмо"

@@ -127,7 +127,9 @@ uninstall-local:
 
 check:
 manual.txt: manual.html
-	LC_ALL=C w3m -dump -O UTF-8 manual.html > $@
+	-LC_ALL=C w3m -dump -O UTF8 manual.html > $@ || \
+	LC_ALL=C lynx -dump -nolist -with_backspaces -display_charset=us-ascii manual.html > $@ || \
+	LC_ALL=C elinks -dump -no-numbering -no-references manual.html | sed -e 's,\\001, ,g' > $@
 
 Muttrc: stamp-doc-rc
 
