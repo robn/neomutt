@@ -1,3 +1,9 @@
+neomutt (1:20170421-1lxtec1) unstable; urgency=medium
+
+  * New upstream stable release neomutt-20170421
+
+ -- Elimar Riesebieter <riesebie@lxtec.de>  Sat, 22 Apr 2017 18:02:33 +0200
+
 neomutt (1:20170414-1lxtec1) unstable; urgency=medium
 
   * New upstream development release neomutt-20170414
