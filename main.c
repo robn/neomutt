@@ -493,9 +493,17 @@ int main(int argc, char **argv, char **environ)
 
     strfcpy(fpath, Maildir, sizeof(fpath));
     mutt_expand_path(fpath, sizeof(fpath));
-#ifdef USE_IMAP
+
+#if defined(USE_IMAP) || defined(USE_JMAP)
     /* we're not connected yet - skip mail folder creation */
-    if (!mx_is_imap(fpath))
+    if (1
+#ifdef USE_IMAP
+        && !mx_is_imap(fpath)
+#endif
+#ifdef USE_JMAP
+        && !mx_is_jmap(fpath)
+#endif
+    )
 #endif
       if (stat(fpath, &sb) == -1 && errno == ENOENT)
       {
