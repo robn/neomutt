@@ -152,6 +152,7 @@ AS_IF([test x$enable_everything = "xyes"], [
 	use_notmuch="yes"
 	use_pop="yes"
 	use_imap="yes"
+	use_jmap="yes"
 	use_nntp="yes"
 	use_smtp="yes"
 	use_lua="yes"
@@ -170,6 +171,7 @@ AS_IF([test x$enable_everything = "xyes"], [
 	use_notmuch="no"
 	use_pop="no"
 	use_imap="no"
+	use_jmap="no"
 	use_nntp="no"
 	use_smtp="no"
 	use_lua="no"
@@ -230,6 +232,10 @@ AC_ARG_ENABLE(pop,
 AC_ARG_ENABLE(imap,
 	AS_HELP_STRING([--enable-imap], [Enable IMAP support]),
 	[use_imap=$enableval])
+
+AC_ARG_ENABLE(jmap,
+	AS_HELP_STRING([--enable-jmap], [Enable JMAP support]),
+	[use_jmap=$enableval])
 
 AC_ARG_ENABLE(nntp,
 	AC_HELP_STRING([--enable-nntp], [Enable NNTP support]),
@@ -673,6 +679,16 @@ AS_IF([test x$use_imap = "xyes"], [
 ])
 AM_CONDITIONAL(BUILD_IMAP, test x$need_imap = xyes)
 
+AS_IF([test x$use_jmap = "xyes"], [
+	AC_DEFINE(USE_JMAP, 1, [Define if you want support for the JMAP protocol.])
+	LIBJMAP="-Ljmap -ljmap"
+	LIBJMAPDEPS="\$(top_srcdir)/jmap/jmap.h jmap/libjmap.a"
+	need_jmap="yes"
+	need_curl="yes"
+	need_jansson="yes"
+])
+AM_CONDITIONAL(BUILD_JMAP, test x$need_jmap = xyes)
+
 AS_IF([test x$use_nntp = "xyes"], [
 	AC_DEFINE(USE_NNTP, 1, [Define if you want support for the NNTP protocol.])
 	MUTT_LIB_OBJECTS="$MUTT_LIB_OBJECTS nntp.o newsrc.o"
@@ -687,7 +703,7 @@ AS_IF([test x$use_smtp = "xyes"], [
 	need_socket="yes"
 ])
 
-if test x"$need_imap" = xyes -o x"$need_pop" = xyes -o x"$need_nntp" = xyes; then
+if test x"$need_imap" = xyes -o x"$need_jmap" = "xyes" -o x"$need_pop" = xyes -o x"$need_nntp" = xyes; then
 	MUTT_LIB_OBJECTS="$MUTT_LIB_OBJECTS bcache.o"
 fi
 
@@ -732,6 +748,21 @@ fi
 AM_CONDITIONAL(USE_GSS, test x$need_gss = xyes)
 
 dnl -- end imap dependencies --
+
+dnl -- jmap dependencies --
+
+AS_IF([test x$need_curl = "xyes"], [
+	AC_CHECK_LIB(curl, curl_global_init,, [
+		AC_MSG_ERROR([cannot find libcurl, required for JMAP support])
+	])
+])
+AS_IF([test x$need_jansson = "xyes"], [
+	AC_CHECK_LIB(jansson, json_object,, [
+		AC_MSG_ERROR([cannot find libjansson, required for JMAP support])
+	])
+])
+
+dnl -- end jmap dependencies --
 
 AC_ARG_WITH(ssl, AS_HELP_STRING([--with-ssl@<:@=PFX@:>@],[Enable TLS support using OpenSSL]),
 [	if test "$with_ssl" != "no"; then
@@ -1150,6 +1181,8 @@ AC_SUBST(MUTTLIBS)
 AC_SUBST(MUTT_LIB_OBJECTS)
 AC_SUBST(LIBIMAP)
 AC_SUBST(LIBIMAPDEPS)
+AC_SUBST(LIBJMAP)
+AC_SUBST(LIBJMAPDEPS)
 AC_SUBST(NOTMUCH_LIBS)
 
 dnl -- iconv/gettext --
@@ -1412,7 +1445,7 @@ if test x$full_doc != xno; then
 	AC_DEFINE(MAKEDOC_FULL,1, [Define if you want complete documentation.])
 fi
 
-AC_CONFIG_FILES(Makefile contrib/Makefile doc/Makefile imap/Makefile
+AC_CONFIG_FILES(Makefile contrib/Makefile doc/Makefile imap/Makefile jmap/Makefile
 	m4/Makefile po/Makefile.in
 	hcachever.sh doc/instdoc.sh)
 AC_OUTPUT
@@ -1439,6 +1472,7 @@ AC_MSG_NOTICE([Summary of build options:
 
   POP3:              $use_pop
   IMAP:              $use_imap
+  JMAP:              $use_jmap
   NNTP:              $use_nntp
   SMTP:              $use_smtp
 ])

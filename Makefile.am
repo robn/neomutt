@@ -7,7 +7,7 @@ EXTRA_PROGRAMS = mutt_dotlock pgpring pgpewrap mutt_md5
 
 # Test the .tar file by building everything
 AM_DISTCHECK_CONFIGURE_FLAGS = --enable-compressed --enable-debug \
-	--enable-gpgme --enable-imap --enable-nntp --enable-notmuch \
+	--enable-gpgme --enable-imap --enable-jmap --enable-nntp --enable-notmuch \
 	--enable-pop --enable-sidebar --enable-smtp --with-bdb --with-gdbm \
 	--with-gnutls --with-gss --with-kyotocabinet --with-lmdb --with-qdbm \
 	--with-sasl --with-tokyocabinet
@@ -24,6 +24,10 @@ endif
 
 if BUILD_IMAP
 SUBDIRS += imap
+endif
+
+if BUILD_JMAP
+SUBDIRS += jmap
 endif
 
 bin_SCRIPTS = $(SMIMEAUX_TARGET)
@@ -50,10 +54,10 @@ mutt_SOURCES = addrbook.c alias.c ascii.c attach.c base64.c browser.c buffer.c \
 
 nodist_mutt_SOURCES = $(BUILT_SOURCES)
 
-mutt_LDADD = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAP) $(MUTTLIBS) \
+mutt_LDADD = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAP) $(LIBJMAP) $(MUTTLIBS) \
 	$(INTLLIBS) $(LIBICONV) $(GPGME_LIBS)
 
-mutt_DEPENDENCIES = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAPDEPS) \
+mutt_DEPENDENCIES = $(MUTT_LIB_OBJECTS) $(LIBOBJS) $(LIBIMAPDEPS) $(LIBJMAPDEPS) \
 	$(INTLDEPS)
 
 DEFS=-DPKGDATADIR=\"$(pkgdatadir)\" -DSYSCONFDIR=\"$(sysconfdir)\" \
