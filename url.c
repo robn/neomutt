@@ -34,6 +34,9 @@ static const struct mapping_t UrlMap[] = {
 #ifdef USE_NOTMUCH
     {"notmuch", U_NOTMUCH},
 #endif
+#ifdef USE_JMAP
+    {"jmap", U_JMAP},
+#endif
     {"smtp", U_SMTP},       {"smtps", U_SMTPS},   {NULL, U_UNKNOWN},
 };
 

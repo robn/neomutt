@@ -46,6 +46,9 @@
 #ifdef USE_IMAP
 #include "imap/imap.h"
 #endif
+#ifdef USE_JMAP
+#include "jmap/jmap.h"
+#endif
 #ifdef USE_POP
 #include "pop.h"
 #endif
@@ -66,6 +69,10 @@ struct mx_ops *mx_get_ops(int magic)
 #ifdef USE_IMAP
     case MUTT_IMAP:
       return &mx_imap_ops;
+#endif
+#ifdef USE_JMAP
+    case MUTT_JMAP:
+      return &mx_jmap_ops;
 #endif
     case MUTT_MAILDIR:
       return &mx_maildir_ops;
@@ -358,6 +365,22 @@ bool mx_is_imap(const char *p)
 
 #endif
 
+#ifdef USE_JMAP
+bool mx_is_jmap(const char *p)
+{
+  url_scheme_t scheme;
+
+  if (!p)
+    return false;
+
+  scheme = url_check_scheme(p);
+  if (scheme == U_JMAP)
+    return true;
+
+  return false;
+}
+#endif
+
 #ifdef USE_POP
 bool mx_is_pop(const char *p)
 {
@@ -417,6 +440,11 @@ int mx_get_magic(const char *path)
   if (mx_is_imap(path))
     return MUTT_IMAP;
 #endif /* USE_IMAP */
+
+#ifdef USE_JMAP
+  if (mx_is_jmap(path))
+    return MUTT_JMAP;
+#endif /* USE_JMAP */
 
 #ifdef USE_POP
   if (mx_is_pop(path))

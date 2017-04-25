@@ -14,4 +14,16 @@
  * limitations under the License.
  */
 
+#include "jmap_internal.h"
 
+struct mx_ops mx_jmap_ops = {
+  .open         = jmap_mailbox_open,
+  .open_append  = jmap_mailbox_open_append,
+  .close        = jmap_mailbox_close,
+  .open_msg     = jmap_message_open,
+  .close_msg    = jmap_message_close,
+  .commit_msg   = jmap_message_commit,
+  .open_new_msg = jmap_message_open_new,
+  .check        = jmap_mailbox_check,
+  .sync         = jmap_mailbox_sync,
+};

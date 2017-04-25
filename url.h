@@ -32,6 +32,9 @@ typedef enum url_scheme {
 #ifdef USE_NOTMUCH
   U_NOTMUCH,
 #endif
+#ifdef USE_JMAP
+  U_JMAP,
+#endif
   U_UNKNOWN
 } url_scheme_t;
 

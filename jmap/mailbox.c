@@ -14,9 +14,29 @@
  * limitations under the License.
  */
 
-#ifndef _MUTT_JMAP_H
-#define _MUTT_JMAP_H 1
+#include "jmap_internal.h"
 
-extern struct mx_ops mx_jmap_ops;
+int jmap_mailbox_open(CONTEXT *ctx)
+{
+  return -1;
+}
 
-#endif /* _MUTT_JMAP_H */
+int jmap_mailbox_open_append(CONTEXT *ctx, int flags)
+{
+  return -1;
+}
+
+int jmap_mailbox_close(CONTEXT *ctx)
+{
+  return -1;
+}
+
+int jmap_mailbox_check(CONTEXT *ctx, int *index_hint)
+{
+  return -1;
+}
+
+int jmap_mailbox_sync(CONTEXT *ctx, int *index_hint)
+{
+  return -1;
+}

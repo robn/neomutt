@@ -76,6 +76,9 @@ int mx_check_mailbox(CONTEXT *ctx, int *index_hint);
 #ifdef USE_IMAP
 bool mx_is_imap(const char *p);
 #endif
+#ifdef USE_JMAP
+bool mx_is_jmap(const char *p);
+#endif
 #ifdef USE_POP
 bool mx_is_pop(const char *p);
 #endif
