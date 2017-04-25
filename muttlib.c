@@ -479,6 +479,13 @@ char *_mutt_expand_path(char *s, size_t slen, int rx)
           strfcpy(p, NONULL(Maildir), sizeof(p));
         else
 #endif
+#ifdef USE_JMAP
+        /* jmap:// URLs are really https://, so append folder as a query part
+         * so that the backend can distinguish it from the URL proper */
+        if (mx_is_jmap(NONULL(Maildir)))
+          snprintf(p, sizeof(p), "%s?", NONULL(Maildir));
+        else
+#endif
 #ifdef USE_NOTMUCH
             if (mx_is_notmuch(NONULL(Maildir)))
           strfcpy(p, NONULL(Maildir), sizeof(p));
