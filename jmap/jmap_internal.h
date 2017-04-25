@@ -31,6 +31,7 @@
 #include "jmap.h"
 #include "mutt_curses.h"
 #include "mutt_socket.h"
+#include <jansson.h>
 
 /* mailbox.c */
 extern int jmap_mailbox_open(CONTEXT *ctx);
@@ -44,5 +45,8 @@ extern int jmap_message_open(CONTEXT *ctx, MESSAGE *msg, int msgno);
 extern int jmap_message_close(CONTEXT *ctx, MESSAGE *msg);
 extern int jmap_message_commit(CONTEXT *ctx, MESSAGE *msg);
 extern int jmap_message_open_new(MESSAGE *msg, CONTEXT *dest, HEADER *hdr);
+
+/* client.c */
+extern int jmap_client_call(CONTEXT *ctx, const json_t *batch, json_t **rbatch);
 
 #endif /* _MUTT_JMAP_INTERNAL_H */
