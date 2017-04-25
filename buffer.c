@@ -116,7 +116,7 @@ int mutt_buffer_printf(BUFFER *buf, const char *fmt, ...)
 /* dynamically grows a BUFFER to accommodate s, in increments of 128 bytes.
  * Always one byte bigger than necessary for the null terminator, and
  * the buffer is always null-terminated */
-static void mutt_buffer_add(BUFFER *buf, const char *s, size_t len)
+void mutt_buffer_add(BUFFER *buf, const char *s, size_t len)
 {
   if (!buf || !s)
     return;

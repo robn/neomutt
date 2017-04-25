@@ -40,6 +40,7 @@ BUFFER *mutt_buffer_init(BUFFER *b);
 BUFFER *mutt_buffer_from(char *seed);
 void mutt_buffer_free(BUFFER **p);
 int mutt_buffer_printf(BUFFER *buf, const char *fmt, ...);
+void mutt_buffer_add(BUFFER *buf, const char *s, size_t len);
 void mutt_buffer_addstr(BUFFER *buf, const char *s);
 void mutt_buffer_addch(BUFFER *buf, char c);
 int mutt_extract_token(BUFFER *dest, BUFFER *tok, int flags);
