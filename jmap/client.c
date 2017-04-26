@@ -52,6 +52,7 @@ static int _jmap_client_set_url_auth(CONTEXT *ctx, CURL *handle)
 static int _jmap_client_curl_debug(CURL *handle, curl_infotype type, char *data, size_t size, void *userptr)
 {
   mutt_debug(3, "jmap: curl [%d]: %.*s", type, size, data);
+  return 0;
 }
 
 static size_t _jmap_client_curl_write(char *buf, size_t size, size_t nmemb, void *data)
