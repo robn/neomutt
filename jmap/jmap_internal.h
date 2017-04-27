@@ -56,6 +56,12 @@ typedef struct jmap_context {
   /* buffer for response body. "zero" it, fill it, make call */
   BUFFER *curl_body;
 
+  /* mailbox id -> jmap_mailbox_t */
+  HASH *mailbox_by_id;
+
+  /* mailbox hierarchical name -> jmap_mailbox_t */
+  HASH *mailbox_by_name;
+
 } jmap_context_t;
 
 /* context.c */
