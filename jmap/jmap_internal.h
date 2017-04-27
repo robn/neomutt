@@ -31,13 +31,35 @@
 #include "jmap.h"
 #include "mutt_curses.h"
 #include "mutt_socket.h"
+#include <curl/curl.h>
 #include <jansson.h>
 
 typedef struct jmap_context {
+
+  /* calculated from the path. if a different path url is requested, the
+   * checksum changes, and the context is reinitialised. I'm not even sure if
+   * that can happen, but lets be safe. see jmap_context_prepare() for details */
+  unsigned char checksum;
+
+  /* allocation from full path but modified/exploded by url. unusable as-is */
+  char *_path;
+
+  /* everything you want is in here anyway */
+  ciss_url_t url;
+
+  /* active curl context for this server */
+  CURL *curl;
+
+  /* curl headers. must exist for the lifetime of the context */
+  struct curl_slist *curl_headers;
+
+  /* buffer for response body. "zero" it, fill it, make call */
+  BUFFER *curl_body;
+
 } jmap_context_t;
 
 /* context.c */
-jmap_context_t *jmap_context_new(void);
+jmap_context_t *jmap_context_prepare(jmap_context_t *jctx, const char *path);
 void jmap_context_free(jmap_context_t **jctxp);
 
 /* mailbox.c */
