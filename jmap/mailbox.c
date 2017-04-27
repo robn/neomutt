@@ -16,11 +16,40 @@
 
 #include "jmap_internal.h"
 
+typedef enum jmap_mailbox_role {
+  ROLE_NONE,
+  ROLE_INBOX,
+  ROLE_ARCHIVE,
+  ROLE_DRAFTS,
+  ROLE_OUTBOX,
+  ROLE_SENT,
+  ROLE_TRASH,
+  ROLE_SPAM,
+  ROLE_TEMPLATES,
+} jmap_mailbox_role_t;
+
 typedef struct jmap_mailbox {
-  char *id;
-  char *name;
-  char *parent_id;
+  char                *id;
+  char                *name;
+  char                *parent_id;
+  jmap_mailbox_role_t  role;
 } jmap_mailbox_t;
+
+jmap_mailbox_role_t _jmap_mailbox_role_from_str(const char *rolestr)
+{
+  if (!rolestr) return ROLE_NONE;
+
+  if (!strcmp(rolestr, "inbox"))     return ROLE_INBOX;
+  if (!strcmp(rolestr, "archive"))   return ROLE_ARCHIVE;
+  if (!strcmp(rolestr, "drafts"))    return ROLE_DRAFTS;
+  if (!strcmp(rolestr, "outbox"))    return ROLE_OUTBOX;
+  if (!strcmp(rolestr, "sent"))      return ROLE_SENT;
+  if (!strcmp(rolestr, "trash"))     return ROLE_TRASH;
+  if (!strcmp(rolestr, "spam"))      return ROLE_SPAM;
+  if (!strcmp(rolestr, "templates")) return ROLE_TEMPLATES;
+
+  return ROLE_NONE;
+}
 
 void _jmap_mailbox_free(void *jmailboxv)
 {
@@ -78,18 +107,17 @@ int _jmap_mailbox_refresh(jmap_context_t *jctx)
     const char *name = json_string_value(json_object_get(rmailbox, "name"));
     const char *parent_id = json_string_value(json_object_get(rmailbox, "parentId"));
 
-#ifdef DEBUG
-    if (debuglevel > 1) {
-      const char *role = json_string_value(json_object_get(rmailbox, "role"));
-      mutt_debug(3, "jmap: mailbox %s name %s role %s\n", id, name, role ? role : "[null]");
-    }
-#endif
+    const char *rolestr = json_string_value(json_object_get(rmailbox, "role"));
+    jmap_mailbox_role_t role = _jmap_mailbox_role_from_str(rolestr);
+
+    mutt_debug(3, "jmap: mailbox %s name %s role %s\n", id, name, rolestr ? rolestr : "[null]");
 
     jmap_mailbox_t *jmailbox = safe_calloc(1, sizeof(jmap_mailbox_t));
 
     jmailbox->id = safe_strdup(id);
     jmailbox->name = safe_strdup(name);
     if (parent_id) jmailbox->parent_id = safe_strdup(parent_id);
+    jmailbox->role = role;
 
     hash_insert(jctx->mailbox_by_id, jmailbox->id, jmailbox);
   }
