@@ -35,14 +35,14 @@ void _jmap_mailbox_expand_name_recursive(const char *id, HASH *mailbox_by_id, BU
   mutt_buffer_addstr(namebuf, name);
 }
 
-int _jmap_mailbox_get(CONTEXT *ctx, jmap_mailbox_t *mailbox)
+int _jmap_mailbox_get(jmap_context_t *jctx, const char *path, jmap_mailbox_t *mailbox)
 {
-  const char *want_name = strchr(ctx->path, '?');
+  const char *want_name = strchr(path, '?');
   if (!want_name || !*++want_name) return -1;
 
   json_t *batch = json_pack("[[s {} s]]", "getMailboxes", "a1");
   json_t *rbatch;
-  int rc = jmap_client_call(ctx, batch, &rbatch);
+  int rc = jmap_client_call(jctx, batch, &rbatch);
   if (rc) return rc;
 
   // XXX err/ret through here
@@ -97,8 +97,11 @@ int _jmap_mailbox_get(CONTEXT *ctx, jmap_mailbox_t *mailbox)
 
 int jmap_mailbox_open(CONTEXT *ctx)
 {
+  ctx->data = jmap_context_prepare(ctx->data, ctx->path);
+  jmap_context_t *jctx = (jmap_context_t *) ctx->data;
+
   jmap_mailbox_t mailbox;
-  int rc = _jmap_mailbox_get(ctx, &mailbox);
+  int rc = _jmap_mailbox_get(jctx, ctx->path, &mailbox);
   if (rc) return rc;
 
   mutt_debug(1, "jmap: got mailbox '%s'\n", mailbox.id);

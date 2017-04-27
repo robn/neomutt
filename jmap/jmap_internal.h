@@ -76,6 +76,6 @@ extern int jmap_message_commit(CONTEXT *ctx, MESSAGE *msg);
 extern int jmap_message_open_new(MESSAGE *msg, CONTEXT *dest, HEADER *hdr);
 
 /* client.c */
-extern int jmap_client_call(CONTEXT *ctx, const json_t *batch, json_t **rbatch);
+extern int jmap_client_call(jmap_context_t *jctx, const json_t *batch, json_t **rbatch);
 
 #endif /* _MUTT_JMAP_INTERNAL_H */
