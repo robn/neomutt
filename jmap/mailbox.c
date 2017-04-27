@@ -144,15 +144,54 @@ int _jmap_mailbox_refresh(jmap_context_t *jctx)
 
 int _jmap_mailbox_get(jmap_context_t *jctx, const char *path, jmap_mailbox_t **jmailboxp)
 {
-  const char *want_name = strchr(path, '?');
-  if (!want_name || !*++want_name) return -1;
+  jmap_mailbox_role_t want_role = ROLE_NONE;
+  const char *want_name = NULL;
+
+  // XXX figure out how to report not found / dodgy config to the UI
+
+  const char *want_rolestr = strstr(path, "?role=");
+  if (want_rolestr) {
+    want_rolestr += 6;
+    if (!*want_rolestr)
+      return -1;
+    want_role = _jmap_mailbox_role_from_str(want_rolestr);
+    if (want_role == ROLE_NONE)
+      return -1;
+  }
+  else {
+    want_name = strstr(path, "?name=");
+    if (want_name) {
+      want_name += 6;
+      if (!*want_name)
+        return -1;
+    }
+  }
 
   int rc = _jmap_mailbox_refresh(jctx);
   if (rc) return rc;
 
-  *jmailboxp = hash_find(jctx->mailbox_by_name, want_name);
+  if (want_role != ROLE_NONE) {
+    struct hash_walk_state state;
+    memset(&state, 0, sizeof(struct hash_walk_state));
+    struct hash_elem *elem = NULL;
+    while ((elem = hash_walk(jctx->mailbox_by_id, &state))) {
+      *jmailboxp = elem->data;
+      if ((*jmailboxp)->role == want_role) {
+        mutt_debug(1, "jmap: resolved role '%s' => %s\n", want_rolestr, (*jmailboxp)->id);
+        return 0;
+      }
+    }
+    // XXX not found
+    return -1;
+  }
 
-  return 0;
+  *jmailboxp = hash_find(jctx->mailbox_by_name, want_name);
+  if (*jmailboxp) {
+    mutt_debug(1, "jmap: resolved name '%s' => %s\n", want_name, (*jmailboxp)->id);
+    return 0;
+  }
+
+  return -1;
 }
 
 int jmap_mailbox_open(CONTEXT *ctx)

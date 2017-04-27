@@ -470,6 +470,20 @@ char *_mutt_expand_path(char *s, size_t slen, int rx)
       break;
 
       case '=':
+#ifdef USE_JMAP
+      {
+        /* jmap:// URLs are really https://, so append folder as a query part
+         * so that the backend can distinguish it from the URL proper */
+
+        /* we're reusing '=' to indicate a JMAP mailbox role, which needs a
+         * separate format */
+        if (mx_is_jmap(NONULL(Maildir))) {
+          snprintf(p, sizeof(p), "%s?role=", NONULL(Maildir));
+          tail = s + 1;
+          break;
+        }
+      }
+#endif
       case '+':
       {
 #ifdef USE_IMAP
@@ -480,10 +494,9 @@ char *_mutt_expand_path(char *s, size_t slen, int rx)
         else
 #endif
 #ifdef USE_JMAP
-        /* jmap:// URLs are really https://, so append folder as a query part
-         * so that the backend can distinguish it from the URL proper */
+        /* as above, but for folder hierarchical name */
         if (mx_is_jmap(NONULL(Maildir)))
-          snprintf(p, sizeof(p), "%s?", NONULL(Maildir));
+          snprintf(p, sizeof(p), "%s?name=", NONULL(Maildir));
         else
 #endif
 #ifdef USE_NOTMUCH
