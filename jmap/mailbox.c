@@ -89,9 +89,9 @@ int _jmap_mailbox_refresh(jmap_context_t *jctx)
   }
 
   json_error_t jerr;
-  const char *rmethod, *rtag;
+  const char *rmethod;
   json_t *rmailboxes;
-  if (json_unpack_ex(rbatch, &jerr, 0, "[[s {s:o} s]]", &rmethod, "list", &rmailboxes, &rtag)) {
+  if (json_unpack_ex(rbatch, &jerr, 0, "[[s {s:o}]]", &rmethod, "list", &rmailboxes)) {
     mutt_debug(1, "jmap: couldn't unpack mailboxes response: %s\n", jerr.text);
     json_decref(rbatch);
     return -1;
@@ -203,6 +203,34 @@ int _jmap_mailbox_get(jmap_context_t *jctx, const char *path, jmap_mailbox_t **j
   return -1;
 }
 
+ADDRESS *_jmap_address(json_t *jaddress)
+{
+  if (!jaddress) return NULL;
+
+  if (json_is_array(jaddress)) {
+    ADDRESS *head = 0;
+    size_t i;
+    json_t *ja;
+    json_array_foreach(jaddress, i, ja) {
+      ADDRESS *a = _jmap_address(ja);
+      if (head) {
+        a->next = head;
+        head = a;
+      }
+      else {
+        head = a;
+      }
+    }
+    return head;
+  }
+
+  ADDRESS *a = rfc822_new_address();
+  a->personal = safe_strdup(json_string_value(json_object_get(jaddress, "name")));
+  a->mailbox  = safe_strdup(json_string_value(json_object_get(jaddress, "email")));
+
+  return a;
+}
+
 int jmap_mailbox_open(CONTEXT *ctx)
 {
   ctx->data = jmap_context_prepare(ctx->data, ctx->path);
@@ -211,6 +239,125 @@ int jmap_mailbox_open(CONTEXT *ctx)
   jmap_mailbox_t *jmailbox;
   int rc = _jmap_mailbox_get(jctx, ctx->path, &jmailbox);
   if (rc) return rc;
+
+  json_t *batch = json_pack(
+    "[[s {s:{s:s}, s:b, s:[s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s]} s]]",
+    "getMessageList",
+    "filter",
+      "inMailbox", jmailbox->id,
+    "fetchMessages", 1,
+    "fetchMessageProperties",
+      "isFlagged",
+      "isUnread",
+      "isAnswered",
+      "date",
+      "headers.return-path",
+      "from",
+      "to",
+      "cc",
+      "bcc",
+      "sender",
+      "replyTo",
+      "headers.mail-followup-to",
+      "headers.x-original-to",
+      "headers.list-post",
+      "subject",
+      "headers.message-id",
+      "headers.supersedes",
+      "headers.x-label",
+      "headers.organization",
+      "headers.references",
+      "headers.in-reply-to",
+      "size",
+    "a1");
+  assert(batch);
+  json_t *rbatch = NULL;
+  rc = jmap_client_call(jctx, batch, &rbatch);
+  json_decref(batch);
+  if (rc) {
+    if (rbatch) json_decref(rbatch);
+    return rc;
+  }
+
+  json_error_t jerr;
+  const char *rmethod;
+  int count;
+  json_t *rmessages;
+  if (json_unpack_ex(rbatch, &jerr, 0, "[[s {s:i}], [s {s:o}]]", &rmethod, "total", &count, &rmethod, "list", &rmessages)) {
+    mutt_debug(1, "jmap: couldn't unpack messages response: %s\n", jerr.text);
+    json_decref(rbatch);
+    return -1;
+  }
+
+  ctx->hdrmax = count;
+  ctx->hdrs = safe_calloc(ctx->hdrmax, sizeof(HEADER *));
+  ctx->v2r = safe_calloc(ctx->hdrmax, sizeof(int));
+
+  ctx->msgcount = 0;
+  ctx->unread   = 0;
+
+  size_t i;
+  json_t *rmessage;
+  json_array_foreach(rmessages, i, rmessage) {
+    HEADER *h = mutt_new_header();
+
+    h->flagged = json_boolean_value(json_object_get(rmessage, "isFlagged"));
+    h->read    = !json_boolean_value(json_object_get(rmessage, "isUnread"));
+    h->replied = json_boolean_value(json_object_get(rmessage, "isAnswered"));
+
+    // date
+
+    ENVELOPE *env = mutt_new_envelope();
+
+    const char *str;
+    str = json_string_value(json_object_get(rmessage, "headers.return-path"));
+    if (str) env->return_path = rfc822_parse_adrlist(NULL, str);
+
+    env->from     = _jmap_address(json_object_get(rmessage, "from"));
+    env->to       = _jmap_address(json_object_get(rmessage, "to"));
+    env->cc       = _jmap_address(json_object_get(rmessage, "cc"));
+    env->bcc      = _jmap_address(json_object_get(rmessage, "bcc"));
+    env->sender   = _jmap_address(json_object_get(rmessage, "sender"));
+    env->reply_to = _jmap_address(json_object_get(rmessage, "replyTo"));
+
+    str = json_string_value(json_object_get(rmessage, "headers.mail-followup-to"));
+    if (str) env->mail_followup_to = rfc822_parse_adrlist(NULL, str);
+    str = json_string_value(json_object_get(rmessage, "headers.x-original-to"));
+    if (str) env->x_original_to = rfc822_parse_adrlist(NULL, str);
+
+    // list-post
+
+    env->subject = safe_strdup(json_string_value(json_object_get(rmessage, "subject")));
+
+    // message-id
+    // supersedes
+    // x-label
+    // organization
+    // references
+    // in-reply-to
+
+    h->env = env;
+
+    h->content = mutt_new_body();
+    // XXX fill from message object?
+    h->content->type = TYPETEXT;
+    h->content->subtype = safe_strdup("plain");
+    h->content->encoding = ENC7BIT;
+    h->content->length = -1;
+    h->content->disposition = DISPINLINE;
+
+    /*
+    const char *subject = json_string_value(json_object_get(rmessage, "subject"));
+    mutt_debug(2, ">>> %s\n", subject);
+    */
+
+    ctx->size += json_integer_value(json_object_get(rmessage, "size"));
+
+    ctx->msgcount++;
+    if (!h->read) ctx->unread++;
+
+    ctx->hdrs[i] = h;
+  }
 
   mutt_debug(1, "jmap: got mailbox '%s'\n", jmailbox->id);
 

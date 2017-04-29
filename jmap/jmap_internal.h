@@ -31,8 +31,10 @@
 #include "jmap.h"
 #include "mutt_curses.h"
 #include "mutt_socket.h"
+#include "mime.h"
 #include <curl/curl.h>
 #include <jansson.h>
+#include <assert.h>
 
 typedef struct jmap_context {
 
