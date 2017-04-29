@@ -33,6 +33,10 @@ typedef struct jmap_mailbox {
   char                *name;
   char                *parent_id;
   jmap_mailbox_role_t  role;
+  int                  total_messages;
+  int                  unread_messages;
+  int                  total_threads;
+  int                  unread_threads;
 } jmap_mailbox_t;
 
 jmap_mailbox_role_t _jmap_mailbox_role_from_str(const char *rolestr)
@@ -118,6 +122,11 @@ int _jmap_mailbox_refresh(jmap_context_t *jctx)
     jmailbox->name = safe_strdup(name);
     if (parent_id) jmailbox->parent_id = safe_strdup(parent_id);
     jmailbox->role = role;
+
+    jmailbox->total_messages  = json_integer_value(json_object_get(rmailbox, "totalMessages"));
+    jmailbox->unread_messages = json_integer_value(json_object_get(rmailbox, "unreadMessages"));
+    jmailbox->total_threads   = json_integer_value(json_object_get(rmailbox, "totalThreads"));
+    jmailbox->unread_threads  = json_integer_value(json_object_get(rmailbox, "unreadThreads"));
 
     hash_insert(jctx->mailbox_by_id, jmailbox->id, jmailbox);
   }
