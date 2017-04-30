@@ -334,10 +334,11 @@ int jmap_mailbox_open(CONTEXT *ctx)
 
     env->subject = safe_strdup(json_string_value(json_object_get(rmessage, "subject")));
 
-    // message-id
-    // supersedes
-    // x-label
-    // organization
+    env->message_id   = safe_strdup(json_string_value(json_object_get(rmessage, "headers.message-id")));
+    env->supersedes   = safe_strdup(json_string_value(json_object_get(rmessage, "headers.supersedes")));
+    env->x_label      = safe_strdup(json_string_value(json_object_get(rmessage, "headers.x-label")));
+    env->organization = safe_strdup(json_string_value(json_object_get(rmessage, "headers.organization")));
+
     // references
     // in-reply-to
 
