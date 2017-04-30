@@ -343,12 +343,14 @@ int jmap_mailbox_open(CONTEXT *ctx)
 
     h->env = env;
 
+    int size = json_integer_value(json_object_get(rmessage, "size"));
+
     h->content = mutt_new_body();
     // XXX fill from message object?
     h->content->type = TYPETEXT;
     h->content->subtype = safe_strdup("plain");
     h->content->encoding = ENC7BIT;
-    h->content->length = -1;
+    h->content->length = size;
     h->content->disposition = DISPINLINE;
 
     /*
