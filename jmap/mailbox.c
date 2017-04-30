@@ -31,6 +31,7 @@ typedef enum jmap_mailbox_role {
 typedef struct jmap_mailbox {
   char                *id;
   char                *name;
+  char                *hierarchical_name;
   char                *parent_id;
   jmap_mailbox_role_t  role;
   int                  total_messages;
@@ -60,6 +61,7 @@ void _jmap_mailbox_free(void *jmailboxv)
   jmap_mailbox_t *jmailbox = (jmap_mailbox_t *) jmailboxv;
   FREE(&jmailbox->id);
   FREE(&jmailbox->name);
+  FREE(&jmailbox->hierarchical_name);
   FREE(&jmailbox->parent_id);
   FREE(&jmailbox);
 }
@@ -141,6 +143,7 @@ int _jmap_mailbox_refresh(jmap_context_t *jctx)
     jmap_mailbox_t *jmailbox = elem->data;
     namebuf->dptr = namebuf->data;
     _jmap_mailbox_expand_name_recursive(jctx, jmailbox->id, namebuf);
+    jmailbox->hierarchical_name = safe_strdup(namebuf->data);
     hash_insert(jctx->mailbox_by_name, namebuf->data, jmailbox);
     mutt_debug(3, "jmap: mapped mailbox name %s => %s\n", namebuf->data, jmailbox->id);
   }
@@ -238,6 +241,9 @@ int jmap_mailbox_open(CONTEXT *ctx)
   jmap_mailbox_t *jmailbox;
   int rc = _jmap_mailbox_get(jctx, ctx->realpath, &jmailbox);
   if (rc) return rc;
+
+  FREE(&ctx->path);
+  ctx->path = safe_strdup(jmailbox->hierarchical_name);
 
   json_t *batch = json_pack(
     "[[s {s:{s:s}, s:b, s:[s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s]} s]]",
