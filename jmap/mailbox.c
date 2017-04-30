@@ -330,7 +330,19 @@ int jmap_mailbox_open(CONTEXT *ctx)
     str = json_string_value(json_object_get(rmessage, "headers.x-original-to"));
     if (str) env->x_original_to = rfc822_parse_adrlist(NULL, str);
 
-    // list-post
+    str = json_string_value(json_object_get(rmessage, "headers.list-post"));
+    if (str) {
+      if (strncmp(str, "NO", 2) != 0) {
+        char *mailto = strstr(str, "mailto:");
+        if (mailto) {
+          mailto++;
+          char *end = strchr(mailto, '>');
+          if (end) {
+            env->list_post = mutt_substrdup(mailto, end);
+          }
+        }
+      }
+    }
 
     env->subject = safe_strdup(json_string_value(json_object_get(rmessage, "subject")));
 
