@@ -80,7 +80,7 @@ void _jmap_mailbox_expand_name_recursive(jmap_context_t *jctx, const char *id, B
 
 int _jmap_mailbox_refresh(jmap_context_t *jctx)
 {
-  /* XXX track state, if we have a last state do getMailboxUpdates instead */
+  // XXX track state, if we have a last state do getMailboxUpdates instead
   json_t *batch = json_pack("[[s {} s]]", "getMailboxes", "a1");
   json_t *rbatch = NULL;
   int rc = jmap_client_call(jctx, batch, &rbatch);
@@ -356,8 +356,8 @@ int jmap_mailbox_open(CONTEXT *ctx)
     env->x_label      = safe_strdup(json_string_value(json_object_get(rmessage, "headers.x-label")));
     env->organization = safe_strdup(json_string_value(json_object_get(rmessage, "headers.organization")));
 
-    // references
-    // in-reply-to
+    // XXX references
+    // XXX in-reply-to
 
     h->env = env;
 
