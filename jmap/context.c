@@ -30,7 +30,10 @@ static size_t _jmap_curl_write(char *buf, size_t size, size_t nmemb, void *data)
   return size*nmemb;
 }
 
-jmap_context_t *jmap_context_prepare(jmap_context_t *jctx, const char *path) {
+jmap_context_t *jmap_context_prepare(CONTEXT *ctx)
+{
+  jmap_context_t *jctx = ctx->data;
+  const char *path = ctx->realpath;
 
   /* calculate checksum; simple XOR over the path (excluding the trailing
    * ?folder selector, if any) */
@@ -47,7 +50,7 @@ jmap_context_t *jmap_context_prepare(jmap_context_t *jctx, const char *path) {
     jmap_context_free(&jctx);
 
   /* and make a new one! */
-  jctx = safe_calloc(1, sizeof(jmap_context_t));
+  jctx = ctx->data = safe_calloc(1, sizeof(jmap_context_t));
   jctx->checksum = checksum;
 
   /* explode the url */

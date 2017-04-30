@@ -233,11 +233,10 @@ ADDRESS *_jmap_address(json_t *jaddress)
 
 int jmap_mailbox_open(CONTEXT *ctx)
 {
-  ctx->data = jmap_context_prepare(ctx->data, ctx->path);
-  jmap_context_t *jctx = (jmap_context_t *) ctx->data;
+  jmap_context_t *jctx = jmap_context_prepare(ctx);
 
   jmap_mailbox_t *jmailbox;
-  int rc = _jmap_mailbox_get(jctx, ctx->path, &jmailbox);
+  int rc = _jmap_mailbox_get(jctx, ctx->realpath, &jmailbox);
   if (rc) return rc;
 
   json_t *batch = json_pack(

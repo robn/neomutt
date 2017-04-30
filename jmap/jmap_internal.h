@@ -67,7 +67,7 @@ typedef struct jmap_context {
 } jmap_context_t;
 
 /* context.c */
-jmap_context_t *jmap_context_prepare(jmap_context_t *jctx, const char *path);
+jmap_context_t *jmap_context_prepare(CONTEXT *ctx);
 void jmap_context_free(jmap_context_t **jctxp);
 
 /* mailbox.c */
