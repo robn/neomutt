@@ -299,17 +299,22 @@ int jmap_mailbox_open(CONTEXT *ctx)
   size_t i;
   json_t *rmessage;
   json_array_foreach(rmessages, i, rmessage) {
+    const char *str;
     HEADER *h = mutt_new_header();
 
     h->flagged = json_boolean_value(json_object_get(rmessage, "isFlagged"));
     h->read    = !json_boolean_value(json_object_get(rmessage, "isUnread"));
     h->replied = json_boolean_value(json_object_get(rmessage, "isAnswered"));
 
-    // date
+    str = json_string_value(json_object_get(rmessage, "date"));
+    if (str) {
+      struct tm date_tm;
+      strptime(str, "%Y-%m-%dT%H:%M:%SZ", &date_tm);
+      h->date_sent = h->received = mktime(&date_tm);
+    }
 
     ENVELOPE *env = mutt_new_envelope();
 
-    const char *str;
     str = json_string_value(json_object_get(rmessage, "headers.return-path"));
     if (str) env->return_path = rfc822_parse_adrlist(NULL, str);
 
