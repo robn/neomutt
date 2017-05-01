@@ -25,9 +25,11 @@ static int _jmap_client_json_dump_callback(const char *buf, size_t size, void *d
   return 0;
 }
 
-int jmap_client_call(jmap_context_t *jctx, const json_t *batch, json_t **rbatch)
+int jmap_client_call(jmap_context_t *jctx, const json_t *batch, json_t **rbatch, const char *progressname)
 {
   jctx->curl_body->dptr = jctx->curl_body->data;
+
+  mutt_progress_init(&jctx->progress, progressname, MUTT_PROGRESS_MSG, NetInc, 0);
 
   json_dump_callback(batch, _jmap_client_json_dump_callback, jctx->curl_body, JSON_COMPACT); // XXX ret/err
   uintptr_t req_content_length = jctx->curl_body->dptr - jctx->curl_body->data;

@@ -30,6 +30,13 @@ static size_t _jmap_curl_write(char *buf, size_t size, size_t nmemb, void *data)
   return size*nmemb;
 }
 
+static int _jmap_curl_progress(void *data, curl_off_t dltotal, curl_off_t dlnow, curl_off_t ultotal, curl_off_t ulnow)
+{
+  if (dltotal)
+    mutt_progress_update((progress_t *) data, dlnow, (dlnow*100)/dltotal);
+  return 0;
+}
+
 jmap_context_t *jmap_context_prepare(CONTEXT *ctx)
 {
   jmap_context_t *jctx = ctx->data;
@@ -100,6 +107,10 @@ jmap_context_t *jmap_context_prepare(CONTEXT *ctx)
   jctx->curl_body = mutt_buffer_new();
   curl_easy_setopt(jctx->curl, CURLOPT_WRITEFUNCTION, _jmap_curl_write);
   curl_easy_setopt(jctx->curl, CURLOPT_WRITEDATA, jctx->curl_body);
+
+  curl_easy_setopt(jctx->curl, CURLOPT_XFERINFOFUNCTION, _jmap_curl_progress);
+  curl_easy_setopt(jctx->curl, CURLOPT_XFERINFODATA, &jctx->progress);
+  curl_easy_setopt(jctx->curl, CURLOPT_NOPROGRESS, 0);
 
   return jctx;
 }

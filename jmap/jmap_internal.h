@@ -64,6 +64,9 @@ typedef struct jmap_context {
   /* mailbox hierarchical name -> jmap_mailbox_t */
   HASH *mailbox_by_name;
 
+  /* progress of outstanding request */
+  progress_t progress;
+
 } jmap_context_t;
 
 /* context.c */
@@ -84,6 +87,6 @@ extern int jmap_message_commit(CONTEXT *ctx, MESSAGE *msg);
 extern int jmap_message_open_new(MESSAGE *msg, CONTEXT *dest, HEADER *hdr);
 
 /* client.c */
-extern int jmap_client_call(jmap_context_t *jctx, const json_t *batch, json_t **rbatch);
+extern int jmap_client_call(jmap_context_t *jctx, const json_t *batch, json_t **rbatch, const char *progressname);
 
 #endif /* _MUTT_JMAP_INTERNAL_H */

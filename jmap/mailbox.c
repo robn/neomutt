@@ -83,7 +83,7 @@ int _jmap_mailbox_refresh(jmap_context_t *jctx)
   // XXX track state, if we have a last state do getMailboxUpdates instead
   json_t *batch = json_pack("[[s {} s]]", "getMailboxes", "a1");
   json_t *rbatch = NULL;
-  int rc = jmap_client_call(jctx, batch, &rbatch);
+  int rc = jmap_client_call(jctx, batch, &rbatch, "Loading mailboxes...");
   json_decref(batch);
   if (rc) {
     if (rbatch) json_decref(rbatch);
@@ -277,7 +277,7 @@ int jmap_mailbox_open(CONTEXT *ctx)
     "a1");
   assert(batch);
   json_t *rbatch = NULL;
-  rc = jmap_client_call(jctx, batch, &rbatch);
+  rc = jmap_client_call(jctx, batch, &rbatch, "Loading headers...");
   json_decref(batch);
   if (rc) {
     if (rbatch) json_decref(rbatch);
