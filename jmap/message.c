@@ -33,5 +33,6 @@ int jmap_message_close(CONTEXT *ctx, MESSAGE *msg)
 
 int jmap_message_open(CONTEXT *ctx, MESSAGE *msg, int msgno)
 {
+  mutt_debug(2, "lets open a message\n");
   return -1;
 }

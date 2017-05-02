@@ -246,12 +246,13 @@ int jmap_mailbox_open(CONTEXT *ctx)
   ctx->path = safe_strdup(jmailbox->hierarchical_name);
 
   json_t *batch = json_pack(
-    "[[s {s:{s:s}, s:b, s:[s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s]} s]]",
+    "[[s {s:{s:s}, s:b, s:[s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s]} s]]",
     "getMessageList",
     "filter",
       "inMailbox", jmailbox->id,
     "fetchMessages", 1,
     "fetchMessageProperties",
+      "blobId",
       "isFlagged",
       "isUnread",
       "isAnswered",
@@ -380,6 +381,8 @@ int jmap_mailbox_open(CONTEXT *ctx)
 
     ctx->msgcount++;
     if (!h->read) ctx->unread++;
+
+    h->data = safe_strdup(json_string_value(json_object_get(rmessage, "blobId")));
 
     ctx->hdrs[i] = h;
   }

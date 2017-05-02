@@ -886,7 +886,7 @@ typedef struct header
   int refno; /* message number on server */
 #endif
 
-#if defined(USE_POP) || defined(USE_IMAP) || defined(USE_NNTP) || defined(USE_NOTMUCH)
+#if defined(USE_POP) || defined(USE_IMAP) || defined(USE_JMAP) || defined(USE_NNTP) || defined(USE_NOTMUCH)
   void *data;                       /* driver-specific data */
   void (*free_cb)(struct header *); /* driver-specific data free function */
 #endif
